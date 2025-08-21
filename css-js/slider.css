@@ -1,0 +1,117 @@
+			
+    /* image replacement */
+        .graphic{
+	margin:0;
+	padding:0;
+	display:block;
+	overflow:hidden;
+	text-indent:-8000px;
+            }
+    /* // image replacement */
+			
+	#container{
+	position:relative;
+	text-align:left;
+	width:924px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 5px;
+	background-image: url(/imagens/base/slides-bg.png);
+	padding: 13px;
+	background-repeat: no-repeat;
+		}	
+					
+	#content{
+	position:relative;
+	width: 924px;
+		}			
+
+/* Easy Slider */
+
+	#slider ul, #slider li{
+	margin:0;
+	padding:0;
+	list-style:none;
+		}
+	#slider li{
+	height:300px;
+	overflow:hidden;
+	z-index: -1000;
+	padding: 0px;
+		}	
+		
+	/* numeric controls */	
+
+	ol#controls{
+	padding:0;
+	height:28px;
+	z-index: 4000;
+	margin-top: 15px;
+	margin-right: 0;
+	margin-left: 0;
+		}
+	ol#controls li{
+	padding:0;
+	float:left;
+	list-style:none;
+	height:20px;
+	line-height:20px;
+	margin-top: 0;
+	margin-right: 5px;
+	margin-bottom: 0;
+	margin-left: 0;
+		}
+	ol#controls li a{
+	float:left;
+	height:20px;
+	line-height:20px;
+	color:#fff;
+	text-decoration:none;
+	background-color: #F55283;
+	padding-top: 0;
+	padding-right: 5px;
+	padding-bottom: 0;
+	padding-left: 5px;
+	z-index: 4000;
+		}
+	ol#controls li.current a{
+	color:#fff;
+	background-color: #BC1894;
+		}
+	ol#controls li a:focus, #prevBtn a:focus, #nextBtn a:focus{outline:none;}
+	
+/* // Easy Slider */
+
+	p#controls, p#controls2{
+		margin:0;
+		position:relative;
+		} 
+	
+	#prevBtn, #nextBtn, #prevBtn2, #nextBtn2{
+	display:block;
+	margin:0;
+	overflow:hidden;
+	text-indent:-3000px;
+	width:20px;
+	height:20px;
+	position:absolute;
+	left:-40px;
+	top:130px;
+		}	
+	#nextBtn, #nextBtn2{
+	left:940px;
+		}														
+	#prevBtn a, #nextBtn a, #prevBtn2 a, #nextBtn2 a{
+	display:block;
+	width:20px;
+	height:20px;
+	background-image: url(/imagens/left.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+		}	
+	#nextBtn a, #nextBtn2 a{
+	background-image: url(/imagens/right.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+		}			
+		

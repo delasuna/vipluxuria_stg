@@ -1,0 +1,10 @@
+.select { font-family: Tahoma, Arial, Helvetica; font-size: 8pt; color: #FFFFFF; background-color: #6d6e71}
+.modulo {font-family: Tahoma, Arial, Helvetica; font-size: 9pt; color: #333333;font-weight: bold; border-bottom: 1px solid #006699; padding-top: 5px;}
+.menuBODY {	background-color: #003b68; border-right: 1px solid #003b68}
+.menuTABLE { font-family: Tahoma, Arial; font-size: 10px; }
+.menuTD { background-color: #003b68; text-align: right;    }
+.menuTH { background-color: #003b68; font-family: Tahoma, Arial, Helvetica; font-size: 10pt; font-weight: bold; font-style: normal; color: #FFFFFF; text-decoration: none; text-align: center; }
+A.menu:LINK { font-family: Tahoma, Arial, Helvetica; font-size: 8pt; font-style: normal; color: #FFFFFF; text-decoration: none;}
+A.menu:ACTIVE { font-family: Tahoma, Arial, Helvetica; font-size: 8pt;	font-style: normal; color: #FFFFFF; text-decoration: none;}
+A.menu:VISITED { font-family: Tahoma, Arial, Helvetica; font-size: 8pt; font-style: normal; color: #FFFFFF; text-decoration: none;}
+A.menu:HOVER { font-family: Tahoma, Arial, Helvetica; font-size: 8pt; font-style: normal; color: #666666; text-decoration: none;} 

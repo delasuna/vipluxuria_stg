@@ -1,0 +1,56 @@
+/* CSS Document */
+
+
+
+body {
+
+	font-family: Calibri, Arial,Helvetica, sans-serif;
+
+	margin: 0px;
+
+	padding: 0px;
+
+	background-repeat: repeat;
+
+	background-color: #252525;
+
+	background-image: url(../imagens/bg_site.jpg);
+
+}
+
+
+
+#conteudo {
+
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+
+	margin: 0px;
+
+	padding: 0px;
+
+	background-repeat: repeat-x;
+
+	background-image: url(../imagens/bg_conteudo.jpg);
+
+	font-size: 12px;
+
+}
+
+
+
+#conteudo_sistema {
+
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+
+	margin: 0px;
+
+	padding: 8px;
+
+	background-repeat: repeat-x;
+
+	background-image: url(../imagens/bg_conteudo_sistema.jpg);
+
+	font-size: 12px;
+
+}
+

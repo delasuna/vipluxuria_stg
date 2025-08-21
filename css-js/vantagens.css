@@ -1,0 +1,45 @@
+/* CSS Document */
+/* @import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script:700);
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz); */
+html, body {height:100%;} 
+*{ margin:0; padding:0; border:0; }
+
+body {
+	margin:0;
+	padding:0;
+	font:75%/1.4 Verdana, Arial, Helvetica, sans-serif;
+
+	}
+
+* html #tudo {height: 100%;}
+.clear {
+	clear: both;
+}#header {
+	width: 810px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
+}
+#faixa {
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+#vantagens {
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#vantagens-texto {
+	float: left;
+	width: 480px;
+	padding: 10px;
+}
+#vantagens-banner {
+	float: right;
+	height: 300px;
+	width: 300px;
+}

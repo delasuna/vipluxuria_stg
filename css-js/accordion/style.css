@@ -1,0 +1,26 @@
+.accordion
+{
+	width:976px;
+	list-style:none;
+	padding:0px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+
+
+/*
+hides the images and text from within the accordion;
+
+this style will be applied only before the 
+accordion is instantiated or if the user doesn't have
+javascript enabled;
+
+feel free to replace this style with your own
+*/
+.accordion img, .accordion .caption
+{
+	position:absolute;
+	left:-9999px;
+}

@@ -1,0 +1,94 @@
+<?php
+$conexao = require_once 'php/conecta_mysql.php';
+
+echo "<h2>Criando tabelas necessárias...</h2>";
+
+// Criar tabela tipoSeo primeiro
+$sql_tipoSeo = "CREATE TABLE IF NOT EXISTS `tipoSeo` (
+    `idTipoSeo` int(11) NOT NULL AUTO_INCREMENT,
+    `descricao` varchar(100) NOT NULL,
+    PRIMARY KEY (`idTipoSeo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+
+if (mysql_query($sql_tipoSeo)) {
+    echo "&#9989; Tabela 'tipoSeo' criada/verificada com sucesso!<br>";
+} else {
+    echo "&#10060; Erro ao criar tabela 'tipoSeo': " . mysql_error() . "<br>";
+}
+
+// Criar tabela seo
+$sql_seo = "CREATE TABLE IF NOT EXISTS `seo` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `idTipoSeo` int(11) NOT NULL,
+    `title` varchar(255) DEFAULT NULL,
+    `description` text,
+    `keywords` text,
+    PRIMARY KEY (`id`),
+    KEY `idTipoSeo` (`idTipoSeo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+
+if (mysql_query($sql_seo)) {
+    echo "&#9989; Tabela 'seo' criada/verificada com sucesso!<br>";
+} else {
+    echo "&#10060; Erro ao criar tabela 'seo': " . mysql_error() . "<br>";
+}
+
+echo "<br><h3>Inserindo dados padrão...</h3>";
+
+// Verificar se o tipo 'Index' já existe
+$check = mysql_query("SELECT * FROM tipoSeo WHERE descricao = 'Index'");
+if (mysql_num_rows($check) == 0) {
+    // Inserir tipo 'Index'
+    $insert = "INSERT INTO tipoSeo (descricao) VALUES ('Index')";
+    if (mysql_query($insert)) {
+        echo "&#9989; Tipo 'Index' inserido com sucesso!<br>";
+        $idTipoSeo = mysql_insert_id();
+    } else {
+        echo "&#10060; Erro ao inserir tipo 'Index': " . mysql_error() . "<br>";
+    }
+} else {
+    $row = mysql_fetch_array($check);
+    $idTipoSeo = $row['idTipoSeo'];
+    echo "&#8505;&#65039; Tipo 'Index' já existe (ID: $idTipoSeo)<br>";
+}
+
+// Verificar se já existe SEO para Index
+$check_seo = mysql_query("SELECT * FROM seo WHERE idTipoSeo = $idTipoSeo");
+if (mysql_num_rows($check_seo) == 0) {
+    // Inserir dados SEO padrão para a página Index
+    $insert_seo = "INSERT INTO seo (idTipoSeo, title, description, keywords) VALUES (
+        $idTipoSeo,
+        'Acompanhantes Porto Alegre - Vip Luxúria - Acompanhante Porto Alegre',
+        'O VIP LUXÚRIA é um site de anúncio classificados de acompanhantes, de produtos e serviços eróticos, direcionado para um público adulto em Porto Alegre e Região Metropolitana.',
+        'acompanhantes porto alegre, garotas de programa porto alegre, vip luxuria, acompanhante poa, massagem porto alegre, transex porto alegre'
+    )";
+    
+    if (mysql_query($insert_seo)) {
+        echo "&#9989; Dados SEO para página Index inseridos com sucesso!<br>";
+    } else {
+        echo "&#10060; Erro ao inserir dados SEO: " . mysql_error() . "<br>";
+    }
+} else {
+    echo "&#8505;&#65039; Dados SEO para Index já existem<br>";
+}
+
+// Adicionar outros tipos de página comuns
+$outros_tipos = array(
+    'Acompanhantes',
+    'Transex', 
+    'Swing',
+    'Moteis'
+);
+
+foreach ($outros_tipos as $tipo) {
+    $check = mysql_query("SELECT * FROM tipoSeo WHERE descricao = '$tipo'");
+    if (mysql_num_rows($check) == 0) {
+        mysql_query("INSERT INTO tipoSeo (descricao) VALUES ('$tipo')");
+        echo "&#9989; Tipo '$tipo' adicionado<br>";
+    }
+}
+
+echo "<br><h3>&#9989; Processo concluído!</h3>";
+echo "<p>As tabelas foram criadas e os dados básicos de SEO foram inseridos.</p>";
+echo "<a href='index.php' style='padding: 10px 20px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px;'>Voltar para o site</a>";
+?>

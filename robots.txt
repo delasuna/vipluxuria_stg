@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /app/
+Disallow: /atualizacao_perfil/
+Disallow: /banner/
+Disallow: /cgi-bin/
+Disallow: /css-js/
+Disallow: /e-mail/
+Disallow: /erros/
+Disallow: /js/
+Disallow: /mapaAnunciantes/
+Disallow: /php/
+Disallow: /PHPMailer-master/
+Disallow: /sistema/
+Disallow: /Scripts/
+Disallow: /vantagens/
+Disallow: /update/
+
+Disallow: https://vipluxuriagold.net/perfil-transex/392/Veronica-Franco-Operada
+Disallow: https://vipluxuriagold.net/perfil-transex/231/Bre-Gauchinha

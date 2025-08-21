@@ -1,0 +1,108 @@
+ul#navmenu-h {
+	list-style: none;
+	position: absolute;
+	height: 44px;
+	margin-top: 1px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	margin-right: auto;
+	z-index: 5000;
+}
+
+ul#navmenu-h ul {
+	width: 200px;
+	list-style: none;
+	display: none;
+	position: absolute;
+	text-align: left;
+	z-index: 2000;
+	top: 100%;
+}
+
+ul#navmenu-h ul ul,ul#navmenu-h ul ul ul {
+	top: 0;
+	left: 100%;
+	z-index: 2000;
+}
+
+ul#navmenu-h li {
+	float: left;
+	display: inline;
+	position: relative;
+	z-index: 2000;
+	margin-top: 0px;
+	margin-right: 2px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+ul#navmenu-h ul li {
+	width: 100%;
+	display: block;
+	z-index: 2000;
+	margin: 0px;
+}
+
+/* Root Menu */
+ul#navmenu-h a {
+	float: left;
+	display: block;
+	color: #FFFFFF;
+	text-decoration: none;
+	height: 1%;
+	font-size: 24px;
+	padding-top: 9px;
+	padding-right: 10px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	z-index: 2000;
+	margin-top: -1px;
+	margin-right: 0px;
+	margin-bottom: -1px;
+	margin-left: 0px;
+}
+
+/* Root Menu Hover Persistence */
+ul#navmenu-h a:hover,ul#navmenu-h li:hover a,ul#navmenu-h li.iehover a {
+	color: #FFF;
+	background-color: #5B2D4D;
+	height: 31px;
+	z-index: 2000;
+	margin-top: -1px;
+	margin-bottom: -2px;
+}
+
+/* 2nd Menu */
+ul#navmenu-h li:hover li a,ul#navmenu-h li.iehover li a {
+	float: none;
+	background-color: #5B2D4D;
+	z-index: 2000;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: -2px;
+}
+
+/* 2nd Menu Hover Persistence */
+ul#navmenu-h li:hover li a:hover,ul#navmenu-h li:hover li:hover a,ul#navmenu-h li.iehover li a:hover,ul#navmenu-h li.iehover li.iehover a {
+	background-color: #821166;
+	z-index: 2000;
+}
+
+/* 3rd Menu */
+ul#navmenu-h li:hover li:hover li a,ul#navmenu-h li.iehover li.iehover li a {
+	background-color: #B60E5E;
+}
+
+/* 3rd Menu Hover Persistence */
+ul#navmenu-h li:hover li:hover li a:hover,ul#navmenu-h li:hover li:hover li:hover a,ul#navmenu-h li.iehover li.iehover li a:hover,ul#navmenu-h li.iehover li.iehover li.iehover a {
+ background: #821166;
+}
+
+/* Hover Function - Do Not Move */
+ul#navmenu-h li:hover ul ul,ul#navmenu-h li:hover ul ul ul,ul#navmenu-h li.iehover ul ul,ul#navmenu-h li.iehover ul ul ul {
+	display: none;
+	z-index: 2000;
+}
+ul#navmenu-h li:hover ul,ul#navmenu-h ul li:hover ul,ul#navmenu-h ul ul li:hover ul,ul#navmenu-h li.iehover ul,ul#navmenu-h ul li.iehover ul,ul#navmenu-h ul ul li.iehover ul {
+	display: block;
+	z-index: 2000;
+}

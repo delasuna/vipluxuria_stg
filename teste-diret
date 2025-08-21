@@ -1,0 +1,14 @@
+<?php
+// Ignora o conecta_mysql.php e conecta direto
+$conexao = mysql_connect("mysql.vipluxuriagold.net", "vipluxuria_add1", "luxuria18");
+if (!$conexao) {
+    die("Erro: " . mysql_error());
+}
+mysql_select_db("vipluxuriagold", $conexao);
+echo "CONECTOU DIRETO!<br>";
+
+// Agora testa o site
+$_REQUEST['conexao'] = $conexao;
+$GLOBALS['conexao'] = $conexao;
+include "index.php";
+?>

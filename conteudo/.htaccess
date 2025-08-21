@@ -1,0 +1,122 @@
+# CONFIGURAR UTILIZA��O DO HTTPS
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://vipluxuriagold.net/$1 [R,L]
+
+<FilesMatch "\.(css|flv|gif|htm|html|ico|jpe|jpeg|jpg|js|png|pdf|swf|txt)$">
+	<IfModule mod_expires.c>
+		ExpiresActive Off
+	</IfModule>
+	<IfModule mod_headers.c>
+		FileETag None
+		Header unset ETag
+		Header unset Pragma
+		Header unset Cache-Control
+		Header unset Last-Modified
+		Header set Pragma "no-cache"
+		Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+		Header set Expires "Mon, 10 Apr 1972 00:00:00 GMT"
+	</IfModule>
+</FilesMatch>
+
+
+RewriteEngine On
+
+#rewritecond %{http_host} ^vipluxuriagold.net [NC]
+#rewriterule ^(.*)$ http://www.vipluxuriagold.net/$1 [r=301,NC]
+
+
+
+RewriteRule ^perfil/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil.php?id=$1&nome=$2 [NC]
+
+RewriteRule ^perfil-homens/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil-homens.php?id=$1&nome=$2 [NC]
+
+RewriteRule ^perfil-transex/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil-transex.php?id=$1&nome=$2 [NC]
+
+
+RewriteRule ^guia-moteis-A-porto-alegre-poa/?$ /guia_moteis/guia_moteis_a.php [NC,L]
+RewriteRule ^guia-moteis-B-porto-alegre-poa/?$ /guia_moteis/guia_moteis_b.php [NC,L]
+RewriteRule ^guia-moteis-C-porto-alegre-poa/?$ /guia_moteis/guia_moteis_c.php [NC,L]
+RewriteRule ^guia-moteis-D-porto-alegre-poa/?$ /guia_moteis/guia_moteis_d.php [NC,L]
+RewriteRule ^guia-moteis-E-porto-alegre-poa/?$ /guia_moteis/guia_moteis_e.php [NC,L]
+RewriteRule ^guia-moteis-F-porto-alegre-poa/?$ /guia_moteis/guia_moteis_f.php [NC,L]
+RewriteRule ^guia-moteis-G-porto-alegre-poa/?$ /guia_moteis/guia_moteis_g.php [NC,L]
+RewriteRule ^guia-moteis-H-porto-alegre-poa/?$ /guia_moteis/guia_moteis_h.php [NC,L]
+RewriteRule ^guia-moteis-I-porto-alegre-poa/?$ /guia_moteis/guia_moteis_i.php [NC,L]
+RewriteRule ^guia-moteis-J-porto-alegre-poa/?$ /guia_moteis/guia_moteis_j.php [NC,L]
+RewriteRule ^guia-moteis-K-porto-alegre-poa/?$ /guia_moteis/guia_moteis_k.php [NC,L]
+RewriteRule ^guia-moteis-L-porto-alegre-poa/?$ /guia_moteis/guia_moteis_l.php [NC,L]
+RewriteRule ^guia-moteis-M-porto-alegre-poa/?$ /guia_moteis/guia_moteis_m.php [NC,L]
+RewriteRule ^guia-moteis-N-porto-alegre-poa/?$ /guia_moteis/guia_moteis_n.php [NC,L]
+RewriteRule ^guia-moteis-O-porto-alegre-poa/?$ /guia_moteis/guia_moteis_o.php [NC,L]
+RewriteRule ^guia-moteis-P-porto-alegre-poa/?$ /guia_moteis/guia_moteis_p.php [NC,L]
+RewriteRule ^guia-moteis-Q-porto-alegre-poa/?$ /guia_moteis/guia_moteis_q.php [NC,L]
+RewriteRule ^guia-moteis-R-porto-alegre-poa/?$ /guia_moteis/guia_moteis_r.php [NC,L]
+RewriteRule ^guia-moteis-S-porto-alegre-poa/?$ /guia_moteis/guia_moteis_s.php [NC,L]
+RewriteRule ^guia-moteis-T-porto-alegre-poa/?$ /guia_moteis/guia_moteis_t.php [NC,L]
+RewriteRule ^guia-moteis-U-porto-alegre-poa/?$ /guia_moteis/guia_moteis_u.php [NC,L]
+RewriteRule ^guia-moteis-V-porto-alegre-poa/?$ /guia_moteis/guia_moteis_v.php [NC,L]
+RewriteRule ^guia-moteis-W-porto-alegre-poa/?$ /guia_moteis/guia_moteis_w.php [NC,L]
+RewriteRule ^guia-moteis-X-porto-alegre-poa/?$ /guia_moteis/guia_moteis_x.php [NC,L]
+RewriteRule ^guia-moteis-Y-porto-alegre-poa/?$ /guia_moteis/guia_moteis_y.php [NC,L]
+RewriteRule ^guia-moteis-Z-porto-alegre-poa/?$ /guia_moteis/guia_moteis_z.php [NC,L]
+
+
+RewriteRule ^como-anunciar/?$ /como_anunciar.php [NC,L]
+
+RewriteRule ^lojas-sexshops-porto-alegre-poa/?$ /lojas_sexshops.php [NC,L]
+
+RewriteRule ^parceiros/?$ parceiros.php [NC,L]
+
+RewriteRule ^swing-porto-alegre-poa/?$ swing.php [NC,L]
+
+RewriteRule ^vip-enquetes/?$ vip_enquetes.php [NC,L]
+
+RewriteRule ^vip-transportes/?$ vip_transportes.php [NC,L]
+
+RewriteRule ^vip-recomenda/?$ vip_recomenda.php [NC,L]
+
+RewriteRule ^tutorial/?$ tutorial.php [NC,L]
+
+RewriteRule ^vip-luxuria-acompanhantes-porto-alegre-poa/?$ vip-luxuria.php [NC,L]
+
+RewriteRule ^duvidas/?$ duvidas.php [NC,L]
+
+RewriteRule ^dicas/?$ dicas.php [NC,L]
+
+
+RewriteRule ^acompanhantes-porto-alegre/?$ acompanhantes_porto_alegre.php [NC,L]
+
+
+RewriteRule ^mural-recados/?$ mural_recados.php [NC,L]
+
+RewriteRule ^mural-recados/([0-9]+)/?$ mural_recados.php?pagina=$1 [NC]
+
+
+RewriteRule ^vip-blog/?$ vip_blog.php [NC,L]
+
+RewriteRule ^vip-blog/([0-9]+)/?$ vip_blog.php?pagina=$1 [NC]
+
+RewriteRule ^vip-blog/([0-9]+)/([a-z0-9-]+)/?$ vip_blog.php?idBlog$1&assuntoBlog=$2 [NC]
+
+RewriteRule ^vip-blog-post/([0-9]+)/([a-z0-9-]+)/?$ vip_blog-post.php?idBlog=$1&assunto=$2 [NC]
+
+RewriteRule ^classificados/?$ classificados.php [NC,L]
+
+RewriteRule ^classificados/([0-9]+)/?$ classificados.php?pagina=$1 [NC]
+
+
+
+RewriteRule ^mulheres-acompanhantes-porto-alegre-poa/?$ /conteudo/mulheres.php [NC,L]
+
+RewriteRule ^casais-e-homens-porto-alegre-poa/?$ /conteudo/casais-e-homens.php [NC,L]
+
+RewriteRule ^transex-porto-alegre-poa/?$ /conteudo/transex.php [NC,L]
+
+
+
+RewriteRule ^Acompanhantes-([a-z0-9-]+)/?$ /conteudo/mulheres.php?flagTipo=$1 [NC]
+
+RewriteRule ^Acompanhantes-([a-z0-9-]+)/?$ /conteudo/mulheres.php?nome=$1 [NC]
+
+RewriteRule ^Acompanhantes/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/mulheres.php?idCidade=$1&nomeCidade=$2 [NC]

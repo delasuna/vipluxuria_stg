@@ -1,0 +1,507 @@
+*{ margin:0; padding:0; border:0; }
+body {
+	background-attachment: fixed;
+	background-image: url(/m/imagens/estrutura/bg-couro.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-color: #000;
+}
+.clear {
+	clear: both;
+}
+.hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #333;
+}
+
+#wrap {
+	width: 100%;
+}
+
+#topo {
+	text-align: center;
+	padding: 10px;
+	background-image: url(/m/imagens/estrutura/bg-topo.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	margin-bottom: 10px;
+}
+#busca {
+	background-color: #5F3F5D;
+	width: 100%;
+	height: 50px;
+	text-align: left;
+}
+#titulo {
+	background-color: #5F3F5D;
+	width: 100%;
+}
+#titulo h1 {
+	padding: 10px;
+	font-size: 22px;
+}
+
+#content .sub-titulo {
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #5F3F5D;
+	color: #FFF;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+.voltar {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 100px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+#content .form-content {
+	width: 100%;
+}
+#content select  {
+	width: 100%;
+	padding: 5px;
+}
+
+#content .bt {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#content form {
+	display: table;
+	margin: 0px;
+}
+
+
+
+#content form input[type=text] {
+	width: 100% !important;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+#content .submit {
+	vertical-align: top;
+	display: table-cell;
+	margin-left: 15px;
+	padding: 5px;
+}
+#content .submit-2  {
+	padding: 10px;
+	margin-top: 10px;
+
+
+}
+
+
+#content form select {
+	width: 100%;
+	padding: 5px;
+}
+#content form .campo-busca {
+	vertical-align: top;
+	display: table-cell;
+	width: 100%;
+	position: relative;
+}
+#content form label {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color: #FFF;
+	margin-left: 10px;
+	font-weight: normal;
+}
+#content form ul li p {
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #FEC152;
+	margin-bottom: 5px;
+}
+
+#content form ul li {
+	float: left;
+	display: block;
+	margin-right: 15px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+	width: 40%;
+}
+#content form ul .no-border {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 100%;
+}
+
+
+#content p {
+	color: #FFF;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+#content .aviso {
+	font-style: italic;
+	font-weight: bold;
+	color: #FFF;
+	text-align: center;
+	padding: 10px;
+}
+
+
+
+
+
+
+#campo-busca {
+	float: left;
+	display: table-cell;
+	width: 100%;
+	padding: 5px;
+}
+
+.thumb {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 2px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #454545;
+	float: left;
+	text-align: center;
+	padding-right: 3px;
+	width: 31%;
+}
+
+
+.thumb img {
+	height: 132px;
+	width: 92px;
+	border: 3px solid #5F3F5D;
+	margin-right: auto;
+	margin-left: auto;
+}
+.thumb .nome {
+	font-family: Verdana, Geneva, sans-serif;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+}
+.thumb .telefone {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 9px !important;
+	color: #FEC152;
+}
+
+.thumb .telefone a{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 9px !important;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+#perfil {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 0px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #454545;
+}
+
+#perfil img {
+	height: 160px;
+	width: 130px;
+	float: left;
+	border: 3px solid #5F3F5D;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-bottom: 8px;
+}
+#perfil .dados-basicos  li{
+	display: block;
+	margin-right: 10px;
+	float: left;
+	font-size: 10px;
+}
+#perfil .atendimento li {
+	display: block;
+	margin-right: 10px;
+}
+
+
+#perfil .nome {
+	font-family: Verdana, Geneva, sans-serif;
+	color: #FEC152;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+#perfil .telefone {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	color: #FFFFFF;
+	margin-bottom: 5px;
+}
+#perfil .telefone a {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 16px;
+	color: #FFFFFF;
+	margin-bottom: 5px;
+	text-decoration: none;
+}
+#perfil .esq {
+	float: left;
+	font-size: 9px;
+	width: 52%;
+}
+#perfil .dir {
+	float: left;
+	font-size: 9px;
+	width: 48%;
+}
+#perfil .1-col {
+	width: 100%;
+}
+#perfil ul li {
+	color: #FFF;
+	list-style-type: none;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+#perfil .titulo {
+	color: #FEC152;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+
+
+h1 {
+	color: #FEC152;
+}
+#menu-moteis {
+	padding: 10px;
+}
+.motel {
+	color: #FFF;
+	font-family: Verdana, Geneva, sans-serif;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #666;
+	font-size: 12px;
+}
+.motel a {
+	color: #FFF;
+	text-decoration: none;
+}
+#banners {
+}
+
+
+#banners h1 {
+	color: #FEC152;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #5F3F5D;
+	font-family: Verdana, Geneva, sans-serif;
+	padding-bottom: 3px;
+	font-weight: bold;
+	margin-bottom: 8px;	
+	font-size:22px;
+	
+}
+#banners .full li{
+	list-style-type: none;
+	margin-bottom: 5px;
+}
+#banners .full li img {
+	width: 100%;
+}
+
+
+#banners .half li {
+	list-style-type: none;
+	margin-bottom: 2%;
+	float: left;
+	display: inline-block;
+	width: 46%;
+	margin-left: 2%;
+}
+
+#banners .half li img {
+	width: 100%;
+}
+#menu-2 {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#bt-whatsapp {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#bt-whatsapp a img {
+	height: 26px;
+	width: 235px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#bt-video {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#bt-video a img {
+	height: 26px;
+	width: 235px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+
+.anuncio {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #fff;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.anuncio-imagem {
+	width:120px;
+	height:160px;
+	margin-right: 10px;
+	float:left;
+}
+.anuncio-imagem img {
+	width:120px;
+	height:160px;
+	border-radius:10px;
+}
+.anuncio-corpo {
+	font-size: 14px;
+}
+
+.anuncio-corpo p {
+	font-size: 14px;
+}
+.anuncio-corpo  a {
+	color: #fff;
+}
+.anuncio-corpo  a:hover {
+	text-decoration: underline;
+}
+.anuncio-corpo h3 {
+	color: #F6B7D4;
+	font-size: 24px;
+	font-family: 'Sriracha', cursive;	
+}
+
+.anuncio-corpo .mensagem-anuncio {
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+.anuncio-corpo .contatos-anuncio {
+	/* width: 50%;
+	float: left; */
+}
+
+.anuncio-corpo .telefone {
+	background-image: url(/imagens/estrutura/contato-telefone.png);
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	height: 25px;
+	margin-bottom: 0px;
+}
+.anuncio-corpo .whatsapp {
+	background-image: url(/imagens/estrutura/contato-whatsapp.png);
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	height: 25px;
+	margin-bottom: 0px;
+}
+
+.anuncio-corpo button {
+	padding: 4px;
+	margin-left: 10px;
+	background: #ebabc9;
+	border-radius: 5px;
+	font-size: 11px;
+	cursor: pointer;	
+}
+
+.anuncio-corpo .e-mail {
+	background-image: url(/imagens/estrutura/contato-email.png);
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	height: 25px;
+	margin-bottom: 0px;
+}
+.anuncio-corpo .site {
+	background-image: url(/imagens/estrutura/contato-site.png);
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	height: 25px;
+	margin-bottom: 0px;
+}
+
+.anuncio-corpo .twitter {
+	background-image: url(/imagens/estrutura/contato-twitter.png);
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	height: 25px;
+	margin-bottom: 0px;
+}
+.anuncio-corpo .outros {
+	background-image: url(/imagens/estrutura/contato-outros.png);
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	height: 25px;
+	margin-bottom: 0px;
+}
+
+.anuncio-corpo .aceito-cartoes {
+	margin-top: 20px;
+}
+
+ #paginacao ul li {
+	border-radius:5px;
+	background-color: #893154;
+	display: inline-block;
+	margin: 2px;
+	padding: 4px;
+	height: 18px;
+	width: 15px;
+	text-align: center;	
+	color:#FFF;
+	font-size:12px;	
+}
+.linha-horizontal {
+	background-image: url(/imagens/estrutura/linha-horizontal.png);
+	background-repeat: repeat-x;
+	height: 5px;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
