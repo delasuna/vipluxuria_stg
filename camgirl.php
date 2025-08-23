@@ -18,9 +18,9 @@
 </head>
 
 <body>
-<div id="wrap"> <img src="https://vipluxuriagold.net/imagens/camgirl.png" usemap="#Map" border="0">
+<div id="wrap"> <img src="/imagens/camgirl.png" usemap="#Map" border="0">
   <map name="Map" id="Map">
-    <area shape="rect" coords="178,572,736,723" href="https://vipluxuriagold.net/Acompanhantes-SexoVirtual" />
+    <area shape="rect" coords="178,572,736,723" href="/Acompanhantes-SexoVirtual" />
   </map>
 </div><!--wrap-->
 

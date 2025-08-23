@@ -54,7 +54,7 @@
 	          <a href="/m/index.php"><img src="/imagens/estrutura/bt-mobile-2018.png"/></a>
         </div>
 		<h2>Conheça o Vip Luxúria</h2>		
-		<p>O <strong>VIP LUXÚRIA</strong> é um site de anúncio clasificados de acompanhantes, de produtos e serviços eróticos, direcionado para um público adulto, maior de 18 anos, que procura desfrutar momentos de prazer ao lado de acompanhantes de alto nível. <strong><a href="https://vipluxuriagold.net/vip-luxuria-acompanhantes-porto-alegre-poa/" />Saiba mais[+]</a></strong>
+		<p>O <strong>VIP LUXÚRIA</strong> é um site de anúncio clasificados de acompanhantes, de produtos e serviços eróticos, direcionado para um público adulto, maior de 18 anos, que procura desfrutar momentos de prazer ao lado de acompanhantes de alto nível. <strong><a href="/vip-luxuria-acompanhantes-porto-alegre-poa/" />Saiba mais[+]</a></strong>
 		</p>
         <p>&nbsp;</p>
 		<!-- 
@@ -71,34 +71,34 @@
         <p>&nbsp;</p>		-->
 		
 		<ul>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes-Loiras">Garotas de Programa Loiras</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes-Morenas">Garotas de Programa Morenas</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes-Mulatas">Garotas de Programa Mulatas</a></li>
-			<li><a href="https://vipluxuriagold.net/casais-e-homens-porto-alegre-poa/">Casais & Homens</a></li>
-			<li><a href="https://vipluxuriagold.net/transex-porto-alegre-poa/">Transex</a></li>
-			<li><a href="https://vipluxuriagold.net/swing-porto-alegre-poa/">Swing</a></li>
-			<li><a href="https://vipluxuriagold.net/swing-porto-alegre-poa/">Swing Porto Alegre</a></li>
-			<li><a href="https://vipluxuriagold.net/swing-porto-alegre-poa/">Troca de Casais Porto Alegre</a></li>
-			<li><a href="https://vipluxuriagold.net/swing-porto-alegre-poa/">Troca de Casais</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Garotas de Programa Porto Alegre</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/5/Litoral-Gaucho">Garotas de Programa Litoral Gaúcho</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/6/Grande-Porto-Alegre">Garotas de Programa Grande Porto Alegre</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/3/Vale-dos-Sinos">Garotas de Programa Vale dos Sinos</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/22/Campo-Bom">Garotas de Programa Campo Bom</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/23/Interior-do-Estado">Garotas de Programa Interior do Estado</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Garotas de Programa Serra Gaúcha</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/28/undefined">Garotas de Programa Gramado</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/9/Gravatai">Garotas de Programa Gravataí</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Massagens</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Massagem Tântrica</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/11/Cachoeirinha">Garotas de Programa Cachoeirinha</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/13/Canoas">Garotas de Programa Canoas</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/12/Sao-Leopoldo">Garotas de Programa São Leopoldo</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/2/Novo-Hamburgo">Garotas de Programa Novo Hamburgo</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/17/Sapiranga">Garotas de Programa Sapiranga</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Garotas de Programa Rio Grande do Sul</a></li>
-			<li><a href="https://vipluxuriagold.net/guia-moteis-porto-alegre-poa/">Guia de Motéis</a></li>
-			<li><a href="https://vipluxuriagold.net/guia-moteis-porto-alegre-poa/">Guia de Motéis Porto Alegre</a></li>
+			<li><a href="/Acompanhantes-Loiras">Garotas de Programa Loiras</a></li>
+			<li><a href="/Acompanhantes-Morenas">Garotas de Programa Morenas</a></li>
+			<li><a href="/Acompanhantes-Mulatas">Garotas de Programa Mulatas</a></li>
+			<li><a href="/casais-e-homens-porto-alegre-poa/">Casais & Homens</a></li>
+			<li><a href="/transex-porto-alegre-poa/">Transex</a></li>
+			<li><a href="/swing-porto-alegre-poa/">Swing</a></li>
+			<li><a href="/swing-porto-alegre-poa/">Swing Porto Alegre</a></li>
+			<li><a href="/swing-porto-alegre-poa/">Troca de Casais Porto Alegre</a></li>
+			<li><a href="/swing-porto-alegre-poa/">Troca de Casais</a></li>
+			<li><a href="/acompanhantes-porto-alegre/">Garotas de Programa Porto Alegre</a></li>
+			<li><a href="/Acompanhantes/5/Litoral-Gaucho">Garotas de Programa Litoral Gaúcho</a></li>
+			<li><a href="/Acompanhantes/6/Grande-Porto-Alegre">Garotas de Programa Grande Porto Alegre</a></li>
+			<li><a href="/Acompanhantes/3/Vale-dos-Sinos">Garotas de Programa Vale dos Sinos</a></li>
+			<li><a href="/Acompanhantes/22/Campo-Bom">Garotas de Programa Campo Bom</a></li>
+			<li><a href="/Acompanhantes/23/Interior-do-Estado">Garotas de Programa Interior do Estado</a></li>
+			<li><a href="/acompanhantes-porto-alegre/">Garotas de Programa Serra Gaúcha</a></li>
+			<li><a href="/Acompanhantes/28/undefined">Garotas de Programa Gramado</a></li>
+			<li><a href="/Acompanhantes/9/Gravatai">Garotas de Programa Gravataí</a></li>
+			<li><a href="/acompanhantes-porto-alegre/">Massagens</a></li>
+			<li><a href="/acompanhantes-porto-alegre/">Massagem Tântrica</a></li>
+			<li><a href="/Acompanhantes/11/Cachoeirinha">Garotas de Programa Cachoeirinha</a></li>
+			<li><a href="/Acompanhantes/13/Canoas">Garotas de Programa Canoas</a></li>
+			<li><a href="/Acompanhantes/12/Sao-Leopoldo">Garotas de Programa São Leopoldo</a></li>
+			<li><a href="/Acompanhantes/2/Novo-Hamburgo">Garotas de Programa Novo Hamburgo</a></li>
+			<li><a href="/Acompanhantes/17/Sapiranga">Garotas de Programa Sapiranga</a></li>
+			<li><a href="/acompanhantes-porto-alegre/">Garotas de Programa Rio Grande do Sul</a></li>
+			<li><a href="/guia-moteis-porto-alegre-poa/">Guia de Motéis</a></li>
+			<li><a href="/guia-moteis-porto-alegre-poa/">Guia de Motéis Porto Alegre</a></li>
 		</ul>
 		<br><br>
         <div id="termo-box">

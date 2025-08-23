@@ -197,15 +197,15 @@ if (isset($_REQUEST["votacao"]) ? $_REQUEST["votacao"] : "" == "S") {
 </title>
 
 <!--CSS-->
-<link href="https://vipluxuriagold.net/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
-<link href="https://vipluxuriagold.net/css-js/menu-2.css" rel="stylesheet" type="text/css" />
-<link href="https://vipluxuriagold.net/css-js/ampliacao-2.css" rel="stylesheet" type="text/css" />
+<link href="/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
+<link href="/css-js/menu-2.css" rel="stylesheet" type="text/css" />
+<link href="/css-js/ampliacao-2.css" rel="stylesheet" type="text/css" />
 <!--CSS-->
 <!--FONTES-->
-<script src="https://vipluxuriagold.net/css-js/cufon-yui.js" type="text/javascript"></script>
-<script src="https://vipluxuriagold.net/css-js/nome_400.font.js" type="text/javascript"></script>
-<script src="https://vipluxuriagold.net/css-js/titulo_400.font.js" type="text/javascript"></script>
-<script src="https://vipluxuriagold.net/Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="/css-js/cufon-yui.js" type="text/javascript"></script>
+<script src="/css-js/nome_400.font.js" type="text/javascript"></script>
+<script src="/css-js/titulo_400.font.js" type="text/javascript"></script>
+<script src="/Scripts/swfobject_modified.js" type="text/javascript"></script>
 <script type="text/javascript">
 	Cufon.replace('h1');
 	Cufon.replace('h1#titulo,#menu-rodape-content',{ fontFamily: 'titulo' }); 
@@ -213,9 +213,9 @@ if (isset($_REQUEST["votacao"]) ? $_REQUEST["votacao"] : "" == "S") {
 <!--FONTES-->
 
 <!--AMPLIA��O-->
-<script type="text/javascript" src="https://vipluxuriagold.net/css-js/visualizador/jquery.js"></script>
-<script type="text/javascript" src="https://vipluxuriagold.net/css-js/visualizador/jquery.lightbox-0.5.js"></script>
-<script type="text/javascript" src="https://vipluxuriagold.net/css-js/visualizador/common.js"></script>
+<script type="text/javascript" src="/css-js/visualizador/jquery.js"></script>
+<script type="text/javascript" src="/css-js/visualizador/jquery.lightbox-0.5.js"></script>
+<script type="text/javascript" src="/css-js/visualizador/common.js"></script>
 <script>
 		var arrImg = new Array(
 			"<?="/sistema/content/".$imagemCentral1?>",
@@ -507,7 +507,7 @@ function curPageURL() {
 							<form name="form3" method="post" action='/perfil-homens/<?=$id?>/<?=tirarAcentos(str_replace(" ", "-", $nome))?><?php if($sobrenome != "") { echo "-".tirarAcentos(str_replace(" ", "-", $sobrenome));}?>'>
 								<input type="hidden" name="amigoIndicado" id="amigoIndicado" value="N"> 
 								<input type="hidden" name="nomeAnunciante" id="nomeAnunciante" value="<?php echo $nome . " " .  $sobrenome ?>"> 
-								<input type="hidden" name="linkAnunciante" id="linkAnunciante" value="https://vipluxuriagold.net/conteudo/perfil-homens.php?id=<?=anti_injection($_REQUEST['id'])?>"> 
+								<input type="hidden" name="linkAnunciante" id="linkAnunciante" value="/conteudo/perfil-homens.php?id=<?=anti_injection($_REQUEST['id'])?>"> 
 							
 								<input type="hidden" name="id" value='<?=anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "")?>'> 
 								
@@ -515,7 +515,7 @@ function curPageURL() {
 								<input name="emailQuemIndicou" id="emailQuemIndicou" type="text" placeholder="Seu E-mail" />
 								<input name="nomeAmigo" id="nomeAmigo" type="text" placeholder="Nome do Amigo" />
 								<input name="emailAmigo" id="emailAmigo" type="text" placeholder="E-mail do Amigo" />
-								<div class="bt-enviar"><img src="https://vipluxuriagold.net/imagens/estrutura/bt-enviar-indique.png" onclick="indicaAmigo()" /></div>
+								<div class="bt-enviar"><img src="/imagens/estrutura/bt-enviar-indique.png" onclick="indicaAmigo()" /></div>
 							</form>
 						</div> 					
 						<div class="clear"></div>
@@ -536,7 +536,7 @@ function curPageURL() {
 </div><!--wrap-->
 <script type="text/javascript"> Cufon.now(); </script>
 <?php include("../php/google.php"); ?>
-<script type="text/javascript" src="https://vipluxuriagold.net/css-js/visualizador/perfil.js"></script>
+<script type="text/javascript" src="/css-js/visualizador/perfil.js"></script>
 </body>
 </html>
 <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 function anti_injection2($sql) {
-    // Proteção contra SQL Injection
+    // Proteï¿½ï¿½o contra SQL Injection
     if (empty($sql)) {
         return '';
     }
@@ -19,7 +19,7 @@ function anti_injection2($sql) {
     // Remove caracteres especiais perigosos
     $sql = str_replace(array('\\', '*', '|'), '', $sql);
     
-    // Limpa espaços vazios
+    // Limpa espaï¿½os vazios
     $sql = trim($sql);
     
     // Remove tags HTML e PHP
@@ -31,21 +31,21 @@ function anti_injection2($sql) {
     return $sql;
 }
 
-// Função para remover acentos
+// Funï¿½ï¿½o para remover acentos
 if (!function_exists('tirarAcentos')) {
     function tirarAcentos($string) {
         $acentos = array(
-            'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A',
-            'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a',
-            'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O',
-            'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o',
-            'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E',
-            'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e',
-            'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I',
-            'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i',
-            'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U',
-            'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ü'=>'u',
-            'Ç'=>'C', 'ç'=>'c', 'Ñ'=>'N', 'ñ'=>'n'
+            'ï¿½'=>'A', 'ï¿½'=>'A', 'ï¿½'=>'A', 'ï¿½'=>'A', 'ï¿½'=>'A', 'ï¿½'=>'A',
+            'ï¿½'=>'a', 'ï¿½'=>'a', 'ï¿½'=>'a', 'ï¿½'=>'a', 'ï¿½'=>'a', 'ï¿½'=>'a',
+            'ï¿½'=>'O', 'ï¿½'=>'O', 'ï¿½'=>'O', 'ï¿½'=>'O', 'ï¿½'=>'O',
+            'ï¿½'=>'o', 'ï¿½'=>'o', 'ï¿½'=>'o', 'ï¿½'=>'o', 'ï¿½'=>'o',
+            'ï¿½'=>'E', 'ï¿½'=>'E', 'ï¿½'=>'E', 'ï¿½'=>'E',
+            'ï¿½'=>'e', 'ï¿½'=>'e', 'ï¿½'=>'e', 'ï¿½'=>'e',
+            'ï¿½'=>'I', 'ï¿½'=>'I', 'ï¿½'=>'I', 'ï¿½'=>'I',
+            'ï¿½'=>'i', 'ï¿½'=>'i', 'ï¿½'=>'i', 'ï¿½'=>'i',
+            'ï¿½'=>'U', 'ï¿½'=>'U', 'ï¿½'=>'U', 'ï¿½'=>'U',
+            'ï¿½'=>'u', 'ï¿½'=>'u', 'ï¿½'=>'u', 'ï¿½'=>'u',
+            'ï¿½'=>'C', 'ï¿½'=>'c', 'ï¿½'=>'N', 'ï¿½'=>'n'
         );
         return strtr($string, $acentos);
     }
@@ -60,7 +60,7 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-"+ flagTipo;
+		document.form_mulheres.action = "/Acompanhantes-"+ flagTipo;
 		document.form_mulheres.submit(); 
 	}
 	function carregaAnuncianteVideo(flagTemVideo) {
@@ -71,7 +71,7 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-ComVideo";
+		document.form_mulheres.action = "/Acompanhantes-ComVideo";
 		document.form_mulheres.submit();
 	}
 
@@ -83,7 +83,7 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-ComLocal";
+		document.form_mulheres.action = "/Acompanhantes-ComLocal";
 		document.form_mulheres.submit();
 	}
 	
@@ -95,7 +95,7 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagTipo.value = 'Atende24Horas';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-Atende24Horas";
+		document.form_mulheres.action = "/Acompanhantes-Atende24Horas";
 		document.form_mulheres.submit();
 	}	
 	
@@ -107,7 +107,7 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagTipo.value = '';
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes/"+idCidade + "/" +nomeCidade;		
+		document.form_mulheres.action = "/Acompanhantes/"+idCidade + "/" +nomeCidade;		
 		document.form_mulheres.submit();
 	}
 	
@@ -124,7 +124,7 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagTipo.value = 'SexoVirtual';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-SexoVirtual";
+		document.form_mulheres.action = "/Acompanhantes-SexoVirtual";
 		document.form_mulheres.submit();
 	}	
 </script>
@@ -141,14 +141,14 @@ if (!function_exists('tirarAcentos')) {
 
 <div id="menu-content">
 <ul id="navmenu-h">
-	<li><a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/ico-home.png" alt="Página Inicial" ></a></li>
+	<li><a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/ico-home.png" alt="Pï¿½gina Inicial" ></a></li>
     <li><a href="#">Mulheres</a>
         <ul>
             <li><a href="/mulheres-acompanhantes-porto-alegre-poa/">Todas</a></li>
 			<li><a href="javascript:carregaAnunciantes('Loiras')">Loiras</a></li>
             <li><a href="javascript:carregaAnunciantes('Morenas')">Morenas</a></li>
             <li><a href="javascript:carregaAnunciantes('Mulatas')">Mulatas</a></li>
-            <li><a href="javascript:carregaAnuncianteVideo('S')">Com Vídeo</a></li>
+            <li><a href="javascript:carregaAnuncianteVideo('S')">Com Vï¿½deo</a></li>
 			<li><a href="javascript:carregaAnuncianteComLocal('S')">Com Local</a></li>			
             <li><a href="javascript:carregaAnunciante24Horas('S')">Atende 24 horas</a></li>
             <li><a href="#">Outras Cidades</a> 
@@ -158,7 +158,7 @@ if (!function_exists('tirarAcentos')) {
 			
 					$resultado = mysql_query($sql, $conexao);
 					if(!$resultado){
-						die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
+						die("Impossï¿½vel visualizar as cidades: " . mysql_error() . '<br>');
 					}
 			
 					while($row = mysql_fetch_array($resultado)) {
@@ -174,7 +174,7 @@ if (!function_exists('tirarAcentos')) {
     </li>
     <li><a href="/casais-e-homens-porto-alegre-poa/">Casais & Homens</a></li>  
     <li><a href="/transex-porto-alegre-poa/">Transex</a></li>
-    <li><a href="/guia-moteis-porto-alegre-poa/">Guia de Motéis</a></li>
+    <li><a href="/guia-moteis-porto-alegre-poa/">Guia de Motï¿½is</a></li>
     <li><a href="#">Outras Cidades</a>
     	<ul>
 			<?php 
@@ -182,7 +182,7 @@ if (!function_exists('tirarAcentos')) {
 			
 			$resultado = mysql_query($sql, $conexao);
 			if(!$resultado){
-				die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
+				die("Impossï¿½vel visualizar as cidades: " . mysql_error() . '<br>');
 			}
 			
 			while($row = mysql_fetch_array($resultado)) { 
@@ -193,7 +193,7 @@ if (!function_exists('tirarAcentos')) {
 			?>		
         </ul>
     </li>
-	<li><a href="#rodape"><img src="/imagens/estrutura/ico-coroa.png" alt="Rodapé"></a></li>
+	<li><a href="#rodape"><img src="/imagens/estrutura/ico-coroa.png" alt="Rodapï¿½"></a></li>
 </ul>
 <div class="clear"></div>
 <div id="busca">

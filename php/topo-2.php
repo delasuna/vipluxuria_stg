@@ -5,8 +5,8 @@
     "@type": "Neg�cio de entretenimento",
     "@id": "",
     "name": "Vip Lux�ria - Acompanhantes Porto Alegre",
-    "image": "https://vipluxuriagold.net/imagens/estrutura/vip-luxuria-logo.png",
-    "url": "https://vipluxuriagold.net",
+    "image": "/imagens/estrutura/vip-luxuria-logo.png",
+    "url": "",
     "email": "vipluxuria@hotmail.com",
     "telephone": "+5551981440470",
     "address": {

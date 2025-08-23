@@ -62,7 +62,7 @@
 
 								<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;"><a href="https://www.vipluxuriagold.net" target="_blank" ><img src="/imagens/parceiros/vip-luxuria.gif" alt="Vip Luxúria"></a></div>                       
                        
-                        <pre>&lt;a href=&quot;https://www.vipluxuriagold.net&quot; target=&quot;_blank&quot;&gt;<br />&lt;img src=&quot;https://vipluxuriagold.net/imagens/parceiros/vip-luxuria.gif&quot; <br />alt=&quot;Vip Lux&uacute;ria - O guia er&oacute;tico mais completo do Brasil&quot; border=&quot;0&quot;&gt;&lt;/a&gt;</pre> <br/>
+                        <pre>&lt;a href=&quot;https://www.vipluxuriagold.net&quot; target=&quot;_blank&quot;&gt;<br />&lt;img src=&quot;/imagens/parceiros/vip-luxuria.gif&quot; <br />alt=&quot;Vip Lux&uacute;ria - O guia er&oacute;tico mais completo do Brasil&quot; border=&quot;0&quot;&gt;&lt;/a&gt;</pre> <br/>
                          
                         <p><em>Obs.: Somente aceitamos Parceiros fora da região de Porto Alegre e Grande Porto Alegre. Agradecemos a compreensão.</em></p>                       
 					</div><!--Parceiros-->
