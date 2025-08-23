@@ -35,23 +35,23 @@
 <meta name="distribution" content="Global" />
 
 <!--CSS - CORRE��O DOS CAMINHOS -->
-<link href="/vipluxuria_stg/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
+<link href="/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
 
 <!-- jQuery - CORRE��O DOS CAMINHOS -->
-<script type="text/javascript" src="/vipluxuria_stg/css-js/popup/jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="/vipluxuria_stg/css-js/popup/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="/css-js/popup/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="/css-js/popup/jquery.mousewheel-3.0.6.pack.js"></script>
 
 </head>
 
 <body id="abertura-2">
 <div id="wrap-2">
   <div id="abertura-content-2">
-		<div style="text-align: center;"><a href="/vipluxuria_stg/acompanhantes_porto_alegre.php"><img width="650px" src="/vipluxuria_stg/imagens/estrutura/vip-luxuria-home-2018.png" alt="Vip Lux&uacute;ria" /></a></div>
+		<div style="text-align: center;"><a href="/acompanhantes_porto_alegre.php"><img width="650px" src="/imagens/estrutura/vip-luxuria-home-2018.png" alt="Vip Lux&uacute;ria" /></a></div>
 		<h1>Seja bem-vindo ao Vip Luxúria, seu classificado online de Acompanhantes de Porto Alegre e Região Metropolitana.</h1>
 		<div id="texto-abertura">	
         <div id="bt-versao-2">
-       	      <a href="/vipluxuria_stg/acompanhantes-porto-alegre/"><img src="/vipluxuria_stg/imagens/estrutura/bt-desktop-2018.png" /></a>
-	          <a href="/vipluxuria_stg/m/index.php"><img src="/vipluxuria_stg/imagens/estrutura/bt-mobile-2018.png"/></a>
+       	      <a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/bt-desktop-2018.png" /></a>
+	          <a href="/m/index.php"><img src="/imagens/estrutura/bt-mobile-2018.png"/></a>
         </div>
 		<h2>Conheça o Vip Luxúria</h2>		
 		<p>O <strong>VIP LUXÚRIA</strong> é um site de anúncio clasificados de acompanhantes, de produtos e serviços eróticos, direcionado para um público adulto, maior de 18 anos, que procura desfrutar momentos de prazer ao lado de acompanhantes de alto nível. <strong><a href="https://vipluxuriagold.net/vip-luxuria-acompanhantes-porto-alegre-poa/" />Saiba mais[+]</a></strong>
