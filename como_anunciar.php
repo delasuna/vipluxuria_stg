@@ -82,7 +82,7 @@
                     
                 </script>                
 	  			<h4 style="text-align:center; font-size:18px; color:#FFF;">OBS: O <strong>Único número</strong> de contato do site Vip Luxúria e o (51) 98144-0470 <br>Qualquer outro número falando ser do site é golpe!</h4><br><br/><br/><br/>
-				<a href="javascript:;" onclick="aparece('1');"><h4 style="text-align:center; font-size:24px; color:#FD7AA4;">Quais as vantagens em anunciar no site vipluxuriagold.net?</h4></a><a name="link1"></a><br>
+				<a href="javascript:;" onclick="aparece('1');"><h4 style="text-align:center; font-size:24px; color:#FD7AA4;">Quais as vantagens em anunciar no site vipluxuria.com?</h4></a><a name="link1"></a><br>
 				<span id="1" style="display: none; padding-left:50px; padding-right:40px; ">
                 * No Vip Luxúria, você tem a oportunidade de divulgar seus serviços diretamente ao seu público alvo, de forma dinâmica e diferenciada.<br /><br />
 * Para as acompanhantes, a negociação é diretamente com o interessado, recebe o contato do cliente direto em seu telefone, sem intermediações nem comissões.<br /><br />

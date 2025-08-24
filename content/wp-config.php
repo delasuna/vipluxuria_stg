@@ -32,7 +32,7 @@ define( 'DB_USER', 'vipluxuria04' );
 define( 'DB_PASSWORD', 'xF2bTPOFpOFpM8xP' );
 
 /** Database hostname */
-define( 'DB_HOST', 'mysql.vipluxuriagold.net' );
+define( 'DB_HOST', 'mysql.vipluxuria.com' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

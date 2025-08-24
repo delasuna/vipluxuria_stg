@@ -1,7 +1,7 @@
 #FORÇA HTTPS
 RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://vipluxuriagold.net/$1 [R,L]
+RewriteRule ^(.*)$ https://vipluxuria.com/$1 [R,L]
 
 <FilesMatch "\.(css|flv|gif|htm|html|ico|jpe|jpeg|jpg|js|png|pdf|swf|txt)$">
 	<IfModule mod_expires.c>

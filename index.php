@@ -1,5 +1,5 @@
-<?php  $conexao = require_once 'php/conecta_mysql.php';  ?>
-<?php
+<? 	$conexao = require_once 'php/conecta_mysql.php';  ?>
+<?
 	$sql = " SELECT * FROM seo, tipoSeo Where seo.idTipoSeo = tipoSeo.idTipoSeo AND descricao = 'Index'";  
 
 	$resultado = mysql_query($sql, $conexao);
@@ -22,8 +22,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="<?=$description?>" />
 <meta name="keywords" content="<?=$keywords?>" />
 
@@ -32,29 +30,36 @@
 <meta name="rating" content="Geral" />
 <meta name="expires" content="never" />
 <meta name="language" content="portuguese" />
+<meta name="charset" content="UTF-8" />
 <meta name="distribution" content="Global" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Acompanhantes Porto Alegre - Vip Lux�ria - Acompanhante Porto Alegre</title>
 
-<!--CSS - CORRE��O DOS CAMINHOS -->
-<link href="/vipluxuria_stg/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
+<!--CSS-->
+<link href="css-js/estilos-2.css" rel="stylesheet" type="text/css" />
+<!--CSS-->
 
-<!-- jQuery - CORRE��O DOS CAMINHOS -->
-<script type="text/javascript" src="/vipluxuria_stg/css-js/popup/jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="/vipluxuria_stg/css-js/popup/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="/css-js/popup/jquery-1.10.1.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="/css-js/popup/jquery.mousewheel-3.0.6.pack.js"></script>
+
 
 </head>
 
 <body id="abertura-2">
 <div id="wrap-2">
   <div id="abertura-content-2">
-		<div style="text-align: center;"><a href="/vipluxuria_stg/acompanhantes_porto_alegre.php"><img width="650px" src="/vipluxuria_stg/imagens/estrutura/vip-luxuria-home-2018.png" alt="Vip Lux&uacute;ria" /></a></div>
+		<div style="text-align: center;"><a href="/acompanhantes_porto_alegre.php"><img width="650px" src="/imagens/estrutura/vip-luxuria-home-2018.png" alt="Vip Lux&uacute;ria" /></a></div>
 		<h1>Seja bem-vindo ao Vip Luxúria, seu classificado online de Acompanhantes de Porto Alegre e Região Metropolitana.</h1>
 		<div id="texto-abertura">	
         <div id="bt-versao-2">
-       	      <a href="/vipluxuria_stg/acompanhantes-porto-alegre/"><img src="/vipluxuria_stg/imagens/estrutura/bt-desktop-2018.png" /></a>
-	          <a href="/vipluxuria_stg/m/index.php"><img src="/vipluxuria_stg/imagens/estrutura/bt-mobile-2018.png"/></a>
+       	      <a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/bt-desktop-2018.png" /></a>
+	          <a href="/m/index.php"><img src="/imagens/estrutura/bt-mobile-2018.png"/></a>
         </div>
 		<h2>Conheça o Vip Luxúria</h2>		
-		<p>O <strong>VIP LUXÚRIA</strong> é um site de anúncio clasificados de acompanhantes, de produtos e serviços eróticos, direcionado para um público adulto, maior de 18 anos, que procura desfrutar momentos de prazer ao lado de acompanhantes de alto nível. <strong><a href="https://vipluxuriagold.net/vip-luxuria-acompanhantes-porto-alegre-poa/" />Saiba mais[+]</a></strong>
+		<p>O <strong>VIP LUXÚRIA</strong> é um site de anúncio clasificados de acompanhantes, de produtos e serviços eróticos, direcionado para um público adulto, maior de 18 anos, que procura desfrutar momentos de prazer ao lado de acompanhantes de alto nível. <strong><a href="https://vipluxuria.com/vip-luxuria-acompanhantes-porto-alegre-poa/" />Saiba mais[+]</a></strong>
 		</p>
         <p>&nbsp;</p>
 		<!-- 
@@ -71,34 +76,34 @@
         <p>&nbsp;</p>		-->
 		
 		<ul>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes-Loiras">Garotas de Programa Loiras</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes-Morenas">Garotas de Programa Morenas</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes-Mulatas">Garotas de Programa Mulatas</a></li>
-			<li><a href="https://vipluxuriagold.net/casais-e-homens-porto-alegre-poa/">Casais & Homens</a></li>
-			<li><a href="https://vipluxuriagold.net/transex-porto-alegre-poa/">Transex</a></li>
-			<li><a href="https://vipluxuriagold.net/swing-porto-alegre-poa/">Swing</a></li>
-			<li><a href="https://vipluxuriagold.net/swing-porto-alegre-poa/">Swing Porto Alegre</a></li>
-			<li><a href="https://vipluxuriagold.net/swing-porto-alegre-poa/">Troca de Casais Porto Alegre</a></li>
-			<li><a href="https://vipluxuriagold.net/swing-porto-alegre-poa/">Troca de Casais</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Garotas de Programa Porto Alegre</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/5/Litoral-Gaucho">Garotas de Programa Litoral Gaúcho</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/6/Grande-Porto-Alegre">Garotas de Programa Grande Porto Alegre</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/3/Vale-dos-Sinos">Garotas de Programa Vale dos Sinos</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/22/Campo-Bom">Garotas de Programa Campo Bom</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/23/Interior-do-Estado">Garotas de Programa Interior do Estado</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Garotas de Programa Serra Gaúcha</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/28/undefined">Garotas de Programa Gramado</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/9/Gravatai">Garotas de Programa Gravataí</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Massagens</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Massagem Tântrica</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/11/Cachoeirinha">Garotas de Programa Cachoeirinha</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/13/Canoas">Garotas de Programa Canoas</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/12/Sao-Leopoldo">Garotas de Programa São Leopoldo</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/2/Novo-Hamburgo">Garotas de Programa Novo Hamburgo</a></li>
-			<li><a href="https://vipluxuriagold.net/Acompanhantes/17/Sapiranga">Garotas de Programa Sapiranga</a></li>
-			<li><a href="https://vipluxuriagold.net/acompanhantes-porto-alegre/">Garotas de Programa Rio Grande do Sul</a></li>
-			<li><a href="https://vipluxuriagold.net/guia-moteis-porto-alegre-poa/">Guia de Motéis</a></li>
-			<li><a href="https://vipluxuriagold.net/guia-moteis-porto-alegre-poa/">Guia de Motéis Porto Alegre</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes-Loiras">Garotas de Programa Loiras</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes-Morenas">Garotas de Programa Morenas</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes-Mulatas">Garotas de Programa Mulatas</a></li>
+			<li><a href="https://vipluxuria.com/casais-e-homens-porto-alegre-poa/">Casais & Homens</a></li>
+			<li><a href="https://vipluxuria.com/transex-porto-alegre-poa/">Transex</a></li>
+			<li><a href="https://vipluxuria.com/swing-porto-alegre-poa/">Swing</a></li>
+			<li><a href="https://vipluxuria.com/swing-porto-alegre-poa/">Swing Porto Alegre</a></li>
+			<li><a href="https://vipluxuria.com/swing-porto-alegre-poa/">Troca de Casais Porto Alegre</a></li>
+			<li><a href="https://vipluxuria.com/swing-porto-alegre-poa/">Troca de Casais</a></li>
+			<li><a href="https://vipluxuria.com/acompanhantes-porto-alegre/">Garotas de Programa Porto Alegre</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/5/Litoral-Gaucho">Garotas de Programa Litoral Gaúcho</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/6/Grande-Porto-Alegre">Garotas de Programa Grande Porto Alegre</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/3/Vale-dos-Sinos">Garotas de Programa Vale dos Sinos</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/22/Campo-Bom">Garotas de Programa Campo Bom</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/23/Interior-do-Estado">Garotas de Programa Interior do Estado</a></li>
+			<li><a href="https://vipluxuria.com/acompanhantes-porto-alegre/">Garotas de Programa Serra Gaúcha</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/28/undefined">Garotas de Programa Gramado</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/9/Gravatai">Garotas de Programa Gravataí</a></li>
+			<li><a href="https://vipluxuria.com/acompanhantes-porto-alegre/">Massagens</a></li>
+			<li><a href="https://vipluxuria.com/acompanhantes-porto-alegre/">Massagem Tântrica</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/11/Cachoeirinha">Garotas de Programa Cachoeirinha</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/13/Canoas">Garotas de Programa Canoas</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/12/Sao-Leopoldo">Garotas de Programa São Leopoldo</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/2/Novo-Hamburgo">Garotas de Programa Novo Hamburgo</a></li>
+			<li><a href="https://vipluxuria.com/Acompanhantes/17/Sapiranga">Garotas de Programa Sapiranga</a></li>
+			<li><a href="https://vipluxuria.com/acompanhantes-porto-alegre/">Garotas de Programa Rio Grande do Sul</a></li>
+			<li><a href="https://vipluxuria.com/guia-moteis-porto-alegre-poa/">Guia de Motéis</a></li>
+			<li><a href="https://vipluxuria.com/guia-moteis-porto-alegre-poa/">Guia de Motéis Porto Alegre</a></li>
 		</ul>
 		<br><br>
         <div id="termo-box">

@@ -1,55 +1,12 @@
-<?php
-function anti_injection2($sql) {
-    // Proteção contra SQL Injection
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\\', '*', '|'), '', $sql);
-    
-    // Limpa espaços vazios
-    $sql = trim($sql);
-    
-    // Remove tags HTML e PHP
-    $sql = strip_tags($sql);
-    
-    // Adiciona barras invertidas para escapar caracteres especiais
-    $sql = addslashes($sql);
-    
-    return $sql;
-}
-
-// Função para remover acentos
-if (!function_exists('tirarAcentos')) {
-    function tirarAcentos($string) {
-        $acentos = array(
-            'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A',
-            'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a',
-            'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O',
-            'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o',
-            'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E',
-            'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e',
-            'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I',
-            'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i',
-            'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U',
-            'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ü'=>'u',
-            'Ç'=>'C', 'ç'=>'c', 'Ñ'=>'N', 'ñ'=>'n'
-        );
-        return strtr($string, $acentos);
-    }
-}
+<?
+	function anti_injection2($sql) {
+		// remove palavras que contenham sintaxe sql
+		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+		$sql = trim($sql);//limpa espaços vazio
+		$sql = strip_tags($sql);//tira tags html e php
+		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+		return $sql;
+	}
 ?>
 <script>
 	function carregaAnunciantes(flagTipo) {
@@ -60,7 +17,7 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-"+ flagTipo;
+		document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-"+ flagTipo;
 		document.form_mulheres.submit(); 
 	}
 	function carregaAnuncianteVideo(flagTemVideo) {
@@ -71,7 +28,7 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-ComVideo";
+		document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-ComVideo";
 		document.form_mulheres.submit();
 	}
 
@@ -83,9 +40,10 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-ComLocal";
+		document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-ComLocal";
 		document.form_mulheres.submit();
 	}
+	
 	
 	function carregaAnunciante24Horas(flagAtende24Horas) {
 		document.form_mulheres.flagAtende24Horas.value = flagAtende24Horas;
@@ -95,10 +53,9 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagTipo.value = 'Atende24Horas';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-Atende24Horas";
+		document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-Atende24Horas";
 		document.form_mulheres.submit();
 	}	
-	
 	function carregaCidade(idCidade, nomeCidade) {
 		document.form_mulheres.idCidade.value = idCidade;
 		document.form_mulheres.flagSexoVirtual.value = '';
@@ -107,10 +64,9 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagTipo.value = '';
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes/"+idCidade + "/" +nomeCidade;		
+		document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes/"+idCidade + "/" +nomeCidade;		
 		document.form_mulheres.submit();
 	}
-	
 	function mostraBannerLateral() {
 		document.form_mulheres.bannerLateralCompleto.value = 'S';
 		document.form_mulheres.submit();
@@ -124,21 +80,20 @@ if (!function_exists('tirarAcentos')) {
 		document.form_mulheres.flagTipo.value = 'SexoVirtual';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "https://vipluxuriagold.net/Acompanhantes-SexoVirtual";
+		document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-SexoVirtual";
 		document.form_mulheres.submit();
 	}	
+	
 </script>
-
 <form name="form_mulheres" action="/conteudo/mulheres.php" method="post">
-	<input type="hidden" name="flagTipo" value='<?=anti_injection2(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "")?>'>
-	<input type="hidden" name="flagTemVideo" value='<?=anti_injection2(isset($_REQUEST["flagTemVideo"]) ? $_REQUEST["flagTemVideo"] : "")?>'>
-	<input type="hidden" name="flagComLocal" value='<?=anti_injection2(isset($_REQUEST["flagComLocal"]) ? $_REQUEST["flagComLocal"] : "")?>'>		
-	<input type="hidden" name="flagAtende24Horas" value='<?=anti_injection2(isset($_REQUEST["flagAtende24Horas"]) ? $_REQUEST["flagAtende24Horas"] : "")?>'>
-	<input type="hidden" name="idCidade" value='<?=anti_injection2(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "")?>'>
+	<input type="hidden" name="flagTipo" value='<?=anti_injection2($_REQUEST["flagTipo"])?>'>
+	<input type="hidden" name="flagTemVideo" value='<?=anti_injection2($_REQUEST["flagTemVideo"])?>'>
+	<input type="hidden" name="flagComLocal" value='<?=anti_injection2($_REQUEST["flagComLocal"])?>'>		
+	<input type="hidden" name="flagAtende24Horas" value='<?=anti_injection2($_REQUEST["flagAtende24Horas"])?>'>
+	<input type="hidden" name="idCidade" value='<?=anti_injection2($_REQUEST["idCidade"])?>'>
 	<input type="hidden" name="bannerLateralCompleto"> 
-	<input type="hidden" name="flagSexoVirtual" value='<?=anti_injection2(isset($_REQUEST["flagSexoVirtual"]) ? $_REQUEST["flagSexoVirtual"] : "")?>'>				
+	<input type="hidden" name="flagSexoVirtual" value='<?=anti_injection2($_REQUEST["flagSexoVirtual"])?>'>				
 </form>
-
 <div id="menu-content">
 <ul id="navmenu-h">
 	<li><a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/ico-home.png" alt="Página Inicial" ></a></li>
@@ -148,12 +103,12 @@ if (!function_exists('tirarAcentos')) {
 			<li><a href="javascript:carregaAnunciantes('Loiras')">Loiras</a></li>
             <li><a href="javascript:carregaAnunciantes('Morenas')">Morenas</a></li>
             <li><a href="javascript:carregaAnunciantes('Mulatas')">Mulatas</a></li>
-            <li><a href="javascript:carregaAnuncianteVideo('S')">Com Vídeo</a></li>
+            <li><a href="javascript:carregaAnuncianteVideo('S')">Com V&iacute;deo</a></li>
 			<li><a href="javascript:carregaAnuncianteComLocal('S')">Com Local</a></li>			
             <li><a href="javascript:carregaAnunciante24Horas('S')">Atende 24 horas</a></li>
             <li><a href="#">Outras Cidades</a> 
             	<ul>
-					<?php 
+					<? 
 					$sql = "SELECT idCidade, cidade FROM cidade ORDER BY ordem;";
 			
 					$resultado = mysql_query($sql, $conexao);
@@ -164,7 +119,7 @@ if (!function_exists('tirarAcentos')) {
 					while($row = mysql_fetch_array($resultado)) {
 						$idCidade = $row['idCidade'];
 						$cidade = $row['cidade'];
-				        echo "<li><a href=javascript:carregaCidade('".$row['idCidade']."','".tirarAcentos(str_replace(" ", "-", $cidade))."')>".$cidade."</a></li>";
+				        	echo "<li><a href=javascript:carregaCidade('".$row['idCidade']."','".tirarAcentos(str_replace(" ", "-", $cidade))."')>".$cidade."</a></li>";
 					}
 					?>                
 				</ul>
@@ -174,10 +129,10 @@ if (!function_exists('tirarAcentos')) {
     </li>
     <li><a href="/casais-e-homens-porto-alegre-poa/">Casais & Homens</a></li>  
     <li><a href="/transex-porto-alegre-poa/">Transex</a></li>
-    <li><a href="/guia-moteis-porto-alegre-poa/">Guia de Motéis</a></li>
+    <li><a href="/guia-moteis-porto-alegre-poa/">Guia de Mot&eacute;is</a></li>
     <li><a href="#">Outras Cidades</a>
     	<ul>
-			<?php 
+			<? 
 			$sql = "SELECT idCidade, cidade FROM cidade ORDER BY ordem;";
 			
 			$resultado = mysql_query($sql, $conexao);
@@ -188,7 +143,7 @@ if (!function_exists('tirarAcentos')) {
 			while($row = mysql_fetch_array($resultado)) { 
 				$idCidade = $row['idCidade'];
 				$cidade = $row['cidade'];
-		        echo "<li><a href=javascript:carregaCidade('".$row['idCidade']."','". tirarAcentos(str_replace(" ", "-", $cidade))."')>".$cidade."</a></li>";
+		        	echo "<li><a href=javascript:carregaCidade('".$row['idCidade']."','". tirarAcentos(str_replace(" ", "-", $cidade))."')>".$cidade."</a></li>";
 			}
 			?>		
         </ul>
@@ -202,4 +157,4 @@ if (!function_exists('tirarAcentos')) {
 		<input name="Buscar" type="submit" class="bt-busca" id="Buscar" value="Buscar" />
 	</form>                
 </div>
-</div><!--MENU CONTENT-->
+</div><!--MENU CONTENT-->    

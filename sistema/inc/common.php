@@ -1,4 +1,4 @@
-<?php
+<?
 /***
  * phpFramework
  * desenvolvido por Marcelo Rezende
@@ -10,28 +10,12 @@ include("../inc/config.inc.php");
 include(DB_DEFAULT);
 
 function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
+	// remove palavras que contenham sintaxe sql
+	$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|show tables|#|\*|--|\\\\)/"),"",$sql);
+	$sql = trim($sql);//limpa espaços vazio
+	$sql = strip_tags($sql);//tira tags html e php
+	$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+	return $sql;
 }
 
 

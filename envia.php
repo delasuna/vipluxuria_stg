@@ -1,7 +1,7 @@
 <?php 
  
 //Pega os dados postados pelo formulário HTML e os coloca em variaveis
-if (preg_match('/tempsite.ws$|vipluxuriagold.net$|hospedagemdesites.ws$|websiteseguro.com$/', $_SERVER[HTTP_HOST])) {
+if (preg_match('/tempsite.ws$|vipluxuria.com$|hospedagemdesites.ws$|websiteseguro.com$/', $_SERVER[HTTP_HOST])) {
 //substitua na linha acima a aprte locaweb.com.br por seu domínio.
 $email_from='email@seudmoniio';	// Substitua essa linha pelo seu e-mail@seudominio
 }else {

@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="robots" content="index,follow">
-<meta name="description" content="Aqui vocï¿½ encontra as mais belas acompanhantes de luxo de Porto Alegre. Loiras, morenas ou mulatas, seja qual for a sua preferï¿½ncia, lindas garotas de programa estï¿½o a espera do seu contato!" />
+<meta name="description" content="Aqui você encontra as mais belas acompanhantes de luxo de Porto Alegre. Loiras, morenas ou mulatas, seja qual for a sua preferência, lindas garotas de programa estão a espera do seu contato!" />
 
-<title>CamGirl - Vip Luxï¿½ria</title>
+<title>CamGirl - Vip Luxúria</title>
 
   <style rel="stylesheet" type="text/css">
     body {
@@ -18,9 +18,9 @@
 </head>
 
 <body>
-<div id="wrap"> <img src="https://vipluxuriagold.net/imagens/camgirl.png" usemap="#Map" border="0">
+<div id="wrap"> <img src="https://vipluxuria.com/imagens/camgirl.png" usemap="#Map" border="0">
   <map name="Map" id="Map">
-    <area shape="rect" coords="178,572,736,723" href="https://vipluxuriagold.net/Acompanhantes-SexoVirtual" />
+    <area shape="rect" coords="178,572,736,723" href="https://vipluxuria.com/Acompanhantes-SexoVirtual" />
   </map>
 </div><!--wrap-->
 

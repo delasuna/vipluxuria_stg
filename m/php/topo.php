@@ -1,29 +1,13 @@
-<?php
+<?
 
 	function anti_injection2($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
-}
+		// remove palavras que contenham sintaxe sql
+		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+		$sql = trim($sql);//limpa espaços vazio
+		$sql = strip_tags($sql);//tira tags html e php
+		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+		return $sql;
+	}
 ?>
 <script>
 	function carregaAnunciantes(flagTipo) {
@@ -63,9 +47,9 @@ function prepareForms() {
 </script>
 
 <form name="form_mulheres" action="/m/conteudo/acompanhantes-porto-alegre.php" method="post">
-	<input type="hidden" name="flagTipo" value='<?=anti_injection2(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "")?>'>
-	<input type="hidden" name="flagTemVideo" value='<?=anti_injection2(isset($_REQUEST["flagTemVideo"]) ? $_REQUEST["flagTemVideo"] : "")?>'>
-	<input type="hidden" name="flagAtende24Horas" value='<?=anti_injection2(isset($_REQUEST["flagAtende24Horas"]) ? $_REQUEST["flagAtende24Horas"] : "")?>'>
+	<input type="hidden" name="flagTipo" value='<?=anti_injection2($_REQUEST["flagTipo"])?>'>
+	<input type="hidden" name="flagTemVideo" value='<?=anti_injection2($_REQUEST["flagTemVideo"])?>'>
+	<input type="hidden" name="flagAtende24Horas" value='<?=anti_injection2($_REQUEST["flagAtende24Horas"])?>'>
 </form>
 
 

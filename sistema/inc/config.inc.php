@@ -1,19 +1,25 @@
 <?
-// Identificador da aplica√ß√£o
+// Identificador da aplicaÁ„o
 define("SIS_APL_NAME","VIPLUXURIA");
 
-// Dados da aplica√ß√£o
+// Dados da aplicaÁ„o
 define("SIS_TITULO","Vip Luxuria");
-define("SIS_VERSAO","vers√£o 2.0.0");
+define("SIS_VERSAO","vers„o 2.0.0");
 define("SIS_FULLSCREEN",false);
 
-// Conex√£o com o banco de dados
-define("DB_DATABASE","vipluxuriagold");
-define("DB_HOST","mysql.vipluxuriagold.net");
-define("DB_USER", "vipluxuria_add1");
-define("DB_PASSWORD","luxuria18");
+// Conex„o com o banco de dados
+//define("DB_DATABASE","viplux_vipluxuria");
+//define("DB_HOST","177.55.98.44");
+//define("DB_USER", "viplux_luxuria");
 
-// Dados sobre a autentica√ß√£o de usu√°rio
+define("DB_DATABASE","vipluxuria");
+define("DB_HOST","mysql.vipluxuria.com");
+define("DB_USER", "vipluxuria");
+define("DB_PASSWORD","PbqyM4tXFLXb");
+
+define("DB_PERSISTENT",false);
+
+// Dados sobre a autenticaÁ„o de usu·rio
 define("AUTH_TABELA","sis_usuario");
 define("AUTH_ID","cod_usuario");
 define("AUTH_USERNAME","txt_usuario");
@@ -24,11 +30,11 @@ define("AUTH_AGENCIA","cod_agencia");
 define("AUTH_CRIPT",true); // MD5
 $usuarioSistema = "";
 
-// P√°gina de login
+// P·gina de login
 define("LOGIN_TITULO","Acesso Restrito");
 
-// P√°gina de acesso negado
-define("LOGIN_ACESSONEGADO","Voc√™ n√£o tem permiss√£o para<br>acessar esta p√°gina");
+// P·gina de acesso negado
+define("LOGIN_ACESSONEGADO","VocÍ n„o tem permiss„o para<br>acessar esta p&aacute;gina");
 
 // Dados sobre a janela de lookup
 define("LOOKUP_MAX_REC",300);
@@ -39,16 +45,16 @@ define("LOOKUP_FIELDSIZE",40);
 define("LOOKUP_IMAGEM","img/smallsearch.gif");
 
 // Altura do frame de controle
-define("FRAME_CONTROLE_ALTURA","0"); // utilizar em produ√ß√£o
+define("FRAME_CONTROLE_ALTURA","0"); // utilizar em produÁ„o
 #define("FRAME_CONTROLE_ALTURA","50"); // utilizar durante o desenvolvimento
 
-// Altura do frame de cabe√ßalho
+// Altura do frame de cabeÁalho
 define("FRAME_HEADER_ALTURA","72");
 
 // Largura do frame de menu
 define("FRAME_MENU_LARGURA","180");
 
-// Defini√ß√£o dos estilos
+// DefiniÁ„o dos estilos
 define("CSS_HEADER","../css/header_sis.css");
 define("CSS_MENU","../css/menu_sis.css");
 define("CSS_CONTENT","../css/content_sis.css"); 
@@ -57,7 +63,7 @@ define("CSS_CONTENT","../css/content_sis.css");
 define("DB_DEFAULT","mysql.class.php");
 
 // Menu
-define("MENU_EMPTY","Nenhum item dispon√≠vel para este m√≥dulo"); 
+define("MENU_EMPTY","Nenhum item disponÌvel para este mÛdulo"); 
 
 // TextAreaField
 define("TEXTAREA_RESTANTES","caracteres restantes");
@@ -72,7 +78,7 @@ define("DATEFIELD_IMAGEM","img/icon-calen.gif");
 // Filtro ativo em listas
 define("FILTRO_ATIVO","Filtro ativo [" . "<a class='link' href='".$_SERVER['PHP_SELF']."?clear=1"."'>Limpar</a>]");
 
-// √çcone de help
+// Õcone de help
 define("HELP_IMAGEM","../img/help.gif");
 define("HELP_CORFUNDO","#FFFFDE");
 define("HELP_CORTITULO","#006699");
@@ -82,12 +88,12 @@ define("HELP_FONTTEXTO","Tahoma, Verdana, Arial, Helvetica");
 define("HELP_TAMANHOTITULO","10pt");
 define("HELP_TAMANHOTEXTO","8pt");
 
-// Elementos das p√°ginas
+// Elementos das p·ginas
 define("LISTA_ANTERIOR","&laquo; Anterior");
-define("LISTA_PROXIMO","Pr√≥xima &raquo;");
+define("LISTA_PROXIMO","Pr&oacute;xima &raquo;");
 define("LOGIN_MENSAGEM","");
 
-// express√µes regulares
+// expressıes regulares
 define("REGEX_EMAIL","^([0-9,a-z,A-Z]+)([.,_,-]([0-9,a-z,A-Z]+))*[@]([0-9,a-z,A-Z]+)([.,_,-]([0-9,a-z,A-Z]+))*[.]([a-z,A-Z]){2,3}([0-9,a-z,A-Z])?$");
 define("REGEX_CEP","^[0-9]{5}-{1}[0-9]{3}$");
 define("REGEX_DATA","^((0?[1-9]|[12]\d)\/(0?[1-9]|1[0-2])|30\/(0?[13-9]|1[0-2])|31\/(0?[13578]|1[02]))\/(19|20)?\d{2}$");

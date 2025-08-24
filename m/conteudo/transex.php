@@ -1,28 +1,12 @@
-<?php 	$conexao = require_once '../php/conecta_mysql.php';  ?>
-<?php 
+<? 	$conexao = require_once '../php/conecta_mysql.php';  ?>
+<? 
 function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
+	// remove palavras que contenham sintaxe sql
+	$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+	$sql = trim($sql);//limpa espaços vazio
+	$sql = strip_tags($sql);//tira tags html e php
+	$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+	return $sql;
 }
 ?>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -75,7 +59,7 @@ function anti_injection($sql) {
         </div><!--titulo-->  
 </div>        
         <div id="content">
-						<?php
+						<?
 						$sql = " SELECT * FROM transex  WHERE flagAtivo = 'Sim' "
 						 	 . " ORDER BY rand(); ";
 		
@@ -107,7 +91,7 @@ function anti_injection($sql) {
 									<div class="clear"></div>
 							    </div>
 									
-						    <?php  
+						    <?  
 							}
 						}
 						?>	 						

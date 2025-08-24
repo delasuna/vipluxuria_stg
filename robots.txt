@@ -15,5 +15,5 @@ Disallow: /Scripts/
 Disallow: /vantagens/
 Disallow: /update/
 
-Disallow: https://vipluxuriagold.net/perfil-transex/392/Veronica-Franco-Operada
-Disallow: https://vipluxuriagold.net/perfil-transex/231/Bre-Gauchinha
+Disallow: https://vipluxuria.com/perfil-transex/392/Veronica-Franco-Operada
+Disallow: https://vipluxuria.com/perfil-transex/231/Bre-Gauchinha

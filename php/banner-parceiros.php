@@ -1,2 +1,2 @@
 <br>
-<a href="https://vipluxuriagold.net/Acompanhantes-SexoVirtual" target="_blank"><img src="/imagens/banner-quarentena.png" width="946px" height="237px"></a>
+<a href="https://vipluxuria.com/Acompanhantes-SexoVirtual" target="_blank"><img src="/imagens/banner-quarentena.png" width="946px" height="237px"></a>

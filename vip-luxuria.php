@@ -69,28 +69,28 @@
 <p>Os anunciantes estão divididos nas seguintes categorias e sub-categorias:</p>
 
 	<ul>
-    	<li><a href="http://vipluxuriagold.net/conteudo/mulheres.php" title="Vip Lux&uacute;ria - Acompanhantes Mulheres" target="_blank">Acompanhantes Mulheres</a>
+    	<li><a href="http://vipluxuria.com/conteudo/mulheres.php" title="Vip Lux&uacute;ria - Acompanhantes Mulheres" target="_blank">Acompanhantes Mulheres</a>
 <ul>
-            	<li><a href="http://www.vipluxuriagold.net/Acompanhantes-Loiras" title="Vip Lux&uacute;ria - Acompanhantes Loiras" target="_blank">Acompanhantes Loiras</a></li>
-                <li><a href="http://www.vipluxuriagold.net/Acompanhantes-Morenas" title="Vip Lux&uacute;ria - Acompanhantes Morenas" target="_blank">Acompanhantes Morenas</a></li>
-                <li><a href="http://www.vipluxuriagold.net/Acompanhantes-Mulatas" title="Vip Lux&uacute;ria - Acompanhantes Mulatas">Acompanhantes Mulatas</a></li>
-                <li><a href="http://www.vipluxuriagold.net/Acompanhantes-ComVideo" title="Vip Lux&uacute;ria - Acompanhantes com V&iacute;deo" target="_blank">Acompanhantes com V&iacute;deo</a></li>
-                <li><a href="http://www.vipluxuriagold.net/Acompanhantes-Atende24Horas" title="Vip Lux&uacute;ria - Acompanhantes que Atende 24 horas" target="_blank">Acompanhantes que Atende 24 horas</a></li>
+            	<li><a href="http://www.vipluxuria.com/Acompanhantes-Loiras" title="Vip Lux&uacute;ria - Acompanhantes Loiras" target="_blank">Acompanhantes Loiras</a></li>
+                <li><a href="http://www.vipluxuria.com/Acompanhantes-Morenas" title="Vip Lux&uacute;ria - Acompanhantes Morenas" target="_blank">Acompanhantes Morenas</a></li>
+                <li><a href="http://www.vipluxuria.com/Acompanhantes-Mulatas" title="Vip Lux&uacute;ria - Acompanhantes Mulatas">Acompanhantes Mulatas</a></li>
+                <li><a href="http://www.vipluxuria.com/Acompanhantes-ComVideo" title="Vip Lux&uacute;ria - Acompanhantes com V&iacute;deo" target="_blank">Acompanhantes com V&iacute;deo</a></li>
+                <li><a href="http://www.vipluxuria.com/Acompanhantes-Atende24Horas" title="Vip Lux&uacute;ria - Acompanhantes que Atende 24 horas" target="_blank">Acompanhantes que Atende 24 horas</a></li>
             </ul>
     	</li>
-        <li><a href="http://vipluxuriagold.net/conteudo/homens.php" title="Vip Lux&uacute;ria - Acompanhantes Homens" target="_blank">Acompanhantes Homens</a></li>
-        <li><a href="http://vipluxuriagold.net/conteudo/transex.php" title="Vip Lux&uacute;ria - Acompanhantes Transex" target="_blank">Acompanhantes Transex</a></li>
+        <li><a href="http://vipluxuria.com/conteudo/homens.php" title="Vip Lux&uacute;ria - Acompanhantes Homens" target="_blank">Acompanhantes Homens</a></li>
+        <li><a href="http://vipluxuria.com/conteudo/transex.php" title="Vip Lux&uacute;ria - Acompanhantes Transex" target="_blank">Acompanhantes Transex</a></li>
 	</ul>     
 <p>Na categoria Acompanhantes Mulheres é possível procurar anúncios por cidades e regiões:</p>
 	<ul>
-    	<li><a href="http://www.vipluxuriagold.net/Acompanhantes/2/Novo-Hamburgo" title="Vip Lux&uacute;ria - Acompanhantes de Novo Hamburgo" target="_blank">Acompanhantes de Novo Hamburgo</a></li>
-        <li><a href="http://www.vipluxuriagold.net/Acompanhantes/1/Porto-Alegre" title="Vip Lux&uacute;ria - Acompanhantes de Porto Alegre" target="_blank">Acompanhantes de Porto Alegre</a></li>
-		<li><a href="http://www.vipluxuriagold.net/Acompanhantes/6/Grande-Porto-Alegre" title="Vip Lux&uacute;ria - Acompanhantes da Grande Porto Alegre" target="_blank">Acompanhantes da Grande Porte Alegre</a></li>
-        <li><a href="http://www.vipluxuriagold.net/Acompanhantes/3/Vale-dos-Sinos" title="Vip Lux&uacute;ria - Acompanhantes do Vale dos Sinos" target="_blank">Acompanhante do Vale dos Sinos</a></li>
-		<li><a href="http://www.vipluxuriagold.net/Acompanhantes/5/Litoral-Gaucho" title="Vip Lux&uacute;ria - Acompanhantes do Litoral Ga&uacute;cho" target="_blank">Acompanhantes do Litoral Gaúcho</a></li>
+    	<li><a href="http://www.vipluxuria.com/Acompanhantes/2/Novo-Hamburgo" title="Vip Lux&uacute;ria - Acompanhantes de Novo Hamburgo" target="_blank">Acompanhantes de Novo Hamburgo</a></li>
+        <li><a href="http://www.vipluxuria.com/Acompanhantes/1/Porto-Alegre" title="Vip Lux&uacute;ria - Acompanhantes de Porto Alegre" target="_blank">Acompanhantes de Porto Alegre</a></li>
+		<li><a href="http://www.vipluxuria.com/Acompanhantes/6/Grande-Porto-Alegre" title="Vip Lux&uacute;ria - Acompanhantes da Grande Porto Alegre" target="_blank">Acompanhantes da Grande Porte Alegre</a></li>
+        <li><a href="http://www.vipluxuria.com/Acompanhantes/3/Vale-dos-Sinos" title="Vip Lux&uacute;ria - Acompanhantes do Vale dos Sinos" target="_blank">Acompanhante do Vale dos Sinos</a></li>
+		<li><a href="http://www.vipluxuria.com/Acompanhantes/5/Litoral-Gaucho" title="Vip Lux&uacute;ria - Acompanhantes do Litoral Ga&uacute;cho" target="_blank">Acompanhantes do Litoral Gaúcho</a></li>
 	</ul>        
 
-<img src="/imagens/tutorial-vip-02.png" alt="Vip Lux&uacute;ria - Vers&atilde;o Mobile" width="180" height="250" align="left" class="celular" /><p style="padding-top:40px; padding-left:30px; padding-right:30px; padding-bottom:20px;">A novidade do início do ano de 2014 foi a remodelação do nosso site e o lançamento versão para Smartphone. Para saber mais a respeito desta versão, acesse o <a href="http://vipluxuriagold.net/tutorial.php" title="Vip Lux&uacute;ria - Tutorial Vip Mobile" target="_blank">tutorial do Vip Mobile</a>.</p><br/>
+<img src="/imagens/tutorial-vip-02.png" alt="Vip Lux&uacute;ria - Vers&atilde;o Mobile" width="180" height="250" align="left" class="celular" /><p style="padding-top:40px; padding-left:30px; padding-right:30px; padding-bottom:20px;">A novidade do início do ano de 2014 foi a remodelação do nosso site e o lançamento versão para Smartphone. Para saber mais a respeito desta versão, acesse o <a href="http://vipluxuria.com/tutorial.php" title="Vip Lux&uacute;ria - Tutorial Vip Mobile" target="_blank">tutorial do Vip Mobile</a>.</p><br/>
 <p class="atencao">Obs.: O <strong>VIP LUXÚRIA</strong> não intermedia os contatos das empresas e/ou clientes anunciantes. As informações contidas nos anúncios são de inteira responsabilidade dos anunciantes.
 </p>               
               </div><!-- TEXTO -->      

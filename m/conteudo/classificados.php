@@ -1,28 +1,12 @@
-<?php 	$conexao = require_once '../php/conecta_mysql.php';  ?>
-<?php 
+<? 	$conexao = require_once '../php/conecta_mysql.php';  ?>
+<? 
 function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
+	// remove palavras que contenham sintaxe sql
+	$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+	$sql = trim($sql);//limpa espaços vazio
+	$sql = strip_tags($sql);//tira tags html e php
+	$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+	return $sql;
 }
 ?>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -75,7 +59,7 @@ function anti_injection($sql) {
 </div>        
         <div id="content">
 
-					<?php
+					<?
 					$separaigual  = explode("=", $_SERVER["REQUEST_URI"]);
 					
 					if ($separaigual['2'] != "" && $separaigual['2'] > 0)
@@ -153,7 +137,7 @@ function anti_injection($sql) {
 							<div class="anuncio">
 								<div class="anuncio-imagem">
 									
-									<?php
+									<?
 									if ($imagem != "")
 										echo "<img src='/sistema/content/".$imagem."'>";
 									else 
@@ -163,59 +147,59 @@ function anti_injection($sql) {
 								</div>
 								
 								<div class="anuncio-corpo">
-									<?php if ($cidade != "") { ?> 
+									<? if ($cidade != "") { ?> 
 										<h3 class="título-anuncio"><?=$titulo?></h3>
-									<?php } ?>	
+									<? } ?>	
 									<div class="mensagem-anuncio"><strong>Anunciante de: </strong><?=$cidade?></div>							
 									<div class="mensagem-anuncio"><?=$mensagem?></div> 
 
 
-									<?php if (($flagWhats != "" && $flagWhats != "N") && ($ddd != "") && ($telefone != "")) { ?>
-										<div class="contatos-anuncio"><p class="whatsapp"><a href="https://api.whatsapp.com/send?phone=<?php echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu anúncio!" target="_blank">(<?=$ddd?>) <?=$telefone?></a><button type="button" onclick="location.href='https://api.whatsapp.com/send?phone=<?php echo '55'.$ddd. str_replace('-', '', $telefone) .''; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu anúncio!'">Converse via Whatsapp</button></p></div>
-									<?php } else if (($ddd != "") && ($telefone != "")) { ?>
-										<div class="contatos-anuncio"><p class="telefone"><a href="tel:<?php echo $ddd . $telefone . ""; ?>">(<?=$ddd?>) <?=$telefone?></a></p></div>
-									<?php } ?>
+									<? if (($flagWhats != "" && $flagWhats != "N") && ($ddd != "") && ($telefone != "")) { ?>
+										<div class="contatos-anuncio"><p class="whatsapp"><a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu anúncio!" target="_blank">(<?=$ddd?>) <?=$telefone?></a><button type="button" onclick="location.href='https://api.whatsapp.com/send?phone=<? echo '55'.$ddd. str_replace('-', '', $telefone) .''; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu anúncio!'">Converse via Whatsapp</button></p></div>
+									<? } else if (($ddd != "") && ($telefone != "")) { ?>
+										<div class="contatos-anuncio"><p class="telefone"><a href="tel:<? echo $ddd . $telefone . ""; ?>">(<?=$ddd?>) <?=$telefone?></a></p></div>
+									<? } ?>
 
-									<?php if (($flagWhats2 != "" && $flagWhats2 != "N") && ($ddd2 != "") && ($telefone2 != "")) { ?>
-										<div class="contatos-anuncio"><p class="whatsapp"><a href="https://api.whatsapp.com/send?phone=<?php echo "55".$ddd2. str_replace('-', '', $telefone2) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu anúncio!" target="_blank">(<?=$ddd2?>) <?=$telefone2?></a><button type="button" onclick="location.href='https://api.whatsapp.com/send?phone=<?php echo '55'.$ddd2. str_replace('-', '', $telefone2) .''; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu anúncio!'">Converse via Whatsapp</button></p></div>
-									<?php } else if (($ddd2 != "") && ($telefone2 != "")) { ?>
-										<div class="contatos-anuncio"><p class="telefone"><a href="tel:<?php echo $ddd2 . $telefone2 . ""; ?>">(<?=$ddd2?>) <?=$telefone2?></a></p></div>
-									<?php } else { ?>
+									<? if (($flagWhats2 != "" && $flagWhats2 != "N") && ($ddd2 != "") && ($telefone2 != "")) { ?>
+										<div class="contatos-anuncio"><p class="whatsapp"><a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd2. str_replace('-', '', $telefone2) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu anúncio!" target="_blank">(<?=$ddd2?>) <?=$telefone2?></a><button type="button" onclick="location.href='https://api.whatsapp.com/send?phone=<? echo '55'.$ddd2. str_replace('-', '', $telefone2) .''; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu anúncio!'">Converse via Whatsapp</button></p></div>
+									<? } else if (($ddd2 != "") && ($telefone2 != "")) { ?>
+										<div class="contatos-anuncio"><p class="telefone"><a href="tel:<? echo $ddd2 . $telefone2 . ""; ?>">(<?=$ddd2?>) <?=$telefone2?></a></p></div>
+									<? } else { ?>
 										<!--div class="contatos-anuncio"><p> &nbsp;</p></div-->
-									<?php } ?>
+									<? } ?>
 
 
-									<?php if ($email != "") { ?>
+									<? if ($email != "") { ?>
 										<div class="contatos-anuncio"><p class="e-mail"><a href="mailto:<?=$email?>"><?=$email?></a></p></div>
-									<?php }
+									<? }
 									   if ($site != "") { ?>
 										<div class="contatos-anuncio"><p class="site"><a href="<?=$site?>" target="_blank"><?=$site?></a></p></div>
-									<?php }
+									<? }
 									   if ($twitter != "") { ?>
 										<div class="contatos-anuncio"><p class="twitter"><a href="https://<?=$twitter?>" target="_blank"><?=$twitter?></a></p></div>
-									<?php }
+									<? }
 									   if ($instagram != "") { ?>
 										<div class="contatos-anuncio"><p class="outros"><a href="http://instagram.com/<?=$instagram?>" target="_blank"><?=$instagram?></a></p></div>
-									<?php } ?>									
+									<? } ?>									
 								
 									<div class="clear"></div>		
 								
-									<?php if ($flagAceitoCartao != "" && $flagAceitoCartao == "S") { ?>
+									<? if ($flagAceitoCartao != "" && $flagAceitoCartao == "S") { ?>
 											<div class="aceito-cartoes"><img src="/imagens/estrutura/aceito-cartoes.png" /></div>
-									<?php } ?>																	
+									<? } ?>																	
 								</div>
 								<div class="clear"></div>
 							</div> <!-- fim anuncio -->
 						
 							<div class="linha-horizontal"></div>
 						  
-							<?php 
+							<? 
 							}
 							?>	
 							<div class="clear"></div>
 							<div id="paginacao">
 								<ul>
-									<?php	
+									<?	
 										for($i_pg=1;$i_pg<=$totalpages;$i_pg++) { 
 											if ($pg == ($i_pg)) { 
 												echo "<li> $i_pg </li>";
@@ -227,7 +211,7 @@ function anti_injection($sql) {
 								</ul>
 							</div><!--paginacao-->
 							
-					  <?php 
+					  <? 
 					  }
 					?>			
 			

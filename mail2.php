@@ -1,7 +1,7 @@
 <?php
 
 
-$emailsender = "felipe@vipluxuriagold.net";
+$emailsender = "felipe@vipluxuria.com";
 $emaildestinatario = "rguimaraes-rs@hotmail.com";
 $assunto = "teste PHPMail";
 

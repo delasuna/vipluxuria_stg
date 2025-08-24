@@ -1,36 +1,20 @@
-<?php 	$conexao = require_once '../php/conecta_mysql.php';  ?>
-<?php
+<? 	$conexao = require_once '../php/conecta_mysql.php';  ?>
+<?
 
 	function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
-}
+		// remove palavras que contenham sintaxe sql
+		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+		$sql = trim($sql);//limpa espaços vazio
+		$sql = strip_tags($sql);//tira tags html e php
+		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+		return $sql;
+	}
 	
 
 
-						if (anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "") != "") {
+						if (anti_injection($_REQUEST["id"]) != "") {
 							$sql = " SELECT * FROM homem "
-								 . " WHERE flagAtivo = 'Sim' and idHomem = " . anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "");
+								 . " WHERE flagAtivo = 'Sim' and idHomem = " . anti_injection($_REQUEST["id"]);
 								 
 							$resultado = mysql_query($sql, $conexao);
 							if(!$resultado){
@@ -120,7 +104,7 @@
 <meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erótico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anúncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
 
 <title>
-<?php										echo $nome . " " .  $sobrenome . " - Homens - Vip Lux&uacute;ria - Acompanhantes Porto Alegre"; ?>
+<?										echo $nome . " " .  $sobrenome . " - Homens - Vip Lux&uacute;ria - Acompanhantes Porto Alegre"; ?>
 </title>
 <link rel="stylesheet" href="../css-js/estilos.css" type="text/css"/>
 
@@ -170,18 +154,18 @@
                 <p class="nome"><?=$nome?> <?=$sobrenome?></p>
                 <p class="telefone"><a href="tel:0<?=$ddd?><?=$telefone?>">(<?=$ddd?>)&nbsp;<?=$telefone?></a></p>
 					<div id="bt-whatsapp"> 
-						<a href="https://api.whatsapp.com/send?phone=<?php echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento!" target="_blank">
+						<a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento!" target="_blank">
 							<img src="/m/imagens/estrutura/bt-whatsapp.png" width="264" height="48" />
 						</a>
 					</div><!-- bt-whatsapp -->
 					
-					<?php if ($flagSexoVirtual != "" && $flagSexoVirtual == "Sim") { ?> 
+					<? if ($flagSexoVirtual != "" && $flagSexoVirtual == "Sim") { ?> 
 						<div id="bt-video"> 
-							<a href="https://api.whatsapp.com/send?phone=<?php echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento de Sexo Virtual!" target="_blank">
+							<a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento de Sexo Virtual!" target="_blank">
 								<img src="/m/imagens/estrutura/bt-video.png" width="264" height="48" />
 							</a>
 						</div><!-- bt-video -->						
-				<?php } ?>    
+				<? } ?>    
 				
                 <div class="clear"></div>
 				
@@ -205,44 +189,44 @@
 				<a href="<?="/sistema/content/".$imagemCentral8?>" rel='mygallery' class='nch-lightbox'><img src="<?="/sistema/content/".$imagemCentral8?>" alt=''></a>
                 <div class="clear"></div>  
 							
-				<?php if ($video != "" && $flagTemVideo != "Nao") { ?>                       
+				<? if ($video != "" && $flagTemVideo != "Nao") { ?>                       
                 <div class="hr"></div>
                 <p class="titulo">V&iacute;deo</p>
 					<video width="289" height="217" controls>
     					<source src="<?="/sistema/content/".$video?>" type="video/mp4">
 					</video>	                
                 <br/>
-					    <?php } ?>  				
+					    <? } ?>  				
                                     
-						<?php 
+						<? 
 						if ($flagMostraConteudoExtra != ""  && $flagMostraConteudoExtra != NULL && $flagMostraConteudoExtra == "S") {
 							if ($imagemExtra1 != ""  && $imagemExtra1 != NULL){ 
 						?>						                   
 							<div id="fotos-caseiras">
 								<h3>Fotos Caseiras</h3>
-								<?php if ($imagemExtra1 != "") { ?>
+								<? if ($imagemExtra1 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra1?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra1?>" width="100" height="100" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra2 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra2 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra2?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra2?>" width="100" height="100" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra3 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra3 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra3?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra3?>" width="100" height="100" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra4 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra4 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra4?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra4?>" width="100" height="100" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra5 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra5 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra5?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra5?>" width="100" height="100" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra6 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra6 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra6?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra6?>" width="100" height="100" /></a></div>
-								<?php } ?>
+								<? } ?>
 	
 								<div class="clear"></div> 
 							</div> <!-- fotos-caseiras -->
 							<div class="linha-horizontal"></div> 
-                        <?php 
+                        <? 
 							}
 						} 
 						?>
@@ -257,4 +241,4 @@
 <?php include("../../php/google.php"); ?>   
 </body>
 </html>
-<?php } ?>
+<? } ?>

@@ -1,32 +1,16 @@
-<?php 	$conexao = require_once '../php/conecta_mysql.php';  ?>
-<?php 
+<? 	$conexao = require_once '../php/conecta_mysql.php';  ?>
+<? 
 function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
+	// remove palavras que contenham sintaxe sql
+	$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+	$sql = trim($sql);//limpa espaços vazio
+	$sql = strip_tags($sql);//tira tags html e php
+	$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+	return $sql;
 }
 
-if (anti_injection(isset($_REQUEST["cidade"]) ? $_REQUEST["cidade"] : "") != "") {
-	$cidade = anti_injection(isset($_REQUEST["cidade"]) ? $_REQUEST["cidade"] : "");
+if (anti_injection($_REQUEST["cidade"]) != "") {
+	$cidade = anti_injection($_REQUEST["cidade"]);
 	$sql = "SELECT idCidade, cidade FROM cidade WHERE idCidade = ".$cidade;
 
 	$resultado = mysql_query($sql, $conexao);
@@ -101,54 +85,54 @@ if (anti_injection(isset($_REQUEST["cidade"]) ? $_REQUEST["cidade"] : "") != "")
             	<div id="coluna-1">
 					<div id="titulo-pagina"><img src="/imagens/estrutura/titulo-mulheres-2.png" width="760" height="41" /></div>
 						
-						<?php if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "SexoVirtual") { ?>
+						<? if (anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual") { ?>
 						<div id="nota">
 							<p>Este espaço é destinado a destacar as acompanhantes que fazem shows privados pelo WhatsApp e venda de pacote de fotos, venda de vídeos!
 E é tudo muito simples. Chame a garota de sua preferência, combine as condições e usufrua de sua companhia virtual!</p><br>
 							<p><i><strong>Consulte diretamente com a anunciante os serviços oferecidos por ela!</strong></i></p>
 						</div> <!-- nota -->
-						<?php } ?>	 						
+						<? } ?>	 						
 						
 					<ul id="thumbs">
-						<?php
+						<?
 						$where = " WHERE  flagAtivo = 'Sim' ";
 
 					
-						if (anti_injection(isset($_REQUEST["nome"]) ? $_REQUEST["nome"] : "") != "") {
-							$where = $where . " and nomeURL like '%" . anti_injection(isset($_REQUEST["nome"]) ? $_REQUEST["nome"] : "") . "%' ";
+						if (anti_injection($_REQUEST["nome"]) != "") {
+							$where = $where . " and nomeURL like '%" . anti_injection($_REQUEST["nome"]) . "%' ";
 						}						
 						
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Loiras") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "Loiras") {
 							$where = $where . " and flagTipo = 'Lo' ";
 						}
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Morenas") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "Morenas") {
 							$where = $where . " and flagTipo = 'Mo' ";
 						} 
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Mulatas") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "Mulatas") {
 							$where = $where . " and flagTipo = 'Mu' ";
 						}
 						
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Atende24Horas") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "Atende24Horas") {
 							$where = $where . " and flagAtende24Horas = 'Sim' ";
 						}
 
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "ComVideo") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "ComVideo") {
 							$where = $where . " and flagTemVideo = 'Sim' ";
 						}
 
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "ComLocal") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "ComLocal") {
 							$where = $where . " and atendoLocalProprio = 'Sim' "; 
 						}
 
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "SexoVirtual") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual") {
 							$where = $where . " and flagSexoVirtual = 'S' ";
 						}
 						
-						if (anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "") != "") {
-							//$where = $where . " and cidade = " . anti_injection(isset($_REQUEST["cidade"]) ? $_REQUEST["cidade"] : "") . " ";
+						if (anti_injection($_REQUEST["idCidade"]) != "") {
+							//$where = $where . " and cidade = " . anti_injection($_REQUEST["cidade"]) . " ";
 								 
 							$sql = " SELECT * FROM mulher " 
-								 . " JOIN mulherCidade ON (mulher.idMulher = mulherCidade.idMulher AND mulherCidade.idCidade = " . anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "") . ")"  
+								 . " JOIN mulherCidade ON (mulher.idMulher = mulherCidade.idMulher AND mulherCidade.idCidade = " . anti_injection($_REQUEST["idCidade"]) . ")"  
 								 . $where
 								 . " ORDER BY flagPreferencial desc, rand(); ";
 								 
@@ -178,10 +162,10 @@ E é tudo muito simples. Chame a garota de sua preferência, combine as condições 
 
 								if ($contador < 5) { 
 								?>
-									<li><a href="/perfil/<?=$idMulher?>/<?=tirarAcentos($nome)?><?php if($sobrenome != "") { echo "-".tirarAcentos(str_replace(" ", "-", $sobrenome));}?>"><img src="<?="/sistema/content/".$imagemCapa?>" width="112" height="149" /><p class="nome"><?=$nome?> <?=$sobrenome?></p></a></li>
-								<?php 	} else { ?>
-										<li class="last"><a href="/perfil/<?=$idMulher?>/<?=tirarAcentos($nome)?><?php if($sobrenome != "") { echo "-".tirarAcentos(str_replace(" ", "-", $sobrenome));}?>"><img src="<?="/sistema/content/".$imagemCapa?>" width="112" height="149" /><p class="nome"><?=$nome?> <?=$sobrenome?></p></a></li>
-								<?php  	$contador = 0;
+									<li><a href="/perfil/<?=$idMulher?>/<?=tirarAcentos($nome)?><? if($sobrenome != "") { echo "-".tirarAcentos(str_replace(" ", "-", $sobrenome));}?>"><img src="<?="/sistema/content/".$imagemCapa?>" width="112" height="149" /><p class="nome"><?=$nome?> <?=$sobrenome?></p></a></li>
+								<? 	} else { ?>
+										<li class="last"><a href="/perfil/<?=$idMulher?>/<?=tirarAcentos($nome)?><? if($sobrenome != "") { echo "-".tirarAcentos(str_replace(" ", "-", $sobrenome));}?>"><img src="<?="/sistema/content/".$imagemCapa?>" width="112" height="149" /><p class="nome"><?=$nome?> <?=$sobrenome?></p></a></li>
+								<?  	$contador = 0;
 								} 
 							}
 						}

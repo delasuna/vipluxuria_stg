@@ -1,29 +1,13 @@
-<?php
+<?
 
 	function anti_injection2($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
-}
+		// remove palavras que contenham sintaxe sql
+		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+		$sql = trim($sql);//limpa espaços vazio
+		$sql = strip_tags($sql);//tira tags html e php
+		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+		return $sql;
+	}
 ?>
 <script>
 	function carregaAnunciantes(flagTipo) {
@@ -33,7 +17,7 @@
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "http://vipluxuriagold.net/Acompanhantes-"+ flagTipo;
+		document.form_mulheres.action = "http://vipluxuria.com/Acompanhantes-"+ flagTipo;
 		document.form_mulheres.submit(); 
 	}
 	
@@ -44,7 +28,7 @@
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "http://vipluxuriagold.net/Acompanhantes-ComVideo";
+		document.form_mulheres.action = "http://vipluxuria.com/Acompanhantes-ComVideo";
 		document.form_mulheres.submit();
 	}
 
@@ -55,7 +39,7 @@
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "http://vipluxuriagold.net/Acompanhantes-ComVideo";
+		document.form_mulheres.action = "http://vipluxuria.com/Acompanhantes-ComVideo";
 		document.form_mulheres.submit();
 	}
 	
@@ -66,7 +50,7 @@
 		document.form_mulheres.flagTipo.value = 'Atende24Horas';
 		document.form_mulheres.idCidade.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "http://vipluxuriagold.net/Acompanhantes-Atende24Horas";
+		document.form_mulheres.action = "http://vipluxuria.com/Acompanhantes-Atende24Horas";
 		document.form_mulheres.submit();
 	}	
 	
@@ -78,7 +62,7 @@
 		document.form_mulheres.flagTipo.value = '';
 		document.form_mulheres.flagAtende24Horas.value = '';
 		document.form_mulheres.bannerLateralCompleto.value = '';
-		document.form_mulheres.action = "http://vipluxuriagold.net/Acompanhantes/"+idCidade + "/" +nomeCidade;		
+		document.form_mulheres.action = "http://vipluxuria.com/Acompanhantes/"+idCidade + "/" +nomeCidade;		
 		document.form_mulheres.submit();
 	}
 	
@@ -89,13 +73,13 @@
 </script>
 
 <form name="form_mulheres" action="/conteudo/mulheres.php" method="post">
-	<input type="hidden" name="flagTipo" value='<?=anti_injection2(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "")?>'>
-	<input type="hidden" name="flagTemVideo" value='<?=anti_injection2(isset($_REQUEST["flagTemVideo"]) ? $_REQUEST["flagTemVideo"] : "")?>'>
-	<input type="hidden" name="flagComLocal" value='<?=anti_injection2(isset($_REQUEST["flagComLocal"]) ? $_REQUEST["flagComLocal"] : "")?>'>	
-	<input type="hidden" name="flagAtende24Horas" value='<?=anti_injection2(isset($_REQUEST["flagAtende24Horas"]) ? $_REQUEST["flagAtende24Horas"] : "")?>'>
-	<input type="hidden" name="idCidade" value='<?=anti_injection2(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "")?>'>
-	<input type="hidden" name="nomeCidade" value='<?=anti_injection2(isset($_REQUEST["nomeCidade"]) ? $_REQUEST["nomeCidade"] : "")?>'>	
-	<input type="hidden" name="flagSexoVirtual" value='<?=anti_injection2(isset($_REQUEST["flagSexoVirtual"]) ? $_REQUEST["flagSexoVirtual"] : "")?>'>	
+	<input type="hidden" name="flagTipo" value='<?=anti_injection2($_REQUEST["flagTipo"])?>'>
+	<input type="hidden" name="flagTemVideo" value='<?=anti_injection2($_REQUEST["flagTemVideo"])?>'>
+	<input type="hidden" name="flagComLocal" value='<?=anti_injection2($_REQUEST["flagComLocal"])?>'>	
+	<input type="hidden" name="flagAtende24Horas" value='<?=anti_injection2($_REQUEST["flagAtende24Horas"])?>'>
+	<input type="hidden" name="idCidade" value='<?=anti_injection2($_REQUEST["idCidade"])?>'>
+	<input type="hidden" name="nomeCidade" value='<?=anti_injection2($_REQUEST["nomeCidade"])?>'>	
+	<input type="hidden" name="flagSexoVirtual" value='<?=anti_injection2($_REQUEST["flagSexoVirtual"])?>'>	
 	<input type="hidden" name="bannerLateralCompleto"> 		
 </form>
 
@@ -112,12 +96,12 @@
             <li><a href="javascript:carregaAnunciante24Horas('S')">Atende 24 horas</a></li>
             <li><a href="/mulheres/">Outras Cidades</a> 
             	<ul>
-					<?php 
+					<? 
 					$sql = "SELECT idCidade, cidade FROM cidade ORDER BY ordem;";
 			
 					$resultado = mysql_query($sql, $conexao);
 					if(!$resultado){
-						die("Impossï¿½vel visualizar as cidades: " . mysql_error() . '<br>');
+						die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
 					}
 			
 					while($row = mysql_fetch_array($resultado)) {
@@ -136,16 +120,16 @@
     <li><a href="/guia-moteis-a/">Guia de Mot&eacute;is</a></li>
     <li><a href="/mural-recados/">Mural de Recados</a></li>
     <li><a href="/swing-porto-alegre-poa/">Swing</a></li>
-    <li><a href="/vip-blog/">Vip Blog Notï¿½cias</a></li>
+    <li><a href="/vip-blog/">Vip Blog Notícias</a></li>
 	
     <li><a href="/mulheres/">Outras Cidades</a>
     	<ul>
-			<?php 
+			<? 
 			$sql = "SELECT idCidade, cidade FROM cidade ORDER BY ordem;";
 			
 			$resultado = mysql_query($sql, $conexao);
 			if(!$resultado){
-				die("Impossï¿½vel visualizar as cidades: " . mysql_error() . '<br>');
+				die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
 			}
 			
 			while($row = mysql_fetch_array($resultado)) {
@@ -161,7 +145,7 @@
 			<li><a href="/vip-luxuria-acompanhantes-porto-alegre-poa/">Conhe&ccedil;a o Vip Lux&uacute;ria</a></li>
 			<li><a href="/lojas-sexshops-porto-alegre-poa/">Lojas e Sex Shops</a></li>
 			<li><a href="/vip-enquetes/">Vip Enquetes</a></li>
-			<li><a href="/vip-blog/">Vip Blog Notï¿½cias</a></li>
+			<li><a href="/vip-blog/">Vip Blog Notícias</a></li>
             <li><a href="/vip-recomenda/">Vip Recomenda</a></li>
             <li><a href="/m/index.php">Vip Mobile</a></li>
             <li><a href="/tutorial/">Vip Mobile - Tutorial</a></li>

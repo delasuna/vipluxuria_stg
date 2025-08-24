@@ -1,6 +1,6 @@
 <?php
 
-//pego os dados enviados pelo formulï¿½rio 
+//pego os dados enviados pelo formulário 
 $nomeBD = $_POST["nomeBD"]; 
 $emailBD = $_POST["emailBD"]; 
 $telefoneBD = $_POST["telefoneBD"]; 
@@ -44,9 +44,9 @@ $locais = $_POST["locais"];
 $cidades = $_POST["cidades"];
 
 
-$emailsender = "felipe@vipluxuriagold.net";
+$emailsender = "felipe@vipluxuria.com";
 $emaildestinatario = "rguimaraes-rs@hotmail.com";
-$corpo = "Seguem as informaï¿½ï¿½es e imagens a serem alteradas no perfil da anunciante. <BR>"; 
+$corpo = "Seguem as informações e imagens a serem alteradas no perfil da anunciante. <BR>"; 
 
 if ($nomeBD != "")
 	$corpo .= "<BR> Nome apenas para consultar no sistema:" . $nomeBD;
@@ -86,7 +86,7 @@ if ($quadril != "")
 if ($cintura != "")
 	$corpo .= "<BR> Cintura: " . $cintura;
 if ($pes != "")
-	$corpo .= "<BR> Pï¿½s: " . $pes;
+	$corpo .= "<BR> Pés: " . $pes;
 if ($manequim != "")
 	$corpo .= "<BR> Manequim: " . $manequim;
 
@@ -99,9 +99,9 @@ if ($oral != "")
 if ($anal != "")
 	$corpo .= "<BR> Anal: " . $anal;
 if ($dominacao != "")
-	$corpo .= "<BR> Dominaï¿½ï¿½o: " . $dominacao;
+	$corpo .= "<BR> Dominação: " . $dominacao;
 if ($inversao != "")
-	$corpo .= "<BR> Inversï¿½o: " . $inversao;
+	$corpo .= "<BR> Inversão: " . $inversao;
 if ($atendoEles != "")
 	$corpo .= "<BR> Atendo Eles: " . $atendoEles;
 if ($atendoElas != "")
@@ -109,7 +109,7 @@ if ($atendoElas != "")
 if ($atendoCasais != "")
 	$corpo .= "<BR> Atendo Casais: " . $atendoCasais;
 if ($acessorios != "")
-	$corpo .= "<BR> Acessï¿½rios: " . $acessorios;
+	$corpo .= "<BR> Acessórios: " . $acessorios;
 if ($eventos != "")
 	$corpo .= "<BR> Eventos: " . $eventos;
 if ($viagens != "")
@@ -122,7 +122,7 @@ if ($atende24horas != "")
 if ($mensagem1 != "")
 	$corpo .= "<BR><BR> Mensagem: " . $mensagem1 . "<BR>";
 if ($horario != "")
-	$corpo .= "<BR> Horï¿½rio: " . $horario;
+	$corpo .= "<BR> Horário: " . $horario;
 if ($cache != "")
 	$corpo .= "<BR> Cache: " . $cache;
 if ($locais != "")
@@ -137,7 +137,7 @@ $email = new PHPMailer();
 $email->IsHTML(true);
 $email->From      = $emailsender;
 $email->FromName  = $nome;
-$email->Subject   = 'Atualizaï¿½ï¿½o de Perfil de Anunciante - Vip Luxï¿½ria';
+$email->Subject   = 'Atualização de Perfil de Anunciante - Vip Luxúria';
 $email->Body      = $corpo;
 $email->AddAddress( $emaildestinatario );
 
@@ -238,12 +238,12 @@ $enviado = $email->Send();
 if ($enviado) {
 	echo "E-mail enviado com Sucesso!";
 } else {
-	echo "Nï¿½o foi possï¿½vel enviar o e-mail.";
-	echo "Informaï¿½ï¿½es do erro: " . $mail->ErrorInfo;
+	echo "Não foi possível enviar o e-mail.";
+	echo "Informações do erro: " . $mail->ErrorInfo;
 }
 
 /*
-$emailsender = "felipe@vipluxuriagold.net";
+$emailsender = "felipe@vipluxuria.com";
 $emaildestinatario = "rguimaraes-rs@hotmail.com";
 $assunto = "teste PHPMail";
 

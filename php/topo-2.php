@@ -2,11 +2,11 @@
 {
   "schema": {
     "@context": "https://schema.org",
-    "@type": "Negï¿½cio de entretenimento",
+    "@type": "Negócio de entretenimento",
     "@id": "",
-    "name": "Vip Luxï¿½ria - Acompanhantes Porto Alegre",
-    "image": "https://vipluxuriagold.net/imagens/estrutura/vip-luxuria-logo.png",
-    "url": "https://vipluxuriagold.net",
+    "name": "Vip Luxúria - Acompanhantes Porto Alegre",
+    "image": "https://vipluxuria.com/imagens/estrutura/vip-luxuria-logo.png",
+    "url": "https://vipluxuria.com",
     "email": "vipluxuria@hotmail.com",
     "telephone": "+5551981440470",
     "address": {
@@ -65,8 +65,8 @@ function prepareForms() {
 
 <?
 function tirarAcentos($string){ 
-	//echo "teste=" . preg_replace(array("/(ï¿½|ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½)/","/(ï¿½)/"),explode(" ","a A e E i I o O u U n N"),$string);
-    return preg_replace(array("/(ï¿½|ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½|ï¿½|ï¿½|ï¿½)/","/(ï¿½)/","/(ï¿½)/","/(ï¿½)/"),explode(" ","a A e E i I o O u U n N c"),$string); 
+	//echo "teste=" . preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"),$string);
+    return preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/","/(ç)/"),explode(" ","a A e E i I o O u U n N c"),$string); 
 } 
   
 ?>

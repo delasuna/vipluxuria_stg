@@ -1,30 +1,14 @@
-<?php 	$conexao = require_once '../php/conecta_mysql.php';  ?>
-<?php
+<? 	$conexao = require_once '../php/conecta_mysql.php';  ?>
+<?
 
 	function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
-}
+		// remove palavras que contenham sintaxe sql
+		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+		$sql = trim($sql);//limpa espa�os vazio
+		$sql = strip_tags($sql);//tira tags html e php
+		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+		return $sql;
+	}
 
 if (anti_injection($_POST["amigoIndicado"]) == "S") {
 	if (anti_injection($_POST["nomeQuemIndicou"]) != "" && 
@@ -52,10 +36,10 @@ if (anti_injection($_POST["amigoIndicado"]) == "S") {
 		$mail->IsSMTP();
 		$mail->SMTPAuth = true;
 		$mail->Port = 587;
-		$mail->Host = "smtp.vipluxuriagold.net"; 
-		$mail->Username = "felipevip@vipluxuriagold.net"; 
+		$mail->Host = "smtp.vipluxuria.com"; 
+		$mail->Username = "felipevip@vipluxuria.com"; 
 		$mail->Password = "felipe2016"; 
-		$mail->SetFrom("felipevip@vipluxuriagold.net", "$nomeQuemIndicou <$emailsender>");
+		$mail->SetFrom("felipevip@vipluxuria.com", "$nomeQuemIndicou <$emailsender>");
 		$mail->AddAddress("$emaildestinatario", "$nomeQuemIndicou");
 		$mail->Subject = $nomeQuemIndicou. ' indicou uma Anunciante!';
 		$mail->MsgHTML($corpo); 
@@ -74,12 +58,12 @@ if (anti_injection($_POST["amigoIndicado"]) == "S") {
 	}
 }
 
-if (isset($_REQUEST["votacao"]) ? $_REQUEST["votacao"] : "" == "S") {
+if ($_REQUEST["votacao"] == "S") {
 	//session_start();
 	$ip = getenv("REMOTE_ADDR");
 
 	$sql = " SELECT * FROM votacaomulher "
-	 . " WHERE idMulher = " . anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "") . " AND ip='" .$ip . "';";
+	 . " WHERE idMulher = " . anti_injection($_REQUEST["id"]) . " AND ip='" .$ip . "';";
 								 
 	$resultado = mysql_query($sql, $conexao);
 	if(!$resultado){
@@ -89,22 +73,22 @@ if (isset($_REQUEST["votacao"]) ? $_REQUEST["votacao"] : "" == "S") {
 	$sts = mysql_query($sql);
 	$registros = mysql_num_rows($sts);
 	if ($registros==0) {
-		if (isset($_REQUEST["voto"]) ? $_REQUEST["voto"] : "" == "aprovado") {
-			$sql = " UPDATE mulher SET quantidadeVotos= if (quantidadeVotos is null, '0', quantidadeVotos)+1 WHERE idMulher = " . anti_injection(anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "")) . ";"; 
-		} else if (isset($_REQUEST["voto"]) ? $_REQUEST["voto"] : "" == "reprovado") {
-			$sql = " UPDATE mulher SET quantidadeVotos= if (quantidadeVotos is null, '0', if (quantidadeVotos > 0, quantidadeVotos-1, '0')) WHERE idMulher = " . anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "") . ";"; 
+		if ($_REQUEST["voto"] == "aprovado") {
+			$sql = " UPDATE mulher SET quantidadeVotos= if (quantidadeVotos is null, '0', quantidadeVotos)+1 WHERE idMulher = " . anti_injection(anti_injection($_REQUEST["id"])) . ";"; 
+		} else if ($_REQUEST["voto"] == "reprovado") {
+			$sql = " UPDATE mulher SET quantidadeVotos= if (quantidadeVotos is null, '0', if (quantidadeVotos > 0, quantidadeVotos-1, '0')) WHERE idMulher = " . anti_injection($_REQUEST["id"]) . ";"; 
 		}
 		$resultado = mysql_query($sql, $conexao);
 		
-		$sql = " INSERT votacaomulher SET idMulher= " . anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "") . ", ip='" .$ip . "'"; 
+		$sql = " INSERT votacaomulher SET idMulher= " . anti_injection($_REQUEST["id"]) . ", ip='" .$ip . "'"; 
 		$resultado = mysql_query($sql, $conexao);
 
 	}
 }
 
-						if (anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "") != "") {
+						if (anti_injection($_REQUEST["id"]) != "") {
 							$sql = " SELECT * FROM mulher "
-								 . " WHERE flagAtivo = 'Sim' and idMulher = " . anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "");
+								 . " WHERE flagAtivo = 'Sim' and idMulher = " . anti_injection($_REQUEST["id"]);
 								 
 							$resultado = mysql_query($sql, $conexao);
 							if(!$resultado){
@@ -225,7 +209,7 @@ if (isset($_REQUEST["votacao"]) ? $_REQUEST["votacao"] : "" == "S") {
 <meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Er�tico Porto Alegre, Guia de Acompanhantes Porto Alegre, An�ncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
 
 <title>
-<?php									
+<?									
 	if ($flagTipo == "Lo") { 
 		$tipo = "Loira";
 	} else if ($flagTipo = "Mo"){
@@ -240,15 +224,15 @@ if (isset($_REQUEST["votacao"]) ? $_REQUEST["votacao"] : "" == "S") {
 </title>
 
 <!--CSS-->
-<link href="https://vipluxuriagold.net/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
-<link href="https://vipluxuriagold.net/css-js/menu-2.css" rel="stylesheet" type="text/css" />
-<link href="https://vipluxuriagold.net/css-js/ampliacao-2.css" rel="stylesheet" type="text/css" />
+<link href="https://vipluxuria.com/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
+<link href="https://vipluxuria.com/css-js/menu-2.css" rel="stylesheet" type="text/css" />
+<link href="https://vipluxuria.com/css-js/ampliacao-2.css" rel="stylesheet" type="text/css" />
 <!--CSS-->
 <!--FONTES-->
-<script src="https://vipluxuriagold.net/css-js/cufon-yui.js" type="text/javascript"></script>
-<script src="https://vipluxuriagold.net/css-js/nome_400.font.js" type="text/javascript"></script>
-<script src="https://vipluxuriagold.net/css-js/titulo_400.font.js" type="text/javascript"></script>
-<script src="https://vipluxuriagold.net/Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="https://vipluxuria.com/css-js/cufon-yui.js" type="text/javascript"></script>
+<script src="https://vipluxuria.com/css-js/nome_400.font.js" type="text/javascript"></script>
+<script src="https://vipluxuria.com/css-js/titulo_400.font.js" type="text/javascript"></script>
+<script src="https://vipluxuria.com/Scripts/swfobject_modified.js" type="text/javascript"></script>
 <script type="text/javascript">
 	Cufon.replace('h1');
 	Cufon.replace('h1#titulo,#menu-rodape-content',{ fontFamily: 'titulo' }); 
@@ -256,9 +240,9 @@ if (isset($_REQUEST["votacao"]) ? $_REQUEST["votacao"] : "" == "S") {
 <!--FONTES-->
 
 <!--AMPLIA��O-->
-<script type="text/javascript" src="https://vipluxuriagold.net/css-js/visualizador/jquery.js"></script>
-<script type="text/javascript" src="https://vipluxuriagold.net/css-js/visualizador/jquery.lightbox-0.5.js"></script>
-<script type="text/javascript" src="https://vipluxuriagold.net/css-js/visualizador/common.js"></script>
+<script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.js"></script>
+<script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.lightbox-0.5.js"></script>
+<script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/common.js"></script>
 <script>
 		var arrImg = new Array(
 			"<?="/sistema/content/".$imagemCentral1?>",
@@ -347,7 +331,7 @@ document.onmouseup = desabilitaBotaoDireito;
 <script src="../css-js/jquery.video-extend.js"></script>
 
 
-<?php
+<?
 function curPageURL() {
  $pageURL = 'http';
  if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
@@ -368,10 +352,10 @@ function curPageURL() {
 
 <body>
 
-<form name="form2" method="post" action='perfil.php?id=<?=anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "")?>'>
+<form name="form2" method="post" action='perfil.php?id=<?=anti_injection($_REQUEST["id"])?>'>
 	<input type="hidden" name="votacao" id="votacao" value="N"> 
 	<input type="hidden" name="voto" id="voto" value="N"> 
-	<input type="hidden" name="id" value='<?=anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "")?>'> 
+	<input type="hidden" name="id" value='<?=anti_injection($_REQUEST["id"])?>'> 
 </form>
 
 
@@ -391,7 +375,7 @@ function curPageURL() {
                 	<div id="coluna-perfil-esq">
 							<div class="nome-acompanhante"><?=$nome?> <?=$sobrenome?></div>
 							<div id="telefone">
-									<?php
+									<?
 									if ($idOperadora != "") {
 										if ($idOperadora == 1)
 											$operadora = "Oi";
@@ -416,7 +400,7 @@ function curPageURL() {
 									}
 									
 								?>						
-								<?php if ($telefone2 != "")
+								<? if ($telefone2 != "")
 									if ($idOperadora2 != "") {
 										if ($idOperadora2 == 1)
 											$operadora2 = "Oi";
@@ -444,41 +428,41 @@ function curPageURL() {
 								<p class="aviso">Ligue e diga que me viu no Vip Lux&uacute;ria!</p>                                                	
 							</div><!--TELEFONE-->				
 							<div class="clear"></div>				
-							<?php if ($flagWhats != "" && $flagWhats == "S") { ?>  
+							<? if ($flagWhats != "" && $flagWhats == "S") { ?>  
 								<div id="bt-whatsapp"> 
-									<a href="https://api.whatsapp.com/send?phone=<?php echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento!" target="_blank">
+									<a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento!" target="_blank">
 										<img src="/imagens/estrutura/bt-whatsapp.png" width="264" height="48" alt="Whatsapp" />
 									</a>
 								</div><!-- bt-whatsapp -->
-							<?php } ?>    
+							<? } ?>    
 							
-							<?php if ($flagSexoVirtual != "" && $flagSexoVirtual == "S") { ?> 
+							<? if ($flagSexoVirtual != "" && $flagSexoVirtual == "S") { ?> 
 								<div id="bt-video"> 
-										<a href="https://api.whatsapp.com/send?phone=<?php echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento de Sexo Virtual!" target="_blank">
+										<a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento de Sexo Virtual!" target="_blank">
 										<img src="/imagens/estrutura/bt-video.png" width="264" height="48" alt="Meu V�deo" />
 										</a>
 									</a>
 								</div><!-- bt-video -->							
-							<?php } ?>    
+							<? } ?>    
 
 					
-						<?php if ($email != "" || $site != "" || $outros != "" || $twitter != "") { ?>
+						<? if ($email != "" || $site != "" || $outros != "" || $twitter != "") { ?>
 							<div class="linha-horizontal"></div> 
 							<div id="contatos">
-								<?php if ($email != "") {?>
+								<? if ($email != "") {?>
 									<p class="e-mail"><?=$email?></p>
-								<?php } ?>
-								<?php if ($site != "") {?>
+								<? } ?>
+								<? if ($site != "") {?>
 									<p class="site"><?=$site?></p>
-								<?php } ?>
-								<?php if ($twitter != "") {?>
+								<? } ?>
+								<? if ($twitter != "") {?>
 									<p class="twitter"><?=$twitter?></p>
-								<?php } ?>
-								<?php if ($outros != "") {?>
+								<? } ?>
+								<? if ($outros != "") {?>
 									<p class="outros"><?=$outros?></p>
-								<?php } ?>								
+								<? } ?>								
 							</div>						
-						<?php } ?>                       
+						<? } ?>                       
                         <div class="linha-horizontal"></div>			
 						<div id="atendimento">
                         	<h3>Atendimento</h3>
@@ -489,14 +473,14 @@ function curPageURL() {
                                 <li><span class="rotulo">Cidades:</span> <?=$cidades?></li>
                             </ul>    
 							
-							<?php if ($aceitoCartao != "" && $aceitoCartao == "Sim") { ?> 
+							<? if ($aceitoCartao != "" && $aceitoCartao == "Sim") { ?> 
 								<div id="cartoes"><img src="/imagens/estrutura/aceito-cartoes.png" alt="Aceito Cart�es"/></div>      
-							<?php } ?>    
+							<? } ?>    
 							                        
                         </div>							
 						<div class="linha-horizontal"></div>
 						
-						<?php if ($video != "" && $flagTemVideo != "Nao") { ?>                       
+						<? if ($video != "" && $flagTemVideo != "Nao") { ?>                       
                         <div id="video">
 							<h3>V&iacute;deo - M&iacute;dia de Compara&ccedil;&atilde;o</h3>
 							<video width="320" height="240" controls>
@@ -504,37 +488,37 @@ function curPageURL() {
 							</video>	
                         </div>
 						<div class="linha-horizontal"></div>                        
-					    <?php } ?>
+					    <? } ?>
                         
-						<?php 
+						<? 
 						if ($flagMostraConteudoExtra != ""  && $flagMostraConteudoExtra != NULL && $flagMostraConteudoExtra == "S") {
 							if ($imagemExtra1 != ""  && $imagemExtra1 != NULL){ 
 						?>						                   
 							<div id="fotos-caseiras">
 								<h3>Fotos Caseiras</h3>
-								<?php if ($imagemExtra1 != "") { ?>
+								<? if ($imagemExtra1 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra1?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra1?>" width="100" height="100" alt="Caseira de <?=$nome?> <?=$sobrenome?> 01"/></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra2 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra2 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra2?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra2?>" width="100" height="100" alt="Caseira de <?=$nome?> <?=$sobrenome?> 02" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra3 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra3 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra3?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra3?>" width="100" height="100" alt="Caseira de <?=$nome?> <?=$sobrenome?> 03" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra4 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra4 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra4?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra4?>" width="100" height="100" alt="Caseira de <?=$nome?> <?=$sobrenome?> 04" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra5 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra5 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra5?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra5?>" width="100" height="100" alt="Caseira de <?=$nome?> <?=$sobrenome?> 05" /></a></div>
-								<?php } ?>
-								<?php if ($imagemExtra6 != "") { ?>
+								<? } ?>
+								<? if ($imagemExtra6 != "") { ?>
 									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra6?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra6?>" width="100" height="100" alt="Caseira de <?=$nome?> <?=$sobrenome?> 06" /></a></div>
-								<?php } ?>
+								<? } ?>
 	
 								<div class="clear"></div> 
 							</div> <!-- fotos-caseiras -->
 							<div class="linha-horizontal"></div> 
-                        <?php 
+                        <? 
 							}
 						} 
 						?>
@@ -612,24 +596,24 @@ function curPageURL() {
 	// 	$tipo = "Mulata";
 	// }
 	// echo $nome . " " .  $sobrenome . " - " . $tipo . " - Mulheres - Vip Lux&uacute;ria - Acompanhantes Porto Alegre"; 
-// ?>&url=<?php echo curPageURL(); ?>"><img src="/imagens/estrutura/compartilhe-twitter.png" alt="Compartilhe no Twitter" /></a>
+// ?>&url=<? echo curPageURL(); ?>"><img src="/imagens/estrutura/compartilhe-twitter.png" alt="Compartilhe no Twitter" /></a>
 						</div> -->
 						
                         <div class="clear"></div>
 						<div id="me-indique">
                         	<h3>Me indique para um Amigo</h3>
-							<form name="form3" method="post" action='/perfil/<?=anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "")?>/<?=tirarAcentos($nome)?><?php if($sobrenome != "") { echo "-".tirarAcentos(str_replace(" ", "-", $sobrenome));}?>'>
+							<form name="form3" method="post" action='/perfil/<?=anti_injection($_REQUEST["id"])?>/<?=tirarAcentos($nome)?><? if($sobrenome != "") { echo "-".tirarAcentos(str_replace(" ", "-", $sobrenome));}?>'>
 								<input type="hidden" name="amigoIndicado" id="amigoIndicado" value="N"> 
-								<input type="hidden" name="nomeAnunciante" id="nomeAnunciante" value="<?php echo $nome . " " .  $sobrenome ?>"> 
-								<input type="hidden" name="linkAnunciante" id="linkAnunciante" value="https://vipluxuriagold.net/conteudo/perfil.php?id=<?=anti_injection($_REQUEST['id'])?>"> 
+								<input type="hidden" name="nomeAnunciante" id="nomeAnunciante" value="<? echo $nome . " " .  $sobrenome ?>"> 
+								<input type="hidden" name="linkAnunciante" id="linkAnunciante" value="https://vipluxuria.com/conteudo/perfil.php?id=<?=anti_injection($_REQUEST['id'])?>"> 
 							
-								<input type="hidden" name="id" value='<?=anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "")?>'> 
+								<input type="hidden" name="id" value='<?=anti_injection($_REQUEST["id"])?>'> 
 								
 								<input name="nomeQuemIndicou" id="nomeQuemIndicou" type="text" placeholder="Seu Nome" />
 								<input name="emailQuemIndicou" id="emailQuemIndicou" type="text" placeholder="Seu E-mail" />
 								<input name="nomeAmigo" id="nomeAmigo" type="text" placeholder="Nome do Amigo" />
 								<input name="emailAmigo" id="emailAmigo" type="text" placeholder="E-mail do Amigo" />
-								<div class="bt-enviar"><img src="https://vipluxuriagold.net/imagens/estrutura/bt-enviar-indique.png" onclick="indicaAmigo()" alt="Bot�o para Indicar" /></div>
+								<div class="bt-enviar"><img src="https://vipluxuria.com/imagens/estrutura/bt-enviar-indique.png" onclick="indicaAmigo()" alt="Bot�o para Indicar" /></div>
 							</form>
 							<div class="clear"></div>
 						</div> 
@@ -649,7 +633,7 @@ function curPageURL() {
 </div><!--wrap-->
 <script type="text/javascript"> Cufon.now(); </script>
 <?php include("../php/google.php"); ?>
-<script type="text/javascript" src="https://vipluxuriagold.net/css-js/visualizador/perfil.js"></script>
+<script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/perfil.js"></script>
 
 <!-- JS - FANCYBOX -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -657,4 +641,4 @@ function curPageURL() {
 
 </body>
 </html>
-<?php } ?>
+<? } ?>

@@ -1,56 +1,31 @@
-<?php 	$conexao = require_once '../php/conecta_mysql.php';  ?>
-<?php
-
-function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
-}
+<? 	$conexao = require_once '../php/conecta_mysql.php';  ?>
+<?
 
 	$whereSEO = " descricao = 'Home' ";
 
-	if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Loiras") {
+	if (anti_injection($_REQUEST["flagTipo"]) == "Loiras") {
 		$whereSEO = " descricao = 'Loiras' ";
 	}
-	if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Morenas") {
+	if (anti_injection($_REQUEST["flagTipo"]) == "Morenas") {
 		$whereSEO = " descricao = 'Morenas' ";
 	} 
-	if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Mulatas") {
+	if (anti_injection($_REQUEST["flagTipo"]) == "Mulatas") {
 		$whereSEO = " descricao = 'Mulatas' ";
 	}
 	
-	if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Atende24Horas") {
+	if (anti_injection($_REQUEST["flagTipo"]) == "Atende24Horas") {
 		$whereSEO = " descricao = 'Atende24Horas' ";
 	}
 
-	if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "ComVideo") {
+	if (anti_injection($_REQUEST["flagTipo"]) == "ComVideo") {
 		$whereSEO = " descricao = 'ComVideo' ";
 	}
 
-	if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "ComLocal") { 
+	if (anti_injection($_REQUEST["flagTipo"]) == "ComLocal") { 
 		$whereSEO = " descricao = 'ComLocal' ";
 	}
 
-	if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "SexoVirtual") {
+	if (anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual") {
 		$whereSEO = " descricao = 'SexoVirtual' ";
 	}		
 
@@ -58,7 +33,7 @@ function anti_injection($sql) {
 
 	$resultado = mysql_query($sql, $conexao);
 	if(!$resultado){
-		die("Impossível visualizar SEO: " . mysql_error() . '<br>');
+		die("ImpossÃ­vel visualizar SEO: " . mysql_error() . '<br>');
 	}
 
 							
@@ -71,15 +46,26 @@ function anti_injection($sql) {
 			$keywords = $row['keywords'];     
 		} 
 	}
+?>
+
+<? 
+function anti_injection($sql) {
+	// remove palavras que contenham sintaxe sql
+	$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+	$sql = trim($sql);//limpa espaÃ§os vazio
+	$sql = strip_tags($sql);//tira tags html e php
+	$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+	return $sql;
+}
 
 $cidade = "";
-if (anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "") != "") {
-	$idCidade = anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "");
+if (anti_injection($_REQUEST["idCidade"]) != "") {
+	$idCidade = anti_injection($_REQUEST["idCidade"]);
 	$sql = "SELECT idCidade, cidade FROM cidade WHERE idCidade = ".$idCidade;
 
 	$resultado = mysql_query($sql, $conexao);
 	if(!$resultado){
-		die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
+		die("ImpossÃ­vel visualizar as cidades: " . mysql_error() . '<br>');
 	}
 
 	while($row = mysql_fetch_array($resultado)) {
@@ -96,16 +82,16 @@ if (anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "") !=
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="robots" content="index,follow">
  
-<?php if (anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "") != "") { 	?>
-	<meta name="description" content="Vip Luxúria é um classificados de anúncios de Acompanhantes de <?=$cidade?>." />
-	<meta name="keywords" content="Acompanhantes <?=$cidade?>, Acompanhantes em <?=$cidade?>, Acompanhante em <?=$cidade?>, Garota de Programa <?=$cidade?>, Garotas de Programa <?=$cidade?>, Acompanhante <?=$cidade?>, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erótico <?=$cidade?>, Guia de Acompanhantes <?=$cidade?>, Anúncios de Acompanhantes <?=$cidade?>, Acompanhantes POA, Acompanhante" />
+<? if (anti_injection($_REQUEST["idCidade"]) != "") { 	?>
+	<meta name="description" content="Vip LuxÃºria Ã© um classificados de anÃºncios de Acompanhantes de <?=$cidade?>." />
+	<meta name="keywords" content="Acompanhantes <?=$cidade?>, Acompanhantes em <?=$cidade?>, Acompanhante em <?=$cidade?>, Garota de Programa <?=$cidade?>, Garotas de Programa <?=$cidade?>, Acompanhante <?=$cidade?>, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia ErÃ³tico <?=$cidade?>, Guia de Acompanhantes <?=$cidade?>, AnÃºncios de Acompanhantes <?=$cidade?>, Acompanhantes POA, Acompanhante" />
 	<!-- <title>Mulheres - Vip Lux&uacute;ria - Acompanhantes Porto Alegre - Acompanhantes <?=$cidade?></title> -->
-	<title>Vip Luxúria - Acompanhantes <?=$cidade?></title>
-<?php } else {  ?>
+	<title>Vip Lux&uacute;ria - Acompanhantes <?=$cidade?></title>
+<? } else {  ?>
 	<meta name="description" content="<?=$description?>" />
 	<meta name="keywords" content="<?=$keywords?>" />
 	<title><?=$title?></title>
-<?php } ?>
+<? } ?>
 
 <!--CSS-->
 <link href="/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
@@ -155,61 +141,61 @@ if (anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "") !=
             	<div id="coluna-full">
 					<div id="titulo-pagina"><img src="/imagens/estrutura/titulo-mulheres-2.png" width="760" height="41" /></div>
 						
-						<?php if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "SexoVirtual") { ?>
+						<? if (anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual") { ?>
 						<div id="nota">
-							<p>Este espaço é destinado a destacar as acompanhantes que fazem shows privados pelo WhatsApp e venda de pacote de fotos, venda de vídeos!
-E é tudo muito simples. Chame a garota de sua preferência, combine as condições e usufrua de sua companhia virtual!</p><br>
-							<p><i><strong>Consulte diretamente com a anunciante os serviços oferecidos por ela!</strong></i></p>
+							<p>Este espaÃ§o Ã© destinado a destacar as acompanhantes que fazem shows privados pelo WhatsApp e venda de pacote de fotos, venda de vÃ­deos!
+E Ã© tudo muito simples. Chame a garota de sua preferÃªncia, combine as condiÃ§Ãµes e usufrua de sua companhia virtual!</p><br>
+							<p><i><strong>Consulte diretamente com a anunciante os serviÃ§os oferecidos por ela!</strong></i></p>
 						</div> <!-- nota -->
-						<?php } ?>	 						
+						<? } ?>	 						
 						
 					<ul id="thumbs-full">
-						<?php
+						<?
 						$where = " WHERE  flagAtivo = 'Sim' ";
 						$whereClassificados = " WHERE '1'='1'   ";
 					
-						if (anti_injection(isset($_REQUEST["nome"]) ? $_REQUEST["nome"] : "") != "") {
-							$where = $where . " and nomeURL like '%" . anti_injection(isset($_REQUEST["nome"]) ? $_REQUEST["nome"] : "") . "%' ";
+						if (anti_injection($_REQUEST["nome"]) != "") {
+							$where = $where . " and nomeURL like '%" . anti_injection($_REQUEST["nome"]) . "%' ";
 						}						
 						
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Loiras") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "Loiras") {
 							$where = $where . " and flagTipo = 'Lo' ";
 							$whereClassificados = $whereClassificados . " and flagTipo = 'Lo' ";
 						}
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Morenas") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "Morenas") {
 							$where = $where . " and flagTipo = 'Mo' ";
 							$whereClassificados = $whereClassificados . " and flagTipo = 'Mo' ";
 						} 
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Mulatas") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "Mulatas") {
 							$where = $where . " and flagTipo = 'Mu' ";
 							$whereClassificados = $whereClassificados . " and flagTipo = 'Mu' ";
 						}
 						
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "Atende24Horas") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "Atende24Horas") {
 							$where = $where . " and flagAtende24Horas = 'Sim' ";
 							$whereClassificados = $whereClassificados . " and flagAtende24Horas = 'Sim' ";
 						}
 
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "ComVideo") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "ComVideo") {
 							$where = $where . " and flagTemVideo = 'Sim' ";
 							$whereClassificados = $whereClassificados . " and flagTemVideo = 'Sim' ";							
 						}
 
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "ComLocal") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "ComLocal") {
 							$where = $where . " and atendoLocalProprio = 'Sim' "; 
 							$whereClassificados = $whereClassificados . " and flagComLocal = 'Sim' ";
 						}
 
-						if (anti_injection(isset($_REQUEST["flagTipo"]) ? $_REQUEST["flagTipo"] : "") == "SexoVirtual") {
+						if (anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual") {
 							$where = $where . " and flagSexoVirtual = 'S' ";
 							$whereClassificados = $whereClassificados . " and flagSexoVirtual = 'Sim' ";
 						}
 						
-						if (anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "") != "") {
-							//$where = $where . " and cidade = " . anti_injection(isset($_REQUEST["cidade"]) ? $_REQUEST["cidade"] : "") . " ";
+						if (anti_injection($_REQUEST["idCidade"]) != "") {
+							//$where = $where . " and cidade = " . anti_injection($_REQUEST["cidade"]) . " ";
 								 
 							$sql = " SELECT * FROM mulher " 
-								 . " JOIN mulherCidade ON (mulher.idMulher = mulherCidade.idMulher AND mulherCidade.idCidade = " . anti_injection(isset($_REQUEST["idCidade"]) ? $_REQUEST["idCidade"] : "") . ")"  
+								 . " JOIN mulherCidade ON (mulher.idMulher = mulherCidade.idMulher AND mulherCidade.idCidade = " . anti_injection($_REQUEST["idCidade"]) . ")"  
 								 . $where
 								 . " ORDER BY flagPreferencial desc, rand(); ";
 								 
@@ -221,14 +207,14 @@ E é tudo muito simples. Chame a garota de sua preferência, combine as condições 
 										 
 						$resultado = mysql_query($sql, $conexao);
 						if(!$resultado){
-							die("Impossível visualizar as anunciantes: " . mysql_error() . '<br>');
+							die("ImpossÃ­vel visualizar as anunciantes: " . mysql_error() . '<br>');
 						}
 						$contador = 0;
 		
 						$sts = mysql_query($sql);
 						$registros = mysql_num_rows($sts);
 						
-						$comAcentos = array('à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'O', 'Ù', 'Ü', 'Ú');
+						$comAcentos = array('Ã ', 'Ã¡', 'Ã¢', 'Ã£', 'Ã¤', 'Ã¥', 'Ã§', 'Ã¨', 'Ã©', 'Ãª', 'Ã«', 'Ã¬', 'Ã­', 'Ã®', 'Ã¯', 'Ã±', 'Ã²', 'Ã³', 'Ã´', 'Ãµ', 'Ã¶', 'Ã¹', 'Ã¼', 'Ãº', 'Ã¿', 'Ã€', 'Ã', 'Ã‚', 'Ãƒ', 'Ã„', 'Ã…', 'Ã‡', 'Ãˆ', 'Ã‰', 'ÃŠ', 'Ã‹', 'ÃŒ', 'Ã', 'ÃŽ', 'Ã', 'Ã‘', 'Ã’', 'Ã“', 'Ã”', 'Ã•', 'Ã–', 'O', 'Ã™', 'Ãœ', 'Ãš');
 						$semAcentos = array('a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U');
 		
 						if ($registros>0) {
@@ -242,10 +228,10 @@ E é tudo muito simples. Chame a garota de sua preferência, combine as condições 
 
 								if ($contador < 5) { 
 								?>
-									<li><a href="/perfil/<?=$idMulher?>/<?=str_replace($comAcentos, $semAcentos, $nome)?><?php if($sobrenome != "") { echo "-".str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));}?>"><img src="<?="/sistema/content/".$imagemCapa?>" width="112" height="149" /><p class="nome"><?=$nome?> <?=$sobrenome?></p></a></li>
-								<?php 	} else { ?>
-										<li class="last"><a href="/perfil/<?=$idMulher?>/<?=str_replace($comAcentos, $semAcentos, $nome)?><?php if($sobrenome != "") { echo "-".str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));}?>"><img src="<?="/sistema/content/".$imagemCapa?>" width="112" height="149" /><p class="nome"><?=$nome?> <?=$sobrenome?></p></a></li>
-								<?php  	$contador = 0;
+									<li><a href="/perfil/<?=$idMulher?>/<?=str_replace($comAcentos, $semAcentos, $nome)?><? if($sobrenome != "") { echo "-".str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));}?>"><img src="<?="/sistema/content/".$imagemCapa?>" width="112" height="149" /><p class="nome"><?=$nome?> <?=$sobrenome?></p></a></li>
+								<? 	} else { ?>
+										<li class="last"><a href="/perfil/<?=$idMulher?>/<?=str_replace($comAcentos, $semAcentos, $nome)?><? if($sobrenome != "") { echo "-".str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));}?>"><img src="<?="/sistema/content/".$imagemCapa?>" width="112" height="149" /><p class="nome"><?=$nome?> <?=$sobrenome?></p></a></li>
+								<?  	$contador = 0;
 								} 
 							}
 						}

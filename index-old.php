@@ -256,12 +256,12 @@
 
 	<!--<?php include("php/tags-index.php"); ?>-->
   	<!-- <div style="text-align:center; margin-top:100px; text-decoration:underline;">
-          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuriagold.net/acompanhantes_porto_alegre.php">ACOMPANHANTES PORTO ALEGRE</a></font></p><br/><br/>
-          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuriagold.net/acompanhantes_porto_alegre.php">ACOMPANHANTES em PORTO ALEGRE</a></font></p><br/><br/>
-          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuriagold.net/acompanhantes_porto_alegre.php">ACOMPANHANTES RS</a></font></p><br /><br/>
-          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuriagold.net/acompanhantes_porto_alegre.php">GAROTAS DE PROGRAMA PORTO ALEGRE</a></font></p><br /><br/>
-          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuriagold.net/acompanhantes_porto_alegre.php">GAROTAS DE PROGRAMA EM PORTO ALEGRE</a></font></p><br/><br/>
-          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuriagold.net/acompanhantes_porto_alegre.php">GAROTAS DE PROGRAMA RS</a></font></p><br><br>-->
+          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuria.com/acompanhantes_porto_alegre.php">ACOMPANHANTES PORTO ALEGRE</a></font></p><br/><br/>
+          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuria.com/acompanhantes_porto_alegre.php">ACOMPANHANTES em PORTO ALEGRE</a></font></p><br/><br/>
+          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuria.com/acompanhantes_porto_alegre.php">ACOMPANHANTES RS</a></font></p><br /><br/>
+          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuria.com/acompanhantes_porto_alegre.php">GAROTAS DE PROGRAMA PORTO ALEGRE</a></font></p><br /><br/>
+          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuria.com/acompanhantes_porto_alegre.php">GAROTAS DE PROGRAMA EM PORTO ALEGRE</a></font></p><br/><br/>
+          <p><font color="#FFFFFF" size="7"><a href="https://www.vipluxuria.com/acompanhantes_porto_alegre.php">GAROTAS DE PROGRAMA RS</a></font></p><br><br>-->
   </div>    
   <div id="rodape">
 	<?php include("php/rodape-2.php"); ?>

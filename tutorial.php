@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="robots" content="index,follow">
-<meta name="description" content="Vip Luxï¿½ria ï¿½ um classificados de anï¿½ncios de Acompanhantes de Porto Alegre." />
-<meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erï¿½tico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anï¿½ncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
+<meta name="description" content="Vip Luxúria é um classificados de anúncios de Acompanhantes de Porto Alegre." />
+<meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erótico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anúncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
 
 <title>Dicas - Vip Lux&uacute;ria - Acompanhantes Porto Alegre</title>
 
@@ -36,7 +36,7 @@
             	<div id="coluna-full">
                   	<img src="/imagens/tutorial-01.png" border="0" usemap="#Map" />
                     <map name="Map" id="Map">
-                      <area shape="rect" coords="74,346,363,378" href="http://www.vipluxuriagold.net/m" target="_blank" alt="Vers&atilde;o Smartphone" />
+                      <area shape="rect" coords="74,346,363,378" href="http://www.vipluxuria.com/m" target="_blank" alt="Vers&atilde;o Smartphone" />
                     </map>
                     <br/>
                   <img src="/imagens/tutorial-02.png" /><br/>
@@ -44,7 +44,7 @@
                   <img src="/imagens/tutorial-04.png" /><br/>
                   <img src="/imagens/tutorial-05.png" border="0" usemap="#Map2" />
                   <map name="Map2" id="Map2">
-                    <area shape="rect" coords="340,19,595,96" href="http://www.vipluxuriagold.net/m" />
+                    <area shape="rect" coords="340,19,595,96" href="http://www.vipluxuria.com/m" />
                   </map>
 				</div><!--coluna-full-->
 				<div class="clear"></div>	

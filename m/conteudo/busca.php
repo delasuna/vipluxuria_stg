@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
 <meta name="robots" content="index,follow">
-<meta name="description" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erï¿½tico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anï¿½ncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
-<meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erï¿½tico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anï¿½ncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
+<meta name="description" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erótico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anúncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
+<meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erótico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anúncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
 
 <title>Vip Lux&uacute;ria - Acompanhantes Porto Alegre</title>
 <link rel="stylesheet" href="../css-js/estilos.css" type="text/css"/>
@@ -49,9 +49,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
         <div id="menu-2"> 
         
-        	<a href="https://www.vipluxuriagold.net/m/conteudo/acompanhantes-porto-alegre.php"><img src="/m/imagens/estrutura/bt-mulheres.png" border="0" /></a>
+        	<a href="https://www.vipluxuria.com/m/conteudo/acompanhantes-porto-alegre.php"><img src="/m/imagens/estrutura/bt-mulheres.png" border="0" /></a>
         
-        	<a href="https://www.vipluxuriagold.net/m/conteudo/casais-e-homens.php"><img src="/m/imagens/estrutura/bt-casais.png" border="0" /></a>
+        	<a href="https://www.vipluxuria.com/m/conteudo/casais-e-homens.php"><img src="/m/imagens/estrutura/bt-casais.png" border="0" /></a>
         
         	<a href="https://www.vipluxuria.com/m/conteudo/transex.php"><img src="/m/imagens/estrutura/bt-transex.png" border="0" /></a>
         
@@ -98,7 +98,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 												   
 				  $resultado = mysql_query($sql, $conexao);
 				  if(!$resultado){
-					  die("Impossï¿½vel visualizar os banners: " . mysql_error() . '<br>');
+					  die("Impossível visualizar os banners: " . mysql_error() . '<br>');
 				  }
 				  $contador = 0;
 				  
@@ -128,7 +128,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 											   
 			  $resultado = mysql_query($sql, $conexao);
 			  if(!$resultado){
-				  die("Impossï¿½vel visualizar os banners: " . mysql_error() . '<br>');
+				  die("Impossível visualizar os banners: " . mysql_error() . '<br>');
 			  }
 			  $contador = 0;
 			  

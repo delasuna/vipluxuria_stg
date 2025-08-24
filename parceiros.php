@@ -60,9 +60,9 @@
                   		<p><strong>Seja nosso Parceiro!</strong></p>
                         <p>Para fazer uma parceria com o nosso site, copie o código-fonte abaixo, e cole em seu site. Envie-nos um e-mail (<a href="mailto:vipluxuria@hotmail.com">vipluxuria@hotmail.com</a>) informando que você deseja ser nosso parceiro, e junto, anexe o seu banner (.gif, .jpg, .png e .swf - no formato 468 x 60 pixels) ou código-fonte para incorporação.</p>
 
-								<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;"><a href="https://www.vipluxuriagold.net" target="_blank" ><img src="/imagens/parceiros/vip-luxuria.gif" alt="Vip Luxúria"></a></div>                       
+								<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;"><a href="https://www.vipluxuria.com" target="_blank" ><img src="/imagens/parceiros/vip-luxuria.gif" alt="Vip Luxúria"></a></div>                       
                        
-                        <pre>&lt;a href=&quot;https://www.vipluxuriagold.net&quot; target=&quot;_blank&quot;&gt;<br />&lt;img src=&quot;https://vipluxuriagold.net/imagens/parceiros/vip-luxuria.gif&quot; <br />alt=&quot;Vip Lux&uacute;ria - O guia er&oacute;tico mais completo do Brasil&quot; border=&quot;0&quot;&gt;&lt;/a&gt;</pre> <br/>
+                        <pre>&lt;a href=&quot;https://www.vipluxuria.com&quot; target=&quot;_blank&quot;&gt;<br />&lt;img src=&quot;https://vipluxuria.com/imagens/parceiros/vip-luxuria.gif&quot; <br />alt=&quot;Vip Lux&uacute;ria - O guia er&oacute;tico mais completo do Brasil&quot; border=&quot;0&quot;&gt;&lt;/a&gt;</pre> <br/>
                          
                         <p><em>Obs.: Somente aceitamos Parceiros fora da região de Porto Alegre e Grande Porto Alegre. Agradecemos a compreensão.</em></p>                       
 					</div><!--Parceiros-->

@@ -1,30 +1,14 @@
-<?php 	$conexao = require_once 'php/conecta_mysql.php';  ?>
-<?php
+<? 	$conexao = require_once 'php/conecta_mysql.php';  ?>
+<?
 
 	function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
-}
+		// remove palavras que contenham sintaxe sql
+		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+		$sql = trim($sql);//limpa espaços vazio
+		$sql = strip_tags($sql);//tira tags html e php
+		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+		return $sql;
+	}
 
 
 	function marcaRadio($arr,$name,$sel = "", $js="") {
@@ -41,9 +25,9 @@
 	}
 
 
-		if (anti_injection(isset($_REQUEST["emailBD"]) ? $_REQUEST["emailBD"] : "") != "") {
+		if (anti_injection($_REQUEST["emailBD"]) != "") {
 			$sql = " SELECT * FROM mulher "
-				 . " WHERE flagAtivo = 'Sim' and email = '" . anti_injection(isset($_REQUEST["emailBD"]) ? $_REQUEST["emailBD"] : "") . "'  ";
+				 . " WHERE flagAtivo = 'Sim' and email = '" . anti_injection($_REQUEST["emailBD"]) . "'  ";
 				 
 			$resultado = mysql_query($sql, $conexao);
 			if(!$resultado){
@@ -152,7 +136,7 @@
 
 
 <title>
-<?php									
+<?									
 	if ($flagTipo == "Lo") { 
 		$tipo = "Loira";
 	} else if ($flagTipo = "Mo"){
@@ -283,10 +267,10 @@ input[type=file] {
 
 <body>
 
-<form name="form2" method="post" action='perfil.php?id=<?=anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "")?>'>
+<form name="form2" method="post" action='perfil.php?id=<?=anti_injection($_REQUEST["id"])?>'>
 	<input type="hidden" name="votacao" id="votacao" value="N"> 
 	<input type="hidden" name="voto" id="voto" value="N"> 
-	<input type="hidden" name="id" value='<?=anti_injection(isset($_REQUEST["id"]) ? $_REQUEST["id"] : "")?>'> 
+	<input type="hidden" name="id" value='<?=anti_injection($_REQUEST["id"])?>'> 
 </form>
 
 <div id="wrap">
@@ -314,7 +298,7 @@ input[type=file] {
 					</div><!--NOME-->
 					<div id="telefone">
 						<p class="n-telefone">
-							<?php
+							<?
 							if ($idOperadora != "") {
 								if ($idOperadora == 1)
 									$operadora = "Oi";
@@ -340,7 +324,7 @@ input[type=file] {
 							
 						?>						
 						</p>
-						<?php if ($telefone2 != "")
+						<? if ($telefone2 != "")
 							if ($idOperadora2 != "") {
 								if ($idOperadora2 == 1)
 									$operadora2 = "Oi";
@@ -465,20 +449,20 @@ input[type=file] {
                         </div><!--40-->
                         <div id="faco" style="width: 270px;">
                         	<h3>O que Faço</h3>
-							<?php $lista_flag = array("Sim,Sim","Não,Não","Talvez,Talvez"); ?>
+							<? $lista_flag = array("Sim,Sim","Não,Não","Talvez,Talvez"); ?>
                             <ul>
-                            	<li style="margin-bottom: 6px;"><strong>Beijo na Boca?</strong> <?php marcaRadio($lista_flag, "beijoBoca",$flagBeijoBoca); ?> </li>
-                                <li style="margin-bottom: 6px;"><strong>Faço Oral?</strong> <?php marcaRadio($lista_flag, "oral",$flagOral); ?> </li>
-                                <li style="margin-bottom: 6px;"><strong>Faço Anal?</strong>  <?php marcaRadio($lista_flag, "anal",$flagAnal); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Faço Dominação?</strong>  <?php marcaRadio($lista_flag, "dominacao",$flagDominacao); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Faço Inversão?</strong>  <?php marcaRadio($lista_flag, "inversao",$flagInversao); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Atendo Eles?</strong>  <?php marcaRadio($lista_flag, "atendoEles",$flagAtendoEles); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Atendo Elas?</strong>  <?php marcaRadio($lista_flag, "atendoElas",$flagAtendoElas); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Atendo Casais?</strong>  <?php marcaRadio($lista_flag, "atendoCasais",$flagAtendoCasais); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Acessórios?</strong>  <?php marcaRadio($lista_flag, "acessorios",$flagAcessorios); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Eventos?</strong>  <?php marcaRadio($lista_flag, "eventos",$flagEventos); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Viagens?</strong>  <?php marcaRadio($lista_flag, "viagens",$flagViagens); ?></li>
-                                <li style="margin-bottom: 6px;"><strong>Tenho Amigas?</strong>  <?php marcaRadio($lista_flag, "tenhoAmigas",$flagTenhoAmigas); ?></li>
+                            	<li style="margin-bottom: 6px;"><strong>Beijo na Boca?</strong> <? marcaRadio($lista_flag, "beijoBoca",$flagBeijoBoca); ?> </li>
+                                <li style="margin-bottom: 6px;"><strong>Faço Oral?</strong> <? marcaRadio($lista_flag, "oral",$flagOral); ?> </li>
+                                <li style="margin-bottom: 6px;"><strong>Faço Anal?</strong>  <? marcaRadio($lista_flag, "anal",$flagAnal); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Faço Dominação?</strong>  <? marcaRadio($lista_flag, "dominacao",$flagDominacao); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Faço Inversão?</strong>  <? marcaRadio($lista_flag, "inversao",$flagInversao); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Atendo Eles?</strong>  <? marcaRadio($lista_flag, "atendoEles",$flagAtendoEles); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Atendo Elas?</strong>  <? marcaRadio($lista_flag, "atendoElas",$flagAtendoElas); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Atendo Casais?</strong>  <? marcaRadio($lista_flag, "atendoCasais",$flagAtendoCasais); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Acessórios?</strong>  <? marcaRadio($lista_flag, "acessorios",$flagAcessorios); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Eventos?</strong>  <? marcaRadio($lista_flag, "eventos",$flagEventos); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Viagens?</strong>  <? marcaRadio($lista_flag, "viagens",$flagViagens); ?></li>
+                                <li style="margin-bottom: 6px;"><strong>Tenho Amigas?</strong>  <? marcaRadio($lista_flag, "tenhoAmigas",$flagTenhoAmigas); ?></li>
                             </ul>
                         </div><!--60-->
                         <div class="clear"></div>
@@ -498,7 +482,7 @@ input[type=file] {
                             </ul>                            
                         </div>						
                         <div class="divisor" style="margin-top:40px; margin-bottom:70px;"></div> 
-						<?php if ($video != "" && $flagTemVideo != "Nao") { ?>                       
+						<? if ($video != "" && $flagTemVideo != "Nao") { ?>                       
 						<!--
                         <div id="video">
                         	<h3>Vídeo</h3>
@@ -506,7 +490,7 @@ input[type=file] {
                         </div>
 						<div class="divisor" style="margin-top:20px; margin-bottom:20px;"></div>                        
 						-->
-					    <?php } ?>
+					    <? } ?>
                         
 							<div class="bt-voltar" style="margin-top:40px;"><a href="javascript:window.history.go(-1)"><img src="/imagens/estrutura/bt-enviar.png" /></a></div>
                         </div>
@@ -531,4 +515,4 @@ input[type=file] {
 <script type="text/javascript" src="../css-js/visualizador/perfil.js"></script>
 </body>
 </html>
-<?php } ?>
+<? } ?>

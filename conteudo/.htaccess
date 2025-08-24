@@ -1,7 +1,7 @@
-# CONFIGURAR UTILIZAï¿½ï¿½O DO HTTPS
+# CONFIGURAR UTILIZAÇÃO DO HTTPS
 RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://vipluxuriagold.net/$1 [R,L]
+RewriteRule ^(.*)$ https://vipluxuria.com/$1 [R,L]
 
 <FilesMatch "\.(css|flv|gif|htm|html|ico|jpe|jpeg|jpg|js|png|pdf|swf|txt)$">
 	<IfModule mod_expires.c>
@@ -22,8 +22,8 @@ RewriteRule ^(.*)$ https://vipluxuriagold.net/$1 [R,L]
 
 RewriteEngine On
 
-#rewritecond %{http_host} ^vipluxuriagold.net [NC]
-#rewriterule ^(.*)$ http://www.vipluxuriagold.net/$1 [r=301,NC]
+#rewritecond %{http_host} ^vipluxuria.com [NC]
+#rewriterule ^(.*)$ http://www.vipluxuria.com/$1 [r=301,NC]
 
 
 

@@ -4,7 +4,7 @@
     	<div id="rodape-content">
   <div id="col-2-33">
    	<h3>Vip Lux&uacute;ria Recomenda</h3>
-    <a href="http://www.gpface.net/" target="_blank"><img src="/imagens/gp-face.png" width="200" height="75" /></a><a href="http://www.vipluxuriagold.net/felipepicture/" target="_blank"><img src="/imagens/felipe-picture-index.png" width="200" height="75" /></a><a href="http://www.vipluxuriagold.com" target="_blank"><img src="/imagens/vip-luxuria-gold-index.png" width="200" height="75" /></a><a href="/angelo-personal.php"><img src="/imagens/vip-recomenda-angelo-index.png" width="200" height="75" /></a></div>        
+    <a href="http://www.gpface.net/" target="_blank"><img src="/imagens/gp-face.png" width="200" height="75" /></a><a href="http://www.vipluxuria.com/felipepicture/" target="_blank"><img src="/imagens/felipe-picture-index.png" width="200" height="75" /></a><a href="http://www.vipluxuriagold.com" target="_blank"><img src="/imagens/vip-luxuria-gold-index.png" width="200" height="75" /></a><a href="/angelo-personal.php"><img src="/imagens/vip-recomenda-angelo-index.png" width="200" height="75" /></a></div>        
         	<div id="col-1">
             	<h3>Busca por Nome</h3>
                 <div class="busca" style="margin-left:-15px; margin-top:5px;">
@@ -76,17 +76,17 @@ if ($_REQUEST["acao"] == "assinar") {
 		$sql = " SELECT * FROM newsletter WHERE email = '" . $email . "'";
 		$resultado = mysql_query($sql, $conexao);
 		if(!$resultado){
-			die("Impossï¿½vel visualizar o newsletter: " . mysql_error() . '<br>');
+			die("Impossível visualizar o newsletter: " . mysql_error() . '<br>');
 		}
 		$sts = mysql_query($sql);
 		$registros = mysql_num_rows($sts);
 	
 		if ($registros>0) {
-				echo "'<script>alert('E-mail jï¿½ cadastrado!');</script>";		
+				echo "'<script>alert('E-mail já cadastrado!');</script>";		
 		} else {	
 			$sql = " INSERT INTO newsletter (email) VALUES ('" . $email . "');"; 
 			$resultado = mysql_query($sql, $conexao);
-			echo "'<script>alert('Vocï¿½ foi adicionado com sucesso!');</script>";
+			echo "'<script>alert('Você foi adicionado com sucesso!');</script>";
 		}
 	}
 }
@@ -97,7 +97,7 @@ if ($_REQUEST["acao"] == "remover") {
 	if (email != "") {
 		$sql = " DELETE FROM newsletter WHERE email = '" . $email ."'; "; 
 		$resultado = mysql_query($sql, $conexao);
-		echo "'<script>alert('Vocï¿½ foi removido com sucesso!');</script>";
+		echo "'<script>alert('Você foi removido com sucesso!');</script>";
 	}
 	
 	

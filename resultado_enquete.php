@@ -1,32 +1,16 @@
 
-<?php 
+<? 
 	function anti_injection($sql) {
-    if (empty($sql)) {
-        return '';
-    }
-    
-    // Lista de palavras perigosas para SQL
-    $palavras_perigosas = array(
-        'from', 'select', 'insert', 'delete', 'where', 'having', 
-        'union', 'drop table', 'sleep', 'show tables', '#', '--'
-    );
-    
-    // Remove palavras perigosas (case insensitive)
-    foreach ($palavras_perigosas as $palavra) {
-        $sql = preg_replace('/\b' . preg_quote($palavra, '/') . '\b/i', '', $sql);
-    }
-    
-    // Remove caracteres especiais perigosos
-    $sql = str_replace(array('\', '*', '|'), '', $sql);
-    $sql = trim($sql);
-    $sql = strip_tags($sql);
-    $sql = addslashes($sql);
-    
-    return $sql;
-}
+		// remove palavras que contenham sintaxe sql
+		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
+		$sql = trim($sql);//limpa espaços vazio
+		$sql = strip_tags($sql);//tira tags html e php
+		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
+		return $sql;
+	}
 	
 //recebo o id da enquete 
-$idEnquete = anti_injection(isset($_REQUEST["idEnquete"]) ? $_REQUEST["idEnquete"] : ""); 
+$idEnquete = anti_injection($_REQUEST["idEnquete"]); 
 
 $conexao = require_once 'php/conecta_mysql.php'; 
 
@@ -67,33 +51,33 @@ if ($registros>0) {
 	<TABLE ALIGN="center" WIDTH="75%" BORDER="0" CELLSPACING="1" CELLPADDING="1"> 
 	<!--DWLayoutTable--> 
 	<TR> 
-	<?php if ($alternativa1 != "") { ?>
-		<TD ALIGN="left" WIDTH="35%"><?php echo $alternativa1 ?> <div align="left"></div></TD> 
-		<TD><IMG HEIGHT="7" WIDTH="<?php echo $valor1*100/$totalValor?>%" SRC="/imagens/barras_enquete/barra1.gif"></TD> 
-		<TD ALIGN="center" WIDTH="14%"><?php echo $valor1 ?> votos</TD> 
-	<?php } ?>
+	<? if ($alternativa1 != "") { ?>
+		<TD ALIGN="left" WIDTH="35%"><? echo $alternativa1 ?> <div align="left"></div></TD> 
+		<TD><IMG HEIGHT="7" WIDTH="<? echo $valor1*100/$totalValor?>%" SRC="/imagens/barras_enquete/barra1.gif"></TD> 
+		<TD ALIGN="center" WIDTH="14%"><? echo $valor1 ?> votos</TD> 
+	<? } ?>
 	</TR> 
 	<TR> 
-	<?php if ($alternativa2 != "") { ?>
-		<TD ALIGN="left"><?php echo $alternativa2 ?> <div align="left"></div></TD> 
-		<TD><IMG HEIGHT="7" WIDTH="<?php echo $valor2*100/$totalValor?>%" SRC="/imagens/barras_enquete/barra2.gif"></TD> 
-		<TD ALIGN="center"><?php echo $valor2 ?> votos</TD> 
-	<?php } ?>
+	<? if ($alternativa2 != "") { ?>
+		<TD ALIGN="left"><? echo $alternativa2 ?> <div align="left"></div></TD> 
+		<TD><IMG HEIGHT="7" WIDTH="<? echo $valor2*100/$totalValor?>%" SRC="/imagens/barras_enquete/barra2.gif"></TD> 
+		<TD ALIGN="center"><? echo $valor2 ?> votos</TD> 
+	<? } ?>
 	</TR> 
 	<TR> 
-	<?php if ($alternativa3 != "") { ?>
-		<TD ALIGN="left"><?php echo $alternativa3 ?>  <div align="left"></div></TD> 
-		<TD><IMG HEIGHT="7" WIDTH="<?php echo $valor3*100/$totalValor?>%" SRC="/imagens/barras_enquete/barra3.gif"></TD> 
-		<TD ALIGN="center"><?php echo $valor3 ?> votos</TD> 
-	<?php } ?>
+	<? if ($alternativa3 != "") { ?>
+		<TD ALIGN="left"><? echo $alternativa3 ?>  <div align="left"></div></TD> 
+		<TD><IMG HEIGHT="7" WIDTH="<? echo $valor3*100/$totalValor?>%" SRC="/imagens/barras_enquete/barra3.gif"></TD> 
+		<TD ALIGN="center"><? echo $valor3 ?> votos</TD> 
+	<? } ?>
 	</TR> 
 	<TR> 
-	<?php if ($alternativa4 != "") { ?>
-		<TD ALIGN="left"><?php echo $alternativa4 ?>  <div align="left"></div></TD> 
-		<TD><IMG HEIGHT="7" WIDTH="<?php echo $valor4*100/$totalValor?>%" SRC="/imagens/barras_enquete/barra4.gif"></TD> 
-		<TD ALIGN="center"><?php echo $valor4 ?> votos</TD> 
-	<?php } ?>
+	<? if ($alternativa4 != "") { ?>
+		<TD ALIGN="left"><? echo $alternativa4 ?>  <div align="left"></div></TD> 
+		<TD><IMG HEIGHT="7" WIDTH="<? echo $valor4*100/$totalValor?>%" SRC="/imagens/barras_enquete/barra4.gif"></TD> 
+		<TD ALIGN="center"><? echo $valor4 ?> votos</TD> 
+	<? } ?>
 	</TR> 
 	</TABLE> 
-	<P ALIGN="center">Total de votos emitidos: <?php echo $totalValor ?></P> 
+	<P ALIGN="center">Total de votos emitidos: <? echo $totalValor ?></P> 
 </body>

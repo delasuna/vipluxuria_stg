@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="robots" content="index,follow">
-<meta name="description" content="Vip Luxï¿½ria ï¿½ um classificados de anï¿½ncios de Acompanhantes de Porto Alegre que atravï¿½s de seus parceiros, realiza troca de banners." />
+<meta name="description" content="Vip Luxúria é um classificados de anúncios de Acompanhantes de Porto Alegre que através de seus parceiros, realiza troca de banners." />
 <meta name="keywords" content="vip transportes, transportes, leva e traz, transporte particular" />
 
 <title>Vip Lux&uacute;ria Recomenda - Vip Lux&uacute;ria - Acompanhantes Porto Alegre</title>
@@ -40,12 +40,12 @@
         <div id="principal">
             <div id="principal-content-full">
             	<div id="coluna-full">
-                	<h1>Vip Luxï¿½ria Recomenda</h1>
+                	<h1>Vip Luxúria Recomenda</h1>
                     <span class="recomenda"><a href="http://www.oguiaz.com.br/" target="_blank"><img src="/imagens/vip-recomenda-guia-z-maior.png" alt="Guia Z" width="400" height="150" /></a></span> 
 
                     <span class="recomenda"><a href="http://www.gpface.net/" target="_blank"><img src="/imagens/vip-recomenda-gp-face.png" alt="GP Face" width="400" height="150" /></a></span>
                     
-                    <span class="recomenda"><a href="http://www.vipluxuriagold.net/felipepicture/" target="_blank"><img src="/imagens/felipe-picture-maior.png" alt="Felipe Picture" width="400" height="150" /></a></span>
+                    <span class="recomenda"><a href="http://www.vipluxuria.com/felipepicture/" target="_blank"><img src="/imagens/felipe-picture-maior.png" alt="Felipe Picture" width="400" height="150" /></a></span>
                     
                     <span class="recomenda"><a href="http://www.vipluxuriagold.com" target="_blank"><img src="/imagens/vip-luxuria-gold-maior.png" alt="Vip Lux&uacute;ria Gold" width="400" height="150" /></a></span>
                     
