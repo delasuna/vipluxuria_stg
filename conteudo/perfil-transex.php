@@ -4,7 +4,7 @@
 	function anti_injection($sql) {
 		// remove palavras que contenham sintaxe sql
 		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
-		$sql = trim($sql);//limpa espaços vazio
+		$sql = trim($sql);//limpa espaï¿½os vazio
 		$sql = strip_tags($sql);//tira tags html e php
 		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
 		return $sql;
@@ -25,9 +25,9 @@ if (anti_injection($_POST["amigoIndicado"]) == "S") {
 		$emaildestinatario = $emailAmigo;
 		$corpo = $nomeAmigo. "! <BR>"; 
 	
-		$corpo .= "<BR> O seu amigo " . $nomeQuemIndicou . " está lhe indicando a " . $nomeAnunciante;
+		$corpo .= "<BR> O seu amigo " . $nomeQuemIndicou . " estï¿½ lhe indicando a " . $nomeAnunciante;
 		$corpo .= "<BR> Veja o seu perfil acessando o link: <a href='" . $linkAnunciante . "'>". $linkAnunciante ."</a>";
-		$corpo .= "<BR> Equipe Vip Luxúria. ";
+		$corpo .= "<BR> Equipe Vip Luxï¿½ria. ";
 
 		require('PHPMailer/class.phpmailer.php');
 		
@@ -49,8 +49,8 @@ if (anti_injection($_POST["amigoIndicado"]) == "S") {
 			/*echo "<script>alert('E-mail enviado com Sucesso!')</script>";*/
 		} else {
 			/*
-			echo "<script>alert('Não foi possível enviar o e-mail.')</script>";
-			echo "<script>alert('Informações do erro: " . $mail->ErrorInfo . "')</script>";
+			echo "<script>alert('Nï¿½o foi possï¿½vel enviar o e-mail.')</script>";
+			echo "<script>alert('Informaï¿½ï¿½es do erro: " . $mail->ErrorInfo . "')</script>";
 			*/
 		}
 
@@ -68,7 +68,7 @@ if ($_REQUEST["votacao"] == "S") {
 								 
 	$resultado = mysql_query($sql, $conexao);
 	if(!$resultado){
-		die("Impossível visualizar votacao: " . mysql_error() . '<br>');
+		die("Impossï¿½vel visualizar votacao: " . mysql_error() . '<br>');
 	}
 							
 	$sts = mysql_query($sql);
@@ -93,7 +93,7 @@ if ($_REQUEST["votacao"] == "S") {
 								 
 							$resultado = mysql_query($sql, $conexao);
 							if(!$resultado){
-								die("Impossível visualizar as anunciantes: " . mysql_error() . '<br>');
+								die("Impossï¿½vel visualizar as anunciantes: " . mysql_error() . '<br>');
 							}
 							
 							$sts = mysql_query($sql);
@@ -209,7 +209,7 @@ if ($_REQUEST["votacao"] == "S") {
 </script>
 <!--FONTES-->
 
-<!--AMPLIAÇÃO-->
+<!--AMPLIAï¿½ï¿½O-->
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.js"></script>
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.lightbox-0.5.js"></script>
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/common.js"></script>
@@ -395,7 +395,7 @@ function curPageURL() {
 					<div class="clear"></div>	
 
 <!--
-					<div id="bt-whatsapp"> <a href="https://api.whatsapp.com/send?phone=SeuNumero&text=Olá NOME DO PERFIL, te vi no Vip Luxúria! Gostaria de mais informações." target="_blank"><img src="/imagens/estrutura/bt-whatsapp.png" width="264" height="48" /></a></div><!-- bt-whatsapp -->                      
+					<div id="bt-whatsapp"> <a href="https://api.whatsapp.com/send?phone=SeuNumero&text=Olï¿½ NOME DO PERFIL, te vi no Vip Luxï¿½ria! Gostaria de mais informaï¿½ï¿½es." target="_blank"><img src="/imagens/estrutura/bt-whatsapp.png" width="264" height="48" /></a></div><!-- bt-whatsapp -->                      
 							<? if ($flagWhats != "" && $flagWhats == "S") { ?>  													
 								<div id="bt-whatsapp"> 
 									<a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento!" target="_blank">

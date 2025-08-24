@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="robots" content="index,follow">
-<meta name="description" content="Aqui você encontra as mais belas acompanhantes de luxo de Porto Alegre. Loiras, morenas ou mulatas, seja qual for a sua preferência, lindas garotas de programa estão a espera do seu contato!" />
+<meta name="description" content="Aqui vocï¿½ encontra as mais belas acompanhantes de luxo de Porto Alegre. Loiras, morenas ou mulatas, seja qual for a sua preferï¿½ncia, lindas garotas de programa estï¿½o a espera do seu contato!" />
 
-<title>CamGirl - Vip Luxúria</title>
+<title>CamGirl - Vip Luxï¿½ria</title>
 
   <style rel="stylesheet" type="text/css">
     body {

@@ -2,7 +2,7 @@
 	function anti_injection2($sql) {
 		// remove palavras que contenham sintaxe sql
 		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
-		$sql = trim($sql);//limpa espaços vazio
+		$sql = trim($sql);//limpa espaï¿½os vazio
 		$sql = strip_tags($sql);//tira tags html e php
 		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
 		return $sql;
@@ -96,7 +96,7 @@
 </form>
 <div id="menu-content">
 <ul id="navmenu-h">
-	<li><a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/ico-home.png" alt="Página Inicial" ></a></li>
+	<li><a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/ico-home.png" alt="Pï¿½gina Inicial" ></a></li>
     <li><a href="#">Mulheres</a>
         <ul>
             <li><a href="/mulheres-acompanhantes-porto-alegre-poa/">Todas</a></li>
@@ -113,7 +113,7 @@
 			
 					$resultado = mysql_query($sql, $conexao);
 					if(!$resultado){
-						die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
+						die("Impossï¿½vel visualizar as cidades: " . mysql_error() . '<br>');
 					}
 			
 					while($row = mysql_fetch_array($resultado)) {
@@ -137,7 +137,7 @@
 			
 			$resultado = mysql_query($sql, $conexao);
 			if(!$resultado){
-				die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
+				die("Impossï¿½vel visualizar as cidades: " . mysql_error() . '<br>');
 			}
 			
 			while($row = mysql_fetch_array($resultado)) { 
@@ -148,7 +148,7 @@
 			?>		
         </ul>
     </li>
-	<li><a href="#rodape"><img src="/imagens/estrutura/ico-coroa.png" alt="Rodapé"></a></li>
+	<li><a href="#rodape"><img src="/imagens/estrutura/ico-coroa.png" alt="Rodapï¿½"></a></li>
 </ul>
 <div class="clear"></div>
 <div id="busca">

@@ -4,7 +4,7 @@
 	function anti_injection($sql) {
 		// remove palavras que contenham sintaxe sql
 		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
-		$sql = trim($sql);//limpa espaços vazio
+		$sql = trim($sql);//limpa espaï¿½os vazio
 		$sql = strip_tags($sql);//tira tags html e php
 		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
 		return $sql;
@@ -25,9 +25,9 @@ if (anti_injection($_POST["amigoIndicado"]) == "S") {
 		$emaildestinatario = $emailAmigo;
 		$corpo = $nomeAmigo. "! <BR>"; 
 	
-		$corpo .= "<BR> O seu amigo " . $nomeQuemIndicou . " está lhe indicando a " . $nomeAnunciante;
+		$corpo .= "<BR> O seu amigo " . $nomeQuemIndicou . " estï¿½ lhe indicando a " . $nomeAnunciante;
 		$corpo .= "<BR> Veja o seu perfil acessando o link: <a href='" . $linkAnunciante . "'>". $linkAnunciante ."</a>";
-		$corpo .= "<BR> Equipe Vip Luxúria. ";
+		$corpo .= "<BR> Equipe Vip Luxï¿½ria. ";
 
 		require('PHPMailer/class.phpmailer.php');
 		
@@ -49,8 +49,8 @@ if (anti_injection($_POST["amigoIndicado"]) == "S") {
 			/*echo "<script>alert('E-mail enviado com Sucesso!')</script>";*/
 		} else {
 			/*
-			echo "<script>alert('Não foi possível enviar o e-mail.')</script>";
-			echo "<script>alert('Informações do erro: " . $mail->ErrorInfo . "')</script>";
+			echo "<script>alert('Nï¿½o foi possï¿½vel enviar o e-mail.')</script>";
+			echo "<script>alert('Informaï¿½ï¿½es do erro: " . $mail->ErrorInfo . "')</script>";
 			*/
 		}
 
@@ -67,7 +67,7 @@ if ($_REQUEST["votacao"] == "S") {
 								 
 	$resultado = mysql_query($sql, $conexao);
 	if(!$resultado){
-		die("Impossível visualizar votacao: " . mysql_error() . '<br>');
+		die("Impossï¿½vel visualizar votacao: " . mysql_error() . '<br>');
 	}
 							
 	$sts = mysql_query($sql);
@@ -92,7 +92,7 @@ if ($_REQUEST["votacao"] == "S") {
 								 
 							$resultado = mysql_query($sql, $conexao);
 							if(!$resultado){
-								die("Impossível visualizar as anunciantes: " . mysql_error() . '<br>');
+								die("Impossï¿½vel visualizar as anunciantes: " . mysql_error() . '<br>');
 							}
 							
 							$sts = mysql_query($sql);
@@ -202,8 +202,8 @@ if ($_REQUEST["votacao"] == "S") {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="robots" content="index,follow">
-<meta name="description" content="Vip Luxúria é um classificados de anúncio de Acompanhantes de Porto Alegre." />
-<meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erótico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anúncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
+<meta name="description" content="Vip Luxï¿½ria ï¿½ um classificados de anï¿½ncio de Acompanhantes de Porto Alegre." />
+<meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante em Porto Alegre, Garota de Programa Porto Alegre, Garotas de Programa Porto Alegre, Acompanhante Porto Alegre, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erï¿½tico Porto Alegre, Guia de Acompanhantes Porto Alegre, Anï¿½ncios de Acompanhantes Porto Alegre, Acompanhantes POA, Acompanhante" />
 
 <title>
 <?									
@@ -235,7 +235,7 @@ if ($_REQUEST["votacao"] == "S") {
 </script>
 <!--FONTES-->
 
-<!--AMPLIAÇÃO-->
+<!--AMPLIAï¿½ï¿½O-->
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.js"></script>
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.lightbox-0.5.js"></script>
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/common.js"></script>
@@ -421,7 +421,7 @@ function curPageURL() {
 									}
 									
 								?>
-								<p class="aviso">Ligue e diga que me viu no Vip Luxúria!</p>                                                	
+								<p class="aviso">Ligue e diga que me viu no Vip Luxï¿½ria!</p>                                                	
 							</div><!--TELEFONE-->				
 							<div class="clear"></div>				
 
@@ -462,8 +462,8 @@ function curPageURL() {
 						<div id="atendimento">
                         	<h3>Atendimento</h3>
                             <ul>
-                            	<li><span class="rotulo">Horários:</span> <?=$horario?></li>
-                                <li><span class="rotulo">Cachê:</span> <?=$cache?></li>
+                            	<li><span class="rotulo">Horï¿½rios:</span> <?=$horario?></li>
+                                <li><span class="rotulo">Cachï¿½:</span> <?=$cache?></li>
                                 <li><span class="rotulo">Locais:</span> <?=$locais?></li>
                                 <li><span class="rotulo">Cidades:</span> <?=$cidades?></li>
                             </ul>    
@@ -523,22 +523,22 @@ function curPageURL() {
                                 <li><span class="rotulo">Busto:</span> <?=$busto?> cm</li>
                                 <li><span class="rotulo">Quadril:</span> <?=$quadril?> cm</li>
                                 <li><span class="rotulo">Cintura:</span> <?=$cintura?> cm</li>
-                                <li><span class="rotulo">Pés:</span> <?=$pes?></li>
+                                <li><span class="rotulo">Pï¿½s:</span> <?=$pes?></li>
                                 <li><span class="rotulo">Manequim:</span> <?=$manequim?></li>
                             </ul>
                         </div><!--40-->
                         <div id="faco">
-                        	<h3>O que Faço</h3>
+                        	<h3>O que Faï¿½o</h3>
                             <ul>
                             	<li><span class="rotulo">Beijo na Boca?</span> <?=$flagBeijoBoca?></li>
-                                <li><span class="rotulo">Faço Oral?</span> <?=$flagOral?></li>
-                                <li><span class="rotulo">Faço Anal?</span> <?=$flagAnal?></li>
-                                <li><span class="rotulo">Faço Dominação?</span> <?=$flagDominacao?></li>
-                                <li><span class="rotulo">Faço Inversão?</span> <?=$flagInversao?></li>
+                                <li><span class="rotulo">Faï¿½o Oral?</span> <?=$flagOral?></li>
+                                <li><span class="rotulo">Faï¿½o Anal?</span> <?=$flagAnal?></li>
+                                <li><span class="rotulo">Faï¿½o Dominaï¿½ï¿½o?</span> <?=$flagDominacao?></li>
+                                <li><span class="rotulo">Faï¿½o Inversï¿½o?</span> <?=$flagInversao?></li>
                                 <li><span class="rotulo">Atendo Eles?</span> <?=$flagAtendoEles?></li>
                                 <li><span class="rotulo">Atendo Elas?</span> <?=$flagAtendoElas?></li>
                                 <li><span class="rotulo">Atendo Casais?</span> <?=$flagAtendoCasais?></li>
-                                <li><span class="rotulo">Acessórios?</span> <?=$flagAcessorios?></li>
+                                <li><span class="rotulo">Acessï¿½rios?</span> <?=$flagAcessorios?></li>
                                 <li><span class="rotulo">Eventos?</span> <?=$flagEventos?></li>
                                 <li><span class="rotulo">Viagens?</span> <?=$flagViagens?></li>
                                 <li><span class="rotulo">Tenho Amigas?</span> <?=$flagTenhoAmigas?></li>
