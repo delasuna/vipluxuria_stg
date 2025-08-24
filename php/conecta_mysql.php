@@ -1,13 +1,18 @@
-<?
-// Fazendo a conexão com o servidor MySQL
-//if (!$conexao = mysql_connect("mysql-srv04.plugin.com.br","exs2","naca432")) 
-//elseif (!mysql_select_db("exs2",$conexao)) 
-if (!$conexao = mysql_connect("mysql.vipluxuria.com","vipluxuria","PbqyM4tXFLXb")) 
-     echo 'Conexão com o banco falhou!'; 
-elseif (!mysql_select_db("vipluxuria",$conexao)) 
-     echo 'Não foi possível selecionar o banco de dados!';
-else 
-     return $conexao;
+<?php
+// ConfiguraÃ§Ãµes de conexÃ£o
+$host = "mysql.vipluxuriagold.net";
+$user = "vipluxuria_add1";
+$pass = "luxuria18";
+$db   = "vipluxuriagold";
 
+// ConexÃ£o com MySQL (PHP 8 - mysqli)
+$conexao = mysqli_connect($host, $user, $pass, $db);
+
+// Verifica erros
+if (!$conexao) {
+    die("ConexÃ£o com o banco falhou: " . mysqli_connect_error());
+}
+
+// Retorna a conexÃ£o para quem incluir este arquivo
+return $conexao;
 ?>
-

@@ -42,11 +42,11 @@
     </div>
     <div id="col-800">
         <div class="col-146">
-			<a href="/vip-luxuria-acompanhantes-porto-alegre-poa/"><img src="/imagens/estrutura/01-conheca.png" alt="Conheça o Vip Luxúria" /></a>
+			<a href="/vip-luxuria-acompanhantes-porto-alegre-poa/"><img src="/imagens/estrutura/01-conheca.png" alt="Conheï¿½a o Vip Luxï¿½ria" /></a>
         </div>
 		<div class="linha-vertical-2"></div>
         <div class="col-146">
-			<a href="/vip-enquetes/"><img src="/imagens/estrutura/02-enquetes.png" alt="Parcipe da Enquete do Vip Luxúria"/></a>
+			<a href="/vip-enquetes/"><img src="/imagens/estrutura/02-enquetes.png" alt="Parcipe da Enquete do Vip Luxï¿½ria"/></a>
         </div>
 		<div class="linha-vertical-2"></div>		
         <div class="col-146">
@@ -59,7 +59,7 @@
         <div class="clear"></div>
 		<div class="linha-horizontal"></div>
         <div class="col-146">
-			<a href="http://www.vipluxuria.com/m/iframe.php" target="_blank"><img src="/imagens/estrutura/03-mobile.png" alt="Acesse a versão Mobile do Vip Luxúria" /></a>
+			<a href="http://www.vipluxuria.com/m/iframe.php" target="_blank"><img src="/imagens/estrutura/03-mobile.png" alt="Acesse a versï¿½o Mobile do Vip Luxï¿½ria" /></a>
         </div> 
 		<div class="linha-vertical-2"></div>               
         <div class="col-146">
@@ -67,7 +67,7 @@
         </div>
 		<div class="linha-vertical-2"></div>        
 		<div class="col-146">
-			<a href="/parceiros/"><img src="/imagens/estrutura/06-parceiros.png" alt="Conheça os nossos parceiros" /></a>
+			<a href="/parceiros/"><img src="/imagens/estrutura/06-parceiros.png" alt="Conheï¿½a os nossos parceiros" /></a>
         </div>
 		<!--<div class="linha-vertical-2"></div>        
 		<div class="col-146">
@@ -85,12 +85,12 @@
 	<div id="col-2-33" style="padding-top: 5px;">
 		<h3>Recomendamos</h3>
 		<ul>
-			<li><a href="http://www.vipluxuriagold.com" target="_blank"><img src="/imagens/logos/vip-luxuria-gold.png" title="Vip Luxúria Gold" alt="Vip Luxúria Gold"/></a></li>
+			<li><a href="http://www.vipluxuriagold.com" target="_blank"><img src="/imagens/logos/vip-luxuria-gold.png" title="Vip Luxï¿½ria Gold" alt="Vip Luxï¿½ria Gold"/></a></li>
 			<li><img src="/imagens/logos/felipe-picture.png" title="Felipe Picture" alt="Felipe Picture"/></li>
-			<li><a href="https://www.acompanhantes61.com.br/" title="Acompanhantes Bras&iacute;lia" target="_blank"><img src="/imagens/logos/a61.png" alt="Acompanhantes de Brasília"/></a></li>
+			<li><a href="https://www.acompanhantes61.com.br/" title="Acompanhantes Bras&iacute;lia" target="_blank"><img src="/imagens/logos/a61.png" alt="Acompanhantes de Brasï¿½lia"/></a></li>
 			<li><a href="https://harem69.com.br/" target="_blank"><img src="/imagens/parceiros/harem.png" title="Harem 69" alt="Harem 69"></a></li>
-            <li><a href="https://www.guiaadulto.com/" target="_blank"><img src="/imagens/parceiros/guia-adulto.png" title="Fórum de Acompanhantes" alt="Fórum de Acompanhantes"/></a></li>
-			<li><a href="/angelo-personal.php/"><img src="/imagens/logos/angelo-marques.png" title="Ângelo Marques Personal Trainer" alt="Ângelo Marques Personal Trainer"/></a></li>
+            <li><a href="https://www.guiaadulto.com/" target="_blank"><img src="/imagens/parceiros/guia-adulto.png" title="Fï¿½rum de Acompanhantes" alt="Fï¿½rum de Acompanhantes"/></a></li>
+			<li><a href="/angelo-personal.php/"><img src="/imagens/logos/angelo-marques.png" title="ï¿½ngelo Marques Personal Trainer" alt="ï¿½ngelo Marques Personal Trainer"/></a></li>
 		</ul>	
 		<br/>
 		<ul>
@@ -104,40 +104,37 @@
     </div>	
 </div><!--RODAPE CONTENT-->
 		
-<?
-if ($_REQUEST["acao"] == "assinar") {
-	$email = $_POST["emailNews"]; 
-	
-	if (email != "") {
-		$sql = " SELECT * FROM newsletter WHERE email = '" . $email . "'";
-		$resultado = mysql_query($sql, $conexao);
-		if(!$resultado){
-			die("Impossível visualizar o newsletter: " . mysql_error() . '<br>');
-		}
-		$sts = mysql_query($sql);
-		$registros = mysql_num_rows($sts);
-	
-		if ($registros>0) {
-				echo "'<script>alert('E-mail já cadastrado!');</script>";		
-		} else {	
-			$sql = " INSERT INTO newsletter (email) VALUES ('" . $email . "');"; 
-			$resultado = mysql_query($sql, $conexao);
-			echo "'<script>alert('Você foi adicionado com sucesso!');</script>";
-		}
-	}
+<?php
+if (isset($_REQUEST["acao"]) && $_REQUEST["acao"] == "assinar") {
+    $email = $_POST["emailNews"]; 
+    
+    if ($email != "") {
+        $sql = "SELECT * FROM newsletter WHERE email = '" . mysqli_real_escape_string($conexao, $email) . "'";
+        $resultado = mysqli_query($conexao, $sql);
+        
+        if (!$resultado) {
+            die("ImpossÃ­vel visualizar o newsletter: " . mysqli_error($conexao) . '<br>');
+        }
+        
+        $registros = mysqli_num_rows($resultado);
+    
+        if ($registros > 0) {
+            echo "<script>alert('E-mail jÃ¡ cadastrado!');</script>";		
+        } else {	
+            $sql = "INSERT INTO newsletter (email) VALUES ('" . mysqli_real_escape_string($conexao, $email) . "')";
+            $resultado = mysqli_query($conexao, $sql);
+            echo "<script>alert('VocÃª foi adicionado com sucesso!');</script>";
+        }
+    }
 }
 
-if ($_REQUEST["acao"] == "remover") {
-	$email = $_POST["email"]; 
-	
-	if (email != "") {
-		$sql = " DELETE FROM newsletter WHERE email = '" . $email ."'; "; 
-		$resultado = mysql_query($sql, $conexao);
-		echo "'<script>alert('Você foi removido com sucesso!');</script>";
-	}
-	
-	
+if (isset($_REQUEST["acao"]) && $_REQUEST["acao"] == "remover") {
+    $email = $_POST["emailNews"]; 
+    
+    if ($email != "") {
+        $sql = "DELETE FROM newsletter WHERE email = '" . mysqli_real_escape_string($conexao, $email) . "'"; 
+        $resultado = mysqli_query($conexao, $sql);
+        echo "<script>alert('VocÃª foi removido com sucesso!');</script>";
+    }
 }
-
 ?>
-		
