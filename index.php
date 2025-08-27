@@ -88,10 +88,6 @@ mysqli_close($conexao);
 			<li><a href="/Acompanhantes-Mulatas">Garotas de Programa Mulatas</a></li>
 			<li><a href="/casais-e-homens-porto-alegre-poa/">Casais & Homens</a></li>
 			<li><a href="/transex-porto-alegre-poa/">Transex</a></li>
-			<li><a href="/swing-porto-alegre-poa/">Swing</a></li>
-			<li><a href="/swing-porto-alegre-poa/">Swing Porto Alegre</a></li>
-			<li><a href="/swing-porto-alegre-poa/">Troca de Casais Porto Alegre</a></li>
-			<li><a href="/swing-porto-alegre-poa/">Troca de Casais</a></li>
 			<li><a href="/acompanhantes-porto-alegre/">Garotas de Programa Porto Alegre</a></li>
 			<li><a href="/Acompanhantes/5/Litoral-Gaucho">Garotas de Programa Litoral Gaúcho</a></li>
 			<li><a href="/Acompanhantes/6/Grande-Porto-Alegre">Garotas de Programa Grande Porto Alegre</a></li>
