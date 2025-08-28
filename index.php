@@ -34,12 +34,12 @@ mysqli_close($conexao);
 
 <title><?=$title?></title>
 
-<meta name="rating" content="Geral" />
-<meta name="expires" content="never" />
-<meta name="language" content="portuguese" />
-<meta name="charset" content="UTF-8" />
-<meta name="distribution" content="Global" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Acompanhantes Porto Alegre - Vip Lux�ria - Acompanhante Porto Alegre</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Acompanhantes Porto Alegre RS - Garotas de programa verificadas em POA. Loiras, morenas, mulatas. Atendimento discreto 24h.">
+<meta name="keywords" content="acompanhantes porto alegre, garotas de programa poa">
+<title>Acompanhantes Porto Alegre RS | Vip Luxúria - Guia 2025</title>
+<link rel="canonical" href="https://vipluxuria.com/">
 
 <!--CSS-->
 <link href="css-js/estilos-2.css" rel="stylesheet" type="text/css" />
