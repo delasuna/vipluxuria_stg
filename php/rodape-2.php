@@ -73,12 +73,6 @@
 		<div class="col-146">
 			<a href="/lojas-sexshops-porto-alegre-poa/"><img src="/imagens/estrutura/07-sex.png"/></a>
         </div> -->
-		<div class="linha-vertical-2"></div>		
-        <div class="col-146">
-			<a href="/swing-porto-alegre-poa/"><img src="/imagens/estrutura/08-swing.png" alt="Classificados de Swing Porto Alegre" /></a>
-        </div>
-		<div class="clear"></div>	
-    </div>
     <div class="clear"></div>
 	<div class="linha-horizontal"></div>
 	

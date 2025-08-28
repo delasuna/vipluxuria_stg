@@ -3,7 +3,7 @@
 	function anti_injection2($sql) {
 		// remove palavras que contenham sintaxe sql
 		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
-		$sql = trim($sql);//limpa espaços vazio
+		$sql = trim($sql);//limpa espaï¿½os vazio
 		$sql = strip_tags($sql);//tira tags html e php
 		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
 		return $sql;
@@ -101,7 +101,7 @@
 			
 					$resultado = mysql_query($sql, $conexao);
 					if(!$resultado){
-						die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
+						die("Impossï¿½vel visualizar as cidades: " . mysql_error() . '<br>');
 					}
 			
 					while($row = mysql_fetch_array($resultado)) {
@@ -119,8 +119,7 @@
     <li><a href="/transex/">Transex</a></li>
     <li><a href="/guia-moteis-a/">Guia de Mot&eacute;is</a></li>
     <li><a href="/mural-recados/">Mural de Recados</a></li>
-    <li><a href="/swing-porto-alegre-poa/">Swing</a></li>
-    <li><a href="/vip-blog/">Vip Blog Notícias</a></li>
+    <li><a href="/vip-blog/">Vip Blog Notï¿½cias</a></li>
 	
     <li><a href="/mulheres/">Outras Cidades</a>
     	<ul>
@@ -129,7 +128,7 @@
 			
 			$resultado = mysql_query($sql, $conexao);
 			if(!$resultado){
-				die("Impossível visualizar as cidades: " . mysql_error() . '<br>');
+				die("Impossï¿½vel visualizar as cidades: " . mysql_error() . '<br>');
 			}
 			
 			while($row = mysql_fetch_array($resultado)) {
@@ -145,7 +144,7 @@
 			<li><a href="/vip-luxuria-acompanhantes-porto-alegre-poa/">Conhe&ccedil;a o Vip Lux&uacute;ria</a></li>
 			<li><a href="/lojas-sexshops-porto-alegre-poa/">Lojas e Sex Shops</a></li>
 			<li><a href="/vip-enquetes/">Vip Enquetes</a></li>
-			<li><a href="/vip-blog/">Vip Blog Notícias</a></li>
+			<li><a href="/vip-blog/">Vip Blog Notï¿½cias</a></li>
             <li><a href="/vip-recomenda/">Vip Recomenda</a></li>
             <li><a href="/m/index.php">Vip Mobile</a></li>
             <li><a href="/tutorial/">Vip Mobile - Tutorial</a></li>
