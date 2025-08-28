@@ -1,4 +1,8 @@
 User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Sitemap: https://vipluxuria.com/sitemap.xml
 Disallow: /app/
 Disallow: /atualizacao_perfil/
 Disallow: /banner/

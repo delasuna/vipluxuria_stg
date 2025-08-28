@@ -1,0 +1,30 @@
+/* SUBSTITUIR os 10+ arquivos CSS por este único */
+/* Critical CSS - Inline no HTML para performance */
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:16px/1.6 -apple-system,Arial,sans-serif;color:#333}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Grid Responsivo Mobile-First */
+.grid-acompanhantes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+@media (min-width: 768px) {
+  .grid-acompanhantes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-acompanhantes {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Corrigir menu mobile */
+@media (max-width: 768px) {
+  #menu { display: none; }
+  .menu-mobile { display: block !important; }
+}
