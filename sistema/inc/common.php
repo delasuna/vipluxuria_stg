@@ -412,6 +412,7 @@ class Table {
 		if ($this->tableAlign == "C") $ta = "<div align='center'>";
 		if ($this->tableAlign == "R") $ta = "<div align='right'>";
 
+		$ta = "";
 		$out .= "$ta<table border=0 cellspacing=0 cellpadding=1 width='" . $this->width . "'><tr><td vAlign='top' align='center'>";
 		if ($this->style) {
 			$out .= "<table class='FormTABLE' cellspacing=0>";
