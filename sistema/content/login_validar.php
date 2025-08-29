@@ -1,11 +1,10 @@
-<?
+<?php
 /*
-	Esta transação valida os dados informados no formulário de login.
-	Não precisa ser alterada
+	Esta transaÃ§Ã£o valida os dados informados no formulÃ¡rio de login.
+	NÃ£o precisa ser alterada
 */
 include("../inc/common.php");
 
-	
 /*
 	tratamento de campos
 */
@@ -13,28 +12,28 @@ $usuario = anti_injection(getParam("usuario"));
 $auth_cript = true;
 
 if ($auth_cript) {
-	//$senha = md5(anti_injection(getParam("senha")));
 	$senha = md5(anti_injection(getParam("senha")));
 } else {
 	$senha = anti_injection(getParam("senha"));
 }
 
 /*
-	validação
+	validaÃ§Ã£o
 */
 $erro = new Erro();
-if ($usuario == "") $erro->addErro('Nome de usuário deve ser informado.');
+
+if ($usuario == "") $erro->addErro('Nome de usuÃ¡rio deve ser informado.');
 if ($senha == "") $erro->addErro('Senha deve ser informada.');
 
-// se passou na validação...
+// se passou na validaÃ§Ã£o...
 if (!$erro->hasErro()) { 
 	$conn = new db();
 	$conn->open();
 
 	$sql = "SELECT * FROM usuarios WHERE usuario='$usuario' AND senha = '$senha'";
-//	echo $sql; 
 	$rs = new query($conn, $sql);
-	// se entrou...
+
+	// se encontrou usuÃ¡rio...
 	if ($rs->getrow()) {
 		$passou = true;
 		
@@ -47,16 +46,19 @@ if (!$erro->hasErro()) {
 		} else {
 			$destino = "index.php";
 		}
-	// se não entrou...
 	} else {
-		alert("Nome de usuário ou senha não conferem!");
+		alert("Nome de usuÃ¡rio ou senha nÃ£o conferem!");
 		$destino = "index.php";
 	}
-// não passou na validação...
+
 } else { 
 	alert('Ocorreram os seguintes erros!\n' . $erro->toString());
 	$destino = "index.php";
 }
+
 $conn->close();
+
+// redireciona
 echo "<script>location.href='$destino';</script>";
+exit;
 ?>

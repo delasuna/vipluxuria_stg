@@ -1,4 +1,4 @@
-<?
+<?php
 /***
  * phpFramework
  * desenvolvido por Marcelo Rezende
@@ -10,19 +10,26 @@ include("../inc/config.inc.php");
 include(DB_DEFAULT);
 
 function anti_injection($sql) {
-	// remove palavras que contenham sintaxe sql
-	$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|show tables|#|\*|--|\\\\)/"),"",$sql);
-	$sql = trim($sql);//limpa espaços vazio
-	$sql = strip_tags($sql);//tira tags html e php
-	$sql = addslashes($sql);//Adiciona barras invertidas a uma string
-	return $sql;
+    if (empty($sql)) return '';
+
+    // Remove palavras ou caracteres perigosos de SQL
+    $sql = preg_replace(
+        "/(from|select|insert|delete|where|having|union|drop table|show tables|#|\*|--|\\\\)/i",
+        "",
+        $sql
+    );
+
+    $sql = trim($sql);        // Remove espaÃ§os em branco no inÃ­cio/fim
+    $sql = strip_tags($sql);  // Remove tags HTML e PHP
+    $sql = addslashes($sql);  // Adiciona barras invertidas
+    return $sql;
 }
 
 
 /*****************************************************************************************************
-	Classe para montagem de expressões SQL de atualização
-	O método getValue deve ser adaptado conforme o banco de dados utilizado.
-	No futuro esta classe será mais generalizada
+	Classe para montagem de expressï¿½es SQL de atualizaï¿½ï¿½o
+	O mï¿½todo getValue deve ser adaptado conforme o banco de dados utilizado.
+	No futuro esta classe serï¿½ mais generalizada
 */
 class UpdateSQL {
 	var $action;
@@ -59,7 +66,7 @@ class UpdateSQL {
 	}
 	
 	/*
-		Adiciona um campo na expressão SQL
+		Adiciona um campo na expressï¿½o SQL
 		theField : nome do campo
 		theValue : valor do campo
 		theType : tipo do campo (Number, String, Date)
@@ -71,7 +78,7 @@ class UpdateSQL {
 	}
 	
 	/*
-		Define a ação da expressão SQL
+		Define a aï¿½ï¿½o da expressï¿½o SQL
 		theAction : INSERT, UPDATE, DELETE
 	*/
 	function setAction($theAction) {
@@ -79,7 +86,7 @@ class UpdateSQL {
 	}
 	
 	/*
-		Define a tabela que vai sofrer atualização
+		Define a tabela que vai sofrer atualizaï¿½ï¿½o
 		theTable : nome da tabela
 	*/
 	function setTable($theTable) {
@@ -87,11 +94,11 @@ class UpdateSQL {
 	}
 	
 	/*
-		Monta a expressão SQL e retorna como string
+		Monta a expressï¿½o SQL e retorna como string
 	*/
 	function getSQL() {
 		$sql = "";
-		// inclusão
+		// inclusï¿½o
 		if ($this->action=="INSERT") {
 			$sql .= "INSERT INTO " . $this->table . " (";
 			$fieldlist = "";
@@ -105,7 +112,7 @@ class UpdateSQL {
 			$sql .= $fieldlist . ") VALUES (" . $valuelist . ")";
 		}
 
-		// alteração
+		// alteraï¿½ï¿½o
 		if ($this->action=="UPDATE") {
 			$sql .= "UPDATE " . $this->table . " SET ";
 			$updatelist = "";
@@ -117,7 +124,7 @@ class UpdateSQL {
 			$sql .= $updatelist . " WHERE " . $this->keyField . "=" . $this->getValue($this->keyValue, $this->keyType);
 		}
 
-		// exclusão
+		// exclusï¿½o
 		if ($this->action=="DELETE") {
 			$sql .= "DELETE FROM " . $this->table . " WHERE " . $this->keyField . "=" . $this->getValue($this->keyValue, $this->keyType);
 		}
@@ -130,27 +137,24 @@ class UpdateSQL {
 		type : tipo do campo (Number, String, Date) 
 	*/
 	function getValue($value, $type) {
-		if (!strlen($value)) {
-			return "NULL";
-		} else {
-			if ($type == "Number") {
-				return str_replace (",", ".", doubleval($value));
-			} else {
-				if (get_magic_quotes_gpc() == 0) {
-					$value = str_replace("'","''",$value);
-					$value = str_replace("\\","\\\\",$value);
-				} else {
-					$value = str_replace("\\'","''",$value);
-					$value = str_replace("\\\"","\"",$value);
-				}
-				return "'" . $value . "'";
-			}
-		}
-	}
+    if (!isset($value) || $value === '') {
+        return "NULL";
+    }
+
+    if ($type === "Number") {
+        // Converte vÃ­rgula para ponto e garante valor numÃ©rico
+        return str_replace(",", ".", doubleval($value));
+    } else {
+        // Escapa aspas simples e barras
+        $value = addslashes($value);
+        return "'" . $value . "'";
+    }
+}
+
 }	
 
 /*****************************************************************************************************
-	Classe para criação de formulários
+	Classe para criaï¿½ï¿½o de formulï¿½rios
 */
 class Form {
 	var $name;
@@ -168,84 +172,27 @@ class Form {
 	var $dataWidth1;
 	var $labelWidth2;
 	var $dataWidth2;
-	
 
 	// define o tipo de documento
 	function setUpload($fazUpload=false) {
 		$this->upload = $fazUpload;
 	}
 	
-	// define a largura da coluna label
-	function setLabelWidth($valor) {
-		$this->labelWidth = $valor;
-	}
-	
-	// define a largura da coluna data
-	function setDataWidth($valor) {
-		$this->dataWidth = $valor;
-	}
+	function setLabelWidth($valor) { $this->labelWidth = $valor; }
+	function setDataWidth($valor) { $this->dataWidth = $valor; }
+	function setLabelWidth1($valor) { $this->labelWidth1 = $valor; }
+	function setDataWidth1($valor) { $this->dataWidth1 = $valor; }
+	function setLabelWidth2($valor) { $this->labelWidth2 = $valor; }
+	function setDataWidth2($valor) { $this->dataWidth2 = $valor; }
+	function setName($umNome) { $this->name = $umNome; }
+	function setAction($umaAcao) { $this->action = $umaAcao; }
+	function setMethod($umMetodo) { $this->method = $umMetodo; }
+	function setTarget($umTarget) { $this->target = $umTarget; }
+	function setFocus($focus) { $this->focus = $focus; }
+	function setWidth($largura) { $this->width = $largura; }
 
-
-	// define a largura da coluna label1 no caso de 2 campos por linha
-	function setLabelWidth1($valor) {
-		$this->labelWidth1 = $valor;
-	}
-	
-	// define a largura da coluna data1  no caso de 2 campos por linha
-	function setDataWidth1($valor) {
-		$this->dataWidth1 = $valor;
-	}
-
-
-	// define a largura da coluna label 2 no caso de 2 campos por linha
-	function setLabelWidth2($valor) {
-		$this->labelWidth2 = $valor;
-	}
-	
-	// define a largura da coluna data2  no caso de 2 campos por linha
-	function setDataWidth2($valor) {
-		$this->dataWidth2 = $valor;
-	}
-	
-	// define o nome do formulário
-	function setName($umNome) {
-		$this->name = $umNome;
-	}
-	
-	// define a ação do formulário
-	function setAction($umaAcao) {
-		$this->action = $umaAcao;
-	}
-	
-	// define o método do formulário
-	function setMethod($umMetodo) {
-		$this->method = $umMetodo;
-	}
-	
-	// define o target do formulário
-	function setTarget($umTarget) {
-		$this->target = $umTarget;
-	}
-	
-	// define se campos terão highligth
-	function setFocus($focus) {
-		$this->focus = $focus;
-	}
-	
-	// define a largura do formulário
-	function setWidth($largura) {
-		$this->width = $largura;
-	}
-
-
-	// construtor
-	// $name : identificador do formulário
-	// $action : action do formulário
-	// $method : método a ser utilizado POST ou GET
-	// $target : frame em que o action será executado
-	// $width : largura do formulário
-	// $focus : mecanismo de foco destacado, true ou false
-	function Form($name="frm", $action="", $method="POST", $target="controle", $width="100%", $focus=false) {
+	// === Construtor moderno ===
+	function __construct($name="frm", $action="", $method="POST", $target="controle", $width="100%", $focus=false) {
 		$this->name = $name;
 		$this->action = $action;
 		$this->method = $method;
@@ -256,37 +203,23 @@ class Form {
 		$this->focus = $focus;
 		$this->labelWidth = "30%";
 		$this->dataWidth = "70%";
-		
 		$this->labelWidth1 = "15%";
 		$this->dataWidth1 = "35%";
 		$this->labelWidth2 = "15%";
 		$this->dataWidth2 = "35%";
-		
 	}
 
-
-	// adiciona campo hidden ao formulário
-	// $varName : nome do campo
-	// $varValue : valor do campo
 	function addHidden($varName, $varValue) {
 		$this->blockHidden .= "<input type='hidden' name='".$varName."' value='".$varValue."'>\n";
 	}
 
-
-	// adiciona bloco HTML ao formulário
-	// Utilizado para acrescentar blocos HTML dentro do form como por ex.: grid de consulta, mas que permite atualização dos campos do grid.
-	function addBloco($bloco="") {
+	function addBloco($bloco = "") {
 		$this->blockFields .= "<tr>";
-		$largura = $labelWidth + $dataWidth;
-		$this->blockFields .= "<td colspan=2 width='".$largura."' nowrap>".$bloco."</td>";
+		$largura = $this->labelWidth + $this->dataWidth;
+		$this->blockFields .= "<td colspan=2 width='" . $largura . "' nowrap>" . $bloco . "</td>";
 		$this->blockFields .= "</tr>\n";
 	}
 
-
-	
-	// adiciona campo ao formulário
-	// $label : título do campo
-	// $field : expressão html que define o campo
 	function addField($label="", $field) {
 		$this->blockFields .= "<tr>";
 		$this->blockFields .= "<td width='".$this->labelWidth."' class='LabelTD' nowrap><font class='LabelFONT'>".$label."</font></td>";
@@ -294,10 +227,6 @@ class Form {
 		$this->blockFields .= "</tr>\n";
 	}
 
-
-	// adiciona campo ao formulário
-	// $label : título do campo
-	// $field : expressão html que define o campo
 	function add2Field($label="", $field, $label2="", $field2) {
 		$this->blockFields .= "<tr>";
 		$this->blockFields .= "<td width='".$this->labelWidth1."' class='LabelTD' nowrap><font class='LabelFONT'>".$label."</font></td>";
@@ -307,28 +236,21 @@ class Form {
 		$this->blockFields .= "</tr>\n";
 	}
 
-	function addFieldColspan2($label="", $field) {
-		$colunaWidth2 = $this->dataWidth1  + $this->labelWidth2  + $this->dataWidth2;
+	function addFieldColspan2($label = "", $field) {
+		$colunaWidth2 = $this->dataWidth1 + $this->labelWidth2 + $this->dataWidth2;
 		$this->blockFields .= "<tr>";
-		$this->blockFields .= "<td width='".$this->labelWidth1."' class='LabelTD' nowrap><font class='LabelFONT'>".$label."</font></td>";
-		$this->blockFields .= "<td width='".$dataWidth1."' class='DataTD' colspan=3 ><font class='DataFONT'>".$field."</font></td>";
+		$this->blockFields .= "<td width='" . $this->labelWidth1 . "' class='LabelTD' nowrap><font class='LabelFONT'>" . $label . "</font></td>";
+		$this->blockFields .= "<td width='" . $this->dataWidth1 . "' class='DataTD' colspan=3 ><font class='DataFONT'>" . $field . "</font></td>";
 		$this->blockFields .= "</tr>\n";
 	}
 
-
-	// adiciona campo ao formulário
-	// $label : título do campo
-	// $field : expressão html que define o campo
 	function addFieldWithID($label="", $field, $id) {
 		$this->blockFields .= "<tr>";
 		$this->blockFields .= "<td width='".$this->labelWidth."' class='LabelTD' nowrap><font class='LabelFONT'>".$label."</font></td>";
 		$this->blockFields .= "<td width='".$this->dataWidth."' class='DataTD'><font class='DataFONT'  id='".$id."'>".$field."</font></td>";
 		$this->blockFields .= "</tr>\n";
 	}
-	
-	// adiciona divisória ao formulário
-	// $text : expressão que será mostrada dentro da quebra
-	// $style : usar estilo predefinido? true ou false
+
 	function addBreak($text="", $style=true) {
 		$this->blockFields .= "<tr>";
 		if ($style) {
@@ -339,9 +261,6 @@ class Form {
 		$this->blockFields .= "</tr>\n";
 	}
 
-	// adiciona divisória ao formulário para formularios com dois campos por linha
-	// $text : expressão que será mostrada dentro da quebra
-	// $style : usar estilo predefinido? true ou false
 	function addBreak2($text="", $style=true) {
 		$this->blockFields .= "<tr>";
 		if ($style) {
@@ -352,38 +271,35 @@ class Form {
 		$this->blockFields .= "</tr>\n";
 	}
 
-	// adiciona divisória ao formulário para formularios com dois campos por linha
-	// $text : expressão que será mostrada dentro da quebra
-	// $style : usar estilo predefinido? true ou false
 	function addBR() {
 		$this->blockFields .= "<tr>";
 		$this->blockFields .= "<td colspan='4'><BR></td>";
 		$this->blockFields .= "</tr>\n";
 	}
-	
-	// retorna bloco HTML com o formulário montado
+
 	function writeHTML() {
-		$out = "";
-		$out .= "<table border='0' cellpadding='1' cellspacing='0' align='center' width='".$this->width."'>\n";
+		$out = "<table border='0' cellpadding='1' cellspacing='0' align='center' width='".$this->width."'>\n";
 		$out .= "<tr><td>";
 		
-		$enctype = "";
-		if ($this->upload) $enctype = "enctype='multipart/form-data'";
-		
+		$enctype = $this->upload ? "enctype='multipart/form-data'" : "";
+
 		if ($this->focus) {
 			$out .= "<form name='".$this->name."' id='".$this->name."' ".$enctype." action='".$this->action."' method='".$this->method."' target='".$this->target."' onKeyUp='highlight(event)' onClick='highlight(event)'>\n";
 		} else {
 			$out .= "<form name='".$this->name."' id='".$this->name."' ".$enctype." action='".$this->action."' method='".$this->method."' target='".$this->target."'>\n";
 		}
+
 		$out .= $this->blockHidden;
 		$out .= "<table class='FormTABLE' cellspacing=0>\n";
 		$out .= $this->blockFields;
 		$out .= "</table>\n";
 		$out .= "</form>\n";
 		$out .= "</td></tr></table>\n";
+
 		return $out;
 	}
 }
+
 
 /*****************************************************************************************************
  Classe para gerar tabelas
@@ -400,7 +316,7 @@ class Table {
 	var $tableAlign;
 	
 	// Construtor
-	// $title : título da tabela
+	// $title : tï¿½tulo da tabela
 	// $width : largura da tabela
 	// $columns : quantidade de colunas na tabela
 	// $style : usar estilo predefinido? true ou false
@@ -413,7 +329,7 @@ class Table {
 		$this->tableAlign = "L";
 	}
 	
-	// agrupa células e adiciona na linha
+	// agrupa cï¿½lulas e adiciona na linha
 	function addRow() {
 		$this->block .= "<tr>".$this->row."</tr>\n";
 		$this->row = "";
@@ -422,7 +338,7 @@ class Table {
 	}
 
 
-	// agrupa células e adiciona na linha informando um id
+	// agrupa cï¿½lulas e adiciona na linha informando um id
 	function addRowWithId($id) {
 		$this->block .= "<tr id=".$id.">".$this->row."</tr>\n";
 		$this->row = "";
@@ -430,8 +346,8 @@ class Table {
 		$this->alternate = !$this->alternate;
 	}
 	
-	// cria célula
-	// $data : conteúdo dentro da célula
+	// cria cï¿½lula
+	// $data : conteï¿½do dentro da cï¿½lula
 	// $align : alinhamento (L, C, R)
 	function addData($data="&nbsp", $align="L") {
 		$align = strtoupper($align);
@@ -446,8 +362,8 @@ class Table {
 		}
 	}
 	
-	// cria título da coluna
-	// $title : título da coluna
+	// cria tï¿½tulo da coluna
+	// $title : tï¿½tulo da coluna
 	// $ord : ordenar? true ou false
 	// $width : largura da coluna
 	// $align : alinhamento (L, C, R)
@@ -471,8 +387,8 @@ class Table {
 		$this->currcol++;
 	}
 	
-	// adiciona linha divisória na tabela
-	// $title : expressão html que será exibida na quebra
+	// adiciona linha divisï¿½ria na tabela
+	// $title : expressï¿½o html que serï¿½ exibida na quebra
 	function addBreak($title="&nbsp", $style=true) {
 		if (!$style) {
 			$this->row .= "<td colspan='".$this->columns."'>".$title."</td>";
@@ -490,57 +406,72 @@ class Table {
 	
 	// retorna o bloco HTML com a tabela montada
 	function writeHTML() {
-		if ($this->tableAlign=="L") $ta = "<div align='left'>";
-		if ($this->tableAlign=="C") $ta = "<div align='center'>";
-		if ($this->tableAlign=="R") $ta = "<div align='right'>";
-		$out .= "$ta<table border=0 cellspacing=0 cellpadding=1 width='".$this->width."'><tr><td vAlign='top' align='center'>";
+		$out = ""; // inicializa a variÃ¡vel
+
+		if ($this->tableAlign == "L") $ta = "<div align='left'>";
+		if ($this->tableAlign == "C") $ta = "<div align='center'>";
+		if ($this->tableAlign == "R") $ta = "<div align='right'>";
+
+		$out .= "$ta<table border=0 cellspacing=0 cellpadding=1 width='" . $this->width . "'><tr><td vAlign='top' align='center'>";
 		if ($this->style) {
 			$out .= "<table class='FormTABLE' cellspacing=0>";
 		} else {
 			$out .= "<table border='0'>";
 		}
+
 		if ($this->title != "") {
 			$out .= "<tr>";
-			$out .= "<td class='FormHeaderTD' colspan='".$this->columns."'>";
-			$out .= "<font class='FormHeaderFONT'>".$this->title."</font>";
+			$out .= "<td class='FormHeaderTD' colspan='" . $this->columns . "'>";
+			$out .= "<font class='FormHeaderFONT'>" . $this->title . "</font>";
 			$out .= "</td>";
 			$out .= "</tr>";
 		}
+
 		$out .= $this->block;
 		$out .= "</table>";
 		$out .= "</td></tr></table></div>";
+
 		return $out;
 	}
 
+
 	// retorna o bloco HTML com a tabela montada passando um id para a tabela
 	function writeHTMLWithId($idTabela) {
-		if ($this->tableAlign=="L") $ta = "<div align='left'>";
-		if ($this->tableAlign=="C") $ta = "<div align='center'>";
-		if ($this->tableAlign=="R") $ta = "<div align='right'>";
-		$out .= "$ta<table border=0 cellspacing=0 cellpadding=1 width='".$this->width."'><tr><td vAlign='top' align='center'>";
+		$out = ""; // inicializa a variÃ¡vel
+
+		if ($this->tableAlign == "L") $ta = "<div align='left'>";
+		if ($this->tableAlign == "C") $ta = "<div align='center'>";
+		if ($this->tableAlign == "R") $ta = "<div align='right'>";
+
+		$out .= "$ta<table border=0 cellspacing=0 cellpadding=1 width='" . $this->width . "'><tr><td vAlign='top' align='center'>";
+
 		if ($this->style) {
-			$out .= "<table class='FormTABLE' cellspacing=0 id=".$idTabela.">";
+			$out .= "<table class='FormTABLE' cellspacing=0 id='" . htmlspecialchars($idTabela, ENT_QUOTES) . "'>";
 		} else {
 			$out .= "<table border='0'>";
 		}
+
 		if ($this->title != "") {
 			$out .= "<tr>";
-			$out .= "<td class='FormHeaderTD' colspan='".$this->columns."'>";
-			$out .= "<font class='FormHeaderFONT'>".$this->title."</font>";
+			$out .= "<td class='FormHeaderTD' colspan='" . $this->columns . "'>";
+			$out .= "<font class='FormHeaderFONT'>" . $this->title . "</font>";
 			$out .= "</td>";
 			$out .= "</tr>";
 		}
+
 		$out .= $this->block;
 		$out .= "</table>";
 		$out .= "</td></tr></table></div>";
+
 		return $out;
 	}
+
 
 
 }
 
 /*****************************************************************************************************
-	Classe pra gerar caixas de conteúdo
+	Classe pra gerar caixas de conteï¿½do
 */
 class Box {
 	var $title;
@@ -548,15 +479,15 @@ class Box {
 	var $content;
 	
 	// Construtor
-	// $title : título do box
+	// $title : tï¿½tulo do box
 	// $width : largura do box
 	function Box($title="", $width="100%") {
 		$this->title = $title;
 		$this->width = $width;
 	}
 	
-	// adiciona conteúdo ao box
-	// $texto : expressão html que será adicionada ao box
+	// adiciona conteï¿½do ao box
+	// $texto : expressï¿½o html que serï¿½ adicionada ao box
 	function addContent($texto="") {
 		$this->content .= $texto;
 	}
@@ -597,7 +528,7 @@ class Menu {
 	var $width;
 	
 	// Construtor
-	// $aTitle : título do menu
+	// $aTitle : tï¿½tulo do menu
 	// $width : largura do menu
 	function Menu($aTitle="",$width="100%") {
 		$this->title = $aTitle;
@@ -606,7 +537,7 @@ class Menu {
 	
 	// adiciona item ao menu
 	// $item : nome do item de menu
-	// $url : link que será chamado
+	// $url : link que serï¿½ chamado
 	// $frame : frame de destino
 	function addItem($item, $url="#", $frame="content") {
 		$this->item[] = $item;
@@ -655,22 +586,22 @@ class Lookup {
 	var $valorCampoFormDummy;
 	var $sql;
 	
-	// define o nome do campo do formulário
+	// define o nome do campo do formulï¿½rio
 	function setNomeCampoForm($umNome) {
 		$this->nomeCampoForm = $umNome;
 	}
 	
-	// define o nome do campo auxiliar que será exibido no lookup
+	// define o nome do campo auxiliar que serï¿½ exibido no lookup
 	function setNomeCampoAuxiliar($umNome) {
 		$this->nomeCampoAuxiliar = $umNome;
 	}
 	
-	// define o título que aparecerá na janela de lookup
+	// define o tï¿½tulo que aparecerï¿½ na janela de lookup
 	function setTitle($umTitulo) {
 		$this->title = $umTitulo;
 	}
 	
-	// define o valor inicial do campo do formulário
+	// define o valor inicial do campo do formulï¿½rio
 	function setValorCampoForm($umValor) {
 		$this->valorCampoForm = $umValor;
 		$sql = "SELECT ".$this->nomeCampoExibicao.", ".$this->nomeCampoChave." FROM ".$this->nomeTabela
@@ -679,17 +610,17 @@ class Lookup {
 		$this->valorCampoFormDummy = getDbValue($sql);
 	}
 	
-	// define o nome da tabela que será exibida no lookup
+	// define o nome da tabela que serï¿½ exibida no lookup
 	function setNomeTabela($umNome) {
 		$this->nomeTabela = $umNome;
 	}
 	
-	// define o nome do campo chave que será devolvido ao campo do formulário
+	// define o nome do campo chave que serï¿½ devolvido ao campo do formulï¿½rio
 	function setNomeCampoChave($umNome) {
 		$this->nomeCampoChave = $umNome;
 	}
 	
-	// define o nome do campo que será exibido no lookup
+	// define o nome do campo que serï¿½ exibido no lookup
 	function setNomeCampoExibicao($umNome) {
 		$this->nomeCampoExibicao = $umNome;
 	}
@@ -721,22 +652,22 @@ class LookupEditavel {
 	var $valorCampoFormDummy;
 	var $sql;
 	
-	// define o nome do campo do formulário
+	// define o nome do campo do formulï¿½rio
 	function setNomeCampoForm($umNome) {
 		$this->nomeCampoForm = $umNome;
 	}
 	
-	// define o nome do campo auxiliar que será exibido no lookup
+	// define o nome do campo auxiliar que serï¿½ exibido no lookup
 	function setNomeCampoAuxiliar($umNome) {
 		$this->nomeCampoAuxiliar = $umNome;
 	}
 	
-	// define o título que aparecerá na janela de lookup
+	// define o tï¿½tulo que aparecerï¿½ na janela de lookup
 	function setTitle($umTitulo) {
 		$this->title = $umTitulo;
 	}
 	
-	// define o valor inicial do campo do formulário
+	// define o valor inicial do campo do formulï¿½rio
 	function setValorCampoForm($umValor) {
 		$this->valorCampoForm = $umValor;
 		$sql = "SELECT ".$this->nomeCampoExibicao.", ".$this->nomeCampoChave." FROM ".$this->nomeTabela
@@ -745,17 +676,17 @@ class LookupEditavel {
 		$this->valorCampoFormDummy = getDbValue($sql);
 	}
 	
-	// define o nome da tabela que será exibida no lookup
+	// define o nome da tabela que serï¿½ exibida no lookup
 	function setNomeTabela($umNome) {
 		$this->nomeTabela = $umNome;
 	}
 	
-	// define o nome do campo chave que será devolvido ao campo do formulário
+	// define o nome do campo chave que serï¿½ devolvido ao campo do formulï¿½rio
 	function setNomeCampoChave($umNome) {
 		$this->nomeCampoChave = $umNome;
 	}
 	
-	// define o nome do campo que será exibido no lookup
+	// define o nome do campo que serï¿½ exibido no lookup
 	function setNomeCampoExibicao($umNome) {
 		$this->nomeCampoExibicao = $umNome;
 	}
@@ -773,65 +704,62 @@ class LookupEditavel {
 }
 
 /*****************************************************************************************************
-	Classe para criação de abas
+	Classe para criaï¿½ï¿½o de abas
 */
 class Abas {
-	var $item;
-	var $status;
-	var $url;
-	var $level;
-	
-	// adiciona uma aba
-	// $nome : nome da aba
-	// $status : ativa? true ou false
-	// $url : link que será chamado (usar somente se inativa)
-	// $level : nível de acesso mínimo que o usuário deve ter para visualizar esta aba
-	function addItem($nome="Geral", $status=false, $url="", $level=0) {
-		$this->item[] = $nome;
-		$this->status[] = $status;
-		$this->url[] = $url;
-		$this->level[] = $level;
-	}
-	
-	function setFuncaoOnclick($funcao) {
-		$this->funcaoOnclick = $funcao;
-	}
-	
-	// retorna bloco HTML que monta as abas
-	function writeHTML() {
-		$y = 2;
-		$out  = "";
-		$out .= "<table cellpadding='2' cellspacing='0' width='100%' border='0'>";
-		$out .= "<tr>";
-		$out .= "<td class='FundoABA' width='10px'>&nbsp;</td>";
-		for ($x = 0; $x < sizeof($this->item); $x++) {
-			if (isValidUser($this->level[$x])) {
-				if ($this->status[$x]) {
-					$out .= "<td nowrap class='SelecionadaABA'><font class='SelecionadaFontABA'>&nbsp;" . $this->item[$x] . "&nbsp;</font></td>";
-				} else {
-					$out .= "<td nowrap class='NaoSelecionadaABA'>";
-					$out .= "<font class='NaoSelecionadaFontABA'>&nbsp;";
-					$out .= "<a href='".$this->url[$x]."' target='content' class='aba'>";
-					$out .= $this->item[$x];
-					$out .= "</a>";
-					$out .= "&nbsp;</font></td>";
-				}
-			}
-			$out .= "<td class='FundoABA' width='1px'></td>";
-			$y+=2;
-		}
-		$out .= "<td class='FundoABA' width='100%'>&nbsp;</td>";
-		$out .= "</tr>";
-		$out .= "<tr>";
-		$out .= "<td colspan='$y' height='4px' class='SelecionadaABA'></td>";
-		$out .= "</tr>";
-		$out .= "</table>";
-		return $out;
-	}
+    var $item;
+    var $status;
+    var $url;
+    var $level;
+    var $funcaoOnclick; // <<< declara a propriedade para evitar o warning
+
+    // adiciona uma aba
+    function addItem($nome="Geral", $status=false, $url="", $level=0) {
+        $this->item[] = $nome;
+        $this->status[] = $status;
+        $this->url[] = $url;
+        $this->level[] = $level;
+    }
+
+    function setFuncaoOnclick($funcao) {
+        $this->funcaoOnclick = $funcao;
+    }
+
+    // retorna bloco HTML que monta as abas
+    function writeHTML() {
+        $y = 2;
+        $out  = "";
+        $out .= "<table cellpadding='2' cellspacing='0' width='100%' border='0'>";
+        $out .= "<tr>";
+        $out .= "<td class='FundoABA' width='10px'>&nbsp;</td>";
+        for ($x = 0; $x < sizeof($this->item); $x++) {
+            if (isValidUser($this->level[$x])) {
+                if ($this->status[$x]) {
+                    $out .= "<td nowrap class='SelecionadaABA'><font class='SelecionadaFontABA'>&nbsp;" . $this->item[$x] . "&nbsp;</font></td>";
+                } else {
+                    $out .= "<td nowrap class='NaoSelecionadaABA'>";
+                    $out .= "<font class='NaoSelecionadaFontABA'>&nbsp;";
+                    $out .= "<a href='".$this->url[$x]."' target='content' class='aba'>";
+                    $out .= $this->item[$x];
+                    $out .= "</a>";
+                    $out .= "&nbsp;</font></td>";
+                }
+            }
+            $out .= "<td class='FundoABA' width='1px'></td>";
+            $y+=2;
+        }
+        $out .= "<td class='FundoABA' width='100%'>&nbsp;</td>";
+        $out .= "</tr>";
+        $out .= "<tr>";
+        $out .= "<td colspan='$y' height='4px' class='SelecionadaABA'></td>";
+        $out .= "</tr>";
+        $out .= "</table>";
+        return $out;
+    }
 }
 
 /*****************************************************************************************************
-	Classe para gerar deck de botões
+	Classe para gerar deck de botï¿½es
 */
 class Button {
 	var $nome;
@@ -840,11 +768,11 @@ class Button {
 	var $level;
 	
 	/*
-		Adiciona botão
-		$nome : nome do botão
-		$url : link que será chamado
-		$target : frame em que o link será aberto
-		$level : nível de acesso mínimo que o usuário deve ter para visualizar este botão
+		Adiciona botï¿½o
+		$nome : nome do botï¿½o
+		$url : link que serï¿½ chamado
+		$target : frame em que o link serï¿½ aberto
+		$level : nï¿½vel de acesso mï¿½nimo que o usuï¿½rio deve ter para visualizar este botï¿½o
 	*/
 	function addItem($nome, $url, $target="", $level=0) {
 		$this->nome[] = $nome;
@@ -854,7 +782,7 @@ class Button {
 	}
 	
 	/*
-		Retorna o código HTML com o deck de botões
+		Retorna o cï¿½digo HTML com o deck de botï¿½es
 	*/
 	function writeHTML() {
 		$out = "<div class='acoes'>";
@@ -877,7 +805,7 @@ class Button {
 }
 
 /*****************************************************************************************************
-	Classe para controlar erros da página
+	Classe para controlar erros da pï¿½gina
 */
 class Erro {
 	var $strErro;
@@ -894,7 +822,7 @@ class Erro {
 
 
 /*****************************************************************************************************
-	função para recuperar as variáveis GET e POST
+	funï¿½ï¿½o para recuperar as variï¿½veis GET e POST
 */
 function getParam($param_name) {
 	$param_value = "";
@@ -907,21 +835,21 @@ function getParam($param_name) {
 }
 
 /*****************************************************************************************************
-	função para recuperar variáveis de sessão
+	funï¿½ï¿½o para recuperar variï¿½veis de sessï¿½o
 */
 function getSession($param_name) {
-	return $_SESSION[$param_name];
+    return isset($_SESSION[$param_name]) ? $_SESSION[$param_name] : null;
 }
 
 /*****************************************************************************************************
-	função para definir variáveis de sessão
+	funï¿½ï¿½o para definir variï¿½veis de sessï¿½o
 */
 function setSession($param_name, $param_value) {
 	$_SESSION[$param_name] = $param_value;
 }
 
 /*****************************************************************************************************
-	formatação de texto para exibição, pode ser adaptado conforme necessidade do sistema
+	formataï¿½ï¿½o de texto para exibiï¿½ï¿½o, pode ser adaptado conforme necessidade do sistema
 */
 function formataTexto($texto) {
 	// quebra de linha
@@ -931,8 +859,8 @@ function formataTexto($texto) {
 }
 
 /*****************************************************************************************************
-	função para verificar a existência de chaves estrangeiras
-	O MySQL não implementa integridade refencial
+	funï¿½ï¿½o para verificar a existï¿½ncia de chaves estrangeiras
+	O MySQL nï¿½o implementa integridade refencial
 	table -> tabela alvo
 	key -> chave da tabela alvo
 	val -> valor da chave estrangeira
@@ -965,7 +893,7 @@ function formDate($nome_campo, $data="") {
 	echo "</select>\n";
 	
 	//----- monta select do mes
-	$aMes = array("nulo","Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
+	$aMes = array("nulo","Janeiro","Fevereiro","Marï¿½o","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
 	echo "&nbsp;<select name=\"" . $nome_campo . "_mes\">\n";
 	echo "<option value=\"\">--</option>\n";
 	for ($i=1; $i <= 12; $i++) {
@@ -1018,11 +946,11 @@ function formTime($nome_campo, $hora="") {
 
 /*****************************************************************************************************
 	gerador de listbox
-	$sql : expressão sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
-	$name : nome do campo que será criado
+	$sql : expressï¿½o sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
+	$name : nome do campo que serï¿½ criado
 	$default : valor inicial do campo
 	$todos : texto indicativo, caso a lista permita valor null
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function listboxField($sql, $name, $default=0, $todos="", $js="") {
 	$connTemp = new db();
@@ -1045,11 +973,11 @@ function listboxField($sql, $name, $default=0, $todos="", $js="") {
 
 /*****************************************************************************************************
 	gerador de listbox
-	$sql : expressão sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
-	$name : nome do campo que será criado
+	$sql : expressï¿½o sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
+	$name : nome do campo que serï¿½ criado
 	$default : valor inicial do campo
 	$todos : texto indicativo, caso a lista permita valor null
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function listboxFieldDisabled($sql, $name, $default=0, $todos="", $js="") {
 	$connTemp = new db();
@@ -1078,11 +1006,11 @@ function listboxFieldDisabled($sql, $name, $default=0, $todos="", $js="") {
 
 /*****************************************************************************************************
 	gerador de listbox
-	$sql : expressão sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
-	$name : nome do campo que será criado
+	$sql : expressï¿½o sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
+	$name : nome do campo que serï¿½ criado
 	$default : valor inicial do campo
 	$todos : texto indicativo, caso a lista permita valor null
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function listboxField2($sql, $name, $default=0, $todos="", $largura="100%", $js="") {
 	$connTemp = new db();
@@ -1105,11 +1033,11 @@ function listboxField2($sql, $name, $default=0, $todos="", $largura="100%", $js=
 
 /*****************************************************************************************************
 	gerador de listbox
-	$sql : expressão sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
-	$name : nome do campo que será criado
+	$sql : expressï¿½o sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
+	$name : nome do campo que serï¿½ criado
 	$default : valor inicial do campo
 	$todos : texto indicativo, caso a lista permita valor null
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function listboxField2Disabled($sql, $name, $default=0, $todos="", $largura="100%", $js="") {
 	$connTemp = new db();
@@ -1139,12 +1067,12 @@ function listboxField2Disabled($sql, $name, $default=0, $todos="", $largura="100
 
 /*****************************************************************************************************
 	gerador de listbox
-	$sql : expressão sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
-	$name : nome do campo que será criado
-	$idList : id do campo select que será criado	- "necessário para manipulação de combos dinamicas"
+	$sql : expressï¿½o sql que monta a lista (selecionar apenas 2 campos com os nomes "id" e "val"
+	$name : nome do campo que serï¿½ criado
+	$idList : id do campo select que serï¿½ criado	- "necessï¿½rio para manipulaï¿½ï¿½o de combos dinamicas"
 	$default : valor inicial do campo
 	$todos : texto indicativo, caso a lista permita valor null
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function listboxField3($sql, $name, $idList, $default=0, $todos="", $js="") {
 	$connTemp = new db();
@@ -1166,8 +1094,8 @@ function listboxField3($sql, $name, $idList, $default=0, $todos="", $js="") {
 } 
 
 /*****************************************************************************************************
-	verifica se usuário pode acessar página
-	$nivel : valor numérico que define o nível hierárquico de acesso
+	verifica se usuï¿½rio pode acessar pï¿½gina
+	$nivel : valor numï¿½rico que define o nï¿½vel hierï¿½rquico de acesso
 */
 function verificaUsuario($nivel=0) {
 	if ($nivel > 0) {
@@ -1182,7 +1110,7 @@ function verificaUsuario($nivel=0) {
 }
 
 /*****************************************************************************************************
-	função que verifica se o usuario está dentro do nível
+	funï¿½ï¿½o que verifica se o usuario estï¿½ dentro do nï¿½vel
 	retorna boolean
 */
 function isValidUser($level=0) {
@@ -1190,19 +1118,20 @@ function isValidUser($level=0) {
 }
 
 /*****************************************************************************************************
-	gera senha aleatória
+	gera senha aleatï¿½ria
 */
 function geraSenha($tamanho=6) {
-	$senha = "abcdefghjkmnpqrstuvxzwyABCDEFGHIJLKMNPQRSTUVXZYW23456789";
-	srand ((double)microtime()*1000000);
-	for ($i=0; $i<$tamanho; $i++) {
-		$password .= $senha[rand()%strlen($senha)];
-	}
-	return $password;
+    $senha = "abcdefghjkmnpqrstuvxzwyABCDEFGHIJLKMNPQRSTUVXZYW23456789";
+    $password = ""; // <<< inicializa a variÃ¡vel
+    srand((double)microtime()*1000000);
+    for ($i = 0; $i < $tamanho; $i++) {
+        $password .= $senha[rand() % strlen($senha)];
+    }
+    return $password;
 }
 
 /*****************************************************************************************************
-	retorna o valor de um campo através de expressão sql
+	retorna o valor de um campo atravï¿½s de expressï¿½o sql
 */
 function getDbValue($sql) {
 	$connTemp = new db();
@@ -1234,29 +1163,31 @@ function somadata($data, $nDias) {
 }
 
 /*****************************************************************************************************
-	Função para gerar campos radio
-	$arr : array de valores, cada elemento deve ter a chave e o label separados por vírgula
+	Funï¿½ï¿½o para gerar campos radio
+	$arr : array de valores, cada elemento deve ter a chave e o label separados por vï¿½rgula
 	       exemplo: {"1,Solteiro","2,Casado","3,Separado"}
 	$name : nome do campo
 	$sel : valor inicial do campo
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
-function radioField($arr,$name,$sel = "", $js="") {
-	$out = "";
-	
-	while (list($key, $val) = each($arr)) {
-		$string = explode(",",$val);
-		$label = $string[1];
-		$valor = $string[0];
-		$select_v = ($sel && $valor == $sel)?" checked":"";
-		$out .= "<input type=radio name=\"$name\" value=\"$valor\" $select_v $js> $label";
-	}
-	return $out;
+function radioField($arr, $name, $sel = "", $js = "") {
+    $out = "";
+
+    foreach ($arr as $key => $val) {
+        $string = explode(",", $val);
+        $valor = $string[0];
+        $label = $string[1] ?? $valor; // caso nÃ£o tenha segundo elemento
+        $select_v = ($sel !== "" && $valor == $sel) ? " checked" : "";
+        $out .= "<input type='radio' name='$name' value='$valor' $select_v $js> $label ";
+    }
+
+    return $out;
 }
 
+
 /*****************************************************************************************************
-	Função para gerar campo de data com calendário popup
-	$fieldname : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo de data com calendï¿½rio popup
+	$fieldname : nome do campo que serï¿½ criado
 	$fieldvalue : valor inicial do campo
 */
 function dateField($fieldname, $fieldvalue="", $js="") {
@@ -1269,12 +1200,12 @@ function dateField($fieldname, $fieldvalue="", $js="") {
 }
 
 /*****************************************************************************************************
-	Função para gerar campo de texto
-	$fieldname : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo de texto
+	$fieldname : nome do campo que serï¿½ criado
 	$fieldvalue : valor inicial do campo
 	$lenght : tamanho do campo
 	$maxlenght : capacidade do campo
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function textField($fieldname, $fieldvalue="", $length=40, $maxlength=40, $js="") {
 	$out = "";
@@ -1284,13 +1215,13 @@ function textField($fieldname, $fieldvalue="", $length=40, $maxlength=40, $js=""
 
 
 /*****************************************************************************************************
-	Função para gerar campo de texto
-	$fieldname : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo de texto
+	$fieldname : nome do campo que serï¿½ criado
 	$fieldvalue : valor inicial do campo
 	$lenght : tamanho do campo
-	$id : id do campo text que será criado	- "necessário para manipulação de text dinamicas"
+	$id : id do campo text que serï¿½ criado	- "necessï¿½rio para manipulaï¿½ï¿½o de text dinamicas"
 	$maxlenght : capacidade do campo
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function textField2($fieldname, $id, $fieldvalue="", $length=40, $maxlength=40, $js="") {
 	$out = "";
@@ -1299,12 +1230,12 @@ function textField2($fieldname, $id, $fieldvalue="", $length=40, $maxlength=40, 
 }
 
 /*****************************************************************************************************
-	Função para gerar campo de texto
-	$fieldname : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo de texto
+	$fieldname : nome do campo que serï¿½ criado
 	$fieldvalue : valor inicial do campo
 	$width : tamanho x largura do campo
 	$maxlenght : capacidade do campo
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function textField3($fieldname, $fieldvalue="", $width="100%", $maxlength=40, $js="") {
 	$out = "";
@@ -1314,12 +1245,12 @@ function textField3($fieldname, $fieldvalue="", $width="100%", $maxlength=40, $j
 
 
 /*****************************************************************************************************
-	Função para gerar campo de texto desabilitado
-	$fieldname : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo de texto desabilitado
+	$fieldname : nome do campo que serï¿½ criado
 	$fieldvalue : valor inicial do campo
 	$lenght : tamanho do campo
 	$maxlenght : capacidade do campo
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function textFieldDisabled($fieldname, $fieldvalue="", $length=40, $maxlength=40, $js="") {
 	$out = "";
@@ -1329,12 +1260,12 @@ function textFieldDisabled($fieldname, $fieldvalue="", $length=40, $maxlength=40
 
 
 /*****************************************************************************************************
-	Função para gerar campo de password
-	$fieldname : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo de password
+	$fieldname : nome do campo que serï¿½ criado
 	$fieldvalue : valor inicial do campo
 	$lenght : tamanho do campo
 	$maxlenght : capacidade do campo
-	$js : expressão javascript
+	$js : expressï¿½o javascript
 */
 function passwordField($fieldname, $fieldvalue="", $lenght=20, $maxlenght=20, $js="") {
 	$out = "";
@@ -1343,11 +1274,11 @@ function passwordField($fieldname, $fieldvalue="", $lenght=20, $maxlenght=20, $j
 }
 
 /*****************************************************************************************************
-	Função para gerar campo de checkbox
-	$fieldname : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo de checkbox
+	$fieldname : nome do campo que serï¿½ criado
 	$fieldvalue : valor inicial do campo
-	$expr : expressão booleana que define se o checkbox está marcado ou não
-	$js : expressão javascript
+	$expr : expressï¿½o booleana que define se o checkbox estï¿½ marcado ou nï¿½o
+	$js : expressï¿½o javascript
 */
 function checkboxField($fieldname, $fieldvalue="", $expr, $js="") {
 	$out = "";
@@ -1357,11 +1288,11 @@ function checkboxField($fieldname, $fieldvalue="", $expr, $js="") {
 }
 
 /*****************************************************************************************************
-	Função para gerar campo file
-	$fieldname : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo file
+	$fieldname : nome do campo que serï¿½ criado
 	$fieldvalue : valor inicial do campo
-	$expr : expressão que retorna um boolean
-	$js : expressão javascript
+	$expr : expressï¿½o que retorna um boolean
+	$js : expressï¿½o javascript
 */
 function fileField($fieldname, $fieldvalue="", $lenght=30, $js="") {
 	$out = "";
@@ -1374,13 +1305,13 @@ function fileField($fieldname, $fieldvalue="", $lenght=30, $js="") {
 }
 
 /*****************************************************************************************************
-	Função para gerar lista de campos checkbox
-	$formField : nome do campo no formulário
-	$formFieldValue : valor do campo no formulário
-	$table : nome da tabela que formará os checkboxes
+	Funï¿½ï¿½o para gerar lista de campos checkbox
+	$formField : nome do campo no formulï¿½rio
+	$formFieldValue : valor do campo no formulï¿½rio
+	$table : nome da tabela que formarï¿½ os checkboxes
 	$keyField : campo chave da tabela
-	$showField : campo que será exibido nos checkboxes
-	$condition : condição de exibição dos registros (cláusula WHERE)
+	$showField : campo que serï¿½ exibido nos checkboxes
+	$condition : condiï¿½ï¿½o de exibiï¿½ï¿½o dos registros (clï¿½usula WHERE)
 */
 function multipleCheckboxField ($formField, $formFieldValue, $table, $keyField, $showField, $orderField="", $condition="") {
 	$connTemp = new db();
@@ -1410,10 +1341,10 @@ function multipleCheckboxField ($formField, $formFieldValue, $table, $keyField, 
 }
 
 /*****************************************************************************************************
-        Função para gerar lista de campos checkbox
-        $formField      : nome do campo no formulário
-        $formFieldValue : valor do campo no formulário (valores separados por ,)
-        $table          : nome da array que formará os checkboxes ("0,Teste")
+        Funï¿½ï¿½o para gerar lista de campos checkbox
+        $formField      : nome do campo no formulï¿½rio
+        $formFieldValue : valor do campo no formulï¿½rio (valores separados por ,)
+        $table          : nome da array que formarï¿½ os checkboxes ("0,Teste")
 */
 function multipleCheckboxArray ($formField, $formFieldValue, $elementos) {
 	$lista     = explode(",",$formFieldValue);
@@ -1433,12 +1364,12 @@ function multipleCheckboxArray ($formField, $formFieldValue, $elementos) {
 }
 
 /*****************************************************************************************************
-	Função para gerar campo textarea com controle de caracteres via javascript
-	$nome_campo : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo textarea com controle de caracteres via javascript
+	$nome_campo : nome do campo que serï¿½ criado
 	$valor_inicial : valor inicial do campo
-	$num_linhas : número de linhas do campo
-	$num_colunas : número de colunas do campo
-	$maximo : quantidade máxima de caracteres
+	$num_linhas : nï¿½mero de linhas do campo
+	$num_colunas : nï¿½mero de colunas do campo
+	$maximo : quantidade mï¿½xima de caracteres
 */
 function textAreaField($nome_campo, $valor_inicial="", $num_linhas=5, $num_colunas=40, $maximo=200) {
 	$str = "<textarea ".
@@ -1461,12 +1392,12 @@ function textAreaField($nome_campo, $valor_inicial="", $num_linhas=5, $num_colun
 
 
 /*****************************************************************************************************
-	Função para gerar campo textarea com controle de caracteres via javascript
-	$nome_campo : nome do campo que será criado
+	Funï¿½ï¿½o para gerar campo textarea com controle de caracteres via javascript
+	$nome_campo : nome do campo que serï¿½ criado
 	$valor_inicial : valor inicial do campo
-	$num_linhas : número de linhas do campo
+	$num_linhas : nï¿½mero de linhas do campo
 	$width : largura do campo
-	$maximo : quantidade máxima de caracteres
+	$maximo : quantidade mï¿½xima de caracteres
 */
 function textAreaField2($nome_campo, $valor_inicial="", $num_linhas=5, $width="100%", $maximo=200) {
 	$str = "<textarea ".
@@ -1492,14 +1423,14 @@ function textAreaField2($nome_campo, $valor_inicial="", $num_linhas=5, $width="1
 
 
 /*****************************************************************************************************
-	Função para gerar link html
+	Funï¿½ï¿½o para gerar link html
 */
 function addLink($titulo, $url, $alt="", $target="") {
 	return "<a title='$alt' class='link' href='$url' target='$target'>$titulo</a>";
 }
 
 /*****************************************************************************************************
- Função para verificar campo duplicado
+ Funï¿½ï¿½o para verificar campo duplicado
 */
 function isDuplicated($tabela, $campo_valor, $campo_chave, $valor, $chave) {
 	$retorno = false;
@@ -1516,7 +1447,7 @@ function isDuplicated($tabela, $campo_valor, $campo_chave, $valor, $chave) {
 }                   
 
 /*****************************************************************************************************
- Tratamento da data para formatos apenas numéricos
+ Tratamento da data para formatos apenas numï¿½ricos
  Recebe uma data no formato yyyymmdd, coloca as barras e ordena em dd/mm/yyyy
 */
 function dtod($data) {
@@ -1528,7 +1459,7 @@ function dtod($data) {
 
 /*****************************************************************************************************
 	Converte yyyy-mm-dd hh:mm:ss em dd/mm/yyyy hh:mm:ss
-	função auxiliar, use stod()
+	funï¿½ï¿½o auxiliar, use stod()
 */
 function _stodt($str) {
 	$aStr = explode(" ",$str);
@@ -1541,15 +1472,15 @@ function _stodt($str) {
 
 /*****************************************************************************************************
 	Converte dd/mm/yyyy hh:mm:ss em yyyy-mm-dd hh:mm:ss
-	função auxiliar, use dtos()
+	funï¿½ï¿½o auxiliar, use dtos()
 */
 function _dttos($datetime) {
-	$aDT = explode(" ",$str);
-	$s = $aDT[0];
-	$t = $aDT[1];
-	$aS = explode("-", $s);
-	$str = $aS[2] . "-" . $aS[1] . "-" . $aS[0] . " " . $t;
-	return $str;
+    $aDT = explode(" ", $datetime); // usar $datetime e nÃ£o $str
+    $s = $aDT[0];
+    $t = $aDT[1] ?? '00:00:00'; // caso nÃ£o tenha hora
+    $aS = explode("-", $s);
+    $str = $aS[2] . "-" . $aS[1] . "-" . $aS[0] . " " . $t;
+    return $str;
 }
 
 /*****************************************************************************************************
@@ -1579,11 +1510,11 @@ function dtos($data) {
 }
 
 /*****************************************************************************************************
- Função para formatar data
+ Funï¿½ï¿½o para formatar data
 */
 function fdata($data,$formato="d/m/Y"){
-	$months = array("january"=>"Janeiro","february"=>"Fevereiro","march"=>"Março","april"=>"Abril","may"=>"Maio","june"=>"Junho","july"=>"Julho","august"=>"Agosto","september"=>"Setembro","october"=>"Outubro","november"=>"Novembro","december"=>"Dezembro");
-	$weeks = array("sunday"=>"Domingo","monday"=>"Segunda","tuesday"=>"Terça","wednesday"=>"Quarta","thursday"=>"Quinta","friday"=>"Sexta","saturday"=>"Sábado");
+	$months = array("january"=>"Janeiro","february"=>"Fevereiro","march"=>"Marï¿½o","april"=>"Abril","may"=>"Maio","june"=>"Junho","july"=>"Julho","august"=>"Agosto","september"=>"Setembro","october"=>"Outubro","november"=>"Novembro","december"=>"Dezembro");
+	$weeks = array("sunday"=>"Domingo","monday"=>"Segunda","tuesday"=>"Terï¿½a","wednesday"=>"Quarta","thursday"=>"Quinta","friday"=>"Sexta","saturday"=>"Sï¿½bado");
 	$months3 = array("jan"=>"jan","feb"=>"fev","mar"=>"mar","apr"=>"abr","may"=>"mai","jun"=>"jun","jul"=>"jul","aug"=>"ago","sep"=>"set","oct"=>"out","nov"=>"nov","dec"=>"dez");
 	$weeks3 = array("sun"=>"dom","mon"=>"seg","tue"=>"ter","wed"=>"qua","thu"=>"qui","fri"=>"sex","sat"=>"sab");
 	
@@ -1597,8 +1528,8 @@ function fdata($data,$formato="d/m/Y"){
 
 /*****************************************************************************************************
 	Ajuda on-line
-	Gera um ícone na página que quando clicado abre uma janela popup
-	$titulo : título da ajuda
+	Gera um ï¿½cone na pï¿½gina que quando clicado abre uma janela popup
+	$titulo : tï¿½tulo da ajuda
 	$msg : texto da ajuda
 */
 function help($titulo="",$msg="") {
@@ -1618,7 +1549,7 @@ function help($titulo="",$msg="") {
 }
 
 /*****************************************************************************************************
-	Desenho de título da página
+	Desenho de tï¿½tulo da pï¿½gina
 */
 function pageTitle($titulo,$subtitulo="") {
 	if ($titulo != "") {
@@ -1631,7 +1562,7 @@ function pageTitle($titulo,$subtitulo="") {
 }
 
 /*****************************************************************************************************
-	Exibição de alert em javascript
+	Exibiï¿½ï¿½o de alert em javascript
 */
 function alert($msg) {
 	echo "<script language='JavaScript'>";
@@ -1655,7 +1586,7 @@ function redirect2($url) {
 }
 
 /*****************************************************************************************************
-	Cria scroll no conteúdo enviado
+	Cria scroll no conteï¿½do enviado
 */
 function scrollBlock($conteudo="", $altura="300px", $largura="100%") {
    $out  = "<div style='background-color: #FFFFFF; height: $altura; width: $largura; ";
@@ -1684,35 +1615,46 @@ function strLimit($str, $size, $showDots = false) {
 }
 
 /*****************************************************************************************************
- função que gera a senha para o usuário e envia a senha para o email definido no cadastro e na troca de senha
+ funï¿½ï¿½o que gera a senha para o usuï¿½rio e envia a senha para o email definido no cadastro e na troca de senha
 */
-function geraSenhaMail($nome, $usuario, $email, $incAtu=1, $sistema = SIS_TITULO, $sistemaEmail = SIS_EMAIL_RESPONSAVEL, $sistemaEndereco = SIS_URL) {
+function geraSenhaMail(
+    $nome, 
+    $usuario, 
+    $email, 
+    $incAtu = 1, 
+    $sistema = 'Vip LuxÃºria', 
+    $sistemaEmail = 'contato@vipluxuria.com', 
+    $sistemaEndereco = 'www.vipluxuria.com'
+) {
     $senha    = geraSenha(6);
-    $to		  =	$email;
-	$subject  =	$sistema." - Cadastro de Usuários";
-	$headers  = "Content-type: text/html; charset=iso-8859-1\r\n";
-	$headers .= "From: ".$sistema." <" . $sistemaEmail . ">\r\n";
-	if ($incAtu == 1) {
-	    $message = "Você foi cadastrado como um novo usuário no site " . $sistema . "<br /><br />";
-	} 
-	else {
-	    $message = "Sua senha foi reiniciada no site " . $sistema . "<br /><br />";
-	}
-	$message .= "Seguem abaixo os dados de acesso:<br /><br />";
-	$message .= "Endereço: <a href='http://" . $sistemaEndereco . "' target='_blank'>" . $sistemaEndereco . "</a><br /><br />";
-	$message .= "Usuário: " . $usuario . "<br />";
-	$message .= "Senha: " . $senha . "<br /><br />";
-	$message .= "Observação: Esta senha é gerada automaticamente e no primeiro acesso a área de administração será solicitado que você cadastre uma nova senha. A qualquer momento você poderá trocar sua senha na opção Segurança, na administração do site.<br /><br />";
-	$message .= "Atenciosamente,<br /><br />";
-	$message .= "Administrador <br />";
-	$message .= $sistema;
-	mail($to, $subject, $message, $headers);
+    $to       = $email;
+    $subject  = $sistema . " - Cadastro de UsuÃ¡rios";
+    $headers  = "Content-type: text/html; charset=iso-8859-1\r\n";
+    $headers .= "From: ".$sistema." <" . $sistemaEmail . ">\r\n";
 
-	return $senha;
+    if ($incAtu == 1) {
+        $message = "VocÃª foi cadastrado como um novo usuÃ¡rio no site " . $sistema . "<br /><br />";
+    } else {
+        $message = "Sua senha foi reiniciada no site " . $sistema . "<br /><br />";
+    }
+
+    $message .= "Seguem abaixo os dados de acesso:<br /><br />";
+    $message .= "EndereÃ§o: <a href='http://" . $sistemaEndereco . "' target='_blank'>" . $sistemaEndereco . "</a><br /><br />";
+    $message .= "UsuÃ¡rio: " . $usuario . "<br />";
+    $message .= "Senha: " . $senha . "<br /><br />";
+    $message .= "ObservaÃ§Ã£o: Esta senha Ã© gerada automaticamente e no primeiro acesso Ã  Ã¡rea de administraÃ§Ã£o serÃ¡ solicitado que vocÃª cadastre uma nova senha. A qualquer momento vocÃª poderÃ¡ trocar sua senha na opÃ§Ã£o SeguranÃ§a, na administraÃ§Ã£o do site.<br /><br />";
+    $message .= "Atenciosamente,<br /><br />";
+    $message .= "Administrador <br />";
+    $message .= $sistema;
+
+    mail($to, $subject, $message, $headers);
+
+    return $senha;
 }
 
+
 /*****************************************************************************************************
- função que salva valores de checkbox em tabela de associação
+ funï¿½ï¿½o que salva valores de checkbox em tabela de associaï¿½ï¿½o
 */
 function saveCheckbox($theTable, $theField, $theValues, $theOtherSideField, $theOtherSideValue) {
 	$connTemp = new db();
@@ -1781,7 +1723,7 @@ function validaCPF($cpf) {
      if (strlen($cpf) <> 11)
         return false;
      
-     // Verifica 1º digito      
+     // Verifica 1ï¿½ digito      
      for ($i = 0; $i < 9; $i++) {         
         $soma += (($i+1) * $cpf[$i]);
      }
@@ -1794,7 +1736,7 @@ function validaCPF($cpf) {
      
      $soma = 0;
      
-     // Verifica 2º digito
+     // Verifica 2ï¿½ digito
      for ($i = 9, $j = 0; $i > 0; $i--, $j++) {
         $soma += ($i * $cpf[$j]);
      }
@@ -1832,7 +1774,7 @@ function validaCPF2($cpf) {
 				$digito[$i] = substr($cpf, $i,1);
 			}
 			
-			//CALCULA O VALOR DO 10º DIGITO DE VERIFICAÇÂO
+			//CALCULA O VALOR DO 10ï¿½ DIGITO DE VERIFICAï¿½ï¿½O
 			$posicao = 10;
 			$soma = 0;
 			
@@ -1849,7 +1791,7 @@ function validaCPF2($cpf) {
 				$digito[9] = 11 - $digito[9];
 			}
 			
-			//CALCULA O VALOR DO 11º DIGITO DE VERIFICAÇÃO
+			//CALCULA O VALOR DO 11ï¿½ DIGITO DE VERIFICAï¿½ï¿½O
 			$posicao = 11;
 			$soma = 0;
 			
@@ -1866,7 +1808,7 @@ function validaCPF2($cpf) {
 				$digito[10] = 11 - $digito[10];
 			}
 			
-			//VERIFICA SE O DV CALCULADO É IGUAL AO INFORMADO
+			//VERIFICA SE O DV CALCULADO ï¿½ IGUAL AO INFORMADO
 			$dv = $digito[9] * 10 + $digito[10];
 			if ($dv != $dv_informado) {
 				$status = false;
