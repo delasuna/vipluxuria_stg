@@ -1,142 +1,250 @@
-<?php 
-$conexao = require_once 'php/conecta_mysql.php';  
+<?php
+// Conexão
+$conexao = require_once 'php/conecta_mysql.php';
 
+// SEO
 $sql = "SELECT * 
         FROM seo 
         INNER JOIN tipoSeo ON seo.idTipoSeo = tipoSeo.idTipoSeo 
-        WHERE descricao = 'Index'";  
+        WHERE descricao = 'Home'";
 
 $resultado = mysqli_query($conexao, $sql);
 
 if (!$resultado) {
-    die("Impossível visualizar SEO: " . mysqli_error($conexao) . '<br>');
+	die("Impossível visualizar SEO: " . mysqli_error($conexao));
 }
 
-$registros = mysqli_num_rows($resultado);
+$seo = mysqli_fetch_assoc($resultado);
 
-if ($registros > 0) {
-    while ($row = mysqli_fetch_assoc($resultado)) {
-        $title = $row['title']; 
-        $description = $row['description'];
-        $keywords = $row['keywords'];     
-    } 
-}
+$title = $seo['title'] ?? '';
+$description = $seo['description'] ?? '';
+$keywords = $seo['keywords'] ?? '';
 
 mysqli_free_result($resultado);
-mysqli_close($conexao);
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
 <head>
-<meta name="description" content="<?=$description?>" />
-<meta name="keywords" content="<?=$keywords?>" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="<?= htmlspecialchars($description) ?>" />
+	<meta name="keywords" content="<?= htmlspecialchars($keywords) ?>" />
+	<title><?= htmlspecialchars($title) ?></title>
+	<meta name="robots" content="index,follow" />
+	<meta name="google-translate-customization" content="47516143a922ad1d-908eb38b3da0e2e8-gfbda7755c951dd96-12">
+	<meta http-equiv="Cache-Control" content="no-store" />
 
-<title><?=$title?></title>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Acompanhantes Porto Alegre RS - Garotas de programa verificadas em POA. Loiras, morenas, mulatas. Atendimento discreto 24h.">
-<meta name="keywords" content="acompanhantes porto alegre, garotas de programa poa">
-<title>Acompanhantes Porto Alegre RS | Vip Luxúria - Guia 2025</title>
-<link rel="canonical" href="https://vipluxuria.com/">
-
-<!--CSS-->
-<link href="css-js/estilos-2.css" rel="stylesheet" type="text/css" />
-<!--CSS-->
-
-
-	<!-- Add jQuery library -->
-	<script type="text/javascript" src="/css-js/popup/jquery-1.10.1.min.js"></script>
-
-	<!-- Add mousewheel plugin (this is optional) -->
-	<script type="text/javascript" src="/css-js/popup/jquery.mousewheel-3.0.6.pack.js"></script>
-
-
+	<!-- CSS Original -->
+	<link href="/css-js/estilos-2.css" rel="stylesheet" />
+	<link href="/css-js/menu-2.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/css-js/slider/lightbox/lightbox.css" media="screen" />
+	<link rel="stylesheet" href="/css-js/slider/slider-rows.css">
+	<link rel="stylesheet" href="/css-js/carousel/swiffy-slider.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css-js/style-dropmenu.css" />
+	<link href="/css-js/jquery.bxslider.css" rel="stylesheet" />
+	
+	<!-- JS Original -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="/css-js/jquery.bxslider.min.js"></script>
+	<script src="/css-js/slider/lightbox/modernizr.custom.js"></script>
+	<script src="/css-js/slider/slider-rows.js"></script>
+	<script src="/css-js/carousel/swiffy-slider.min.js"></script>
+	<script src="/css-js/cufon-yui.js"></script>
+	<script src="/css-js/nome_400.font.js"></script>
+	<script src="/css-js/titulo_400.font.js"></script>
 </head>
 
-<body id="abertura-2">
-<div id="wrap-2">
-  <div id="abertura-content-2">
-		<div style="text-align: center;"><a href="/acompanhantes_porto_alegre.php"><img width="650px" src="/imagens/estrutura/vip-luxuria-home-2018.png" alt="Vip Lux&uacute;ria" /></a></div>
-		<h1>Seja bem-vindo ao Vip Luxúria, seu classificado online de Acompanhantes de Porto Alegre e Região Metropolitana.</h1>
-		<div id="texto-abertura">	
-        <div id="bt-versao-2">
-       	      <a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/bt-desktop-2018.png" /></a>
-	          <a href="/m/index.php"><img src="/imagens/estrutura/bt-mobile-2018.png"/></a>
-        </div>
-		<h2>Conheça o Vip Luxúria</h2>		
-		<p>O <strong>VIP LUXÚRIA</strong> é um site de anúncio clasificados de acompanhantes, de produtos e serviços eróticos, direcionado para um público adulto, maior de 18 anos, que procura desfrutar momentos de prazer ao lado de acompanhantes de alto nível. <strong><a href="/vip-luxuria-acompanhantes-porto-alegre-poa/" />Saiba mais[+]</a></strong>
-		</p>
-        <p>&nbsp;</p>
-		<!-- 
-		<h2>Acompanhantes Mulheres</h2>		
-		<p></p>
-        <p>&nbsp;</p>
-		
-		<h2>Acompanhantes Homens</h2>		
-		<p></p>
-        <p>&nbsp;</p>		
-		
-		<h2>Acompanhantes Transex</h2>		
-		<p></p>
-        <p>&nbsp;</p>		-->
-		
-		<ul>
-			<li><a href="/Acompanhantes-Loiras">Garotas de Programa Loiras</a></li>
-			<li><a href="/Acompanhantes-Morenas">Garotas de Programa Morenas</a></li>
-			<li><a href="/Acompanhantes-Mulatas">Garotas de Programa Mulatas</a></li>
-			<li><a href="/casais-e-homens-porto-alegre-poa/">Casais & Homens</a></li>
-			<li><a href="/transex-porto-alegre-poa/">Transex</a></li>
-			<li><a href="/acompanhantes-porto-alegre/">Garotas de Programa Porto Alegre</a></li>
-			<li><a href="/Acompanhantes/5/Litoral-Gaucho">Garotas de Programa Litoral Gaúcho</a></li>
-			<li><a href="/Acompanhantes/6/Grande-Porto-Alegre">Garotas de Programa Grande Porto Alegre</a></li>
-			<li><a href="/Acompanhantes/3/Vale-dos-Sinos">Garotas de Programa Vale dos Sinos</a></li>
-			<li><a href="/Acompanhantes/22/Campo-Bom">Garotas de Programa Campo Bom</a></li>
-			<li><a href="/Acompanhantes/23/Interior-do-Estado">Garotas de Programa Interior do Estado</a></li>
-			<li><a href="/acompanhantes-porto-alegre/">Garotas de Programa Serra Gaúcha</a></li>
-			<li><a href="/Acompanhantes/28/undefined">Garotas de Programa Gramado</a></li>
-			<li><a href="/Acompanhantes/9/Gravatai">Garotas de Programa Gravataí</a></li>
-			<li><a href="/acompanhantes-porto-alegre/">Massagens</a></li>
-			<li><a href="/acompanhantes-porto-alegre/">Massagem Tântrica</a></li>
-			<li><a href="/Acompanhantes/11/Cachoeirinha">Garotas de Programa Cachoeirinha</a></li>
-			<li><a href="/Acompanhantes/13/Canoas">Garotas de Programa Canoas</a></li>
-			<li><a href="/Acompanhantes/12/Sao-Leopoldo">Garotas de Programa São Leopoldo</a></li>
-			<li><a href="/Acompanhantes/2/Novo-Hamburgo">Garotas de Programa Novo Hamburgo</a></li>
-			<li><a href="/Acompanhantes/17/Sapiranga">Garotas de Programa Sapiranga</a></li>
-			<li><a href="/acompanhantes-porto-alegre/">Garotas de Programa Rio Grande do Sul</a></li>
-			<li><a href="/guia-moteis-porto-alegre-poa/">Guia de Motéis</a></li>
-			<li><a href="/guia-moteis-porto-alegre-poa/">Guia de Motéis Porto Alegre</a></li>
-		</ul>
-		<br><br>
-        <div id="termo-box">
-			<p><strong>Termos e condi&ccedil;&otilde;es de navega&ccedil;&atilde;o do site Vip Lux&uacute;ria</strong><br /></p>
-			<p>Este site oferece conte&uacute;do er&oacute;tico e adulto n&atilde;o autorizado para menores de 18 anos, caso voc&ecirc; n&atilde;o tenha atingido essa maioridade ou em seu pa&iacute;s esse tipo de conte&uacute;do &eacute; proibido n&atilde;o entre. Caso voc&ecirc; n&atilde;o tenha essas restri&ccedil;&otilde;es a sua pessoa, favor ler e concordar com os termos e condi&ccedil;&otilde;es de uso do site antes de entrar.</p><br>
-			<strong><p>Termos de Uso</p></strong>
-			<p><strong>Do Usuário Visitante</strong><br>
-1º Tenho mais de 18 anos de idade e em meu país essa maioridade me permite ao acesso deste conteúdo.<br>
-2º Declaro estar ciente que o material exposto neste site é de conteúdo erótico e adulto, e que estou acessando para o meu uso pessoal e não irei expor este conteúdo a menores de 18 anos ou a outros que exista alguma restrição legal ou moral.<br>
-3º Assumo inteira responsabilidade cível e criminal pelo uso indevido dos materiais fotográficos, vídeos e outros existentes no site, uma vez que as veiculações dos anúncios não representam cessão de direitos de imagem aos visitantes e usuários.<br>
-4º Declaro também estar ciente que o Site Vip Luxúria é um site de classificados de produtos e serviços eróticos relacionados ao mercado adulto, e que o mesmo não tem nenhum vinculo com os produtos ou serviços divulgados.<br>
-<br>
-<strong>Do Vip Luxúria aos Visitantes e Usuários</strong><br>
-Nosso Site tem como objetivo a divulgação de produtos e serviços do mercado adulto ou correlacionados e torná-los público a quem busca esse tipo de conteúdo e informação, desde que se tenha autoridade legal para acessar tal conteúdo, ou seja, que o visitante ou usuário tenha maioridade exigida pela constituição brasileira.<br><br>
-O Vip Luxúria se posiciona como um catálogo de produtos e serviços eróticos ou classificados dos mesmos, mas tendo como sua única responsabilidade, a prestação de serviço em publicidade dos produtos e serviços que nossos anunciantes solicitam a publicação através de uma taxa de manutenção.<br><br>
-Em nosso Site, todo anúncio de um produto ou serviço erótico publicado, é de inteira responsabilidade da empresa ou profissional autônomo Anunciante. Sendo assim, não nos comprometemos com a qualidade, atendimento, entrega ou qualquer outro valor agregado dos produtos e serviços prestados por nossos Anunciantes.<br><br>
-Nós do Vip Luxúria, não nos comprometemos com a total veracidade das informações passadas por nossos anunciantes. Salvo os números de telefone para contato. Isso porque, alguns de nossos anunciantes usam pseudônimos para atender seus clientes, como no caso das Acompanhantes e Massagistas que se divulgam em nosso site.</p>
-        </div>
-        <div class="clear"></div>
-        </div><!--BT-VERSAO-->
-		</div><!--TEXTO ABERTURA-->
-    </div><!--ABERTURA-->
-  </div>    
-  <div id="rodape">
-	<?php include("php/rodape-2.php"); ?>
-  </div><!--RODAPE-->
-	
-</div><!--wrap-->
+<body>
+	<div id="wrap">
+		<div id="bg-rosa">
+			<div id="topo"><?php include("php/topo-2.php"); ?></div>
+			<div id="menu"><?php include("php/menu-2.php"); ?></div>
+		</div>
 
+		<div id="bg-couro">
+			<div id="slider"><?php include("php/slider.php"); ?></div>
+			<div id="principal">
+				<div id="principal-content-full">
+					<div id="coluna-full">
 
-<?php include("php/google.php"); ?>
+						<!-- Slider 2020 -->
+						<div id="slider-2020"><?php include("php/slider-2020.php"); ?></div>
+
+						<!-- Filtro por Cidades -->
+						<div id="filtro">
+							<div class="wrapper-demo">
+								<div id="dd" class="wrapper-dropdown-3" tabindex="1">
+									<span>Filtro por Cidades</span>
+									<ul class="dropdown" style="color:#000;">
+										<li><a href="/conteudo/mulheres.php">Todas as Cidades</a></li>
+										<?php
+										$sql = "SELECT idCidade, cidade FROM cidade ORDER BY ordem";
+										$resultado = mysqli_query($conexao, $sql);
+										if (!$resultado) {
+											die("Impossível visualizar as cidades: " . mysqli_error($conexao));
+										}
+										while ($row = mysqli_fetch_assoc($resultado)) {
+											$idCidade = $row['idCidade'];
+											$cidade = $row['cidade'];
+											echo '<li><a href="javascript:carregaCidade(\'' . $idCidade . '\')">' . htmlspecialchars($cidade) . '</a></li>';
+										}
+										?>
+									</ul>
+								</div>
+							</div>
+						</div><!-- filtro -->
+
+						<div id="titulo" style="width:550px !important;">
+							<h1>Acompanhantes Porto Alegre-RS</h1>
+						</div>
+						<div class="clear"></div>
+
+						<!-- Lista de Mulheres -->
+						<ul id="thumbs-full">
+							<?php
+							$sql = "SELECT * FROM mulher WHERE flagAtivo = 'Sim' ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
+							$resultado = mysqli_query($conexao, $sql);
+							if (!$resultado) {
+								die("Impossível visualizar as anunciantes: " . mysqli_error($conexao));
+							}
+
+							$contador = 0;
+							$contadorCarrossel = 0;
+							$comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'O', 'Ù', 'Ü', 'Ú'];
+							$semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
+
+							while ($row = mysqli_fetch_assoc($resultado)) {
+								$idMulher = $row['idMulher'];
+								$nome = $row['nome'];
+								$sobrenome = $row['sobrenome'];
+								$imagemCapa = $row['imagemCapa'];
+
+								$contador++;
+								$contadorCarrossel++;
+
+								$linkPerfil = "/perfil/" . $idMulher . "/" . str_replace($comAcentos, $semAcentos, $nome);
+								if (!empty($sobrenome)) {
+									$linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
+								}
+								$linkPerfil = htmlspecialchars($linkPerfil);
+								$nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
+
+								$classLi = ($contador < 5) ? 'zoom_img' : 'last zoom_img';
+							?>
+								<li class="<?= $classLi ?>">
+									<a href="<?= $linkPerfil ?>">
+										<img src="<?= "/sistema/content/" . htmlspecialchars($imagemCapa) ?>" width="112" height="149" />
+										<p class="nome"><?= $nomeCompleto ?></p>
+									</a>
+								</li>
+								<?php
+								if ($contador >= 5) $contador = 0;
+
+								if ($contadorCarrossel == 15) {
+								?>
+									<!-- CAROUSEL -->
+									<li class="carousel-li"><?php include("php/carousel.php"); ?></li>
+									<!-- CAROUSEL -->
+							<?php
+								}
+							}
+							?>
+						</ul>
+						<div class="clear"></div>
+
+						<?php include("php/destaques-2020.php"); ?>
+					</div><!--COLUNA-FULL-->
+					<div class="clear"></div>
+
+					<!-- Texto -->
+					<div id="box-texto">
+						<p>Porto Alegre, uma cidade vibrante e cheia de opções culturais e sociais, é também um destino ideal para quem busca descrição e sofisticação na hora de contratar acompanhantes Porto Alegre-RS. Quando se trata de contratar acompanhantes de luxo, há uma série de benefícios que tornam essa escolha única e atraente.</p><br>
+						<p>Veja os benefícios e como a contratação de acompanhantes Porto Alegre-RS pela plataforma Vip Luxúria pode ser uma experiência gratificante, seja para momentos de lazer, jantares sociais ou outros eventos especiais.</p><br>
+
+						<h2>Companheirismo Sofisticado e Exclusivo</h2>
+						<p>O companheirismo sofisticado e exclusivo oferecido por uma acompanhante Porto Alegre-RS é um serviço que vai muito além das expectativas convencionais. Combinando elegância, inteligência e um profundo senso de empatia, essas acompanhantes se destacam por proporcionar experiências únicas e personalizadas para cada cliente.</p><br>
+						<p>Muitas garotas de programa em Porto Alegre-RS investem em seu desenvolvimento pessoal e cultural, frequentando cursos, aprimorando idiomas e mantendo-se atualizadas sobre tendências globais, o que lhes permite interagir com pessoas de diversos perfis e origens.</p><br>
+						<p>Seja em eventos sociais, jantares de negócios ou momentos privados, a capacidade de adaptação e o refinamento dessas acompanhantes transformam cada encontro em uma experiência marcante e inesquecível.</p><br>
+						<p>A exclusividade do serviço oferecido pelas garotas de programa em Porto Alegre-RS também reflete na atenção aos mínimos detalhes que garantem conforto e discrição. As acompanhantes entendem que cada cliente busca mais do que apenas companhia; procuram conexão genuína e momentos que sejam tanto agradáveis quanto memoráveis. </p><br>
+						<p>Por isso, muitas garotas de programa em Porto Alegre-RS são conhecidas por seu estilo impecável, que alia moda, bom gosto e sofisticação. A habilidade de criar conversas estimulantes e engajantes faz com que os encontros transcorram com leveza e naturalidade, deixando o cliente à vontade e valorizado. Esse nível de atenção ao cliente é um diferencial que destaca o serviço como algo exclusivo e de alta qualidade.</p><br>
+						<p>Porto Alegre, uma cidade vibrante e cheia de charme, proporciona o cenário ideal para que esse companheirismo sofisticado floresça. Seja em restaurantes renomados, eventos culturais ou passeios pelos pontos turísticos, onde uma garota de programa em Porto Alegre-RS se adapta perfeitamente ao ambiente, enriquecendo cada momento com sua presença elegante. Elas sabem como equilibrar charme e discrição, garantindo que cada cliente se sinta especial e plenamente atendido. </p><br>
+						<p>A cidade oferece uma vasta gama de opções para experiências únicas, que, quando acompanhadas de uma profissional tão habilidosa, criam memórias que transcendem o ordinário. Essa combinação de exclusividade, sofisticação e conexão genuína faz do serviço de uma garota de programa em Porto Alegre-RS verdadeiramente diferenciado.</p><br>
+
+						<h2>Atendimento Personalizado e Exclusivo</h2>
+						<p>As acompanhantes Porto Alegre-RS costumam oferecer um serviço altamente personalizado. Isso significa que, ao contratar um acompanhante, você pode escolher os detalhes da experiência que deseja viver.</p><br>
+						<p>Se está oferecendo um jantar formal, uma noite de lazer ou até mesmo uma viagem, as acompanhantes em Porto Alegre-RS são conhecedoras das nuances que tornam esses momentos inesquecíveis. O atendimento é sempre exclusivo e adaptado às suas preferências, garantindo que a experiência seja feita sob medida.</p><br>
+
+						<h2>Discrição e Confidencialidade</h2>
+						<p>Outro benefício essencial ao contratar uma acompanhante Porto Alegre-RS é a descrição. Profissionais de alto nível sabem como garantir que seus clientes se sintam à vontade e seguros em qualquer situação. </p><br>
+						<p>Elas mantêm total confidencialidade sobre seus encontros, respeitando sua privacidade em todos os momentos. Se você procura um momento de intimidade e exclusividade sem preocupações com sua imagem pública, as acompanhantes Porto Alegre-RS são a escolha ideal.</p><br>
+
+						<h2>Acompanhamento em Eventos e Jantares Sociais com suas acompanhantes Porto Alegre-RS</h2>
+						<p>Em Porto Alegre, a vida social e empresarial gira em torno de eventos e jantares sofisticados. Ao contratar acompanhantes Porto Alegre-RS, você tem a oportunidade de contar com uma companhia elegante e carismática em eventos sociais importantes, como reuniões de negócios, galas, lançamentos e outros encontros de alto nível. </p><br>
+						<p>Ter acompanhantes em Porto Alegre-RS ao seu lado pode ser uma excelente forma de impressionar seus colegas e fazer com que você se sinta ainda mais confiante e confortável em ambientes de alta exigência social.</p><br>
+
+						<h2>Relaxamento e Escapismo</h2>
+						<p>Além do companheirismo em eventos formais, as acompanhantes Porto Alegre-RS também podem proporcionar momentos de relaxamento e escapismo. Seja para um encontro mais íntimo e tranquilo, ou para simplesmente desfrutar de um tempo de qualidade fora das obrigações do dia a dia, esses profissionais são especialistas em criar um ambiente de descontração e prazer. </p><br>
+						<p>O foco é proporcionar uma experiência agradável com nossas acompanhantes de luxo Porto Alegre-RS, onde o cliente possa relaxar, desfrutar de boa conversa e sentir-se bem consigo mesmo.</p><br>
+
+						<h2>Qualidade e Profissionalismo</h2>
+						<p>Quando você opta por contratar uma acompanhante em porto alegre-RS pela plataforma Vip Luxúria, pode ter certeza de que está lidando com uma habilidade profissional. A maioria dos acompanhantes de luxo tem uma formação sólida em diversas áreas, como etiqueta social, comunicação e até mesmo idiomas. </p><br>
+						<p>Isso significa que você terá uma companhia que não é apenas atraente fisicamente, mas também inteligente, articulada e capaz de participar de conversas interessantes e complexas, tornando o encontro ainda mais agradável com suas acompanhantes Porto Alegre–RS.</p><br>
+
+						<h2>Momentos de Alta Qualidade com nossas acompanhantes Porto Alegre-RS</h2>
+						<p>Ao contratar acompanhantes Porto Alegre-RS, você tem a garantia de que o tempo que passar com esse profissional será de alta qualidade. Isso vai desde o cuidado com a aparência até a maneira como ela interage com você, garantindo que cada momento seja inesquecível. </p><br>
+						<p>Se você procura uma experiência de qualidade, seja para relaxar ou para se divertir, contratar uma acompanhante de luxo pode ser a melhor maneira de garantir uma experiência realmente especial.</p><br>
+
+						<h2>Flexibilidade para Diversas Ocasiões</h2>
+						<p>As acompanhantes de porto alegre-RS oferecem flexibilidade para uma variedade de benefícios. Seja para um evento corporativo, uma noite de gala, uma comemoração especial ou até mesmo para uma companhia durante uma viagem, esses profissionais sabem como se adaptar a diferentes cenários e tipos de ambientes. </p><br>
+						<p>Isso garante que você possa contar com uma companhia comprometida em qualquer situação, tornando sua experiência ainda mais segura.</p><br>
+
+						<h2>Uma Experiência de Alto Nível com nossas acompanhantes de porto alegre-RS</h2>
+						<p>Porto Alegre é uma cidade cheia de cultura, história e charme. Com muitas opções de restaurantes, bares, clubes e eventos, a cidade oferece um cenário perfeito para aproveitar momentos ao lado de nossas acompanhantes Porto Alegre-RS. </p><br>
+						<p>Seja para passeios turísticos, jantares sofisticados ou até mesmo para relaxar em uma experiência mais privada, a presença de um acompanhante de luxo pode tornar sua visita à cidade ainda mais externa.</p><br>
+
+						<h2>Alta Disponibilidade e Facilidade de Acesso</h2>
+						<p>Outro benefício de contratar nossa acompanhante de porto alegre-RS é a facilidade de acesso ao serviço. Muitos profissionais oferecem canais diretos de contato, seja por telefone ou online, tornando o processo de contratação rápido e seguro. </p><br>
+						<p>A flexibilidade de horários e a disponibilidade dos acompanhantes garantem que você possa escolher o momento que melhor se adequa às suas necessidades.</p><br>
+						<p>Contratar acompanhante de luxo porto alegre-RS oferece uma experiência única e sofisticada, ideal para quem busca momentos exclusivos e de alta qualidade. A cidade oferece um cenário perfeito para divertir a companhia de profissionais curiosos e discretos, que sabem como transformar qualquer encontro em uma experiência específica. </p><br>
+						<p>Se você está procurando uma companhia de classe, que combine elegância, sofisticação e profissionalismo, Porto Alegre é o lugar ideal para encontrar o serviço que você precisa.</p>
+
+					</div>
+				</div><!--PRINCIPAL CONTENT-->
+			</div><!--PRINCIPAL-->
+		</div><!--BG-COURO-->
+
+		<div id="rodape"><?php include("php/rodape-2.php"); ?></div>
+		<div id="tags"><?php include("php/tags.php"); ?></div>
+	</div><!--wrap-->
+
+	<script type="text/javascript">
+		Cufon.now();
+	</script>
+	<?php include("php/google.php");
+	mysqli_close($conexao); ?>
+
+	<script type="text/javascript">
+		function DropDown(el) {
+			this.dd = el;
+			this.initEvents();
+		}
+		DropDown.prototype = {
+			initEvents: function() {
+				var obj = this;
+				obj.dd.on('click', function(event) {
+					$(this).toggleClass('active');
+					event.stopPropagation();
+				});
+			}
+		};
+		$(function() {
+			var dd = new DropDown($('#dd'));
+			$(document).click(function() {
+				$('.wrapper-dropdown-3').removeClass('active');
+			});
+		});
+	</script>
 </body>
+
 </html>
