@@ -53,13 +53,15 @@ mysqli_free_result($resultado);
 	<script src="/css-js/cufon-yui.js"></script>
 	<script src="/css-js/nome_400.font.js"></script>
 	<script src="/css-js/titulo_400.font.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 
 <body>
 	<div id="wrap">
 		<div id="bg-rosa">
 			<div id="topo"><?php include("php/topo-2.php"); ?></div>
-			<div id="menu"><?php include("php/menu-2.php"); ?></div>
+			<?php include 'responsive-menu.php'; ?>
 		</div>
 
 		<div id="bg-couro">
@@ -245,6 +247,7 @@ mysqli_free_result($resultado);
 			});
 		});
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 
 </html>

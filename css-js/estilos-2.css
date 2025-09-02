@@ -266,6 +266,11 @@ a {
 	background-repeat: repeat-x;
 	height: 44px;
 }
+
+.menu {
+	background-color: #AD1457;
+}
+
 #menu-content {
 	width: 1000px;
 	margin-right: auto;
@@ -1384,10 +1389,7 @@ a {
 	font-family: 'Allerta', sans-serif;
 	font-size: 15px;
 }
-#menu {
-	font-family: 'Roboto', sans-serif;
-	font-size: 15px;
-}
+
 .zoom_img {
 width:118px;
 height:205px;
