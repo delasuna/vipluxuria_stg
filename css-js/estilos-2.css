@@ -190,7 +190,7 @@ a {
 	background-image: url(/imagens/estrutura/bg-rosa-topo.jpg);
 	background-repeat: no-repeat;
 	width: 100%;
-	position: fixed;
+	/* position: fixed; */
 	z-index: 5000;
 	left: 0px;
 	top: 0px;
@@ -356,9 +356,13 @@ a {
 	background-image: url(/imagens/estrutura/fundo-couro-preto.jpg);
 	background-repeat: no-repeat;
 	background-position: center top;
-	top: 192px;
+	/* top: 192px; */
 	position: relative;
 	margin-bottom: 220px;	
+}
+
+#bannerCarousel {
+	margin-top: 0px !important;
 }
 
 /* ESTRUTURA - PRINCIPAL */

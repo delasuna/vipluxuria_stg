@@ -43,7 +43,7 @@ mysqli_free_result($resultado);
 	<link rel="stylesheet" href="/css-js/carousel/swiffy-slider.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css-js/style-dropmenu.css" />
 	<link href="/css-js/jquery.bxslider.css" rel="stylesheet" />
-	
+
 	<!-- JS Original -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="/css-js/jquery.bxslider.min.js"></script>
@@ -55,17 +55,44 @@ mysqli_free_result($resultado);
 	<script src="/css-js/titulo_400.font.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+	<?php
+	function tirarAcentos($string)
+	{
+		return preg_replace(
+			array(
+				"/(á|à|ã|â|ä)/",
+				"/(Á|À|Ã|Â|Ä)/",
+				"/(é|è|ê|ë)/",
+				"/(É|È|Ê|Ë)/",
+				"/(í|ì|î|ï)/",
+				"/(Í|Ì|Î|Ï)/",
+				"/(ó|ò|õ|ô|ö)/",
+				"/(Ó|Ò|Õ|Ô|Ö)/",
+				"/(ú|ù|û|ü)/",
+				"/(Ú|Ù|Û|Ü)/",
+				"/(ñ)/",
+				"/(Ñ)/"
+			),
+			explode(" ", "a A e E i I o O u U n N"),
+			$string
+		);
+	}
+	?>
 </head>
 
 <body>
 	<div id="wrap">
 		<div id="bg-rosa">
-			<div id="topo"><?php include("php/topo-2.php"); ?></div>
 			<?php include 'responsive-menu.php'; ?>
+			<div id="topo"><?php include("php/topo-2.php"); ?></div>
 		</div>
 
 		<div id="bg-couro">
-			<?php include("php/slider.php"); ?>
+			<div>
+
+				<?php include("php/slider.php"); ?>
+			</div>
 			<div id="principal">
 				<div id="principal-content-full">
 					<div id="coluna-full">

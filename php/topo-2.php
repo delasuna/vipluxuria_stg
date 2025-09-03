@@ -47,43 +47,35 @@
     }
   }
 </script>
-<div id="faixa"></div><!--FAIXA-->
+<!-- Faixa Superior -->
+<div class="bg-pink-500 py-2">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <!-- Logo -->
+      <div class="col-auto">
+        <a href="/acompanhantes-porto-alegre/">
+          <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip Luxúria" class="img-fluid" style="max-height:98px;">
+        </a>
+      </div>
 
-<div id="topo-content">
-  <div id="logo"> <a href="/acompanhantes-porto-alegre/"><img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip Lux&uacute;ria" width="230" height="98" /></a>
-  </div><!--LOGO-->
-  <div id="lettering">
-    <img src="/imagens/estrutura/lettering-2021-selo.png" alt="O guia er&oacute;tico mais completo do Brasil" />
-  </div><!--LETTERING-->
-  <div id="anunciar-busca">
-    <div id="anunciar">
-      <a href="/como-anunciar/"><img src="/imagens/estrutura/como-anunciar-2018.png" width="133" height="68" alt="Saiba como anunciar" /></a>
-    </div><!--ANUNCIAR-->
-  </div><!--ANUNCIAR-BUSCA-->
+      <!-- Lettering Central -->
+      <div class="col text-center my-2 my-md-0">
+        <img src="/imagens/estrutura/lettering-2021-selo.png" alt="O guia erótico mais completo do Brasil" class="img-fluid" style="max-height:100px;">
+      </div>
 
-  <div class="clear"></div>
-</div><!--TOPO CONTENT"-->
+      <!-- Botão Anunciar -->
+      <div class="col-auto">
+        <a href="/como-anunciar/">
+          <img src="/imagens/estrutura/como-anunciar-2018.png" alt="Saiba como anunciar" class="img-fluid" style="max-height:68px;">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
-<?php
-function tirarAcentos($string)
-{
-  return preg_replace(
-    array(
-      "/(á|à|ã|â|ä)/",
-      "/(Á|À|Ã|Â|Ä)/",
-      "/(é|è|ê|ë)/",
-      "/(É|È|Ê|Ë)/",
-      "/(í|ì|î|ï)/",
-      "/(Í|Ì|Î|Ï)/",
-      "/(ó|ò|õ|ô|ö)/",
-      "/(Ó|Ò|Õ|Ô|Ö)/",
-      "/(ú|ù|û|ü)/",
-      "/(Ú|Ù|Û|Ü)/",
-      "/(ñ)/",
-      "/(Ñ)/"
-    ),
-    explode(" ", "a A e E i I o O u U n N"),
-    $string
-  );
-}
-?>
+<!-- CSS customizado para o background -->
+<style>
+  .bg-pink-500 {
+    background-color: #e991b8; /* Ajuste para o tom rosa da faixa */
+  }
+</style>
