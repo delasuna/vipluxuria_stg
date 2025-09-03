@@ -23,35 +23,8 @@ if (mysqli_num_rows($resultado) > 0) {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="robots" content="index,follow">
-<meta name="description" content="<?php echo $description; ?>" />
-<meta name="keywords" content="<?php echo $keywords; ?>" />
-<title><?php echo $title; ?></title>
 
-<!--CSS-->
-<link href="../css-js/estilos-2.css" rel="stylesheet" type="text/css" />
-<link href="../css-js/menu-2.css" rel="stylesheet" type="text/css" />
-<!--FONTES-->
-<script src="../css-js/cufon-yui.js"></script>
-<script src="../css-js/nome_400.font.js"></script>
-<script src="../css-js/titulo_400.font.js"></script>
-<script>
-    Cufon.replace('h1');
-    Cufon.replace('h1#titulo,#menu-rodape-content',{ fontFamily: 'titulo' }); 
-</script>
-<!--SLIDER-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="../css-js/jquery.bxslider.min.js"></script>
-<link href="../css-js/jquery.bxslider.css" rel="stylesheet" />
-<script>
-    function carregaPerfil(id) {
-        document.form_perfil.id.value = id;
-        document.form_perfil.submit();
-    }
-</script>
-</head>
+<?php include 'head.php'; ?>
 
 <body>
 <div id="wrap">
@@ -136,5 +109,6 @@ if (mysqli_num_rows($resultado) > 0) {
 
 <script type="text/javascript"> Cufon.now(); </script>
 <?php include("../php/google.php"); ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

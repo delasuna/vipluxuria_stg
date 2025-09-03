@@ -18,23 +18,7 @@ $keywords = $seo['keywords'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="robots" content="index,follow">
-<meta name="description" content="<?= htmlspecialchars($description) ?>">
-<meta name="keywords" content="<?= htmlspecialchars($keywords) ?>">
-
-<title><?= htmlspecialchars($title) ?></title>
-
-<!--CSS-->
-<link href="/css-js/estilos-2.css" rel="stylesheet" type="text/css">
-<link href="/css-js/menu-2.css" rel="stylesheet" type="text/css">
-<!--FONTES-->
-<script src="/css-js/cufon-yui.js" type="text/javascript"></script>
-<script src="/css-js/nome_400.font.js" type="text/javascript"></script>
-<script src="/css-js/titulo_400.font.js" type="text/javascript"></script>
-<!--FONTES-->
-</head>
+<?php include 'head.php'; ?>
 <body>
 <div id="wrap">
     <div id="bg-rosa">

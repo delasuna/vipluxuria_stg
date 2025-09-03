@@ -24,40 +24,8 @@ if (mysqli_num_rows($resultado) > 0) {
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="robots" content="index,follow">
-<meta name="description" content="<?php echo htmlspecialchars($description); ?>" />
-<meta name="keywords" content="<?php echo htmlspecialchars($keywords); ?>" />
 
-<title><?php echo htmlspecialchars($title); ?></title>
-
-<!--CSS-->
-<link href="../css-js/estilos-2.css" rel="stylesheet" type="text/css" />
-<link href="../css-js/menu-2.css" rel="stylesheet" type="text/css" />
-<!--CSS-->
-<!--FONTES-->
-<script src="../css-js/cufon-yui.js" type="text/javascript"></script>
-<script src="../css-js/nome_400.font.js" type="text/javascript"></script>
-<script src="../css-js/titulo_400.font.js" type="text/javascript"></script>
-<script type="text/javascript">
-    Cufon.replace('h1');
-    Cufon.replace('h1#titulo,#menu-rodape-content',{ fontFamily: 'titulo' }); 
-</script>
-<!--SLIDER-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="../css-js/jquery.bxslider.min.js"></script>
-<link href="../css-js/jquery.bxslider.css" rel="stylesheet" />
-<!--SLIDER-->  
-
-<script>
-function carregaPerfil(id) {
-    document.form_perfil.id.value = id;
-    document.form_perfil.submit();
-}
-</script>    
-
-</head>
+<?php include 'head.php'; ?>
 
 <body>
 <div id="wrap">

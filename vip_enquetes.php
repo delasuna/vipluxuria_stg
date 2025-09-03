@@ -20,42 +20,8 @@ if (mysqli_num_rows($resultado) > 0) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta name="robots" content="index,follow">
-<meta name="description" content="<?php echo htmlspecialchars($description); ?>" />
-<meta name="keywords" content="<?php echo htmlspecialchars($keywords); ?>" />
 
-<title><?php echo !empty($title) ? htmlspecialchars($title) : "Vip Enquetes"; ?></title>
-
-<!--CSS-->
-<link href="/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
-<link href="/css-js/menu-2.css" rel="stylesheet" type="text/css" />
-<!--FONTES-->
-<script src="/css-js/cufon-yui.js" type="text/javascript"></script>
-<script src="/css-js/nome_400.font.js" type="text/javascript"></script>
-<script src="/css-js/titulo_400.font.js" type="text/javascript"></script> 
-
-<script> 
-function marcaVoto(idEnquete) { 
-    document.formulario.enviando.value = "S";
-    document.formulario.idEnquete.value = idEnquete;
-
-    var marcouAlternativa = false;
-
-    for(var i=0;i<document.formulario.alternativa.length;i++) {        
-        if(document.formulario.alternativa[i].checked) {            
-            document.formulario.voto.value = document.formulario.alternativa[i].id;        
-            marcouAlternativa = true;
-        }    
-    }    
-
-    if (marcouAlternativa)
-        document.formulario.submit();
-    else 
-        alert("Selecione uma das alternativas!");
-}
-</script>
+<?php include 'head.php'; ?>
 
 </head>
 <body>

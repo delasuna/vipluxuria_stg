@@ -25,35 +25,7 @@ mysqli_free_result($resultado);
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="<?= htmlspecialchars($description) ?>" />
-	<meta name="keywords" content="<?= htmlspecialchars($keywords) ?>" />
-	<title><?= htmlspecialchars($title) ?></title>
-	<meta name="robots" content="index,follow" />
-	<meta name="google-translate-customization" content="47516143a922ad1d-908eb38b3da0e2e8-gfbda7755c951dd96-12">
-	<meta http-equiv="Cache-Control" content="no-store" />
-
-	<!-- CSS Original -->
-	<link href="/css-js/estilos-2.css" rel="stylesheet" />
-	<link href="/css-js/menu-2.css" rel="stylesheet" />
-	<link rel="stylesheet" href="/css-js/slider/lightbox/lightbox.css" media="screen" />
-	<link rel="stylesheet" href="/css-js/slider/slider-rows.css">
-	<link rel="stylesheet" href="/css-js/carousel/swiffy-slider.min.css" />
-	<link rel="stylesheet" type="text/css" href="/css-js/style-dropmenu.css" />
-	<link href="/css-js/jquery.bxslider.css" rel="stylesheet" />
-	
-	<!-- JS Original -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="/css-js/jquery.bxslider.min.js"></script>
-	<script src="/css-js/slider/lightbox/modernizr.custom.js"></script>
-	<script src="/css-js/slider/slider-rows.js"></script>
-	<script src="/css-js/carousel/swiffy-slider.min.js"></script>
-	<script src="/css-js/cufon-yui.js"></script>
-	<script src="/css-js/nome_400.font.js"></script>
-	<script src="/css-js/titulo_400.font.js"></script>
-</head>
+<?php include 'head.php'; ?>
 
 <body>
 	<div id="wrap">
