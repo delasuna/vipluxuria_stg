@@ -65,7 +65,7 @@ mysqli_free_result($resultado);
 		</div>
 
 		<div id="bg-couro">
-			<div id="slider"><?php include("php/slider.php"); ?></div>
+			<?php include("php/slider.php"); ?>
 			<div id="principal">
 				<div id="principal-content-full">
 					<div id="coluna-full">
