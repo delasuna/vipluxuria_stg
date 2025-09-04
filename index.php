@@ -30,19 +30,15 @@ mysqli_free_result($resultado);
 <body>
 	<div id="wrap">
 		<div id="bg-rosa">
-			<?php include 'responsive-menu.php'; ?>
+			<div id="menu"><?php include("php/menu-2.php"); ?></div>
 			<div id="topo"><?php include("php/topo-2.php"); ?></div>
 		</div>
-
+		<?php include("php/slider.php"); ?>
+		<?php include 'filters.php' ?>
 		<div id="bg-couro">
-			<div>
-
-				<?php include("php/slider.php"); ?>
-			</div>
 			<div id="principal">
 				<div id="principal-content-full">
 					<div id="coluna-full">
-
 						<!-- Slider 2020 -->
 						<div id="slider-2020"><?php include("php/slider-2020.php"); ?></div>
 

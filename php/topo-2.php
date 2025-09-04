@@ -50,7 +50,7 @@
 <!-- Faixa Superior -->
 <div class="bg-pink-500 py-2">
   <div class="container">
-    <div class="row align-items-center justify-content-between">
+    <div class="row align-items-center justify-content-evenly">
       <!-- Logo -->
       <div class="col-auto">
         <a href="/acompanhantes-porto-alegre/">
@@ -59,16 +59,16 @@
       </div>
 
       <!-- Lettering Central -->
-      <div class="col text-center my-2 my-md-0">
+      <div class="col-auto">
         <img src="/imagens/estrutura/lettering-2021-selo.png" alt="O guia erótico mais completo do Brasil" class="img-fluid" style="max-height:100px;">
       </div>
 
       <!-- Botão Anunciar -->
-      <div class="col-auto">
+      <!-- <div class="col-auto">
         <a href="/como-anunciar/">
           <img src="/imagens/estrutura/como-anunciar-2018.png" alt="Saiba como anunciar" class="img-fluid" style="max-height:68px;">
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

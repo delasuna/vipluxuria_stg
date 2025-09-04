@@ -1809,3 +1809,35 @@ ul.pagination li a:hover:not(.active) {
 	padding-left: 3px;
 	font-family: 'Sriracha', cursive;
 }
+
+.btn-pink {
+  background: #e91e63;
+  color: #fff;
+  border-radius: 20px;
+}
+.btn-pink:hover {
+  background: #d81b60;
+  color: #fff;
+}
+
+/* Estilo exclusivo para o form de busca por nome */
+.form-busca-nome .form-control {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.form-busca-nome .form-control::placeholder {
+  color: #ccc; /* deixa o placeholder mais claro que o fundo */
+  opacity: 1;  /* evita transparência */
+}
+
+.form-busca-nome .btn-pink {
+  background-color: #e91e63;
+  border: none;
+  font-weight: 500;
+}
+
+.form-busca-nome .btn-pink:hover {
+  background-color: #d81b60;
+}

@@ -25,18 +25,19 @@ if (mysqli_num_rows($resultado) > 0) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 
-<?php include 'head.php'; ?>
+<?php include '../head.php'; ?>
 
 <body>
 <div id="wrap">
     <div id="bg-rosa">
-        <div id="topo">
-            <?php include("../php/topo-2.php"); ?>
-        </div>
         <div id="menu">
             <?php include("../php/menu-2.php"); ?>
         </div>
+        <div id="topo">
+            <?php include("../php/topo-2.php"); ?>
+        </div>
     </div>
+    <?php include("../filters.php") ?>
     <div id="bg-couro">    
         <div id="principal">
             <div id="principal-content-full">

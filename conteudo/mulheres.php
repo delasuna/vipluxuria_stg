@@ -53,45 +53,14 @@ if (!empty($_REQUEST["idCidade"])) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
-<meta name="robots" content="index,follow">
-
-<?php if (!empty($_REQUEST["idCidade"])): ?>
-    <meta name="description" content="Vip Luxúria é um classificados de anúncios de Acompanhantes de <?= htmlspecialchars($cidade) ?>." />
-    <meta name="keywords" content="Acompanhantes <?= htmlspecialchars($cidade) ?>, Acompanhantes em <?= htmlspecialchars($cidade) ?>, Acompanhante em <?= htmlspecialchars($cidade) ?>, Garota de Programa <?= htmlspecialchars($cidade) ?>, Garotas de Programa <?= htmlspecialchars($cidade) ?>, Acompanhante <?= htmlspecialchars($cidade) ?>, Acompanhantes RS, Acompanhantes Rio Grande do Sul, Acompanhantes poa, Guia Erótico <?= htmlspecialchars($cidade) ?>, Guia de Acompanhantes <?= htmlspecialchars($cidade) ?>, Anúncios de Acompanhantes <?= htmlspecialchars($cidade) ?>, Acompanhantes POA, Acompanhante" />
-    <title>Vip Luxúria - Acompanhantes <?= htmlspecialchars($cidade) ?></title>
-<?php else: ?>
-    <meta name="description" content="<?= htmlspecialchars($description) ?>" />
-    <meta name="keywords" content="<?= htmlspecialchars($keywords) ?>" />
-    <title><?= htmlspecialchars($title) ?></title>
-<?php endif; ?>
-
-<link href="/css-js/estilos-2.css" rel="stylesheet" />
-<link href="/css-js/menu-2.css" rel="stylesheet" />
-<script src="/css-js/cufon-yui.js"></script>
-<script src="/css-js/nome_400.font.js"></script>
-<script src="/css-js/titulo_400.font.js"></script>
-<script>
-    Cufon.replace('h1');
-    Cufon.replace('h1#titulo,#menu-rodape-content',{ fontFamily: 'titulo' });
-</script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="/css-js/jquery.bxslider.min.js"></script>
-<link href="/css-js/jquery.bxslider.css" rel="stylesheet" />
-<script>
-    function carregaPerfil(id) {
-        document.form_perfil.id.value = id;
-        document.form_perfil.submit();
-    }
-</script>
-</head>
+<?php include '../head.php'; ?>
 <body>
 <div id="wrap">
     <div id="bg-rosa">
-        <div id="topo"><?php include("../php/topo-2.php"); ?></div>
         <div id="menu"><?php include("../php/menu-2.php"); ?></div>
+        <div id="topo"><?php include("../php/topo-2.php"); ?></div>
     </div>
+    <?php include '../filters.php' ?>
     <div id="bg-couro">
         <div id="principal">
             <div id="principal-content-full">

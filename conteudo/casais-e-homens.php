@@ -24,19 +24,19 @@ if (mysqli_num_rows($resultado) > 0) {
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<?php include 'head.php'; ?>
+<?php include '../head.php'; ?>
 
 <body>
 <div id="wrap">
     <div id="bg-rosa">
-        <div id="topo">
-            <?php include("../php/topo-2.php"); ?>
-        </div>
         <div id="menu">
             <?php include("../php/menu-2.php"); ?>
         </div>
+        <div id="topo">
+            <?php include("../php/topo-2.php"); ?>
+        </div>
     </div>
-
+    <?php include("../filters.php") ?>
     <div id="bg-couro">    
         <div id="principal">
             <div id="principal-content-full">
