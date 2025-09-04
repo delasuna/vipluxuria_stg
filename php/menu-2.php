@@ -83,7 +83,7 @@ function geraOpcoesCidades($conexao)
 <!-- Navbar Bootstrap 5 -->
 <nav class="menu navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <a class="navbar-brand" href="/acompanhantes-porto-alegre/">
+    <a class="navbar-brand" href="/">
       <img src="/imagens/estrutura/ico-home.png" alt="Página Inicial" width="30" height="30">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
