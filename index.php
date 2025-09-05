@@ -94,16 +94,13 @@ mysqli_free_result($resultado);
 					<?php } ?>
 				</div>
 
-				<!-- Destaques -->
-				<div class="my-5">
-					<?php include("php/destaques-2020.php"); ?>
-				</div>
-
+				<?php include("banner_informativo.php") ?>
+				<?php include("banner_informativo2.php") ?>
+				<?php include("banner_informativo3.php") ?>
 			</div>
 		</div>
 
-		<div id="rodape"><?php include("php/rodape-2.php"); ?></div>
-		<div id="tags"><?php include("php/tags.php"); ?></div>
+		<?php include("rodape-novo.php"); ?>
 	</div><!--wrap-->
 
 	<script type="text/javascript">
