@@ -268,7 +268,7 @@ a {
 }
 
 .menu {
-	background-color: #AD1457;
+	background-color: #AD1457 !important;
 }
 
 #menu-content {
@@ -1840,4 +1840,166 @@ ul.pagination li a:hover:not(.active) {
 
 .form-busca-nome .btn-pink:hover {
   background-color: #d81b60;
+}
+
+.perfil-wrapper {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.thumb-galeria {
+  width: 320px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #e91e63;
+}
+
+.perfil-info {
+  flex: 1;
+}
+
+.perfil-nome {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff4081;
+  margin-bottom: 1rem;
+}
+
+.perfil-badges {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  padding: .4rem .8rem;
+  border-radius: 20px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.badge-online { background: #4caf50; }
+.badge-verificada { background: #2196f3; }
+.badge-local { background: #ff9800; }
+
+.btn-whatsapp {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: .8rem 1.2rem;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #4CAF50, #2E7D32);
+  color: #fff;
+  text-decoration: none;
+}
+
+.perfil-dados {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .8rem;
+  margin-top: 1rem;
+}
+
+.perfil-dados div {
+  background: #222;
+  padding: .8rem;
+  border-radius: 8px;
+}
+
+.perfil-dados span {
+  font-size: .8rem;
+  color: #aaa;
+  display: block;
+}
+
+.perfil-dados strong {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Galeria */
+.perfil-galeria {
+  margin-top: 1rem;
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.thumb-galeria {
+  width: 50px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.thumb-galeria:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Blocos */
+.perfil-blocos {
+  margin-top: 2rem;
+}
+.bloco {
+  background: #1c1c1c;
+  border-radius: 12px;
+}
+
+.bloco h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff4081;
+  margin-bottom: .8rem;
+}
+
+.bloco p {
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* Layout duplo */
+.perfil-dupla {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.como-sou ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.como-sou li {
+  border-bottom: 1px solid #333;
+  padding: .5rem 0;
+  color: #ccc;
+}
+.como-sou span {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Tags do "O que Faço" */
+.tags-faco {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.tags-faco span {
+  background: #2a2a2a;
+  color: #ff4081;
+  padding: .4rem .8rem;
+  border-radius: 20px;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.o-que-faco {
+	padding: 1.5rem;
 }

@@ -29,8 +29,8 @@ mysqli_free_result($resultado);
 
 <body>
 	<div id="wrap">
-		<div id="bg-rosa">
-			<div id="menu"><?php include("php/menu-2.php"); ?></div>
+		<div>
+			<?php include("php/menu-2.php"); ?>
 			<div id="topo"><?php include("php/topo-2.php"); ?></div>
 		</div>
 		<?php include("php/slider.php"); ?>
