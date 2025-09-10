@@ -5,21 +5,21 @@ $conexao = require_once 'php/conecta_mysql.php';
 $sqlSeo = "SELECT * FROM seo INNER JOIN tipoSeo ON seo.idTipoSeo = tipoSeo.idTipoSeo WHERE descricao = 'Blog'";
 $resultadoSeo = mysqli_query($conexao, $sqlSeo);
 if (!$resultadoSeo) {
-	die("Impossível visualizar SEO: " . mysqli_error($conexao));
+    die("Impossível visualizar SEO: " . mysqli_error($conexao));
 }
 
 $title = $description = $keywords = '';
 if (mysqli_num_rows($resultadoSeo) > 0) {
-	$rowSeo = mysqli_fetch_assoc($resultadoSeo);
-	$title = $rowSeo['title'];
-	$description = $rowSeo['description'];
-	$keywords = $rowSeo['keywords'];
+    $rowSeo = mysqli_fetch_assoc($resultadoSeo);
+    $title = $rowSeo['title'];
+    $description = $rowSeo['description'];
+    $keywords = $rowSeo['keywords'];
 }
 
 // Paginação
 $pg = 1;
 if (isset($_GET['pagina']) && intval($_GET['pagina']) > 0) {
-	$pg = intval($_GET['pagina']);
+    $pg = intval($_GET['pagina']);
 }
 $limite = 12;
 $inicio = ($pg - 1) * $limite;
@@ -34,107 +34,97 @@ $totalPages = ceil($totalRegistros / $limite);
 $sql = "SELECT * FROM blog ORDER BY idBlog DESC LIMIT $inicio, $limite";
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
-	die("Impossível visualizar o blog: " . mysqli_error($conexao));
+    die("Impossível visualizar o blog: " . mysqli_error($conexao));
 }
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <?php include 'head.php'; ?>
 
 <body>
-	<div id="wrap">
-		<div id="bg-rosa">
-			<div id="topo"><?php include("php/topo-2.php"); ?></div>
-			<div id="menu"><?php include("php/menu-2.php"); ?></div>
-		</div>
-		<div id="bg-couro">
-			<div id="principal">
-				<div id="principal-content-full">
-					<div id="coluna-full">
-						<div id="titulo-pagina">
-							<img src="/imagens/estrutura/titulo-blog.png" width="760" height="41" />
-						</div>
-						<div id="icone">
-							<img src="/imagens/estrutura/icone-blog.png" width="90" height="90" />
-						</div>
-						<div class="texto-sem-fundo">
+    <div id="wrap">
+        <div>
+            <?php include("php/menu-2.php"); ?>
+            <div id="topo"><?php include("php/topo-2.php"); ?></div>
+        </div>
+        <?php include("php/slider.php"); ?>
+        <?php include 'filters.php' ?>
+        
+        <div class="bg-dark text-light py-4">
+            <div class="container">
+                
+                <!-- Título -->
+                <div class="text-center mb-5">
+                    <h1 class="display-6 fw-bold">Blog Vip Luxúria</h1>
+                </div>
 
-							<?php
-							$contador = 0;
+                <!-- Posts do Blog -->
+                <div class="row g-4">
+                    <?php
+                    if ($resultado && mysqli_num_rows($resultado) > 0) {
+                        while ($row = mysqli_fetch_assoc($resultado)) {
+                            $idBlog = $row['idBlog'];
+                            $assunto = $row['assunto'];
+                            $imagem2 = $row['imagem2'];
+                            
+                            $comAcentos = ['à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ñ','ò','ó','ô','õ','ö','ù','ü','ú','ÿ'];
+                            $semAcentos = ['a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','u','u','u','y'];
+                            $linkPost = "/vip-blog-post/" . $idBlog . "/" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $assunto));
+                    ?>
+                        <div class="col-md-4">
+                            <a href="<?= htmlspecialchars($linkPost) ?>" class="text-decoration-none">
+                                <div class="card bg-secondary text-light h-100">
+                                    <img src="<?= "/sistema/content/" . htmlspecialchars($imagem2) ?>" class="card-img-top" alt="<?= htmlspecialchars($assunto) ?>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= htmlspecialchars($assunto) ?></h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php
+                        }
+                    } else {
+                        echo '<div class="col-12"><p class="text-center">Nenhum post encontrado.</p></div>';
+                    }
+                    ?>
+                </div>
 
-							// Executa a query final com LIMIT
-							$inicio = ($pg - 1) * 12;
-							$sql = "SELECT * FROM blog ORDER BY idBlog DESC LIMIT $inicio, 12";
-							$resultado = mysqli_query($conexao, $sql);
+                <!-- Paginação -->
+                <?php if ($totalPages > 1): ?>
+                <nav aria-label="Navegação de página" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <?php if ($pg > 1): ?>
+                            <li class="page-item">
+                                <a class="page-link" href="/vip-blog/<?= ($pg - 1) ?>">Anterior</a>
+                            </li>
+                        <?php endif; ?>
 
-							if ($resultado && mysqli_num_rows($resultado) > 0) {
-								while ($row = mysqli_fetch_assoc($resultado)) {
-									$idBlog = $row['idBlog'];
-									$assunto = $row['assunto'];
-									$imagem2 = $row['imagem2'];
+                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                            <li class="page-item <?= ($i == $pg) ? 'active' : '' ?>">
+                                <a class="page-link" href="/vip-blog/<?= $i ?>"><?= $i ?></a>
+                            </li>
+                        <?php endfor; ?>
 
-									$contador++;
-							?>
-									<div class="box-blog">
-										<a href="/vip-blog-post/<?php echo $idBlog; ?>/<?php echo tirarAcentos(str_replace(" ", "-", $assunto)); ?>">
-											<img src="<?php echo "/sistema/content/" . $imagem2; ?>" width="250" height="200">
-											<div class="titulo-post-thumb"><?php echo htmlspecialchars($assunto); ?></div>
-										</a>
-									</div>
+                        <?php if ($pg < $totalPages): ?>
+                            <li class="page-item">
+                                <a class="page-link" href="/vip-blog/<?= ($pg + 1) ?>">Próximo</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+                <?php endif; ?>
 
-							<?php
-									if ($contador % 3 == 0) {
-										echo "<div class='clear'></div>";
-									}
-								}
-							} else {
-								echo "<p>Nenhum post encontrado.</p>";
-							}
-							?>
-							<div class="clear"></div>
-						</div>
+                <?php include("banner_informativo.php") ?>
+                <?php include("banner_informativo2.php") ?>
+                <?php include("banner_informativo3.php") ?>
+            </div>
+        </div>
 
+        <?php include("rodape-novo.php"); ?>
+    </div>
 
-						<!-- Paginação -->
-						<div id="paginacao">
-							<ul class="pagination">
-								<?php
-								if ($pg > 1) {
-									echo '<li><a href="/vip-blog/' . ($pg - 1) . '">«</a></li>';
-								}
-
-								for ($i = 1; $i <= $totalPages; $i++) {
-									if ($i == $pg) {
-										echo '<li><a class="active" href="/vip-blog/' . $i . '">' . $i . '</a></li>';
-									} else {
-										echo '<li><a href="/vip-blog/' . $i . '">' . $i . '</a></li>';
-									}
-								}
-
-								if ($pg < $totalPages) {
-									echo '<li><a href="/vip-blog/' . ($pg + 1) . '">»</a></li>';
-								}
-								?>
-							</ul>
-						</div>
-
-						<?php include("php/banner-blog.php"); ?>
-
-					</div><!--COLUNA-FULL-->
-					<div class="clear"></div>
-				</div><!--PRINCIPAL CONTENT-->
-			</div><!--PRINCIPAL-->
-		</div><!--BG-COURO-->
-		<div id="rodape"><?php include("php/rodape-2.php"); ?></div>
-		<div id="tags"><?php include("php/tags-mural.php"); ?></div>
-	</div><!--wrap-->
-
-	<script type="text/javascript">
-		Cufon.now();
-	</script>
-	<?php include("php/google.php"); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include("php/google.php"); ?>
 </body>
-
 </html>

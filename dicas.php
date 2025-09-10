@@ -5,7 +5,7 @@ $sql = "SELECT * FROM seo, tipoSeo WHERE seo.idTipoSeo = tipoSeo.idTipoSeo AND d
 $resultado = mysqli_query($conexao, $sql);
 
 if (!$resultado) {
-    die("Impossível visualizar SEO: " . mysqli_error($conexao) . '<br>');
+    die("Impossível visualizar SEO: " . mysqli_error($conexao));
 }
 
 if (mysqli_num_rows($resultado) > 0) {
@@ -14,62 +14,74 @@ if (mysqli_num_rows($resultado) > 0) {
     $description = $row['description'];
     $keywords = $row['keywords'];
 }
+mysqli_free_result($resultado);
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
-
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <?php include 'head.php'; ?>
 
 <body>
     <div id="wrap">
-        <div id="bg-rosa">
-            <div id="topo">
-                <?php include("php/topo-2.php"); ?>
-            </div><!--TOPO-->
-            <div id="menu">
-                <?php include("php/menu-2.php"); ?>
-            </div><!--MENU-->
-        </div><!--BG ROSA-->
-        <div id="bg-couro">
-            <div id="principal">
-                <div id="principal-content-full">
-                    <div id="coluna-full">
-                        <div id="titulo-pagina"><img src="/imagens/estrutura/titulo-dicas.png" width="760" height="41" /></div>
-                        <p><strong>O que é preciso saber antes de contratar os serviços de uma acompanhante? </strong></p>
-                        <p>Baseado nas nossas experiências e vendo um número crescente de insatisfação dos clientes em relação à prestação de serviço de sexo pago, vamos aqui citar 11 dicas de o que fazer e como proceder para encontrar e melhorar a prestação de serviço.<br /><br /></p>
+        <div>
+            <?php include("php/menu-2.php"); ?>
+            <div id="topo"><?php include("php/topo-2.php"); ?></div>
+        </div>
+        <?php include("php/slider.php"); ?>
+        <?php include 'filters.php' ?>
+        
+        <div class="bg-dark text-light py-4">
+            <div class="container">
+                
+                <!-- Título -->
+                <div class="text-center mb-5">
+                    <h1 class="display-6 fw-bold">Dicas para Contratar Acompanhantes</h1>
+                </div>
 
-                        <ol>
-                            <li>De prefer&ecirc;ncia as acompanhantes que tem v&iacute;deos em seus perfis, isso diminui consideravelmente a probabilidade de insatisfa&ccedil;&atilde;o em rela&ccedil;&atilde;o ao perfil f&iacute;sico da modelo, ou seja, a modelo ter muito photoshop. Tamb&eacute;m diminui a possibilidade da mesma mandar outra em seu lugar. <strong>No menu do site ha um bot&atilde;o que filtra as modelos que tem v&iacute;deo.</strong></li>
-                            <li>Antes de ligar para modelo leia o perfil dela, o perfil no site é bem completo e vai dar uma boa noção do tipo de serviço que a modelo promete oferecer.</li>
-                            <li>Existe fórum como o www.gpguia.net onde você pode ver relatos de outros clientes e você mesmo relatar experiências positivas e ou negativas sobre o site.</li>
-                            <li>Ao ligar para modelo seja educado e cordial, gentileza atrair gentileza. Deixe bem claro o que deseja no encontro e se ela esta disposta a atender suas expectativas.</li>
-                            <li>Sempre ao marcar enfatize que se a modelo n&atilde;o for a mesma das fotos ou as fotos estiverem com muito photoshop voc&ecirc; n&atilde;o vai utilizar dos servi&ccedil;os, dificilmente uma modelo vai aceitar tal exig&ecirc;ncia se ela n&atilde;o se garante em ser o mesmo visto em fotos ou v&iacute;deos (claro que para voc&ecirc; poder fazer isso voc&ecirc; tem que negar o servi&ccedil;o na chegada da modelo no quarto antes da mesma tirar o roupa ou voc&ecirc; toca-la).</li>
-                            <li>&Eacute; fundamental n&atilde;o ser conivente com acompanhantes que prestam servi&ccedil;os mentirosos ou que mandam outras modelos em seu lugar. A modelo n&atilde;o &eacute; a mesma das fotos mande embora. (sabemos que &eacute; dif&iacute;cil, mais se voc&ecirc; j&aacute; deixar claro que n&atilde;o ser&aacute; conivente com tal pr&aacute;tica dificilmente uma modelo que tenha muito photoshop ou que pretende mandar outra em seu lugar o far&aacute;, se voc&ecirc; j&aacute; est&aacute; enfatizando esse ponto ao marcar.&nbsp; </li>
-                            <li>Aprenda a usar ferramentas como o f&oacute;rum www.gpguia.net e outros para fazer reclama&ccedil;&otilde;es de modelos que agem de ma f&eacute; bem como elogiar as que atendem bem.</li>
-                            <li>&Eacute; fundamental que voc&ecirc; ao ter sido atendido bem fa&ccedil;a uma propaganda positiva dessa acompanhante das formas poss&iacute;veis a voc&ecirc;. Somente engrandecendo os atos corretos e n&atilde;o sendo conivente com m&aacute; presta&ccedil;&atilde;o de servi&ccedil;o. A presta&ccedil;&atilde;o de servi&ccedil;o nesse meio ir&aacute; melhorar.</li>
-                            <li>N&oacute;s do Vip Luxuria estamos dispostos a fazer o poss&iacute;vel para que voc&ecirc; encontre um atendimento de qualidade. Fique a vontade de nos mandar um e-mail pedindo indica&ccedil;&atilde;o das modelos com melhor reputa&ccedil;&atilde;o do site que lhe mandaremos o link das que tem melhor reputa&ccedil;&atilde;o. Lembramos que o Vip Luxuria criou o site Vipluxuriagold.com que conta com algumas das modelos mais bonitas do site, nele n&atilde;o ha modelos agenciadas ou com muito photoshop todas tem fotos e v&iacute;deos. </li>
-                            <li>Evite pedir desconto ou tentar pechinchar cach&ecirc;s, prestadores de servi&ccedil;os dessa &aacute;rea odeia essa pratica. O Site oferece um n&uacute;mero elevado de op&ccedil;&otilde;es, ent&atilde;o pesquise bem, que &eacute; prov&aacute;vel que encontre o que procura. Mas n&atilde;o esque&ccedil;a que ao contratar um servi&ccedil;o 5 estrelas ou 3 estrelas haver&aacute; uma diferen&ccedil;a em valor tanto quanto em qualidade.</li>
-                            <li>Nunca esque&ccedil;a que a presta&ccedil;&atilde;o de servi&ccedil;os de acompanhantes &eacute; uma presta&ccedil;&atilde;o de servi&ccedil;o semelhante a v&aacute;rias outras, ent&atilde;o os cuidados e exig&ecirc;ncias a serem tomadas devem ser semelhantes tamb&eacute;m. </li>
-                        </ol>
+                <!-- Conteúdo de Dicas -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-4 bg-secondary rounded">
+                            <h2 class="mb-4">O que é preciso saber antes de contratar os serviços de uma acompanhante?</h2>
+                            <p class="lead">Baseado nas nossas experiências e vendo um número crescente de insatisfação dos clientes em relação à prestação de serviço de sexo pago, vamos aqui citar 11 dicas de o que fazer e como proceder para encontrar e melhorar a prestação de serviço.</p>
 
-                    </div><!--coluna-full-->
-                    <div class="clear"></div>
-                </div><!--PRINCIPAL CONTENT FULL-->
-            </div><!--PRINCIPAL-->
-        </div><!--BG-COURO-->
-        <div id="rodape">
-            <?php include("php/rodape-2.php"); ?>
-        </div><!--RODAPE-->
-        <div id="tags">
-            <?php include("php/tags-moteis.php"); ?>
-        </div><!--TAGS-->
-    </div><!--wrap-->
-    <script type="text/javascript">
-        Cufon.now();
-    </script>
+                            <ol class="mt-4">
+                                <li class="mb-3">De preferência as acompanhantes que tem vídeos em seus perfis, isso diminui consideravelmente a probabilidade de insatisfação em relação ao perfil físico da modelo, ou seja, a modelo ter muito photoshop. Também diminui a possibilidade da mesma mandar outra em seu lugar. <strong>No menu do site há um botão que filtra as modelos que tem vídeo.</strong></li>
+                                
+                                <li class="mb-3">Antes de ligar para modelo leia o perfil dela, o perfil no site é bem completo e vai dar uma boa noção do tipo de serviço que a modelo promete oferecer.</li>
+                                
+                                <li class="mb-3">Existe fórum como o www.gpguia.net onde você pode ver relatos de outros clientes e você mesmo relatar experiências positivas e ou negativas sobre o site.</li>
+                                
+                                <li class="mb-3">Ao ligar para modelo seja educado e cordial, gentileza atrai gentileza. Deixe bem claro o que deseja no encontro e se ela está disposta a atender suas expectativas.</li>
+                                
+                                <li class="mb-3">Sempre ao marcar enfatize que se a modelo não for a mesma das fotos ou as fotos estiverem com muito photoshop você não vai utilizar dos serviços, dificilmente uma modelo vai aceitar tal exigência se ela não se garante em ser o mesmo visto em fotos ou vídeos (claro que para você poder fazer isso você tem que negar o serviço na chegada da modelo no quarto antes da mesma tirar a roupa ou você tocá-la).</li>
+                                
+                                <li class="mb-3">É fundamental não ser conivente com acompanhantes que prestam serviços mentirosos ou que mandam outras modelos em seu lugar. A modelo não é a mesma das fotos mande embora. (sabemos que é difícil, mais se você já deixar claro que não será conivente com tal prática dificilmente uma modelo que tenha muito photoshop ou que pretende mandar outra em seu lugar o fará, se você já está enfatizando esse ponto ao marcar.</li>
+                                
+                                <li class="mb-3">Aprenda a usar ferramentas como o fórum www.gpguia.net e outros para fazer reclamações de modelos que agem de má fé bem como elogiar as que atendem bem.</li>
+                                
+                                <li class="mb-3">É fundamental que você ao ter sido atendido bem faça uma propaganda positiva dessa acompanhante das formas possíveis a você. Somente engrandecendo os atos corretos e não sendo conivente com má prestação de serviço. A prestação de serviço nesse meio irá melhorar.</li>
+                                
+                                <li class="mb-3">Nós do Vip Luxúria estamos dispostos a fazer o possível para que você encontre um atendimento de qualidade. Fique à vontade de nos mandar um e-mail pedindo indicação das modelos com melhor reputação do site que lhe mandaremos o link das que tem melhor reputação. Lembramos que o Vip Luxúria criou o site Vipluxuriagold.com que conta com algumas das modelos mais bonitas do site, nele não há modelos agenciadas ou com muito photoshop todas tem fotos e vídeos.</li>
+                                
+                                <li class="mb-3">Evite pedir desconto ou tentar pechinchar cachês, prestadores de serviços dessa área odeiam essa prática. O Site oferece um número elevado de opções, então pesquise bem, que é provável que encontre o que procura. Mas não esqueça que ao contratar um serviço 5 estrelas ou 3 estrelas haverá uma diferença em valor tanto quanto em qualidade.</li>
+                                
+                                <li class="mb-3">Nunca esqueça que a prestação de serviços de acompanhantes é uma prestação de serviço semelhante a várias outras, então os cuidados e exigências a serem tomadas devem ser semelhantes também.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <?php include("banner_informativo.php") ?>
+                <?php include("banner_informativo2.php") ?>
+                <?php include("banner_informativo3.php") ?>
+            </div>
+        </div>
+
+        <?php include("rodape-novo.php"); ?>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <?php include("php/google.php"); ?>
-
 </body>
-
 </html>

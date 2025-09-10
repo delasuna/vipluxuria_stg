@@ -1,7 +1,7 @@
 <?php
 $conexao = require_once '../php/conecta_mysql.php';
 
-// --- Função anti_injection atualizada ---
+// Função anti_injection
 function anti_injection($str) {
     $str = trim($str);
     $str = strip_tags($str);
@@ -9,7 +9,7 @@ function anti_injection($str) {
     return $str;
 }
 
-// --- SEO ---
+// SEO
 $whereSEO = " descricao = 'Home' ";
 if (!empty($_REQUEST["flagTipo"])) {
     $flag = anti_injection($_REQUEST["flagTipo"]);
@@ -39,12 +39,12 @@ if (mysqli_num_rows($resultado) > 0) {
 }
 mysqli_free_result($resultado);
 
-// --- Cidade ---
+// Cidade
 $cidade = "Porto Alegre";
 if (!empty($_REQUEST["idCidade"])) {
     $idCidade = (int) $_REQUEST["idCidade"];
     $sql = "SELECT cidade FROM cidade WHERE idCidade = $idCidade";
-    $resultado = mysqli_query($conexao, $sql) or die("Impossível visualizar as cidades: " . mysqli_error($conexao));
+    $resultado = mysqli_query($conexao, $sql);
     if ($row = mysqli_fetch_assoc($resultado)) {
         $cidade = $row['cidade'];
     }
@@ -53,30 +53,37 @@ if (!empty($_REQUEST["idCidade"])) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-<?php include '../head.php'; ?>
-<body>
-<div id="wrap">
-    <div id="bg-rosa">
-        <div id="menu"><?php include("../php/menu-2.php"); ?></div>
-        <div id="topo"><?php include("../php/topo-2.php"); ?></div>
-    </div>
-    <?php include '../filters.php' ?>
-    <div id="bg-couro">
-        <div id="principal">
-            <div id="principal-content-full">
-                <div id="coluna-full">
-                    <div id="titulo-pagina"><img src="/imagens/estrutura/titulo-mulheres-2.png" width="760" height="41" /></div>
 
+<?php include '../head.php'; ?>
+
+<body>
+    <div id="wrap">
+        <div>
+            <?php include("../php/menu-2.php"); ?>
+            <div id="topo"><?php include("../php/topo-2.php"); ?></div>
+        </div>
+        <?php include("../php/slider.php"); ?>
+        <?php include '../filters.php' ?>
+        
+        <div class="bg-dark text-light py-4">
+            <div class="container">
+                
+                <!-- Título -->
+                <div class="text-center mb-5">
+                    <h1 class="display-6 fw-bold">Acompanhantes <?= $cidade ?></h1>
+                    
                     <?php if (!empty($_REQUEST["flagTipo"]) && anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual"): ?>
-                    <div id="nota">
-                        <p>Este espaço é destinado a destacar as acompanhantes que fazem shows privados pelo WhatsApp e venda de pacote de fotos, venda de vídeos!
-                        E é tudo muito simples. Chame a garota de sua preferência, combine as condições e usufrua de sua companhia virtual!</p><br>
-                        <p><i><strong>Consulte diretamente com a anunciante os serviços oferecidos por ela!</strong></i></p>
+                    <div class="alert alert-info mt-3">
+                        <p>Este espaço é destinado a destacar as acompanhantes que fazem shows privados pelo WhatsApp e venda de pacote de fotos, venda de vídeos!</p>
+                        <p><strong>Consulte diretamente com a anunciante os serviços oferecidos por ela!</strong></p>
                     </div>
                     <?php endif; ?>
+                </div>
 
-                    <ul id="thumbs-full">
+                <!-- Lista de Mulheres -->
+                <div class="row g-4">
                     <?php
+                    // Montar WHERE
                     $where = " WHERE flagAtivo = 'Sim' ";
                     if (!empty($_REQUEST["nome"])) {
                         $nome = mysqli_real_escape_string($conexao, $_REQUEST["nome"]);
@@ -94,57 +101,71 @@ if (!empty($_REQUEST["idCidade"])) {
                         case "SexoVirtual":   $where .= " AND flagSexoVirtual = 'S' "; break;
                     }
 
+                    // Query conforme cidade
                     if (!empty($_REQUEST["idCidade"])) {
                         $idCidade = (int) $_REQUEST["idCidade"];
                         $sql = "SELECT mulher.* FROM mulher
                                 JOIN mulherCidade ON (mulher.idMulher = mulherCidade.idMulher AND mulherCidade.idCidade = $idCidade)
                                 $where
-                                ORDER BY flagPreferencial DESC, RAND()";
+                                ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
                     } else {
                         $sql = "SELECT * FROM mulher
                                 $where
-                                ORDER BY flagPreferencial DESC, RAND()";
+                                ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
                     }
 
-                    $resultado = mysqli_query($conexao, $sql) or die("Impossível visualizar as anunciantes: " . mysqli_error($conexao));
-                    $contador = 0;
+                    $resultado = mysqli_query($conexao, $sql);
+                    if (!$resultado) {
+                        die("Impossível visualizar as anunciantes: " . mysqli_error($conexao));
+                    }
+
+                    $contadorCarrossel = 0;
+                    $comAcentos = ['à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ñ','ò','ó','ô','õ','ö','ù','ü','ú','ÿ','À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ñ','Ò','Ó','Ô','Õ','Ö','O','Ù','Ü','Ú'];
+                    $semAcentos = ['a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','u','u','u','y','A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','N','O','O','O','O','O','O','U','U','U'];
+
                     while ($row = mysqli_fetch_assoc($resultado)) {
                         $idMulher = $row['idMulher'];
-                        $nome = htmlspecialchars($row['nome']);
-                        $sobrenome = htmlspecialchars($row['sobrenome']);
-                        $imagemCapa = htmlspecialchars($row['imagemCapa']);
-                        $contador++;
+                        $nome = $row['nome'];
+                        $sobrenome = $row['sobrenome'];
+                        $imagemCapa = $row['imagemCapa'];
 
-                        $nomeUrl = tirarAcentos($nome);
-                        if ($sobrenome != "") {
-                            $nomeUrl .= "-" . tirarAcentos(str_replace(" ", "-", $sobrenome));
+                        $linkPerfil = "/perfil/" . $idMulher . "/" . str_replace($comAcentos, $semAcentos, $nome);
+                        if (!empty($sobrenome)) {
+                            $linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
                         }
-                        ?>
-                        <li<?= ($contador % 5 == 0 ? ' class="last"' : '') ?>>
-                            <a href="/perfil/<?= $idMulher ?>/<?= $nomeUrl ?>">
-                                <img src="/sistema/content/<?= $imagemCapa ?>" width="112" height="149" />
-                                <p class="nome"><?= $nome ?> <?= $sobrenome ?></p>
-                            </a>
-                        </li>
-                        <?php
-                    }
-                    mysqli_free_result($resultado);
+                        $linkPerfil = htmlspecialchars($linkPerfil);
+                        $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
                     ?>
-                    </ul>
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-custom">
+                            <a href="<?= $linkPerfil ?>" class="text-decoration-none text-light">
+                                <div class="card bg-secondary text-light shadow-sm h-100">
+                                    <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>" class="card-img-top" alt="<?= $nomeCompleto ?>">
+                                    <div class="card-body p-2">
+                                        <p class="card-text text-center fw-bold small"><?= $nomeCompleto ?></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
 
-                    <div class="clear"></div>
-                    <?php include("../php/destaques-2020.php"); ?>
-                    <br><br>
-                    <div class="bt-voltar"><a href="javascript:window.history.go(-1)"><img src="/imagens/estrutura/bt-voltar.png" /></a></div>
+                        <?php if (++$contadorCarrossel == 16) { ?>
+                            <div class="col-12">
+                                <?php include("../php/carousel.php"); ?>
+                            </div>
+                        <?php } ?>
+
+                    <?php } ?>
                 </div>
-                <div class="clear"></div>
+
+                <?php include("../banner_informativo.php") ?>
+                <?php include("../banner_informativo2.php") ?>
+                <?php include("../banner_informativo3.php") ?>
             </div>
         </div>
+
+        <?php include("../rodape-novo.php"); ?>
     </div>
-    <div id="rodape"><?php include("../php/rodape-2.php"); ?></div>
-    <div id="tags"><?php include("../php/tags-mulheres.php"); ?></div>
-</div>
-<script>Cufon.now();</script>
-<?php include("../php/google.php"); ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include("../php/google.php"); ?>
 </body>
 </html>

@@ -1,13 +1,14 @@
-<?php $conexao = require_once '../php/conecta_mysql.php'; ?>
+<?php 
+$conexao = require_once '../php/conecta_mysql.php';
 
-<?php
+// SEO
 $sql = "SELECT * FROM seo 
         INNER JOIN tipoSeo ON seo.idTipoSeo = tipoSeo.idTipoSeo 
         WHERE descricao = 'Transex'";
 
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
-    die("Impossível visualizar SEO: " . mysqli_error($conexao) . '<br>');
+    die("Impossível visualizar SEO: " . mysqli_error($conexao));
 }
 
 if (mysqli_num_rows($resultado) > 0) {
@@ -20,92 +21,86 @@ if (mysqli_num_rows($resultado) > 0) {
     $description = "";
     $keywords = "";
 }
+mysqli_free_result($resultado);
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <?php include '../head.php'; ?>
 
 <body>
-<div id="wrap">
-    <div id="bg-rosa">
-        <div id="menu">
+    <div id="wrap">
+        <div>
             <?php include("../php/menu-2.php"); ?>
+            <div id="topo"><?php include("../php/topo-2.php"); ?></div>
         </div>
-        <div id="topo">
-            <?php include("../php/topo-2.php"); ?>
-        </div>
-    </div>
-    <?php include("../filters.php") ?>
-    <div id="bg-couro">    
-        <div id="principal">
-            <div id="principal-content-full">
-                <div id="coluna-full" style="padding-top:20px;">
-                    <?php include("../php/slider-transex.php"); ?>
-                    <br/>
-                    <div id="titulo-pagina"><img src="/imagens/estrutura/titulo-transex.png" width="760" height="41" /></div>
-                    <ul id="thumbs-transex">
-<?php
-$sql = "SELECT * FROM transex WHERE flagAtivo = 'Sim' ORDER BY RAND()";
-$resultado = mysqli_query($conexao, $sql);
-
-if (!$resultado) {
-    die("Impossível visualizar as anunciantes: " . mysqli_error($conexao) . '<br>');
-}
-
-$contador = 0;
-$comAcentos = ['à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ñ','ò','ó','ô','õ','ö','ù','ü','ú','ÿ','À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ñ','Ò','Ó','Ô','Õ','Ö','O','Ù','Ü','Ú'];
-$semAcentos = ['a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','u','u','u','y','A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','N','O','O','O','O','O','O','U','U','U'];
-
-while ($row = mysqli_fetch_assoc($resultado)) {
-    $idTransex = $row['idTransex'];
-    $nome = $row['nome'];
-    $sobrenome = $row['sobrenome'];
-    $imagemComNome = $row['imagemComNome'];
-    $contador++;
-
-    $nomeURL = str_replace($comAcentos, $semAcentos, $nome);
-    if ($sobrenome != "") {
-        $nomeURL .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
-    }
-
-    $liClass = ($contador < 6) ? "zoom_img" : "last zoom_img";
-    if ($contador >= 6) $contador = 0;
-    ?>
-    <li class="<?php echo $liClass; ?>">
-        <a href="/perfil-transex/<?php echo $idTransex; ?>/<?php echo $nomeURL; ?>">
-            <img src="<?php echo "/sistema/content/".$imagemComNome; ?>" width="112" height="149" />
-            <p class="nome"><?php echo $nome." ".$sobrenome; ?></p>
-        </a>
-    </li>
-    <?php
-}
-?>
-                    </ul>
-                    <div class="clear"></div>
-                    <div class="bt-voltar"><a href="javascript:window.history.go(-1)"><img src="/imagens/estrutura/bt-voltar.png" /></a></div>
+        <?php include("../php/slider-transex.php"); ?>
+        <?php include '../filters.php' ?>
+        
+        <div class="bg-dark text-light py-4">
+            <div class="container">
+                
+                <!-- Título -->
+                <div class="text-center mb-5">
+                    <h1 class="display-6 fw-bold">Transex - Porto Alegre</h1>
                 </div>
-                <div id="coluna-2"></div>
-                <div class="clear"></div>
 
-                <div id="box-texto">
+                <!-- Lista de Transex -->
+                <div class="row g-4">
+                    <?php
+                    $sql = "SELECT * FROM transex WHERE flagAtivo = 'Sim' ORDER BY RAND()";
+                    $resultado = mysqli_query($conexao, $sql);
+                    
+                    if (!$resultado) {
+                        die("Impossível visualizar as anunciantes: " . mysqli_error($conexao));
+                    }
+
+                    $comAcentos = ['à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ñ','ò','ó','ô','õ','ö','ù','ü','ú','ÿ','À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ñ','Ò','Ó','Ô','Õ','Ö','O','Ù','Ü','Ú'];
+                    $semAcentos = ['a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','u','u','u','y','A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','N','O','O','O','O','O','O','U','U','U'];
+
+                    while ($row = mysqli_fetch_assoc($resultado)) {
+                        $idTransex = $row['idTransex'];
+                        $nome = $row['nome'];
+                        $sobrenome = $row['sobrenome'];
+                        $imagemComNome = $row['imagemComNome'];
+
+                        $linkPerfil = "/perfil-transex/" . $idTransex . "/" . str_replace($comAcentos, $semAcentos, $nome);
+                        if (!empty($sobrenome)) {
+                            $linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
+                        }
+                        $linkPerfil = htmlspecialchars($linkPerfil);
+                        $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
+                    ?>
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-custom">
+                            <a href="<?= $linkPerfil ?>" class="text-decoration-none text-light">
+                                <div class="card bg-secondary text-light shadow-sm h-100">
+                                    <img src="<?= "/sistema/content/" . htmlspecialchars($imagemComNome) ?>" class="card-img-top" alt="<?= $nomeCompleto ?>">
+                                    <div class="card-body p-2">
+                                        <p class="card-text text-center fw-bold small"><?= $nomeCompleto ?></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php } ?>
+                </div>
+
+                <!-- Box de Texto SEO -->
+                <div class="mt-5 p-4 bg-secondary rounded">
                     <h2>Transex</h2>
-                    <p>Nessa pagina do Vip Luxúria você vai encontrar as mas belas transex de Porto Alegre e grande Poa!</p><br>
-                    <p>As mas belas transex para atendimento em Porto Alegre com local ou para atendimento em hotéis e motéis, disponíveis para sexo e serviços eróticos. Veja fotos e vídeos reais e entre em contato diretamente com a T-gata de sua escolha!</p>
-                </div>                                
+                    <p>Nessa página do Vip Luxúria você vai encontrar as mais belas transex de Porto Alegre e grande POA!</p>
+                    <p>As mais belas transex para atendimento em Porto Alegre com local ou para atendimento em hotéis e motéis, disponíveis para sexo e serviços eróticos. Veja fotos e vídeos reais e entre em contato diretamente com a T-gata de sua escolha!</p>
+                </div>
 
-            </div><!--PRINCIPAL CONTENT-->
-        </div><!--PRINCIPAL-->
-    </div><!--BG-COURO-->
-    <div id="rodape">
-        <?php include("../php/rodape-2.php"); ?>
+                <?php include("../banner_informativo.php") ?>
+                <?php include("../banner_informativo2.php") ?>
+                <?php include("../banner_informativo3.php") ?>
+            </div>
+        </div>
+
+        <?php include("../rodape-novo.php"); ?>
     </div>
-    <div id="tags">
-        <?php include("../php/tags-transex.php"); ?>
-    </div>
-</div><!--wrap-->
-<script type="text/javascript"> Cufon.now(); </script>
-<?php include("../php/google.php"); ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include("../php/google.php"); ?>
 </body>
 </html>
