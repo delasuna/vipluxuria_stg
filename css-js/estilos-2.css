@@ -2031,4 +2031,344 @@ ul.pagination li a:hover:not(.active) {
 
 @media (min-width: 768px) {
 
+/* ===== NOVOS ESTILOS VIP 2025 ===== */
+:root {
+    --rosa-primary: #E91E63;
+    --rosa-dark: #AD1457;
+    --rosa-light: #F8BBD0;
+    --bg-black: #0a0a0a;
+    --card-gray: #2c2c2c;
+    --success-green: #4CAF50;
+    --gold: #FFD700;
+}
+
+/* Header Superior Fino */
+.top-header-fino {
+    background: linear-gradient(90deg, var(--rosa-primary), var(--rosa-dark));
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.menu-institucional a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.menu-institucional a:hover { opacity: 0.8; }
+
+.btn-anuncie-badge {
+    background: var(--bg-black);
+    color: var(--gold);
+    padding: 6px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s;
+}
+
+.btn-anuncie-badge:hover {
+    transform: translateY(-2px);
+    color: var(--gold);
+}
+
+.whatsapp-header {
+    color: white;
+    font-weight: 500;
+}
+
+.selo-autoridade {
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Grid Responsivo */
+.acompanhantes-grid {
+    display: grid;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+@media (min-width: 1200px) {
+    .acompanhantes-grid { grid-template-columns: repeat(6, 1fr); }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .acompanhantes-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 767px) {
+    .acompanhantes-grid { grid-template-columns: repeat(2, 1fr); }
+    .whatsapp-header { display: none; }
+}
+
+/* Cards Modernos */
+.acompanhante-card {
+    background: var(--card-gray);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(233, 30, 99, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.acompanhante-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(233, 30, 99, 0.3);
+}
+
+.acompanhante-card .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.acompanhante-card:hover .card-img {
+    transform: scale(1.05);
+}
+
+.card-info {
+    padding: 12px;
+}
+
+.card-info .nome-acompanhante {
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    font-size: 14px;
+}
+
+.carousel-container {
+    grid-column: 1 / -1;
+    margin: 40px 0;
+}
+
+/* Banner Anunciante */
+.banner-anunciante {
+    background: linear-gradient(135deg, var(--gold), #FFA500);
+    padding: 50px 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 60px 0;
+    color: var(--bg-black);
+}
+
+.banner-anunciante h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn-cta-anunciar {
+    background: var(--bg-black);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.btn-cta-anunciar:hover {
+    transform: translateY(-3px);
+    color: white;
+}
+
+/* Banner Não Encontrou */
+.banner-nao-encontrou {
+    background: linear-gradient(135deg, var(--rosa-primary), var(--rosa-dark));
+    padding: 60px 30px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 40px 0;
+}
+
+.banner-nao-encontrou h2 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.btn-ver-todas {
+    background: white;
+    color: var(--rosa-primary);
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.btn-ver-todas:hover {
+    transform: translateY(-3px);
+    color: var(--rosa-primary);
+}
+
+.whatsapp-text {
+    color: white;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Seção SEO */
+.seo-section {
+    padding: 60px 30px;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    border-radius: 20px;
+    margin: 40px 0;
+}
+
+.seo-section h2 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.highlight-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ddd;
+    margin: 20px 0 40px;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.stat {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat .number {
+    display: block;
+    font-size: 42px;
+    font-weight: bold;
+    color: var(--rosa-primary);
+    margin-bottom: 10px;
+}
+
+.stat .label {
+    font-size: 14px;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.btn-expand, .btn-collapse {
+    background: linear-gradient(90deg, var(--rosa-primary), var(--rosa-dark));
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 30px auto;
+}
+
+.btn-expand:hover {
+    transform: translateY(-2px);
+}
+
+.content-collapsed {
+    animation: slideDown 0.5s ease;
+    margin-top: 30px;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.benefits-list li {
+    padding: 12px 0;
+    color: #ccc;
+    font-size: 16px;
+}
+
+.trust-badges {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.trust-badges .badge {
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: white;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Newsletter */
+.newsletter-section {
+    background: var(--card-gray);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.newsletter-section h3 {
+    color: var(--rosa-primary);
+    margin-bottom: 10px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--rosa-primary);
+    background: transparent;
+    color: white;
+}
+
+.newsletter-form button {
+    padding: 12px 30px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--rosa-primary), var(--rosa-dark));
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.newsletter-section small {
+    color: #999;
+    display: block;
+    margin-top: 15px;
 }

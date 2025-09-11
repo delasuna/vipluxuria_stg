@@ -57,7 +57,10 @@
           <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip Luxúria" class="img-fluid" style="max-height:98px;">
         </a>
       </div>
-
+<!-- ADICIONAR APÓS A LOGO EXISTENTE -->
+<div class="col-auto">
+    <img src="/imagens/selo-17-anos.png" alt="17 Anos - Desde 2007" class="selo-autoridade img-fluid" style="max-height:80px;">
+</div>
       <!-- Lettering Central -->
       <div class="col-auto">
         <img src="/imagens/estrutura/lettering-2021-selo.png" alt="O guia erótico mais completo do Brasil" class="img-fluid" style="max-height:100px;">
