@@ -2029,8 +2029,6 @@ ul.pagination li a:hover:not(.active) {
 	min-height: 545px;
 }
 
-@media (min-width: 768px) {
-
 /* ===== NOVOS ESTILOS VIP 2025 ===== */
 :root {
     --rosa-primary: #E91E63;
