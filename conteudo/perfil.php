@@ -268,123 +268,134 @@ document.onmouseup = desabilitaBotaoDireito;
 		<div id="topo"><?php include("../php/topo-2.php"); ?></div>
 	</div>
 
-<div class="perfil-wrapper container mt-3 d-flex justify-content-evenly">
-    <!-- Coluna esquerda: foto + galeria -->
-     <div>
-<div class="perfil-foto">
-    <img src="<?php echo htmlspecialchars('https://vipluxuria.com/sistema/content/'.$p_imagemCentral1 ?? '', ENT_QUOTES, 'UTF-8'); ?>" 
-         alt="Foto de <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>" 
-         id="fotoPerfil" 
-         class="d-flex mx-auto"/>
-</div>
+<div class="perfil-wrapper container mt-3">
+    <div class="row">
+        <!-- Coluna esquerda: foto + galeria -->
+        <div class="col-12 col-lg-5 mb-4">
+            <div class="perfil-foto text-center d-flex">
+                <img src="<?php echo htmlspecialchars('https://vipluxuria.com/sistema/content/'.$p_imagemCentral1 ?? '', ENT_QUOTES, 'UTF-8'); ?>" 
+                     alt="Foto de <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>" 
+                     id="fotoPerfil" 
+                     class="img-fluid rounded"/>
+            </div>
 
-<div class="perfil-galeria mt-2 d-flex flex-wrap gap-2 justify-content-center">
-    <?php
-    // Galeria principal
-    for ($i = 1; $i <= 8; $i++) {
-        $k = "imagemCentral{$i}";
-        if (!empty($perfil[$k])) {
-            $src = 'https://vipluxuria.com/sistema/content/' . $perfil[$k];
-            echo '<img class="thumb-galeria" src="'.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'" 
-                  onclick="document.getElementById(\'fotoPerfil\').src=\''.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'\'" />';
-        }
-    }
+            <!-- Galeria -->
+            <div class="perfil-galeria mt-3 d-flex flex-wrap gap-2 justify-content-center">
+                <?php
+                // Galeria principal
+                for ($i = 1; $i <= 8; $i++) {
+                    $k = "imagemCentral{$i}";
+                    if (!empty($perfil[$k])) {
+                        $src = 'https://vipluxuria.com/sistema/content/' . $perfil[$k];
+                        echo '<img class="thumb-galeria img-thumbnail" src="'.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'" 
+                              onclick="document.getElementById(\'fotoPerfil\').src=\''.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'\'" />';
+                    }
+                }
 
-    // Fotos caseiras
-    if (!empty($p_flagMostraConteudoExtra) && $p_flagMostraConteudoExtra === 'S') {
-        for ($i = 1; $i <= 6; $i++) {
-            $k = 'imagemExtra' . $i;
-            if (!empty($perfil[$k])) {
-                $src = 'https://vipluxuria.com/sistema/content/' . $perfil[$k];
-                echo '<img class="thumb-galeria" src="'.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'" 
-                      onclick="document.getElementById(\'fotoPerfil\').src=\''.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'\'" />';
-            }
-        }
-    }
+                // Fotos caseiras
+                if (!empty($p_flagMostraConteudoExtra) && $p_flagMostraConteudoExtra === 'S') {
+                    for ($i = 1; $i <= 6; $i++) {
+                        $k = 'imagemExtra' . $i;
+                        if (!empty($perfil[$k])) {
+                            $src = 'https://vipluxuria.com/sistema/content/' . $perfil[$k];
+                            echo '<img class="thumb-galeria img-thumbnail" src="'.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'" 
+                                  onclick="document.getElementById(\'fotoPerfil\').src=\''.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'\'" />';
+                        }
+                    }
+                }
+                ?>
+            </div>
 
-    // Vídeo
-    if (!empty($p_video) && (!isset($p_flagTemVideo) || $p_flagTemVideo !== 'Nao')) {
-        $videoSrc = 'https://vipluxuria.com/sistema/content/'.$p_video;
-        echo '<img class="thumb-galeria" src="https://via.placeholder.com/100x100?text=Vídeo" 
-              onclick="
-                  var container = document.getElementById(\'fotoPerfil\');
-                  container.outerHTML = `<video id=\'fotoPerfil\' class=\'d-flex mx-auto w-100\' controls><source src=\''.$videoSrc.'\' type=\'video/mp4\'></video>`;
-              "/>';
-    }
-    ?>
-</div>
-</div>
-    <div>
-    <!-- Coluna direita: informações -->
-    <div class="perfil-info">
-        <h1 class="perfil-nome">
-            <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>
-        </h1>
-
-        <!-- Botão WhatsApp -->
-        <?php if (!empty($p_flagWhats) && $p_flagWhats === 'S'): ?>
-            <a class="btn-whatsapp" 
-               href="https://api.whatsapp.com/send?phone=<?php echo '55' . preg_replace('/\D+/', '', $p_ddd . $p_telefone); ?>&text=<?php echo urlencode('Tudo bem? Te vi no site Vip Luxuria. Gostaria de saber mais sobre o seu atendimento!'); ?>" 
-               target="_blank">
-                <i class="fab fa-whatsapp"></i>
-                WhatsApp: (<?php echo htmlspecialchars($p_ddd, ENT_QUOTES, 'UTF-8'); ?>) <?php echo htmlspecialchars($p_telefone, ENT_QUOTES, 'UTF-8'); ?>
-            </a>
-        <?php endif; ?>
-
-        <!-- Infos básicas -->
-        <div class="perfil-dados">
-            <div><span>Cachê</span><strong><?php echo htmlspecialchars($p_cache ?? '', ENT_QUOTES, 'UTF-8'); ?> anos</strong></div>
-            <div><span>Locais</span><strong><?php echo htmlspecialchars($p_locais ?? '', ENT_QUOTES, 'UTF-8'); ?>m</strong></div>
-            <div><span>Cidades</span><strong><?php echo htmlspecialchars($p_cidades ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-            <div><span>Horário</span><strong><?php echo htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-        </div>
-    </div>
-    <div class="bloco sobre-mim">
-        <h2>Sobre Mim</h2>
-        <p><?php echo nl2br($p_mensagem1 ?? ''); ?></p>
-    </div>
-        </div>
-</div>
-
-<!-- Blocos abaixo -->
-<div class="perfil-blocos container">
-                <!-- Como Sou -->
-        <div class="bloco como-sou">
-            <h2>Como Sou</h2>
-            <ul>
-                <li><span>Idade:</span> <?php echo htmlspecialchars($p_idade ?? '', ENT_QUOTES, 'UTF-8'); ?> anos</li>
-                <li><span>Altura:</span> <?php echo htmlspecialchars($p_altura ?? '', ENT_QUOTES, 'UTF-8'); ?>m</li>
-                <li><span>Peso:</span> <?php echo htmlspecialchars($p_peso ?? '', ENT_QUOTES, 'UTF-8'); ?>kg</li>
-                <li><span>Olhos:</span> <?php echo htmlspecialchars($p_olhos ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                <li><span>Cabelos:</span> <?php echo htmlspecialchars($p_cabelos ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                <li><span>Busto:</span> <?php echo htmlspecialchars($p_busto ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
-                <li><span>Quadril:</span> <?php echo htmlspecialchars($p_quadril ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
-                <li><span>Cintura:</span> <?php echo htmlspecialchars($p_cintura ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
-                <li><span>Pés:</span> <?php echo htmlspecialchars($p_pes ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                <li><span>Manequim:</span> <?php echo htmlspecialchars($p_manequim ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-            </ul>
+            <!-- Vídeo -->
+            <?php if (!empty($p_video) && (!isset($p_flagTemVideo) || $p_flagTemVideo !== 'Nao')): ?>
+                <div class="perfil-video mt-5">
+                    <video class="w-100 rounded shadow-sm" controls>
+                        <source src="https://vipluxuria.com/sistema/content/<?php echo htmlspecialchars($p_video, ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
+                        Seu navegador não suporta a reprodução de vídeo.
+                    </video>
+                </div>
+            <?php endif; ?>
         </div>
 
-        <!-- O que Faço -->
-        <div class="bloco o-que-faco">
-            <h2>O que Faço</h2>
-            <div class="tags-faco">
-                <?php if (!empty($p_flagBeijoBoca) && $p_flagBeijoBoca === 'Sim') echo '<span>Beijo na Boca</span>'; ?>
-                <?php if (!empty($p_flagOral) && $p_flagOral === 'Sim') echo '<span>Oral</span>'; ?>
-                <?php if (!empty($p_flagAnal) && $p_flagAnal === 'Sim') echo '<span>Sexo Anal</span>'; ?>
-                <?php if (!empty($p_flagDominacao) && $p_flagDominacao === 'Sim') echo '<span>Dominação</span>'; ?>
-                <?php if (!empty($p_flagInversao) && $p_flagInversao === 'Sim') echo '<span>Inversão</span>'; ?>
-                <?php if (!empty($p_flagMassagem) && $p_flagMassagem === 'Sim') echo '<span>Massagem</span>'; ?>
-                <?php if (!empty($p_flagFantasias) && $p_flagFantasias === 'Sim') echo '<span>Fantasias</span>'; ?>
-                <?php if (!empty($p_flagAtendoEles) && $p_flagAtendoEles === 'Sim') echo '<span>Atendo eles</span>'; ?>
-                <?php if (!empty($p_flagAtendoElas) && $p_flagAtendoElas === 'Sim') echo '<span>Atendo elas</span>'; ?>
-                <?php if (!empty($p_flagAtendoCasais) && $p_flagAtendoCasais === 'Sim') echo '<span>Atendo casais</span>'; ?>
-                <?php if (!empty($p_flagAcessorios) && $p_flagAcessorios === 'Sim') echo '<span>Acessórios</span>'; ?>
-                <?php if (!empty($p_flagEventos) && $p_flagEventos === 'Sim') echo '<span>Eventos</span>'; ?>
-                <?php if (!empty($p_flagViagens) && $p_flagViagens === 'Sim') echo '<span>Viagens</span>'; ?>
-                <?php if (!empty($p_flagTenhoAmigas) && $p_flagTenhoAmigas === 'Sim') echo '<span>Tenho amigas</span>'; ?>
+        <!-- Coluna direita: informações -->
+        <div class="col-12 col-lg-7">
+            <div class="perfil-info mb-3">
+                <h1 class="perfil-nome text-center">
+                    <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>
+                </h1>
+
+                <!-- Infos básicas -->
+                 <div>
+                    <!-- Botão WhatsApp -->
+                     <div class="text-center w-100">
+                         <?php if (!empty($p_flagWhats) && $p_flagWhats === 'S'): ?>
+                             <a class="btn btn-success d-inline-flex align-items-center mb-3 w-75 justify-content-center"
+                             href="https://api.whatsapp.com/send?phone=<?php echo '55' . preg_replace('/\D+/', '', $p_ddd . $p_telefone); ?>&text=<?php echo urlencode('Tudo bem? Te vi no site Vip Luxuria. Gostaria de saber mais sobre o seu atendimento!'); ?>" 
+                             target="_blank">
+                                 <i class="bi bi-whatsapp me-2"></i>
+                                 WhatsApp: (<?php echo htmlspecialchars($p_ddd, ENT_QUOTES, 'UTF-8'); ?>) <?php echo htmlspecialchars($p_telefone, ENT_QUOTES, 'UTF-8'); ?>
+                             </a>
+                         <?php endif; ?>
+                     </div>
+                    <div class="perfil-dados">
+                        <div><span>Cachê</span><strong><?php echo htmlspecialchars($p_cache ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Locais</span><strong><?php echo htmlspecialchars($p_locais ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Cidades</span><strong><?php echo htmlspecialchars($p_cidades ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Horário</span><strong><?php echo htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                    </div>
+                 </div>
+            </div>
+
+            <!-- Sobre mim -->
+            <div class="bloco sobre-mim mb-3 p-3 rounded">
+                <h2>Sobre Mim</h2>
+                <p><?php echo nl2br($p_mensagem1 ?? ''); ?></p>
+            </div>
+
+            <!-- Como sou e O que faço -->
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <div class="bloco como-sou p-3 rounded h-100">
+                        <h2>Como Sou</h2>
+                        <ul class="list-unstyled">
+                            <li><span>Idade:</span> <?php echo htmlspecialchars($p_idade ?? '', ENT_QUOTES, 'UTF-8'); ?> anos</li>
+                            <li><span>Altura:</span> <?php echo htmlspecialchars($p_altura ?? '', ENT_QUOTES, 'UTF-8'); ?>m</li>
+                            <li><span>Peso:</span> <?php echo htmlspecialchars($p_peso ?? '', ENT_QUOTES, 'UTF-8'); ?>kg</li>
+                            <li><span>Olhos:</span> <?php echo htmlspecialchars($p_olhos ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                            <li><span>Cabelos:</span> <?php echo htmlspecialchars($p_cabelos ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                            <li><span>Busto:</span> <?php echo htmlspecialchars($p_busto ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
+                            <li><span>Quadril:</span> <?php echo htmlspecialchars($p_quadril ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
+                            <li><span>Cintura:</span> <?php echo htmlspecialchars($p_cintura ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
+                            <li><span>Pés:</span> <?php echo htmlspecialchars($p_pes ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                            <li><span>Manequim:</span> <?php echo htmlspecialchars($p_manequim ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="bloco o-que-faco p-3 rounded h-100">
+                        <h2>O que Faço</h2>
+                        <div class="tags-faco">
+                            <?php if (!empty($p_flagBeijoBoca) && $p_flagBeijoBoca === 'Sim') echo '<span class="badge bg-dark">Beijo na Boca</span>'; ?>
+                            <?php if (!empty($p_flagOral) && $p_flagOral === 'Sim') echo '<span class="badge bg-dark">Oral</span>'; ?>
+                            <?php if (!empty($p_flagAnal) && $p_flagAnal === 'Sim') echo '<span class="badge bg-dark">Sexo Anal</span>'; ?>
+                            <?php if (!empty($p_flagDominacao) && $p_flagDominacao === 'Sim') echo '<span class="badge bg-dark">Dominação</span>'; ?>
+                            <?php if (!empty($p_flagInversao) && $p_flagInversao === 'Sim') echo '<span class="badge bg-dark">Inversão</span>'; ?>
+                            <?php if (!empty($p_flagMassagem) && $p_flagMassagem === 'Sim') echo '<span class="badge bg-dark">Massagem</span>'; ?>
+                            <?php if (!empty($p_flagFantasias) && $p_flagFantasias === 'Sim') echo '<span class="badge bg-dark">Fantasias</span>'; ?>
+                            <?php if (!empty($p_flagAtendoEles) && $p_flagAtendoEles === 'Sim') echo '<span class="badge bg-dark">Atendo eles</span>'; ?>
+                            <?php if (!empty($p_flagAtendoElas) && $p_flagAtendoElas === 'Sim') echo '<span class="badge bg-dark">Atendo elas</span>'; ?>
+                            <?php if (!empty($p_flagAtendoCasais) && $p_flagAtendoCasais === 'Sim') echo '<span class="badge bg-dark">Atendo casais</span>'; ?>
+                            <?php if (!empty($p_flagAcessorios) && $p_flagAcessorios === 'Sim') echo '<span class="badge bg-dark">Acessórios</span>'; ?>
+                            <?php if (!empty($p_flagEventos) && $p_flagEventos === 'Sim') echo '<span class="badge bg-dark">Eventos</span>'; ?>
+                            <?php if (!empty($p_flagViagens) && $p_flagViagens === 'Sim') echo '<span class="badge bg-dark">Viagens</span>'; ?>
+                            <?php if (!empty($p_flagTenhoAmigas) && $p_flagTenhoAmigas === 'Sim') echo '<span class="badge bg-dark">Tenho amigas</span>'; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 </div>
 
     <div id="rodape"><?php include("../rodape-novo.php"); ?></div>
