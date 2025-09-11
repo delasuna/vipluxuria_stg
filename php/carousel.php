@@ -32,7 +32,7 @@
                 }
                 ?>
                 <a href="/perfil/<?= $idMulher ?>/<?= $urlNome ?>">
-                    <img src="<?= "/sistema/content/" . $imagemCapa ?>" width="370" />
+                    <img src="<?= "https://www.vipluxuria.com/sistema/content/" . $imagemCapa ?>" width="370" />
                     <p class="nome"><?= $nome ?> <?= $sobrenome ?></p>
                 </a>
             <?php
