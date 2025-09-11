@@ -1,137 +1,126 @@
-<? 	$conexao = require_once 'php/conecta_mysql.php';  ?>
-<?
-	$sql = " SELECT * FROM seo, tipoSeo Where seo.idTipoSeo = tipoSeo.idTipoSeo AND descricao = 'Blog'";
+<?php
+$conexao = require_once 'php/conecta_mysql.php';
 
-	$resultado = mysql_query($sql, $conexao);
-	if(!$resultado){
-		die("Imposs�vel visualizar SEO: " . mysql_error() . '<br>');
-	}
+// Função simples para anti-injection
+function anti_injection($data)
+{
+	global $conexao;
+	return mysqli_real_escape_string($conexao, strip_tags($data));
+}
 
-							
-	$sts = mysql_query($sql); 
-	$registros = mysql_num_rows($sts);
-	if ($registros>0) {
-		while($row = mysql_fetch_array($resultado)) {
-			$assunto = $row['assunto'];
-			$title = $row['title']; 
-			$description = $row['description'];
-			$keywords = $row['keywords'];     
-		} 
-	}
+// SEO
+$sqlSeo = "SELECT * FROM seo 
+           INNER JOIN tipoSeo ON seo.idTipoSeo = tipoSeo.idTipoSeo 
+           WHERE descricao = 'Blog' LIMIT 1";
+$resultadoSeo = mysqli_query($conexao, $sqlSeo);
+
+$title = $description = $keywords = $assunto = '';
+if ($resultadoSeo && mysqli_num_rows($resultadoSeo) > 0) {
+	$rowSeo = mysqli_fetch_assoc($resultadoSeo);
+	$title = $rowSeo['title'];
+	$description = $rowSeo['description'];
+	$keywords = $rowSeo['keywords'];
+	$assunto = $rowSeo['assunto'] ?? '';
+}
+
+// Obter post pelo ID
+$idBlog = isset($_GET['idBlog']) ? anti_injection($_GET['idBlog']) : 0;
+
+$sqlPost = "SELECT * FROM blog WHERE idBlog = ?";
+$stmt = mysqli_prepare($conexao, $sqlPost);
+mysqli_stmt_bind_param($stmt, 'i', $idBlog);
+mysqli_stmt_execute($stmt);
+$resultPost = mysqli_stmt_get_result($stmt);
+
+$post = mysqli_fetch_assoc($resultPost);
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta name="robots" content="index,follow">
-<meta name="description" content="<?=$description?>" />
-<meta name="keywords" content="<?=$keywords?>" />
+	<meta charset="utf-8">
+	<meta name="robots" content="index,follow">
+	<meta name="description" content="<?php echo htmlspecialchars($description); ?>">
+	<meta name="keywords" content="<?php echo htmlspecialchars($keywords); ?>">
+	<title><?php echo htmlspecialchars($title . ' - ' . $assunto); ?></title>
 
-<title><? Echo $title . " - " . $assunto;�?></title>
-
-<!--CSS-->
-<link href="/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
-<link href="/css-js/menu-2.css" rel="stylesheet" type="text/css" />
-<!--CSS-->
-<!--FONTES-->
-<script src="/css-js/cufon-yui.js" type="text/javascript"></script> 
-<script src="/css-js/nome_400.font.js" type="text/javascript"></script>
-<script src="/css-js/titulo_400.font.js" type="text/javascript"></script>
-<script type="text/javascript">
-	Cufon.replace('h1');
-	Cufon.replace('h1#titulo,.titulo-destaques,#menu-rodape-content',{ fontFamily: 'titulo' }); 
-	Cufon.replace('p.nome, .nome-destaque',{ fontFamily: 'nome' }); 
-</script>
-<!--FONTES-->  
-
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- CSS custom -->
+	<link href="/css-js/estilos-2.css" rel="stylesheet">
+	<link href="/css-js/menu-2.css" rel="stylesheet">
 </head>
 
 <body>
-<div id="wrap">
-    <div id="bg-rosa">
-        <div id="topo">
-            <?php include("php/topo-2.php"); ?>
-        </div><!--TOPO-->
-        <div id="menu">
-            <?php include("php/menu-2.php"); ?> 
-        </div><!--MENU-->
-    </div><!--BG ROSA-->
-    <div id="bg-couro">    
-        <div id="principal">
-            <div id="principal-content-full">
-            	<div id="coluna-full">
-					<div id="titulo-pagina"><img src="/imagens/estrutura/titulo-blog.png" width="760" height="41" /></div>
-					<div id="icone"><img src="/imagens/estrutura/icone-blog.png" width="90" height="90" /></div>
-					<div class="texto-sem-fundo">
-						<?
-						if (anti_injection2($_REQUEST["idBlog"]) != "") {
-						
-							$sql = " SELECT * FROM blog WHERE idBlog = " . anti_injection2($_REQUEST["idBlog"]);
-							$resultado = mysql_query($sql, $conexao);
-							if(!$resultado){
-								die("Imposs�vel visualizar o blog: " . mysql_error() . '<br>');
-							}
-							$sts = mysql_query($sql);
-							$registros = mysql_num_rows($sts);
-							$contador = 0;
-														
-							if ($registros>0) {
-								while($row = mysql_fetch_array($resultado)) {
-									$idBlog = $row['idBlog'];
-									$assunto = $row['assunto'];	
-									$mensagem = $row['mensagem'];														
-									$imagem = $row['imagem'];
-									$video = $row['video'];
-									
-									$nomeTag1 = $row['nomeTag1'];
-									$paginaTag1 = $row['paginaTag1'];
-									$nomeTag2 = $row['nomeTag2'];
-									$paginaTag2 = $row['paginaTag2'];
-									
-									$dataPublicacao = $row['dataPublicacao']; 
-								?>
-								
-									<div class="titulo-post"><?=$assunto?></div>
-									<? if ($dataPublicacao != "") {?>
-										<div class="data">Publicado em <?=$dataPublicacao?></div>
-									<? }  ?>
-									<div class="corpo-post"><?=$mensagem?></div>
-									<? if ($imagem != "") {  ?>
-										<BR><BR><img src="<?="/sistema/content/".$imagem?>" alt="<?=$assunto?>" />
-									<? }  ?>
-										<BR><BR>							
-										<?=$video?>
-									<? if ($nomeTag1 != "") {  ?>
-										<BR>
-										Tags: <a href="<?=$paginaTag1?>" target="_blank" class="link"><?=$nomeTag1?></a>
-										<? if ($nomeTag2 != "") {  ?>
-										, <a href="<?=$paginaTag2?>" target="_blank" class="link"><?=$nomeTag2?></a>
-										<? }  ?>
-									<? }
-								}  							
-							} 
-						}
-						?>
-						
-					</div>	
-					<div class="bt-voltar"><a href="javascript:window.history.go(-1)"><img src="/imagens/estrutura/bt-voltar.png" /></a></div>	 
-					<?php include("php/banner-blog-2.php"); ?>
-                </div><!--COLUNA-FULL-->
-                <div class="clear"></div>		
-            </div><!--PRINCIPAL CONTENT-->
-        </div><!--PRINCIPAL-->
-	</div><!--BG-COURO-->
-    <div id="rodape">
-		<?php include("php/rodape-2.php"); ?>
-    </div><!--RODAPE-->
-    <div id="tags">
-		<?php include("php/tags-mural.php"); ?>
-    </div><!--TAGS-->
-</div><!--wrap-->
-<script type="text/javascript"> Cufon.now(); </script>
-<?php include("php/google.php"); ?>
+	<div class="wrap">
 
+		<div>
+			<?php include("php/menu-2.php"); ?>
+			<div id="topo"><?php include("php/topo-2.php"); ?></div>
+		</div>
+
+		<!-- Título da página -->
+		<div class="text-center my-4">
+			<img src="/imagens/estrutura/titulo-blog.png" class="img-fluid" alt="Título Blog">
+		</div>
+
+		<?php if ($post): ?>
+			<!-- Título do blog -->
+			<div class="text-center mb-4">
+				<div class="d-flex align-items-center justify-content-center">
+					<div class="bg-warning rounded-circle d-flex align-items-center justify-content-center me-3" style="width:60px; height:60px;">
+						<img src="/imagens/estrutura/icone-blog.png" class="icone-blog">
+					</div>
+					<h1 class="fw-bold text-white display-6"><?php echo htmlspecialchars($post['assunto']); ?></h1>
+				</div>
+				<?php if (!empty($post['dataPublicacao'])): ?>
+					<small class="text-white-50">Publicado em <?php echo htmlspecialchars($post['dataPublicacao']); ?></small>
+				<?php endif; ?>
+			</div>
+
+			<!-- Conteúdo -->
+			<div class="card bg-dark text-light p-4 mb-3 container">
+				<?php echo $post['mensagem']; ?>
+
+				<?php if (!empty($post['imagem'])): ?>
+					<div class="my-3 text-center">
+						<img src="<?php echo "/sistema/content/" . htmlspecialchars($post['imagem']); ?>" class="img-fluid rounded" alt="<?php echo htmlspecialchars($post['assunto']); ?>">
+					</div>
+				<?php endif; ?>
+
+				<?php if (!empty($post['video'])): ?>
+					<div class="my-3">
+						<?php echo $post['video']; ?>
+					</div>
+				<?php endif; ?>
+
+				<!-- Tags -->
+				<?php if (!empty($post['nomeTag1'])): ?>
+					<p class="mt-4 text-white-50">
+						Tags:
+						<a href="<?php echo htmlspecialchars($post['paginaTag1']); ?>" class="text-warning"><?php echo htmlspecialchars($post['nomeTag1']); ?></a>
+						<?php if (!empty($post['nomeTag2'])): ?>
+							, <a href="<?php echo htmlspecialchars($post['paginaTag2']); ?>" class="text-warning"><?php echo htmlspecialchars($post['nomeTag2']); ?></a>
+						<?php endif; ?>
+					</p>
+				<?php endif; ?>
+
+				<a href="javascript:history.back()" class="btn btn-outline-warning mt-3">
+					<i class="bi bi-arrow-left-circle"></i> Voltar
+				</a>
+			</div>
+		<?php else: ?>
+			<div class="alert alert-warning">Post não encontrado.</div>
+		<?php endif; ?>
+
+		<?php include("rodape-novo.php"); ?>
+
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+	<?php include("php/google.php"); ?>
 </body>
+
 </html>

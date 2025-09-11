@@ -2585,3 +2585,19 @@ body {
     background-color: #218838;
     border-color: #1e7e34;
 }
+
+.card {
+    background-color: #1a1a1a; /* fundo ainda mais escuro */
+    border: none;
+}
+h1 {
+    font-family: 'Georgia', serif;
+}
+.text-white-50 {
+    color: #ccc !important;
+}
+
+.icone-blog {
+	max-width: 60px;
+	max-height: 60px;
+}
