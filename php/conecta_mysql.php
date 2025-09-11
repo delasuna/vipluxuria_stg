@@ -2,7 +2,7 @@
 // Configurações de conexão
 $host = "mysql.vipluxuriagold.net";
 $user = "vipluxuria_add1";
-$pass = "luxuria18";
+$pass = "BT2D82vWc5Fy";
 $db   = "vipluxuriagold";
 
 // Conexão com MySQL (PHP 8 - mysqli)
