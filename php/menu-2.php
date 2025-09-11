@@ -80,24 +80,52 @@ function geraOpcoesCidades($conexao)
   <input type="hidden" name="flagSexoVirtual" value='<?= anti_injection2($_REQUEST["flagSexoVirtual"]) ?>'>
 </form>
 
-<!-- Header Superior Fino - ADICIONAR ANTES DO NAV EXISTENTE -->
+<!-- Header Superior Fino -->
 <div class="top-header-fino">
-    <div class="container d-flex justify-content-between align-items-center">
-        <nav class="menu-institucional">
-            <a href="/" title="Início"><i class="bi bi-house-door-fill"></i></a>
-            <a href="/vip-luxuria.php">Sobre</a>
-            <a href="/vip-blog">Blog</a>
-            <a href="/duvidas.php">Dúvidas</a>
-            <a href="/dicas.php">Dicas</a>
-        </nav>
-        <a href="/como-anunciar/" class="btn-anuncie-badge">
-            <span>ANUNCIE AQUI</span>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid px-0">
+
+        <!-- Logo ou Ícone Home -->
+        <a class="navbar-brand d-lg-none" href="/" title="Início">
+          <i class="bi bi-house-door-fill"></i>
         </a>
-        <div class="whatsapp-header">
-            <i class="bi bi-whatsapp"></i> (51) 98144-0470
+
+        <!-- Botão Hamburguer -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuFino"
+          aria-controls="menuFino" aria-expanded="false" aria-label="Alternar navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Itens do Menu -->
+        <div class="collapse navbar-collapse" id="menuFino">
+          <div class="navbar-nav me-auto menu-institucional">
+            <a class="nav-link" href="/" title="Início"><i class="bi bi-house-door-fill d-none"></i></a>
+            <a class="nav-link" href="/vip-luxuria.php">Sobre</a>
+            <a class="nav-link" href="/vip-blog">Blog</a>
+            <a class="nav-link" href="/duvidas.php">Dúvidas</a>
+            <a class="nav-link" href="/dicas.php">Dicas</a>
+          </div>
+
+          <div>
+            <!-- Botão Anuncie Aqui -->
+            <a href="/como-anunciar/" class="btn-anuncie-badge me-3">
+              <span>ANUNCIE AQUI</span>
+            </a>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="whatsapp-header text-white">
+            <a href="https://api.whatsapp.com/send/?phone=51981440470&text&type=phone_number&app_absent=0" target="_blank">
+              <i class="bi bi-whatsapp"></i> (51) 98144-0470
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
+    </nav>
+  </div>
 </div>
+
 
 <!-- MANTER O NAV EXISTENTE ABAIXO, SEM ALTERAÇÕES -->
 
