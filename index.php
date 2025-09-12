@@ -116,44 +116,72 @@ mysqli_free_result($resultado);
                     </div>
                 </section>
 
-                <!-- CTA Premium para Anunciantes -->
-                <section class="cta-anunciantes">
-                    <div class="cta-card-premium">
-                        <div class="cta-content">
-                            <div class="cta-icon">
-                                <i class="bi bi-stars"></i>
-                            </div>
-                            <div class="cta-text">
-                                <h2>Torne-se uma Anunciante VIP</h2>
-                                <p>Alcance milhares de clientes premium em Porto Alegre</p>
-                                <ul class="cta-benefits">
-                                    <li><i class="bi bi-check-circle"></i> Perfil destacado com selo de verificação</li>
-                                    <li><i class="bi bi-check-circle"></i> Suporte personalizado via WhatsApp</li>
-                                    <li><i class="bi bi-check-circle"></i> Estatísticas de visualização em tempo real</li>
-                                </ul>
-                            </div>
-                            <div class="cta-action">
-                                <a href="/como-anunciar/" class="btn-premium-gold">
-                                    <span>Quero Anunciar</span>
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
-                                <p class="cta-whatsapp">
-                                    <i class="bi bi-whatsapp"></i> (51) 98144-0470
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+<!-- Banner Não Encontrou  -->
+<section class="banner-nao-encontrou">
+    <div class="container">
+        <div class="nao-encontrou-content">
+            <div class="icon-search">
+                <i class="bi bi-search-heart"></i>
+            </div>
+            <h2>Não encontrou o que procura?</h2>
+            <p>Temos mais de 500 acompanhantes cadastradas. Use os filtros ou entre em contato.</p>
+            
+            <div class="action-buttons">
+                <a href="/mulheres-acompanhantes-porto-alegre-poa/" class="btn-ver-todas">
+                    <i class="bi bi-grid-3x3-gap"></i>
+                    Ver Todas Acompanhantes
+                </a>
+            </div>
+            
+            <div class="whatsapp-help">
+                <span>Precisa de ajuda?</span>
+                <a href="https://wa.me/5551981440470" class="whatsapp-link">
+                    <i class="bi bi-whatsapp"></i> (51) 98144-0470
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <!-- Banner Não Encontrou -->
-                <section class="banner-nao-encontrou">
-                    <h2>Não encontrou o que procura?</h2>
-                    <p>Temos mais de 500 acompanhantes cadastradas. Use os filtros ou entre em contato.</p>
-                    <a href="/mulheres-acompanhantes-porto-alegre-poa/" class="btn-ver-todas">Ver Todas Acompanhantes</a>
-                    <p class="whatsapp-text">
-                        <i class="bi bi-whatsapp"></i> WhatsApp: (51) 98144-0470
-                    </p>
-                </section>
+<!-- CTA Premium para Anunciantes  -->
+<section class="cta-anunciantes">
+    <div class="container">
+        <div class="cta-card-premium-center">
+            <div class="cta-stars">
+                <i class="bi bi-stars"></i>
+            </div>
+            
+            <h2>Torne-se uma Anunciante VIP</h2>
+            <p class="cta-subtitle">Alcance milhares de clientes premium em Porto Alegre</p>
+            
+            <div class="cta-benefits-center">
+                <div class="benefit-item">
+                    <i class="bi bi-patch-check-fill"></i>
+                    <span>Perfil destacado com selo de verificação</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="bi bi-headset"></i>
+                    <span>Suporte personalizado via WhatsApp</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <span>Estatísticas de visualização em tempo real</span>
+                </div>
+            </div>
+            
+            <div class="cta-action-center">
+                <a href="/como-anunciar/" class="btn-premium-gold-big">
+                    <span>Quero Anunciar</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="cta-whatsapp-center">
+                <i class="bi bi-whatsapp"></i> (51) 98144-0470
+            </div>
+        </div>
+    </div>
+</section>
 
                 <!-- Seção de Confiança -->
                 <section class="trust-section">

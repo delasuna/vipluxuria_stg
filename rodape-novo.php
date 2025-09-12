@@ -11,9 +11,8 @@
         <ul class="rodape-lista">
           <li><a href="/sobre-nos/">Sobre Nós</a></li>
           <li><a href="/como-anunciar/">Como Anunciar</a></li>
-          <li><a href="/duvidas/">Dúvidas Frequentes</a></li>
-          <li><a href="/dicas/">Dicas</a></li>
-          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/termos/">Termos de Uso</a></li>
+          <li><a href="/privacidade/">Privacidade</a></li>
         </ul>
       </div>
 
@@ -23,7 +22,6 @@
         <ul class="rodape-lista">
           <li><a href="/acompanhantes-loiras/">Loiras</a></li>
           <li><a href="/acompanhantes-morenas/">Morenas</a></li>
-          <li><a href="/acompanhantes-transex/">Transex</a></li>
           <li><a href="/com-local/">Com Local</a></li>
           <li><a href="/atendimento-24h/">24 Horas</a></li>
         </ul>
@@ -36,6 +34,7 @@
           <p class="whatsapp-rodape">
             <i class="bi bi-whatsapp"></i> (51) 98144-0470
           </p>
+          <p class="horario-rodape">Seg-Sex 9h às 18h</p>
           <!-- Redes Sociais -->
           <div class="redes-sociais">
             <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
@@ -73,7 +72,7 @@
 
     <!-- Copyright Simplificado -->
     <div class="rodape-copyright">
-      <p>© Desde 2007 Vip Luxúria. Todos os direitos reservados.</p>
+      <p>© 2007-2025 Vip Luxúria. Todos os direitos reservados.</p>
       <p class="aviso-legal">Este site é destinado exclusivamente para maiores de 18 anos.</p>
     </div>
 
