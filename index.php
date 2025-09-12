@@ -30,30 +30,14 @@ mysqli_free_result($resultado);
             <?php include("php/menu-2.php"); ?>
             <div id="topo"><?php include("php/topo-2.php"); ?></div>
         </div>
-        
-        <!-- Hero Section Premium -->
-        <section class="hero-premium">
-            <div class="hero-overlay"></div>
-            <div class="container position-relative">
-                <div class="hero-content text-center">
-                    <h1 class="hero-title">
-                        <span class="gold-text">ACOMPANHANTES DE LUXO</span>
-                        <br>
-                        <span class="subtitle-hero">Porto Alegre e Região</span>
-                    </h1>
-                    <p class="hero-description">
-                        Mais de 500 acompanhantes verificadas • Fotos reais • Atendimento 24h
-                    </p>
-                    <div class="hero-badges">
+               
+
+        <?php include("php/slider.php"); ?>
+            <div class="hero-badges">
                         <span class="badge-hero"><i class="bi bi-shield-check"></i> Site Seguro</span>
                         <span class="badge-hero"><i class="bi bi-patch-check"></i> Perfis Verificados</span>
                         <span class="badge-hero"><i class="bi bi-star-fill"></i> Desde 2007</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <?php include("php/slider.php"); ?>
         <?php include 'filters.php' ?>
         
         <div class="main-content">
@@ -220,27 +204,7 @@ mysqli_free_result($resultado);
                     </div>
                 </section>
 
-                <!-- Newsletter Premium -->
-                <section class="newsletter-premium">
-                    <div class="newsletter-card">
-                        <div class="newsletter-icon">
-                            <i class="bi bi-envelope-heart"></i>
-                        </div>
-                        <h3>Ofertas Exclusivas para Anunciantes</h3>
-                        <p>Receba promoções e novidades em primeira mão</p>
-                        <form class="newsletter-form-premium" onsubmit="return false;">
-                            <input type="email" placeholder="Digite seu melhor e-mail" required>
-                            <button type="submit" class="btn-newsletter">
-                                <span>Cadastrar</span>
-                                <i class="bi bi-send"></i>
-                            </button>
-                        </form>
-                        <small>Respeitamos sua privacidade. Sem spam.</small>
-                    </div>
-                </section>
-
-            </div>
-        </div>
+            
 
         <?php include("rodape-novo.php"); ?>
     </div>
