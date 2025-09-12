@@ -94,7 +94,7 @@ function geraOpcoesCidades($conexao)
         <!-- Botão Hamburguer -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuFino"
           aria-controls="menuFino" aria-expanded="false" aria-label="Alternar navegação">
-          <span class="navbar-toggler-icon"></span>
+          <span class="">MENU</span>
         </button>
 
         <!-- Itens do Menu -->
