@@ -219,10 +219,6 @@ a {
 	height: 7px;
 }
 
-/* ESTRUTURA - TOPO: LOGOTIPO E OUTROS */
-#topo {
-
-}
 #topo-content {
 	width: 1000px;
 	margin-right: auto;
@@ -1163,8 +1159,7 @@ a {
 	margin-top: 35px;
 	margin-bottom: 15px;
 }
-#principal-perfil #perfil-content #coluna-perfil-dir #fotos {
-}
+
 #principal-perfil #perfil-content #coluna-perfil-dir #compartilhe-twitter {
 	text-align: center;
 	margin-top: 20px;
@@ -1260,9 +1255,7 @@ a {
 	list-style-type: none;
 	margin-bottom: 3px;
 }
-#principal-perfil #perfil-content #coluna-perfil-esqou-full {
 
-}
 #principal-perfil #perfil-content #coluna-perfil-esq #sou-full ul li    {
 	float: left;
 	display: block;
@@ -1639,9 +1632,7 @@ height:205px;
 	font-weight: bold;
 	color: #F69;
 }
-.comentario-mensagem {
 
-}
 #paginacao {
 	text-align: center;
 	color: #fff;
@@ -1723,9 +1714,7 @@ ul.pagination li a:hover:not(.active) {
 	margin-left: 0px;
 }
 
-#fotos-caseiras {
-	
-}#fotos-caseiras .fc-thumb {
+#fotos-caseiras .fc-thumb {
 	float: left;
 	height: 100px;
 	width: 100px;
@@ -3450,4 +3439,8 @@ a:hover {
     font-size: 12px;
     padding: 6px 12px;
   }
+}
+
+.top-header-fino {
+	background-color: #AD1457;
 }

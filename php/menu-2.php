@@ -100,11 +100,11 @@ function geraOpcoesCidades($conexao)
         <!-- Itens do Menu -->
         <div class="collapse navbar-collapse" id="menuFino">
           <div class="navbar-nav me-auto menu-institucional">
-            <a class="nav-link" href="/" title="Início"><i class="bi bi-house-door-fill d-none"></i></a>
-            <a class="nav-link" href="/vip-luxuria.php">Sobre</a>
-            <a class="nav-link" href="/vip-blog">Blog</a>
-            <a class="nav-link" href="/duvidas.php">Dúvidas</a>
-            <a class="nav-link" href="/dicas.php">Dicas</a>
+            <a class="text-light nav-link bi bi-house-fill" href="/" title="Início"><i class="bi bi-house-door-fill d-none"></i></a>
+            <a class="text-light nav-link" href="/vip-luxuria.php">Sobre</a>
+            <a class="text-light nav-link" href="/vip-blog">Blog</a>
+            <a class="text-light nav-link" href="/duvidas.php">Dúvidas</a>
+            <a class="text-light nav-link" href="/dicas.php">Dicas</a>
           </div>
 
           <div>
@@ -125,9 +125,6 @@ function geraOpcoesCidades($conexao)
     </nav>
   </div>
 </div>
-
-
-<!-- MANTER O NAV EXISTENTE ABAIXO, SEM ALTERAÇÕES -->
 
 <!-- JS para submenus multi-nível -->
 <script>
