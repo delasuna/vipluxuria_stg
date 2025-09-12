@@ -83,7 +83,7 @@ mysqli_free_result($resultado);
                             </a>
                         </div>
 
-                        <?php if (++$contadorCarrossel == 16) { ?>
+                        <?php if (++$contadorCarrossel == 24) { ?>
                             <div class="carousel-container">
                                 <?php include("php/carousel.php"); ?>
                             </div>
