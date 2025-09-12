@@ -30,16 +30,16 @@ mysqli_free_result($resultado);
             <?php include("php/menu-2.php"); ?>
             <div id="topo"><?php include("php/topo-2.php"); ?></div>
         </div>
-               
+
 
         <?php include("php/slider.php"); ?>
-            <div class="hero-badges">
-                        <span class="badge-hero"><i class="bi bi-shield-check"></i> Site Seguro</span>
-                        <span class="badge-hero"><i class="bi bi-patch-check"></i> Perfis Verificados</span>
-                        <span class="badge-hero"><i class="bi bi-star-fill"></i> Desde 2007</span>
-                    </div>
+        <div class="hero-badges">
+            <span class="badge-hero"><i class="bi bi-shield-check"></i> Site Seguro</span>
+            <span class="badge-hero"><i class="bi bi-patch-check"></i> Perfis Verificados</span>
+            <span class="badge-hero"><i class="bi bi-star-fill"></i> Desde 2007</span>
+        </div>
         <?php include 'filters.php' ?>
-        
+
         <div class="main-content">
             <div class="container">
 
@@ -59,8 +59,8 @@ mysqli_free_result($resultado);
                         }
 
                         $contadorCarrossel = 0;
-                        $comAcentos = ['à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ñ','ò','ó','ô','õ','ö','ù','ü','ú','ÿ','À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ñ','Ò','Ó','Ô','Õ','Ö','O','Ù','Ü','Ú'];
-                        $semAcentos = ['a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','u','u','u','y','A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','N','O','O','O','O','O','O','U','U','U'];
+                        $comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'O', 'Ù', 'Ü', 'Ú'];
+                        $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
 
                         while ($row = mysqli_fetch_assoc($resultado)) {
                             $idMulher = $row['idMulher'];
@@ -76,20 +76,20 @@ mysqli_free_result($resultado);
                             $linkPerfil = htmlspecialchars($linkPerfil);
                             $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
                         ?>
-                            <div class="acompanhante-card hover-lift fade-in">
-                                <?php if($flagVerificada == 'Sim'): ?>
-                                    <span class="badge-verificada">✓ Verificada</span>
-                                <?php endif; ?>
-                                <a href="<?= $linkPerfil ?>" class="text-decoration-none">
+                            <a href="<?= $linkPerfil ?>" class="text-decoration-none">
+                                <div class="acompanhante-card hover-lift fade-in">
+                                    <?php if ($flagVerificada == 'Sim'): ?>
+                                        <span class="badge-verificada">✓ Verificada</span>
+                                    <?php endif; ?>
                                     <div class="card-img-wrapper">
-                                        <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>" 
-                                             class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
+                                        <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
+                                            class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
                                     </div>
                                     <div class="card-info">
                                         <p class="nome-acompanhante"><?= $nomeCompleto ?></p>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
 
                             <?php if (++$contadorCarrossel == 18) { ?>
                                 <div class="carousel-container">
@@ -100,72 +100,72 @@ mysqli_free_result($resultado);
                     </div>
                 </section>
 
-<!-- Banner Não Encontrou  -->
-<section class="banner-nao-encontrou">
-    <div class="container">
-        <div class="nao-encontrou-content">
-            <div class="icon-search">
-                <i class="bi bi-search-heart"></i>
-            </div>
-            <h2>Não encontrou o que procura?</h2>
-            <p>Temos mais de 500 acompanhantes cadastradas. Use os filtros ou entre em contato.</p>
-            
-            <div class="action-buttons">
-                <a href="/mulheres-acompanhantes-porto-alegre-poa/" class="btn-ver-todas">
-                    <i class="bi bi-grid-3x3-gap"></i>
-                    Ver Todas Acompanhantes
-                </a>
-            </div>
-            
-            <div class="whatsapp-help">
-                <span>Precisa de ajuda?</span>
-                <a href="https://wa.me/5551981440470" class="whatsapp-link">
-                    <i class="bi bi-whatsapp"></i> (51) 98144-0470
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+                <!-- Banner Não Encontrou  -->
+                <section class="banner-nao-encontrou">
+                    <div class="container">
+                        <div class="nao-encontrou-content">
+                            <div class="icon-search">
+                                <i class="bi bi-search-heart"></i>
+                            </div>
+                            <h2>Não encontrou o que procura?</h2>
+                            <p>Temos mais de 500 acompanhantes cadastradas. Use os filtros ou entre em contato.</p>
 
-<!-- CTA Premium para Anunciantes  -->
-<section class="cta-anunciantes">
-    <div class="container">
-        <div class="cta-card-premium-center">
-            <div class="cta-stars">
-                <i class="bi bi-stars"></i>
-            </div>
-            
-            <h2>Torne-se uma Anunciante VIP</h2>
-            <p class="cta-subtitle">Alcance milhares de clientes premium em Porto Alegre</p>
-            
-            <div class="cta-benefits-center">
-                <div class="benefit-item">
-                    <i class="bi bi-patch-check-fill"></i>
-                    <span>Perfil destacado com selo de verificação</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="bi bi-headset"></i>
-                    <span>Suporte personalizado via WhatsApp</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="bi bi-graph-up-arrow"></i>
-                    <span>Estatísticas de visualização em tempo real</span>
-                </div>
-            </div>
-            
-            <div class="cta-action-center">
-                <a href="/como-anunciar/" class="btn-premium-gold-big">
-                    <span>Quero Anunciar</span>
-                    <i class="bi bi-arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="cta-whatsapp-center">
-                <i class="bi bi-whatsapp"></i> (51) 98144-0470
-            </div>
-        </div>
-    </div>
-</section>
+                            <div class="action-buttons">
+                                <a href="/mulheres-acompanhantes-porto-alegre-poa/" class="btn-ver-todas">
+                                    <i class="bi bi-grid-3x3-gap"></i>
+                                    Ver Todas Acompanhantes
+                                </a>
+                            </div>
+
+                            <div class="whatsapp-help">
+                                <span>Precisa de ajuda?</span>
+                                <a href="https://wa.me/5551981440470" class="whatsapp-link">
+                                    <i class="bi bi-whatsapp"></i> (51) 98144-0470
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA Premium para Anunciantes  -->
+                <section class="cta-anunciantes">
+                    <div class="container">
+                        <div class="cta-card-premium-center">
+                            <div class="cta-stars">
+                                <i class="bi bi-stars"></i>
+                            </div>
+
+                            <h2>Torne-se uma Anunciante VIP</h2>
+                            <p class="cta-subtitle">Alcance milhares de clientes premium em Porto Alegre</p>
+
+                            <div class="cta-benefits-center">
+                                <div class="benefit-item">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                    <span>Perfil destacado com selo de verificação</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-headset"></i>
+                                    <span>Suporte personalizado via WhatsApp</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                    <span>Estatísticas de visualização em tempo real</span>
+                                </div>
+                            </div>
+
+                            <div class="cta-action-center">
+                                <a href="/como-anunciar/" class="btn-premium-gold-big">
+                                    <span>Quero Anunciar</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+
+                            <div class="cta-whatsapp-center">
+                                <i class="bi bi-whatsapp"></i> (51) 98144-0470
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <!-- Seção de Confiança -->
                 <section class="trust-section">
@@ -203,531 +203,17 @@ mysqli_free_result($resultado);
                         </div>
                     </div>
                 </section>
-
-            
-
-        <?php include("rodape-novo.php"); ?>
-    </div>
-    <!-- Estilos Específicos da Home -->
-    <style>
-    /* Variáveis CSS */
-    :root {
-        --rosa-primary: #E91E63;
-        --rosa-dark: #AD1457;
-        --rosa-light: #F8BBD0;
-        --bg-black: #0a0a0a;
-        --card-gray: #2c2c2c;
-        --card-hover: #3a3a3a;
-        --text-light: #cccccc;
-        --success-green: #4CAF50;
-        --gold: #FFD700;
-        --gold-premium: #FFA500;
-    }
-
-    /* Hero Section */
-    .hero-premium {
-        position: relative;
-        background: linear-gradient(135deg, var(--rosa-dark), var(--rosa-primary));
-        padding: 100px 0 80px;
-        overflow: hidden;
-    }
-
-    .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('/imagens/pattern-luxury.png') repeat;
-        opacity: 0.1;
-    }
-
-    .hero-title {
-        font-size: 48px;
-        font-weight: 900;
-        margin-bottom: 20px;
-        text-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    }
-
-    .gold-text {
-        background: linear-gradient(135deg, var(--gold), var(--gold-premium));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle-hero {
-        font-size: 36px;
-        color: white;
-    }
-
-    .hero-description {
-        font-size: 20px;
-        color: rgba(255,255,255,0.9);
-        margin-bottom: 30px;
-    }
-
-    .hero-badges {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-
-    .badge-hero {
-        background: rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
-        padding: 10px 20px;
-        border-radius: 25px;
-        color: white;
-        font-weight: 600;
-    }
-
-    /* Main Content */
-    .main-content {
-        background: var(--bg-black);
-        padding: 60px 0;
-    }
-
-    /* Acompanhantes Section */
-    .acompanhantes-section {
-        padding: 40px 0;
-    }
-
-    .grid-premium {
-        display: grid;
-        gap: 25px;
-        padding: 40px 0;
-    }
-
-    @media (min-width: 1400px) {
-        .grid-premium { grid-template-columns: repeat(6, 1fr); }
-    }
-
-    @media (min-width: 1200px) and (max-width: 1399px) {
-        .grid-premium { grid-template-columns: repeat(5, 1fr); }
-    }
-
-    @media (min-width: 992px) and (max-width: 1199px) {
-        .grid-premium { grid-template-columns: repeat(4, 1fr); }
-    }
-
-    @media (min-width: 768px) and (max-width: 991px) {
-        .grid-premium { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    @media (max-width: 767px) {
-        .grid-premium { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* Cards */
-    .acompanhante-card {
-        background: var(--card-gray);
-        border-radius: 16px;
-        overflow: hidden;
-        position: relative;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-
-    .acompanhante-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, transparent, rgba(233, 30, 99, 0.1));
-        opacity: 0;
-        transition: opacity 0.3s;
-        z-index: 1;
-    }
-
-    .acompanhante-card:hover::before {
-        opacity: 1;
-    }
-
-    .acompanhante-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 20px 60px rgba(233, 30, 99, 0.4);
-    }
-
-    .card-img-wrapper {
-        position: relative;
-        overflow: hidden;
-        height: 250px;
-    }
-
-    .acompanhante-card .card-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s ease;
-    }
-
-    .acompanhante-card:hover .card-img {
-        transform: scale(1.1);
-    }
-
-    .card-info {
-        padding: 15px;
-        background: linear-gradient(180deg, var(--card-gray), rgba(44,44,44,0.8));
-        position: relative;
-    }
-
-    .card-info .nome-acompanhante {
-        color: white;
-        font-weight: 600;
-        text-align: center;
-        font-size: 15px;
-        text-transform: capitalize;
-        letter-spacing: 0.5px;
-        margin: 0;
-    }
-
-    .badge-verificada {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: linear-gradient(135deg, var(--gold), var(--gold-premium));
-        color: var(--bg-black);
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 700;
-        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
-        z-index: 2;
-    }
-
-    /* CTA Premium */
-    .cta-anunciantes {
-        margin: 80px 0;
-    }
-
-    .cta-card-premium {
-        background: linear-gradient(135deg, #1a1a1a, var(--card-gray));
-        border: 2px solid var(--gold);
-        border-radius: 30px;
-        padding: 60px 40px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .cta-card-premium::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, var(--gold), transparent);
-        opacity: 0.1;
-    }
-
-    .cta-content {
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        gap: 40px;
-        align-items: center;
-        position: relative;
-    }
-
-    .cta-icon {
-        font-size: 60px;
-        color: var(--gold);
-    }
-
-    .cta-text h2 {
-        color: white;
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
-
-    .cta-text p {
-        color: var(--text-light);
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-    .cta-benefits {
-        list-style: none;
-        padding: 0;
-    }
-
-    .cta-benefits li {
-        color: white;
-        margin-bottom: 10px;
-    }
-
-    .cta-benefits i {
-        color: var(--success-green);
-        margin-right: 10px;
-    }
-
-    .btn-premium-gold {
-        background: linear-gradient(135deg, var(--gold), var(--gold-premium));
-        color: var(--bg-black);
-        padding: 18px 40px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 18px;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        transition: all 0.3s;
-    }
-
-    .btn-premium-gold:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
-        color: var(--bg-black);
-    }
-
-    .cta-whatsapp {
-        margin-top: 20px;
-        color: var(--success-green);
-        font-size: 16px;
-        font-weight: 600;
-    }
-
-    /* Banner Não Encontrou */
-    .banner-nao-encontrou {
-        background: linear-gradient(135deg, var(--rosa-primary), var(--rosa-dark));
-        padding: 60px 30px;
-        text-align: center;
-        border-radius: 20px;
-        margin: 40px 0;
-    }
-
-    .banner-nao-encontrou h2 {
-        color: white;
-        font-size: 36px;
-        margin-bottom: 20px;
-    }
-
-    .banner-nao-encontrou p {
-        color: rgba(255,255,255,0.9);
-        font-size: 18px;
-        margin-bottom: 30px;
-    }
-
-    .btn-ver-todas {
-        background: white;
-        color: var(--rosa-primary);
-        padding: 15px 40px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        display: inline-block;
-        transition: all 0.3s;
-    }
-
-    .btn-ver-todas:hover {
-        transform: translateY(-3px);
-        color: var(--rosa-primary);
-        box-shadow: 0 10px 30px rgba(255,255,255,0.3);
-    }
-
-    .whatsapp-text {
-        color: white;
-        margin-top: 20px;
-        font-size: 16px;
-    }
-
-    /* Trust Section */
-    .trust-section {
-        background: linear-gradient(180deg, var(--bg-black), #1a1a1a);
-        padding: 80px 0;
-        margin: 60px 0;
-    }
-
-    .section-title {
-        font-size: 42px;
-        font-weight: 800;
-        text-align: center;
-        margin-bottom: 50px;
-        background: linear-gradient(135deg, white, var(--rosa-light));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .trust-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-        margin-top: 50px;
-    }
-
-    .trust-item {
-        text-align: center;
-        padding: 30px;
-        background: var(--card-gray);
-        border-radius: 20px;
-        transition: all 0.3s;
-    }
-
-    .trust-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
-    }
-
-    .trust-icon {
-        font-size: 50px;
-        color: var(--rosa-primary);
-        margin-bottom: 20px;
-    }
-
-    .trust-item h3 {
-        color: white;
-        font-size: 20px;
-        margin-bottom: 15px;
-    }
-
-    .trust-item p {
-        color: var(--text-light);
-        line-height: 1.6;
-    }
-
-    /* Newsletter Premium */
-    .newsletter-premium {
-        margin: 80px 0;
-    }
-
-    .newsletter-card {
-        background: linear-gradient(135deg, var(--rosa-primary), var(--rosa-dark));
-        padding: 60px;
-        border-radius: 30px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .newsletter-icon {
-        font-size: 50px;
-        color: white;
-        margin-bottom: 20px;
-    }
-
-    .newsletter-card h3 {
-        color: white;
-        font-size: 28px;
-        margin-bottom: 10px;
-    }
-
-    .newsletter-card p {
-        color: rgba(255,255,255,0.9);
-        font-size: 18px;
-        margin-bottom: 30px;
-    }
-
-    .newsletter-form-premium {
-        display: flex;
-        gap: 15px;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-    .newsletter-form-premium input {
-        flex: 1;
-        padding: 15px 25px;
-        border-radius: 30px;
-        border: 2px solid rgba(255,255,255,0.3);
-        background: rgba(255,255,255,0.1);
-        color: white;
-        font-size: 16px;
-    }
-
-    .newsletter-form-premium input::placeholder {
-        color: rgba(255,255,255,0.6);
-    }
-
-    .btn-newsletter {
-        padding: 15px 35px;
-        border-radius: 30px;
-        background: white;
-        color: var(--rosa-primary);
-        border: none;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        transition: all 0.3s;
-    }
-
-    .btn-newsletter:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 30px rgba(255,255,255,0.3);
-    }
-
-    .newsletter-card small {
-        display: block;
-        margin-top: 20px;
-        color: rgba(255,255,255,0.7);
-    }
-    /* Animações */
-    .fade-in {
-        animation: fadeInUp 0.8s ease-out;
-    }
-
-    @keyframes fadeInUp {
-        from { 
-            opacity: 0; 
-            transform: translateY(20px);
-        }
-        to { 
-            opacity: 1; 
-            transform: translateY(0);
-        }
-    }
-
-    .hover-lift {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hover-lift:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    }
-
-    /* Responsividade */
-    @media (max-width: 991px) {
-        .cta-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-        }
-        
-        .hero-title {
-            font-size: 32px;
-        }
-        
-        .subtitle-hero {
-            font-size: 24px;
-        }
-    }
-
-    @media (max-width: 767px) {
-        .hero-premium {
-            padding: 60px 0 40px;
-        }
-        
-        .newsletter-form-premium {
-            flex-direction: column;
-        }
-        
-        .trust-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .acompanhante-card .card-img {
-            height: 200px;
-        }
-    }
-    </style>
-    
-    <script type="text/javascript">Cufon.now();</script>
-    <?php include("php/google.php"); mysqli_close($conexao); ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+            </div>
+
+            <?php include("rodape-novo.php"); ?>
+
+            <script type="text/javascript">
+                Cufon.now();
+            </script>
+            <?php include("php/google.php");
+            mysqli_close($conexao); ?>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </body>
+
 </html>
