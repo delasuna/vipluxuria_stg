@@ -1,581 +1,411 @@
-<? 	$conexao = require_once '../php/conecta_mysql.php';  ?>
-<?
+<?php
+// perfil.php - versão atualizada para mysqli e correções
+mb_internal_encoding('UTF-8');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-	function anti_injection($sql) {
-		// remove palavras que contenham sintaxe sql
-		$sql = preg_replace(sql_regcase("/(from|select|insert|delete|where|having|union|drop table|sleep|show tables|#|\*|--|\\\\)/"),"",$sql);
-		$sql = trim($sql);//limpa espaços vazio
-		$sql = strip_tags($sql);//tira tags html e php
-		$sql = addslashes($sql);//Adiciona barras invertidas a uma string
-		return $sql;
-	}
-	
-if (anti_injection($_POST["amigoIndicado"]) == "S") {
-	if (anti_injection($_POST["nomeQuemIndicou"]) != "" && 
-		anti_injection($_POST["emailQuemIndicou"]) != "" && 
-		anti_injection($_POST["nomeAmigo"]) != "" && 
-		anti_injection($_POST["emailAmigo"]) != "") {
-
-		$nomeQuemIndicou = anti_injection($_POST["nomeQuemIndicou"]); 
-		$emailQuemIndicou = anti_injection($_POST["emailQuemIndicou"]); 
-		$nomeAmigo = anti_injection($_POST["nomeAmigo"]); 
-		$emailAmigo = anti_injection($_POST["emailAmigo"]); 
-
-		$emailsender = $emailQuemIndicou;
-		$emaildestinatario = $emailAmigo;
-		$corpo = $nomeAmigo. "! <BR>"; 
-	
-		$corpo .= "<BR> O seu amigo " . $nomeQuemIndicou . " está lhe indicando o " . $nomeAnunciante;
-		$corpo .= "<BR> Veja o seu perfil acessando o link: <a href='" . $linkAnunciante . "'>". $linkAnunciante ."</a>";
-		$corpo .= "<BR> Equipe Vip Luxúria. ";
-
-		require('PHPMailer/class.phpmailer.php');
-		
-		$mail = new PHPMailer();
-		$mail->CharSet = "ISO-8859-1";		
-		$mail->IsSMTP();
-		$mail->SMTPAuth = true;
-		$mail->Port = 587;
-		$mail->Host = "smtp.vipluxuria.com"; 
-		$mail->Username = "felipevip@vipluxuria.com"; 
-		$mail->Password = "felipe2016"; 
-		$mail->SetFrom("felipevip@vipluxuria.com", "$nomeQuemIndicou <$emailsender>");
-		$mail->AddAddress("$emaildestinatario", "$nomeQuemIndicou");
-		$mail->Subject = $nomeQuemIndicou. ' indicou uma Anunciante!';
-		$mail->MsgHTML($corpo); 
-		
-		// Envia o e-mail
-		if($mail->Send()) {
-			/*echo "<script>alert('E-mail enviado com Sucesso!')</script>";*/
-		} else {
-			/*
-			echo "<script>alert('Não foi possível enviar o e-mail.')</script>";
-			echo "<script>alert('Informações do erro: " . $mail->ErrorInfo . "')</script>";
-			*/
-		}
-
-			
-	}
-}
-	
-	
-if ($_REQUEST["votacao"] == "S") {
-	//session_start();
-	$ip = getenv("REMOTE_ADDR");
-
-	$sql = " SELECT * FROM votacaohomem "
-	 . " WHERE idHomem = " . anti_injection($_REQUEST["id"]) . " AND ip='" .$ip . "';";
-								 
-	$resultado = mysql_query($sql, $conexao);
-	if(!$resultado){
-		die("Impossível visualizar votacao: " . mysql_error() . '<br>');
-	}
-							
-	$sts = mysql_query($sql);
-	$registros = mysql_num_rows($sts);
-	if ($registros==0) {
-		if ($_REQUEST["voto"] == "aprovado") {
-			$sql = " UPDATE homem SET quantidadeVotos= if (quantidadeVotos is null, '0', quantidadeVotos)+1 WHERE idHomem = " . anti_injection($_REQUEST["id"]) . ";"; 
-		} else if ($_REQUEST["voto"] == "reprovado") {
-			$sql = " UPDATE homem SET quantidadeVotos= if (quantidadeVotos is null, '0', if (quantidadeVotos > 0, quantidadeVotos-1, '0')) WHERE idHomem = " . anti_injection($_REQUEST["id"]) . ";"; 
-		}
-		$resultado = mysql_query($sql, $conexao);
-		
-		$sql = " INSERT votacaohomem SET idHomem= " . anti_injection($_REQUEST["id"]) . ", ip='" .$ip . "'"; 
-		$resultado = mysql_query($sql, $conexao);
-
-	}
+// Conexão (assume que ../php/conecta_mysql.php retorna/define $conexao como mysqli)
+$conexao = require_once '../php/conecta_mysql.php';
+if (!isset($conexao) && isset($GLOBALS['conexao'])) {
+    $conexao = $GLOBALS['conexao'];
 }
 
+// Se $conexao não for um mysqli, tente recuperar variável global nomeada
+if (!($conexao instanceof mysqli)) {
+    // opcional: tentar conectar com valores padrão (comente/descomente conforme necessário)
+    // $conexao = mysqli_connect('localhost','usuario','senha','banco');
+    // if (!$conexao) die('Erro na conexão MySQLi: ' . mysqli_connect_error());
+}
 
-						if (anti_injection($_REQUEST["id"]) != "") {
-							$sql = " SELECT * FROM homem "
-								 . " WHERE flagAtivo = 'Sim' and idHomem = " . anti_injection($_REQUEST["id"]);
-								 
-							$resultado = mysql_query($sql, $conexao);
-							if(!$resultado){
-								die("Impossível visualizar os anunciantes: " . mysql_error() . '<br>');
-							}
-							
-							$sts = mysql_query($sql);
-							$registros = mysql_num_rows($sts);
+/**
+ * anti_injection - sanitiza entradas (remove palavras-chave perigosas e aplica escaping)
+ * @param string $str
+ * @param mysqli|null $link
+ * @return string
+ */
+function anti_injection($str, $link = null) {
+    if (!isset($str)) return '';
+    // remove palavras que contenham sintaxe SQL (case-insensitive)
+    $pattern = '/\b(from|select|insert|delete|where|having|union|drop table|sleep|show tables|--|#|\*|\\\\)\b/i';
+    $str = preg_replace($pattern, '', $str);
+    $str = trim($str);
+    $str = strip_tags($str);
+    // aplica mysqli_real_escape_string se possível
+    if ($link instanceof mysqli) {
+        $str = mysqli_real_escape_string($link, $str);
+    } else {
+        // fallback
+        $str = addslashes($str);
+    }
+    return $str;
+}
 
-							if ($registros>0) {
-								while($row = mysql_fetch_array($resultado)) {
-									$nome = $row['nome'];	
-									$imagemComNome = $row['imagemComNome'];
-									$telefone = $row['telefone'];
-									$email = $row['email'];
-									$site = $row['site'];
-									$orkut = $row['orkut'];
-									$msn = $row['msn'];
-									$idade = $row['idade'];
-									$manequim = $row['manequim'];
-									$olhos = $row['olhos'];
-//									$signo = $row['signo'];
-									$cabelos = $row['cabelos'];
-									$altura = $row['altura'];
-									$peso = $row['peso'];
-									$dote = $row['dote'];									
-									$horarioAtendimento = $row['horarioAtendimento'];
-									$mensagem1 = $row['mensagem1'];
-//									$mensagem2 = $row['mensagem2'];
-							
-									$imagemCentral1 = $row['imagemCentral1'];
-									$imagemCentral2 = $row['imagemCentral2'];
-									$imagemCentral3 = $row['imagemCentral3'];								
-									$imagemCentral4 = $row['imagemCentral4'];
-									$imagemCentral5 = $row['imagemCentral5'];
-									$imagemCentral6 = $row['imagemCentral6'];
-									$imagemCentral7 = $row['imagemCentral7'];
-									$imagemCentral8 = $row['imagemCentral8'];
-									$imagem1 = $row['imagem1'];
-									$imagem2 = $row['imagem2'];
-									$imagem3 = $row['imagem3'];
-									$imagem4 = $row['imagem4'];
-									$imagem5 = $row['imagem5'];		
-									$imagem6 = $row['imagem6'];				
-									$imagem7 = $row['imagem7'];
-									$imagem8 = $row['imagem8'];		
-									$video = $row['video'];
-									$flagPreferencial = $row['flagPreferencial'];
-									
-									$flagTemVideo = $row['flagTemVideo'];
-									
-									$cache	= $row['cache'];
-									$locais	= $row['locais'];
-									$horario	= $row['horario'];
-									$cidades = $row['cidades'];
-									
-									$sobrenome = $row['sobrenome'];
-									$telefone2 = $row['telefone2'];
-									
-									$quantidadeVotos = $row['quantidadeVotos'];
-									
-									$ddd = $row['ddd'];
-									$ddd2 = $row['ddd2'];
-									
-									$idOperadora = $row['idOperadora'];
-									$idOperadora2 = $row['idOperadora2'];
-									$flagWhats = $row['flagWhats'];
-									$flagWhats2 = $row['flagWhats2'];
-									
-									$twitter = $row['twitter'];
-									$aceitoCartao = $row['aceitoCartao']; 
-									$outros = $row['outros']; 
-									$flagSexoVirtual = $row['flagSexoVirtual'];
-									
-									$imagemExtra1 = $row['imagemExtra1'];
-									$imagemExtra2 = $row['imagemExtra2'];
-									$imagemExtra3 = $row['imagemExtra3'];
-									$imagemExtra4 = $row['imagemExtra4'];
-									$imagemExtra5 = $row['imagemExtra5'];		
-									$imagemExtra6 = $row['imagemExtra6'];
+// Função para criar URL amigável (remove acentos etc.)
 
-									$flagMostraConteudoExtra = $row['flagMostraConteudoExtra'];																																																						
-								}
-							}
-						
+
+// ==================================================
+//  ENVIO DE INDICAÇÃO (FORMULÁRIO "Me indique")
+// ==================================================
+if (isset($_POST['amigoIndicado']) && anti_injection($_POST['amigoIndicado'], $conexao) === 'S') {
+    $nomeQuemIndicou = anti_injection($_POST['nomeQuemIndicou'] ?? '', $conexao);
+    $emailQuemIndicou = anti_injection($_POST['emailQuemIndicou'] ?? '', $conexao);
+    $nomeAmigo = anti_injection($_POST['nomeAmigo'] ?? '', $conexao);
+    $emailAmigo = anti_injection($_POST['emailAmigo'] ?? '', $conexao);
+    $nomeAnunciante = anti_injection($_POST['nomeAnunciante'] ?? '', $conexao);
+    $linkAnunciante = anti_injection($_POST['linkAnunciante'] ?? '', $conexao);
+
+    if ($nomeQuemIndicou !== '' && $emailQuemIndicou !== '' && $nomeAmigo !== '' && $emailAmigo !== '') {
+        // Monta corpo do e-mail
+        $corpo = htmlspecialchars($nomeAmigo, ENT_QUOTES, 'UTF-8') . "! <br>";
+        $corpo .= "<br> O seu amigo <strong>" . htmlspecialchars($nomeQuemIndicou, ENT_QUOTES, 'UTF-8') . "</strong> está lhe indicando a <strong>" . htmlspecialchars($nomeAnunciante, ENT_QUOTES, 'UTF-8') . "</strong>";
+        $corpo .= "<br> Veja o seu perfil acessando o link: <a href='" . htmlspecialchars($linkAnunciante, ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($linkAnunciante, ENT_QUOTES, 'UTF-8') . "</a>";
+        $corpo .= "<br> Equipe Vip Luxúria.";
+
+        // Envio com PHPMailer (mantive sua configuração; ajuste credenciais se quiser)
+        require_once 'PHPMailer/class.phpmailer.php';
+        $mail = new PHPMailer(true);
+        try {
+            $mail->CharSet = "UTF-8";
+            $mail->IsSMTP();
+            $mail->SMTPAuth = true;
+            $mail->Port = 587;
+            $mail->Host = "smtp.vipluxuria.com";
+            $mail->Username = "felipevip@vipluxuria.com";
+            $mail->Password = "felipe2016";
+            $mail->SetFrom("felipevip@vipluxuria.com", $nomeQuemIndicou . " <" . $emailQuemIndicou . ">");
+            $mail->AddAddress($emailAmigo, $nomeAmigo);
+            $mail->Subject = $nomeQuemIndicou . ' indicou uma Anunciante!';
+            $mail->MsgHTML($corpo);
+            $mail->Send();
+            // opcional: registrar log ou mensagem de sucesso
+        } catch (Exception $e) {
+            // opcional: registrar $mail->ErrorInfo ou $e->getMessage()
+        }
+    }
+}
+
+// ==================================================
+//  VOTAÇÃO
+// ==================================================
+if (isset($_REQUEST['votacao']) && $_REQUEST['votacao'] === 'S') {
+    $ip = $_SERVER['REMOTE_ADDR'] ?? getenv('REMOTE_ADDR');
+    $idReq = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : 0;
+    if ($idReq > 0 && ($conexao instanceof mysqli)) {
+        // Verifica se já votou
+        $stmt = $conexao->prepare("SELECT id FROM votacaohomem WHERE idHomem = ? AND ip = ?");
+        $stmt->bind_param('is', $idReq, $ip);
+        $stmt->execute();
+        $stmt->store_result();
+        $already = $stmt->num_rows;
+        $stmt->close();
+
+        if ($already == 0) {
+            if (isset($_REQUEST['voto']) && $_REQUEST['voto'] === 'aprovado') {
+                $upd = $conexao->prepare("UPDATE homem SET quantidadeVotos = IFNULL(quantidadeVotos, 0) + 1 WHERE idHomem = ?");
+                $upd->bind_param('i', $idReq);
+                $upd->execute();
+                $upd->close();
+            } elseif (isset($_REQUEST['voto']) && $_REQUEST['voto'] === 'reprovado') {
+                // decrementa mas não permite negativo
+                $upd = $conexao->prepare("UPDATE homem SET quantidadeVotos = IF(quantidadeVotos > 0, quantidadeVotos - 1, 0) WHERE idHomem = ?");
+                $upd->bind_param('i', $idReq);
+                $upd->execute();
+                $upd->close();
+            }
+            // registra IP para não votar novamente
+            $ins = $conexao->prepare("INSERT INTO votacaohomem (idHomem, ip) VALUES (?, ?)");
+            $ins->bind_param('is', $idReq, $ip);
+            $ins->execute();
+            $ins->close();
+        }
+    }
+}
+
+// ==================================================
+// Buscar perfil da tabela 'homem' (id via REQUEST)
+// ==================================================
+$perfil = null;
+if (!empty($_REQUEST['id']) && ($conexao instanceof mysqli)) {
+    $idHomem = intval($_REQUEST['id']);
+    $stmt = $conexao->prepare("SELECT * FROM homem WHERE flagAtivo = 'Sim' AND idHomem = ?");
+    $stmt->bind_param('i', $idHomem);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        // atribui campos como no original
+        $perfil = $row; // usar chaves $perfil['nome'], etc.
+    }
+    $stmt->close();
+}
+
+// Se não encontrou perfil, mostra 404 simples (você pode customizar)
+if (!$perfil) {
+    header("HTTP/1.1 404 Not Found");
+    echo "<!doctype html><html><head><meta charset='utf-8'><title>Perfil não encontrado</title></head><body><h1>Perfil não encontrado</h1><p>Verifique o parâmetro id.</p></body></html>";
+    exit;
+}
+
+// Agora temos $perfil com todos os campos. Para facilitar o uso no HTML, mapeamos variáveis antigas:
+extract($perfil, EXTR_PREFIX_ALL, "p"); // ex: $p_nome, $p_sobrenome, $p_imagemCentral1, ...
+
+// Função para recuperar URL atual
+function curPageURL() {
+    $pageURL = 'http';
+    if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') $pageURL .= 's';
+    $pageURL .= '://';
+    $pageURL .= $_SERVER['SERVER_NAME'];
+    if ($_SERVER['SERVER_PORT'] != '80' && $_SERVER['SERVER_PORT'] != '') $pageURL .= ':' . $_SERVER['SERVER_PORT'];
+    $pageURL .= $_SERVER['REQUEST_URI'];
+    return $pageURL;
+}
+
+// Determina tipo (corrigindo bug do código original)
+$tipo = '';
+if (!empty($p_flagTipo)) {
+    if ($p_flagTipo === 'Lo') $tipo = 'Loira';
+    elseif ($p_flagTipo === 'Mo') $tipo = 'Morena';
+    elseif ($p_flagTipo === 'Mu') $tipo = 'Mulata';
+}
+
+// Constrói array de imagens central (mantendo até 8)
+$arrImgs = [];
+for ($i=1; $i<=8; $i++) {
+    $key = "imagemCentral{$i}";
+    if (!empty($perfil[$key])) $arrImgs[] = 'https://vipluxuria.com/sistema/content/' . $perfil[$key];
+}
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 <head>
-<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<meta charset="utf-8" />
 <meta name="robots" content="index,follow">
-<meta name="description" content="Vip Lux&uacute;ria &eacute; um classificados de an&uacute;ncios de Garotos de programa Porto Alegre." />
-<meta name="keywords" content="Garotos de programa porto alegre, Acompanhantes masculinos porto alegre, acompanhantes masculinos garotos de programa, Ativos porto alegre. Passivo porto alegre, GLS Porto Alegre, GLS RS, garotos de programa RS, Acompanhantes masculinos RS" />
+<meta name="description" content="Vip Luxúria é um classificados de anúncio de Acompanhantes de Porto Alegre." />
+<meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante" />
+<title><?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome . ' - Vip Luxúria - Acompanhantes Porto Alegre', ENT_QUOTES, 'UTF-8'); ?></title>
 
-<title>
-<?										echo $nome . " " .  $sobrenome . " - Homens - Vip Lux&uacute;ria - Acompanhantes Porto Alegre"; ?>
-</title>
+<!-- CSS -->
+<link href="../../css-js/estilos-2.css" rel="stylesheet" type="text/css" />
+<link href="../../css-js/menu-2.css" rel="stylesheet" type="text/css" />
+<link href="../../css-js/ampliacao-2.css" rel="stylesheet" type="text/css" />
 
-<!--CSS-->
-<link href="https://vipluxuria.com/css-js/estilos-2.css" rel="stylesheet" type="text/css" />
-<link href="https://vipluxuria.com/css-js/menu-2.css" rel="stylesheet" type="text/css" />
-<link href="https://vipluxuria.com/css-js/ampliacao-2.css" rel="stylesheet" type="text/css" />
-<!--CSS-->
-<!--FONTES-->
-<script src="https://vipluxuria.com/css-js/cufon-yui.js" type="text/javascript"></script>
-<script src="https://vipluxuria.com/css-js/nome_400.font.js" type="text/javascript"></script>
-<script src="https://vipluxuria.com/css-js/titulo_400.font.js" type="text/javascript"></script>
+<!-- Fontes / scripts -->
+<script src="../../css-js/cufon-yui.js" type="text/javascript"></script>
+<script src="../../css-js/nome_400.font.js" type="text/javascript"></script>
+<script src="../../css-js/titulo_400.font.js" type="text/javascript"></script>
 <script src="https://vipluxuria.com/Scripts/swfobject_modified.js" type="text/javascript"></script>
-<script type="text/javascript">
-	Cufon.replace('h1');
-	Cufon.replace('h1#titulo,#menu-rodape-content',{ fontFamily: 'titulo' }); 
-</script>
-<!--FONTES-->
 
-<!--AMPLIAÇÃO-->
+<!-- Visualizador / lightbox -->
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.js"></script>
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.lightbox-0.5.js"></script>
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/common.js"></script>
-<script>
-		var arrImg = new Array(
-			"<?="/sistema/content/".$imagemCentral1?>",
-			"<?="/sistema/content/".$imagemCentral2?>",
-			"<?="/sistema/content/".$imagemCentral3?>",
-			"<?="/sistema/content/".$imagemCentral4?>",
-			"<?="/sistema/content/".$imagemCentral5?>",
-			"<?="/sistema/content/".$imagemCentral6?>",
-			"<?="/sistema/content/".$imagemCentral7?>",
-			"<?="/sistema/content/".$imagemCentral8?>",		
-		"");
-		
-	function gravaVotacao(voto) {
-		document.form2.votacao.value = 'S';
-		document.form2.voto.value = voto;
-		document.form2.submit();
-	}
-	
-	function indicaAmigo() {
-		if (document.form3.nomeQuemIndicou.value == "") {
-			alert("Informe seu nome!");
-		} else if (document.form3.emailQuemIndicou.value == "") {
-			alert("Informe seu e-mail!");
-		} else if (document.form3.nomeAmigo.value == "")  {
-			alert("Informe o nome de seu amigo!");
-		} else if (document.form3.emailAmigo.value == "")  {
-			alert("Informe o e-mail de seu amigo!");
-		} else {
-			window.alert('Obrigada por me indicar!');
-			document.form3.amigoIndicado.value = 'S';
-			document.form3.submit();
-		}
-	}			
-	
-</script> 
 
 <script type="text/javascript">
-//desabilita menu de opcoes ao clicar no botao direito
-function desabilitaMenu(e)
-{
-if (window.Event)
-{
-if (e.which == 2 || e.which == 3)
-return false;
-}
-else
-{
-event.cancelBubble = true
-event.returnValue = false;
-return false;
-}
-}
+    // array de imagens para o visualizador
+    var arrImg = <?php echo json_encode($arrImgs, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); ?>;
 
-//desabilita botao direito
-function desabilitaBotaoDireito(e)
-{
-if (window.Event)
-{
-if (e.which == 2 || e.which == 3)
-return false;
-}
-else
-if (event.button == 2 || event.button == 3)
-{
-event.cancelBubble = true
-event.returnValue = false;
-return false;
-}
-}
+    function gravaVotacao(voto) {
+        document.form2.votacao.value = 'S';
+        document.form2.voto.value = voto;
+        document.form2.submit();
+    }
 
-//desabilita botao direito do mouse
-if ( window.Event )
-document.captureEvents(Event.MOUSEUP);
-if ( document.layers )
-document.captureEvents(Event.MOUSEDOWN);
+    function indicaAmigo() {
+        if (document.form3.nomeQuemIndicou.value == "") { alert("Informe seu nome!"); return; }
+        if (document.form3.emailQuemIndicou.value == "") { alert("Informe seu e-mail!"); return; }
+        if (document.form3.nomeAmigo.value == "") { alert("Informe o nome de seu amigo!"); return; }
+        if (document.form3.emailAmigo.value == "") { alert("Informe o e-mail de seu amigo!"); return; }
+        alert('Obrigada por me indicar!');
+        document.form3.amigoIndicado.value = 'S';
+        document.form3.submit();
+    }
+</script>
 
+<!-- desabilita botão direito (mantive como no original) -->
+<script type="text/javascript">
+// desabilitação do menu de contexto (original)
+function desabilitaMenu(e) {
+    if (window.Event) {
+        if (e.which == 2 || e.which == 3) return false;
+    } else {
+        event.cancelBubble = true;
+        event.returnValue = false;
+        return false;
+    }
+}
+function desabilitaBotaoDireito(e) {
+    if (window.Event) {
+        if (e.which == 2 || e.which == 3) return false;
+    } else if (event.button == 2 || event.button == 3) {
+        event.cancelBubble = true;
+        event.returnValue = false;
+        return false;
+    }
+}
+if (window.Event) document.captureEvents(Event.MOUSEUP);
+if (document.layers) document.captureEvents(Event.MOUSEDOWN);
 document.oncontextmenu = desabilitaMenu;
 document.onmousedown = desabilitaBotaoDireito;
 document.onmouseup = desabilitaBotaoDireito;
 </script>
 
-<!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5694f32a6ce4d64c" async="async"></script>-->
-<script src="../css-js/jquery.video-extend.js"></script>
-
-<?
-function curPageURL() {
- $pageURL = 'http';
- if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
- $pageURL .= "://";
- if ($_SERVER["SERVER_PORT"] != "80") {
-  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
- } else {
-  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
- }
- return $pageURL;
-}
-?>
-
-<!-- FANCYBOX -->
 <link rel="stylesheet" type="text/css" href="/css-js/jquery.fancybox.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
 </head>
-
 <body>
-<form name="form2" method="post" action='perfil-homens.php?id=<?=anti_injection($_REQUEST["id"])?>'>
-	<input type="hidden" name="votacao" id="votacao" value="N"> 
-	<input type="hidden" name="voto" id="voto" value="N"> 
-	<input type="hidden" name="id" value='<?=anti_injection($_REQUEST["id"])?>'> 
+
+<form name="form2" method="post" action="perfil.php?id=<?php echo intval($_REQUEST['id']); ?>">
+    <input type="hidden" name="votacao" id="votacao" value="N">
+    <input type="hidden" name="voto" id="voto" value="N">
+    <input type="hidden" name="id" value="<?php echo intval($_REQUEST['id']); ?>">
 </form>
 
 <div id="wrap">
-    <div id="bg-rosa" style="position:absolute !important;">
-        <div id="topo">
-            <?php include("../php/topo-2.php"); ?>
-        </div><!--TOPO-->
-        <div id="menu">
-            <?php include("../php/menu-2.php"); ?>
-        </div><!--MENU-->
-    </div><!--BG ROSA-->
-    <div id="bg-couro">    
-        <div id="principal">
-            <div id="principal-perfil">
-              	<div id="perfil-content">
-                	<div id="coluna-perfil-esq">
-						<div class="nome-acompanhante"><?=$nome?> <?=$sobrenome?></div>
-						<div id="telefone">
+    <div>
+		<?php include("../php/menu-2.php"); ?>
+		<div id="topo"><?php include("../php/topo-2.php"); ?></div>
+	</div>
 
-								<?
-								if ($idOperadora != "") {
-									if ($idOperadora == 1)
-										$operadora = "Oi";
-									else if ($idOperadora == 2)
-										$operadora = "Tim";
-									else if ($idOperadora == 3)
-										$operadora = "Claro";
-									else if ($idOperadora == 4)
-										$operadora = "Vivo";
+<div class="perfil-wrapper container mt-3">
+    <div class="row">
+        <!-- Coluna esquerda: foto + galeria -->
+        <div class="col-12 col-lg-5 mb-4">
+            <div class="perfil-foto text-center d-flex">
+                <img src="<?php echo htmlspecialchars('https://vipluxuria.com/sistema/content/'.$p_imagemCentral1 ?? '', ENT_QUOTES, 'UTF-8'); ?>" 
+                     alt="Foto de <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>" 
+                     id="fotoPerfil" 
+                     class="img-fluid rounded"/>
+            </div>
 
-									if ($flagWhats == "S") {
-										echo "<p class='n-whatsapp-op'><a href='tel:(" . $ddd . ") " . $telefone ."'>(" . $ddd . ") " . $telefone ."</a> <span class='operadora'>(" . $operadora . ")</span></p>";
-									} else {
-										echo "<p class='n-telefone'><a href='tel:(" . $ddd . ") " . $telefone ."'>(" . $ddd . ") " . $telefone ."</a> <span class='operadora'>(" . $operadora . ")</span></p>";
-									}
-								} else {
-									if ($flagWhats == "S") {
-										echo "<p class='n-whatsapp'><a href='tel:(" . $ddd . ") " . $telefone ."'>(" . $ddd . ") " . $telefone ."</a></p>";
-									} else {
-										echo "<p class='n-telefone'><a href='tel:(" . $ddd . ") " . $telefone ."'>(" . $ddd . ") " . $telefone ."</a></p>";
-									}
-								}
-								
-							?>						
-							<? if ($telefone2 != "")
-								if ($idOperadora2 != "") {
-									if ($idOperadora2 == 1)
-										$operadora2 = "Oi";
-									else if ($idOperadora2 == 2)  
-										$operadora2 = "Tim";
-									else if ($idOperadora2 == 3)
-										$operadora2 = "Claro";
-									else if ($idOperadora2 == 4)
-										$operadora2 = "Vivo";
- 
-									if ($flagWhats2 == "S") {
-										echo "<p class='n-whatsapp-op'><a href='tel:(" . $ddd2 . ") " . $telefone2 ."'>(" . $ddd2 . ") " . $telefone2 ."</a> <span class='operadora'>(" . $operadora2 . ")</span></p>";
-									} else {
-										echo "<p class='n-telefone'><a href='tel:(" . $ddd2 . ") " . $telefone2 ."'>(" . $ddd2 . ") " . $telefone2 ."</a> <span class='operadora'>(" . $operadora2 . ")</span></p>";
-									}
-								} else {
-									if ($flagWhats2 == "S") {
-										echo "<p class='n-whatsapp'><a href='tel:(" . $ddd2 . ") " . $telefone2 ."'>(" . $ddd2 . ") " . $telefone2 ."</a></p>";
-									} else {
-										echo "<p class='n-telefone'><a href='tel:(" . $ddd2 . ") " . $telefone2 ."'>(" . $ddd2 . ") " . $telefone2 ."</a></p>";
-									}
-								}
-								
-							?>
-							<p class="aviso">Ligue e diga que me viu no Vip Lux&uacute;ria!</p>                                                	
-						</div><!--TELEFONE-->					
-						<div class="clear"></div>
+            <!-- Galeria -->
+            <div class="perfil-galeria mt-3 d-flex flex-wrap gap-2 justify-content-center">
+                <?php
+                // Galeria principal
+                for ($i = 1; $i <= 8; $i++) {
+                    $k = "imagemCentral{$i}";
+                    if (!empty($perfil[$k])) {
+                        $src = 'https://vipluxuria.com/sistema/content/' . $perfil[$k];
+                        echo '<img class="thumb-galeria img-thumbnail" src="'.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'" 
+                              onclick="document.getElementById(\'fotoPerfil\').src=\''.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'\'" />';
+                    }
+                }
 
-<!--						
-						<div id="bt-whatsapp"> <a href="https://api.whatsapp.com/send?phone=SeuNumero&text=Olá NOME DO PERFIL, te vi no Vip Luxúria! Gostaria de mais informações." target="_blank"><img src="/imagens/estrutura/bt-whatsapp.png" width="264" height="48" /></a></div><!-- bt-whatsapp -->                      
-							<? if ($flagWhats != "" && $flagWhats == "S") { ?>  						
-								<div id="bt-whatsapp"> 
-									<a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento!" target="_blank">
-										<img src="/imagens/estrutura/bt-whatsapp.png" width="264" height="48" />
-									</a>
-								</div><!-- bt-whatsapp -->
-							<? } ?>   							
-							<? if ($flagSexoVirtual != "" && $flagSexoVirtual == "Sim") { ?> 
-								<div id="bt-video"> 
-										<a href="https://api.whatsapp.com/send?phone=<? echo "55".$ddd. str_replace('-', '', $telefone) .""; ?>&text=Tudo bem? Te vi no site Vip Luxuria. Por gentileza, gostaria de saber mais sobre o seu atendimento de Sexo Virtual!" target="_blank">
-										<img src="/imagens/estrutura/bt-video.png" width="264" height="48" />
-										</a>
-									</a>
-								</div><!-- bt-video -->								
-							<? } ?>    
-													
-                                                
-					  <? if ($email != "" || $site != "" || $outros != "" ||  $twitter != "") { ?>
-							<div class="linha-horizontal"></div>                        
-							<div id="contatos">
-								<? if ($email != "") {?>
-									<p class="e-mail"><?=$email?></p>
-								<? } ?>
-								<? if ($site != "") {?>
-									<p class="site"><?=$site?></p>
-								<? } ?>
-								<? if ($twitter != "") {?>
-									<p class="twitter"><?=$twitter?></p>
-								<? } ?>
-								<? if ($outros != "") {?>
-									<p class="outros"><?=$outros?></p>
-								<? } ?>
-								
-							</div>						
-						<? } ?>                       
-                        <div class="linha-horizontal"></div>			
-                        <div id="atendimento">
-                        	<h3>Atendimento</h3>
-                            <ul>
-                            	<li><span class="rotulo">Hor&aacute;rios:</span> <?=$horario?></li>
-                                <li><span class="rotulo">Locais:</span> <?=$locais?></li>
-                                <li><span class="rotulo">Cidades:</span> <?=$cidades?></li>
-                                <li><span class="rotulo">Cach&ecirc;:</span> <?=$cache?></li>
-                            </ul>              
-                            
-							<? if ($aceitoCartao != "" && $aceitoCartao == "Sim") { ?>
-								<div id="cartoes"><img src="/imagens/estrutura/aceito-cartoes.png" /></div>      
-							<? } ?>    
-                                          
+                // Fotos caseiras
+                if (!empty($p_flagMostraConteudoExtra) && $p_flagMostraConteudoExtra === 'S') {
+                    for ($i = 1; $i <= 6; $i++) {
+                        $k = 'imagemExtra' . $i;
+                        if (!empty($perfil[$k])) {
+                            $src = 'https://vipluxuria.com/sistema/content/' . $perfil[$k];
+                            echo '<img class="thumb-galeria img-thumbnail" src="'.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'" 
+                                  onclick="document.getElementById(\'fotoPerfil\').src=\''.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'\'" />';
+                        }
+                    }
+                }
+                ?>
+            </div>
+
+            <!-- Vídeo -->
+            <?php if (!empty($p_video) && (!isset($p_flagTemVideo) || $p_flagTemVideo !== 'Nao')): ?>
+                <div class="perfil-video mt-5">
+                    <video class="w-100 rounded shadow-sm" controls>
+                        <source src="https://vipluxuria.com/sistema/content/<?php echo htmlspecialchars($p_video, ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
+                        Seu navegador não suporta a reprodução de vídeo.
+                    </video>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <!-- Coluna direita: informações -->
+        <div class="col-12 col-lg-7">
+            <div class="perfil-info mb-3">
+                <h1 class="perfil-nome text-center">
+                    <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>
+                </h1>
+
+                <!-- Infos básicas -->
+                 <div>
+                    <!-- Botão WhatsApp -->
+                     <div class="text-center w-100">
+                         <?php if (!empty($p_flagWhats) && $p_flagWhats === 'S'): ?>
+                             <a class="btn btn-success d-inline-flex align-items-center mb-3 w-75 justify-content-center"
+                             href="https://api.whatsapp.com/send?phone=<?php echo '55' . preg_replace('/\D+/', '', $p_ddd . $p_telefone); ?>&text=<?php echo urlencode('Tudo bem? Te vi no site Vip Luxuria. Gostaria de saber mais sobre o seu atendimento!'); ?>" 
+                             target="_blank">
+                                 <i class="bi bi-whatsapp me-2"></i>
+                                 WhatsApp: (<?php echo htmlspecialchars($p_ddd, ENT_QUOTES, 'UTF-8'); ?>) <?php echo htmlspecialchars($p_telefone, ENT_QUOTES, 'UTF-8'); ?>
+                             </a>
+                         <?php endif; ?>
+                     </div>
+                    <div class="perfil-dados">
+                        <div><span>Cachê</span><strong><?php echo htmlspecialchars($p_cache ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Locais</span><strong><?php echo htmlspecialchars($p_locais ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Cidades</span><strong><?php echo htmlspecialchars($p_cidades ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Horário</span><strong><?php echo htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                    </div>
+                 </div>
+            </div>
+
+            <!-- Sobre mim -->
+            <div class="bloco sobre-mim mb-3 p-3 rounded">
+                <h2>Sobre Mim</h2>
+                <p><?php echo nl2br($p_mensagem1 ?? ''); ?></p>
+            </div>
+
+            <!-- Como sou e O que faço -->
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <div class="bloco como-sou p-3 rounded h-100">
+                        <h2>Como Sou</h2>
+                        <ul class="list-unstyled">
+                            <li><span>Idade:</span> <?php echo htmlspecialchars($p_idade ?? '', ENT_QUOTES, 'UTF-8'); ?> anos</li>
+                            <li><span>Altura:</span> <?php echo htmlspecialchars($p_altura ?? '', ENT_QUOTES, 'UTF-8'); ?>m</li>
+                            <li><span>Peso:</span> <?php echo htmlspecialchars($p_peso ?? '', ENT_QUOTES, 'UTF-8'); ?>kg</li>
+                            <li><span>Olhos:</span> <?php echo htmlspecialchars($p_olhos ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                            <li><span>Cabelos:</span> <?php echo htmlspecialchars($p_cabelos ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                            <li><span>Busto:</span> <?php echo htmlspecialchars($p_busto ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
+                            <li><span>Quadril:</span> <?php echo htmlspecialchars($p_quadril ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
+                            <li><span>Cintura:</span> <?php echo htmlspecialchars($p_cintura ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
+                            <li><span>Pés:</span> <?php echo htmlspecialchars($p_pes ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                            <li><span>Manequim:</span> <?php echo htmlspecialchars($p_manequim ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="bloco o-que-faco p-3 rounded h-100">
+                        <h2>O que Faço</h2>
+                        <div class="tags-faco">
+                            <?php if (!empty($p_flagBeijoBoca) && $p_flagBeijoBoca === 'Sim') echo '<span class="badge bg-dark">Beijo na Boca</span>'; ?>
+                            <?php if (!empty($p_flagOral) && $p_flagOral === 'Sim') echo '<span class="badge bg-dark">Oral</span>'; ?>
+                            <?php if (!empty($p_flagAnal) && $p_flagAnal === 'Sim') echo '<span class="badge bg-dark">Sexo Anal</span>'; ?>
+                            <?php if (!empty($p_flagDominacao) && $p_flagDominacao === 'Sim') echo '<span class="badge bg-dark">Dominação</span>'; ?>
+                            <?php if (!empty($p_flagInversao) && $p_flagInversao === 'Sim') echo '<span class="badge bg-dark">Inversão</span>'; ?>
+                            <?php if (!empty($p_flagMassagem) && $p_flagMassagem === 'Sim') echo '<span class="badge bg-dark">Massagem</span>'; ?>
+                            <?php if (!empty($p_flagFantasias) && $p_flagFantasias === 'Sim') echo '<span class="badge bg-dark">Fantasias</span>'; ?>
+                            <?php if (!empty($p_flagAtendoEles) && $p_flagAtendoEles === 'Sim') echo '<span class="badge bg-dark">Atendo eles</span>'; ?>
+                            <?php if (!empty($p_flagAtendoElas) && $p_flagAtendoElas === 'Sim') echo '<span class="badge bg-dark">Atendo elas</span>'; ?>
+                            <?php if (!empty($p_flagAtendoCasais) && $p_flagAtendoCasais === 'Sim') echo '<span class="badge bg-dark">Atendo casais</span>'; ?>
+                            <?php if (!empty($p_flagAcessorios) && $p_flagAcessorios === 'Sim') echo '<span class="badge bg-dark">Acessórios</span>'; ?>
+                            <?php if (!empty($p_flagEventos) && $p_flagEventos === 'Sim') echo '<span class="badge bg-dark">Eventos</span>'; ?>
+                            <?php if (!empty($p_flagViagens) && $p_flagViagens === 'Sim') echo '<span class="badge bg-dark">Viagens</span>'; ?>
+                            <?php if (!empty($p_flagTenhoAmigas) && $p_flagTenhoAmigas === 'Sim') echo '<span class="badge bg-dark">Tenho amigas</span>'; ?>
                         </div>
-						<div class="linha-horizontal"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-						<? if ($video != "" && $flagTemVideo != "Nao") { ?>                       
-                        <div id="video">
-                            <video width="320" height="240" controls>
-    							<source src="<?="/sistema/content/".$video?>" type="video/mp4">
-							</video>
-	
-                        </div>
-                       	<div class="linha-horizontal"></div>
-						<? } ?> 
-						
-						<? 
-						if ($flagMostraConteudoExtra != ""  && $flagMostraConteudoExtra != NULL && $flagMostraConteudoExtra == "S") {
-							if ($imagemExtra1 != ""  && $imagemExtra1 != NULL){ 
-						?>						                   
-							<div id="fotos-caseiras">
-								<h3>Fotos Caseiras</h3>
-								<? if ($imagemExtra1 != "") { ?>  
-									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra1?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra1?>" width="100" height="100" alt="Imagem de <?=$nome?> <?=$sobrenome?> 01" /></a></div>
-								<? } ?>
-								<? if ($imagemExtra2 != "") { ?>
-									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra2?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra2?>" width="100" height="100" alt="Imagem de <?=$nome?> <?=$sobrenome?> 02" /></a></div>
-								<? } ?>
-								<? if ($imagemExtra3 != "") { ?>
-									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra3?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra3?>" width="100" height="100" alt="Imagem de <?=$nome?> <?=$sobrenome?> 03" /></a></div>
-								<? } ?>
-								<? if ($imagemExtra4 != "") { ?>
-									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra4?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra4?>" width="100" height="100" alt="Imagem de <?=$nome?> <?=$sobrenome?> 04" /></a></div>
-								<? } ?>
-								<? if ($imagemExtra5 != "") { ?>
-									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra5?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra5?>" width="100" height="100" alt="Imagem de <?=$nome?> <?=$sobrenome?> 05" /></a></div>
-								<? } ?>
-								<? if ($imagemExtra6 != "") { ?>
-									<div class="fc-thumb"><a href="<?="/sistema/content/".$imagemExtra6?>" data-fancybox="images"><img src="<?="/sistema/content/".$imagemExtra6?>" width="100" height="100" alt="Imagem de <?=$nome?> <?=$sobrenome?> 06" /></a></div>
-								<? } ?>
-	
-								<div class="clear"></div> 
-							</div> <!-- fotos-caseiras -->
-							<div class="linha-horizontal"></div> 
-                        <? 
-							}
-						} 
-						?>
-						
-				
-                    	<div id="sou-full">
-                        	<h3>Como Sou</h3>
-                            <ul>
-                            	<li><span class="rotulo">Idade:</span> <?=$idade?> anos</li>
-                                <li><span class="rotulo">Altura:</span> <?=$altura?>m</li>
-                                <li><span class="rotulo">Peso:</span> <?=$peso?> Kg</li>
-                                <li><span class="rotulo">Olhos:</span> <?=$olhos?></li>
-                                <li><span class="rotulo">Cabelos:</span> <?=$cabelos?></li>
-                                <li><span class="rotulo">Dote:</span> <?=$dote?></li>
-                            </ul>
-                    	</div><!--40-->
-                        <div class="clear"></div>                      
-                        </div><!--COLUNA-PERFIL-ESQ-->    	        	
-					
-					<div id="coluna-perfil-dir">
-	        		   	<div class="apresentacao"><?=$mensagem1?></div>
-						<div id="fotos">
-    	                	<div id="thumbs-fotos">
-        	                	<ul>
-									<li class="thumbPerfilOver"><a href="javascript:loadFoto(0);"><img src="<?="/sistema/content/".$imagemCentral1?>" name="thumb0" width="50" height="50" id="thumb0" alt="Imagem de <?=$nome?> <?=$sobrenome?> 01"  /></a></li>
-									<li class="thumbPerfil"><a href="javascript:loadFoto(1);"><img src="<?="/sistema/content/".$imagemCentral2?>" width="50" height="50" id="thumb1" alt="Imagem de <?=$nome?> <?=$sobrenome?> 02" /></a></li>  
-								  	<li class="thumbPerfil"><a href="javascript:loadFoto(2);"><img src="<?="/sistema/content/".$imagemCentral3?>" width="50" height="50" id="thumb2" alt="Imagem de <?=$nome?> <?=$sobrenome?> 03" /></a></li>  
-								  	<li class="thumbPerfil"><a href="javascript:loadFoto(3);"><img src="<?="/sistema/content/".$imagemCentral4?>" width="50" height="50" id="thumb3" alt="Imagem de <?=$nome?> <?=$sobrenome?> 04" /></a></li>
-								  	<li class="thumbPerfil"><a href="javascript:loadFoto(4);"><img src="<?="/sistema/content/".$imagemCentral5?>" width="50" height="50" id="thumb4" alt="Imagem de <?=$nome?> <?=$sobrenome?> 05" /></a></li>
-								  	<li class="thumbPerfil"><a href="javascript:loadFoto(5);"><img src="<?="/sistema/content/".$imagemCentral6?>" width="50" height="50" id="thumb5" alt="Imagem de <?=$nome?> <?=$sobrenome?> 06" /></a></li>                          
-								  	<li class="thumbPerfil"><a href="javascript:loadFoto(6);"><img src="<?="/sistema/content/".$imagemCentral7?>" width="50" height="50" id="thumb6" alt="Imagem de <?=$nome?> <?=$sobrenome?> 07" /></a></li>                                                      
-								  	<li class="thumbPerfil"><a href="javascript:loadFoto(7);"><img src="<?="/sistema/content/".$imagemCentral8?>" width="50" height="50" id="thumb7" alt="Imagem de <?=$nome?> <?=$sobrenome?> 08" /></a></li> 
-								</ul>                        
-						</div> <!--THUMBS FOTOS-->
-                        <div class="clear"></div>
-                        <div id="ampliacao">
-                            <div class="colunaFotoH" id="colunaFoto" style="display:none;"> </div>
-                            <div id="imgLoader"> <img src="../imagens/ajax-loader.gif" alt="Carregando..."  /> </div>
-                            <div align="center">
-                                <img src="<?="/sistema/content/".$imagemCentral1?>"  id="fotoPerfil" />	
-                            </div>                        
-                
-                        </div> <!-- Fim Ampliacao -->
+    <div id="rodape"><?php include("../rodape-novo.php"); ?></div>
+</div><!-- WRAP -->
 
-                        <div class="clear"></div>
-
-                    </div><!--FOTOS-->
-					
-					<div id="compartilhe-twitter"><a href="https://twitter.com/intent/tweet?text=<?php echo $nome . " " .  $sobrenome . " - Homens - Vip Lux&uacute;ria - Acompanhantes Porto Alegre"; ?>&url=<? echo curPageURL(); ?>"><img src="/imagens/estrutura/compartilhe-twitter.png"></a>
-					</div>						
-						
-                        <div class="clear"></div>
-						<div id="me-indique">
-                        	<h3>Me indique para um Amigo(a)</h3>
-							<form name="form3" method="post" action='/perfil-homens/<?=$id?>/<?=tirarAcentos(str_replace(" ", "-", $nome))?><? if($sobrenome != "") { echo "-".tirarAcentos(str_replace(" ", "-", $sobrenome));}?>'>
-								<input type="hidden" name="amigoIndicado" id="amigoIndicado" value="N"> 
-								<input type="hidden" name="nomeAnunciante" id="nomeAnunciante" value="<? echo $nome . " " .  $sobrenome ?>"> 
-								<input type="hidden" name="linkAnunciante" id="linkAnunciante" value="https://vipluxuria.com/conteudo/perfil-homens.php?id=<?=anti_injection($_REQUEST['id'])?>"> 
-							
-								<input type="hidden" name="id" value='<?=anti_injection($_REQUEST["id"])?>'> 
-								
-								<input name="nomeQuemIndicou" id="nomeQuemIndicou" type="text" placeholder="Seu Nome" />
-								<input name="emailQuemIndicou" id="emailQuemIndicou" type="text" placeholder="Seu E-mail" />
-								<input name="nomeAmigo" id="nomeAmigo" type="text" placeholder="Nome do Amigo" />
-								<input name="emailAmigo" id="emailAmigo" type="text" placeholder="E-mail do Amigo" />
-								<div class="bt-enviar"><img src="https://vipluxuria.com/imagens/estrutura/bt-enviar-indique.png" onclick="indicaAmigo()" /></div>
-							</form>
-						</div> 					
-						<div class="clear"></div>
-                	</div><!--COLUNA-PERFIL-DIR-->
-
-	                </div>
-   	              <div class="clear"></div>                  
-				</div><!--PERFIL CONTENT-->
-            </div><!--PRINCIPAL CONTENT-->
-        </div><!--PRINCIPAL-->
-	</div><!--BG-COURO-->
-    <div id="rodape">
-		<?php include("../php/rodape-2.php"); ?>
-    </div><!--RODAPE-->
-    <div id="tags">
-		<?php include("../php/tags-homens.php"); ?> 
-    </div><!--TAGS-->
-</div><!--wrap-->
 <script type="text/javascript"> Cufon.now(); </script>
 <?php include("../php/google.php"); ?>
 <script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/perfil.js"></script>
-
-<!-- JS - FANCYBOX -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/css-js/jquery.fancybox.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
-<? } ?>
