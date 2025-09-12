@@ -1,5 +1,5 @@
 <!-- Bloco Institucional -->
-<div class="bg-dark text-light py-5">
+<div class="text-light py-5">
   <div class="container text-center">
 
     <!-- Título -->
