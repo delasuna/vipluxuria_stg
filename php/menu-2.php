@@ -109,14 +109,14 @@ function geraOpcoesCidades($conexao)
 
           <div>
             <!-- Botão Anuncie Aqui -->
-            <a href="/como-anunciar/" class="btn-anuncie-badge me-3">
+            <a href="/como-anunciar/" class="btn-anuncie-badge me-3 no-decoration text-white">
               <span>ANUNCIE AQUI</span>
             </a>
           </div>
 
           <!-- WhatsApp -->
           <div class="whatsapp-header text-white">
-            <a href="https://api.whatsapp.com/send/?phone=51981440470&text&type=phone_number&app_absent=0" target="_blank">
+            <a href="https://api.whatsapp.com/send/?phone=51981440470&text&type=phone_number&app_absent=0" target="_blank" class="no-decoration text-white">
               <i class="bi bi-whatsapp"></i> (51) 98144-0470
             </a>
           </div>
