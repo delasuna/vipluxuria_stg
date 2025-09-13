@@ -811,9 +811,7 @@ a {
 
 #coluna-full .banner-vantagens .chamada a {
 	color: #54324B!important;
-	font-size:13px;	
-
-}
+	font-size:13px;	}
 #coluna-full .banner-vantagens .chamada p {
 	font-size: 13px;
 }
@@ -1208,9 +1206,7 @@ a {
 #principal-perfil #perfil-content #coluna-perfil-esq #contatos {
 	width: 320px;
 	color: #fff;
-	font-family: 'Sriracha', cursive;
-
-}
+	font-family: 'Sriracha', cursive;}
 #principal-perfil #perfil-content #coluna-perfil-esq #contatos .e-mail {
 	background-image: url(/imagens/estrutura/contato-email.png);
 	background-repeat: no-repeat;
@@ -1367,9 +1363,7 @@ a {
 .news-radio {
 	color: #222;
 	font-size: 12px;
-	padding-top: 8px;
-
-}
+	padding-top: 8px;}
 .bt-voltar {
 	width: 100%;
 	margin-top: 20px;
@@ -3509,4 +3503,579 @@ a:hover {
 
 .no-decoration {
 	text-decoration: none;
+}
+
+/* Card de Agendamento */
+
+
+.card-agendamento {
+
+
+  background-color: #ffc107; /* Amarelo */
+
+
+  border: none;
+
+
+  border-radius: 12px;
+
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+
+
+
+.btn-agendar {
+
+
+  display: inline-block;
+
+
+  background-color: #28a745; /* Verde */
+
+
+  color: #fff;
+
+
+  font-weight: bold;
+
+
+  padding: 12px 20px;
+
+
+  border-radius: 30px;
+
+
+  text-decoration: none;
+
+
+  transition: transform 0.2s ease-in-out;
+}
+
+
+.btn-agendar:hover {
+
+
+  background-color: #218838;
+
+
+  transform: scale(1.05);
+
+
+  color: #fff;
+}
+
+
+
+
+
+/* Aviso de Golpe */
+
+
+.alert-box {
+
+
+  background-color: #fff3cd; /* Bege claro */
+
+
+  border: 2px solid #ffc107;
+
+
+  border-radius: 12px;
+
+
+  color: #333;
+}
+
+
+.alert-box i {
+
+
+  color: #ff9800;
+}
+
+
+
+
+
+/* Estilo dos cards */
+
+
+.step-card {
+
+
+  background-color: #1e1e1e; /* fundo escuro */
+
+
+  border: 1px solid var(--rosa-primary, #ff007a);
+
+
+  border-radius: 12px;
+
+
+  color: #ddd;
+
+
+  position: relative;
+
+
+  transition: transform 0.2s ease-in-out;
+}
+
+
+
+
+
+.step-card:hover {
+
+
+  transform: translateY(-4px);
+}
+
+
+
+
+
+/* Número do passo */
+
+
+.step-number {
+
+
+  position: absolute;
+
+
+  top: -15px;
+
+
+  left: -15px;
+
+
+  background-color: var(--rosa-primary, #ff007a);
+
+
+  color: #fff;
+
+
+  font-weight: bold;
+
+
+  font-size: 16px;
+
+
+  width: 32px;
+
+
+  height: 32px;
+
+
+  border-radius: 50%;
+
+
+  display: flex;
+
+
+  align-items: center;
+
+
+  justify-content: center;
+}
+
+
+
+
+
+/* Títulos */
+
+
+.step-card h5 {
+
+
+  color: #fff;
+
+
+  margin-bottom: 10px;
+}
+
+
+
+
+
+/* Card principal */
+
+
+.doc-card {
+
+
+  background-color: #1c1c1c; /* fundo escuro */
+
+
+  border-radius: 16px;
+
+
+  color: #ddd;
+}
+
+
+
+
+
+/* Cor rosa principal */
+
+
+.text-rosa {
+
+
+  color: var(--rosa-primary, #ff007a);
+}
+
+
+
+
+
+/* Lista de documentos */
+
+
+.doc-list {
+
+
+  background-color: #2a2a2a;
+
+
+  border-radius: 12px;
+}
+
+
+
+
+
+/* Contrato destaque */
+
+
+.doc-contrato {
+
+
+  background: rgba(255, 0, 122, 0.15);
+
+
+  border: 1px solid var(--rosa-primary, #ff007a);
+
+
+  border-radius: 12px;
+
+
+  color: #eee;
+}
+
+
+
+
+
+/* Card principal */
+
+
+.benefits-card {
+
+
+  background-color: #1c1c1c;
+
+
+  border-radius: 16px;
+
+
+  color: #ccc;
+}
+
+
+
+
+
+/* Cor rosa */
+
+
+.text-rosa {
+
+
+  color: var(--rosa-primary, #ff007a);
+}
+
+
+
+
+
+/* Ícones circulares */
+
+
+.benefit-icon {
+
+
+  background-color: var(--rosa-primary, #ff007a);
+
+
+  color: #fff;
+
+
+  font-size: 20px;
+
+
+  width: 44px;
+
+
+  height: 44px;
+
+
+  border-radius: 50%;
+
+
+  display: flex;
+
+
+  align-items: center;
+
+
+  justify-content: center;
+
+
+  flex-shrink: 0;
+}
+
+
+
+
+
+.perfil-container {
+
+
+  background: #d61b61;
+
+
+  padding: 40px 20px;
+
+
+  border-radius: 12px;
+
+
+  color: #fff;
+
+
+  max-width: 1200px;
+
+
+  margin: 0 auto;
+
+
+  font-family: 'Arial', sans-serif;
+}
+
+
+
+
+
+.perfil-title {
+
+
+  text-align: center;
+
+
+  font-size: 28px;
+
+
+  margin-bottom: 30px;
+}
+
+
+
+
+
+.perfil-grid {
+
+
+  display: grid;
+
+
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+
+  gap: 20px;
+}
+
+
+
+
+
+.perfil-card {
+
+
+  background: #e23a81;
+
+
+  padding: 20px;
+
+
+  border-radius: 12px;
+}
+
+
+
+
+
+.perfil-card h3 {
+
+
+  margin-bottom: 15px;
+
+
+  font-size: 20px;
+}
+
+
+
+
+
+.perfil-card ul {
+
+
+  list-style: none;
+
+
+  padding: 0;
+
+
+  margin: 0;
+}
+
+
+
+
+
+.perfil-card li {
+
+
+  margin-bottom: 8px;
+}
+
+
+
+
+
+body {
+
+
+    background-color: #0d0d0d; /* Fundo escuro */
+
+
+    color: #fff;
+}
+
+
+
+
+
+.text-pink {
+
+
+    color: #ff1d6c;
+}
+
+
+
+
+
+.accordion-button {
+
+
+    background-color: #1a1a1a;
+
+
+    color: #fff;
+
+
+    border: none;
+}
+
+
+
+
+
+.accordion-button:focus {
+
+
+    box-shadow: none;
+}
+
+
+
+
+
+.accordion-button:not(.collapsed) {
+
+
+    background-color: #2c2c2c;
+
+
+    color: #fff;
+}
+
+
+
+
+
+.accordion-body {
+
+
+    background-color: #1a1a1a;
+
+
+    color: #ccc;
+}
+
+
+
+
+
+.custom-card {
+
+
+    border: 2px solid #e91e63; /* borda rosa */
+
+
+    border-radius: 15px;
+}
+
+
+
+
+
+.text-pink {
+
+
+    color: #e91e63;
+}
+
+
+
+
+
+.btn-success {
+
+
+    background-color: #28a745;
+
+
+    border-color: #28a745;
+}
+
+
+
+
+
+.btn-success:hover {
+
+
+    background-color: #218838;
+
+
+    border-color: #1e7e34;
 }

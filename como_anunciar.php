@@ -28,7 +28,7 @@ $keywords = $seo['keywords'] ?? '';
     <div class="container my-5">
 
   <!-- Bloco Agendamento -->
-  <div class="card card-agendamento text-center p-4 mb-4">
+  <div class="card-agendamento text-center p-4 mb-4">
     <div class="card-body">
       <h5 class="card-title fw-bold">
         <i class="bi bi-journal-text me-2"></i>
@@ -223,44 +223,46 @@ $keywords = $seo['keywords'] ?? '';
     </div>
   </div>
 </div>
-<div class="perfil-container">
-  <h2 class="perfil-title">✨ O que incluir no seu perfil</h2>
-  
-  <div class="perfil-grid">
-    <div class="perfil-card">
-      <h3>📸 Visual</h3>
-      <ul>
-        <li>Até 20 fotos HD</li>
-        <li>Vídeo apresentação</li>
-        <li>Galeria privada</li>
-      </ul>
-    </div>
+<div class="container">
+  <div class="p-4 perfil-container">
+    <h2 class="perfil-title">✨ O que incluir no seu perfil</h2>
     
-    <div class="perfil-card">
-      <h3>📝 Informações</h3>
-      <ul>
-        <li>Perfil detalhado</li>
-        <li>Características físicas</li>
-        <li>Serviços oferecidos</li>
-      </ul>
-    </div>
-    
-    <div class="perfil-card">
-      <h3>📍 Localização</h3>
-      <ul>
-        <li>Bairro de atendimento</li>
-        <li>Com local/sem local</li>
-        <li>Atende em motel</li>
-      </ul>
-    </div>
-    
-    <div class="perfil-card">
-      <h3>💬 Contato</h3>
-      <ul>
-        <li>WhatsApp direto</li>
-        <li>Horário atendimento</li>
-        <li>Dias disponíveis</li>
-      </ul>
+    <div class="perfil-grid">
+      <div class="perfil-card">
+        <h3>📸 Visual</h3>
+        <ul>
+          <li>Até 20 fotos HD</li>
+          <li>Vídeo apresentação</li>
+          <li>Galeria privada</li>
+        </ul>
+      </div>
+      
+      <div class="perfil-card">
+        <h3>📝 Informações</h3>
+        <ul>
+          <li>Perfil detalhado</li>
+          <li>Características físicas</li>
+          <li>Serviços oferecidos</li>
+        </ul>
+      </div>
+      
+      <div class="perfil-card">
+        <h3>📍 Localização</h3>
+        <ul>
+          <li>Bairro de atendimento</li>
+          <li>Com local/sem local</li>
+          <li>Atende em motel</li>
+        </ul>
+      </div>
+      
+      <div class="perfil-card">
+        <h3>💬 Contato</h3>
+        <ul>
+          <li>WhatsApp direto</li>
+          <li>Horário atendimento</li>
+          <li>Dias disponíveis</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -330,7 +332,7 @@ $keywords = $seo['keywords'] ?? '';
     </div>
 </div>
 <div class="container my-5">
-  <div class="card text-center bg-dark text-white custom-card p-4">
+  <div class="text-center bg-dark text-white custom-card p-4">
     <h2 class="fw-bold mb-3">Pronta para aumentar seus ganhos?</h2>
     <p class="mb-4">Agende seu atendimento presencial e comece a receber mais clientes!</p>
     <a href="https://wa.me/5591981440470" target="_blank" class="btn btn-success btn-lg mb-4">
