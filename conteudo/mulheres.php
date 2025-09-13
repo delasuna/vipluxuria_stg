@@ -67,30 +67,110 @@ if (!empty($_REQUEST["idCidade"])) {
         </div>
 
         <?php include("../php/slider.php"); ?>
+        
+        <!-- Badges de Confiança -->
         <div class="hero-badges">
             <span class="badge-hero"><i class="bi bi-shield-check"></i> Site Seguro</span>
             <span class="badge-hero"><i class="bi bi-patch-check"></i> Perfis Verificados</span>
             <span class="badge-hero"><i class="bi bi-star-fill"></i> Desde 2007</span>
         </div>
+        
         <?php include '../filters.php' ?>
 
         <div class="main-content">
             <div class="container">
 
-                <!-- Título -->
-                <div class="text-center mb-5">
-                    <h1 class="section-title">Acompanhantes <?= htmlspecialchars($cidade) ?></h1>
-
-                    <?php if (!empty($_REQUEST["flagTipo"]) && anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual"): ?>
-                        <div class="alert alert-info mt-3">
-                            <p>Este espaço é destinado a destacar as acompanhantes que fazem shows privados pelo WhatsApp e venda de pacote de fotos, venda de vídeos!</p>
-                            <p><strong>Consulte diretamente com a anunciante os serviços oferecidos por ela!</strong></p>
+                <!-- Seção de Autoridade e Confiança -->
+                <div class="authority-section">
+                    <div class="authority-content">
+                        <h1 class="authority-title">
+                            Acompanhantes <?= htmlspecialchars($cidade) ?> 
+                            <span class="authority-badge">Desde 2007</span>
+                        </h1>
+                        
+                        <div class="authority-text">
+                            <p class="lead-text">
+                                O Vip Luxúria é a plataforma pioneira e mais confiável de acompanhantes do Sul do Brasil, 
+                                com <strong>17 anos de experiência</strong> conectando clientes a profissionais verificadas.
+                            </p>
+                            
+                            <div class="trust-points">
+                                <div class="trust-item">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                    <div>
+                                        <strong>100% Verificadas</strong>
+                                        <span>Todas as fotos são autenticadas por nossa equipe</span>
+                                    </div>
+                                </div>
+                                <div class="trust-item">
+                                    <i class="bi bi-shield-lock-fill"></i>
+                                    <div>
+                                        <strong>Total Discrição</strong>
+                                        <span>Navegação segura com certificado SSL e proteção de dados</span>
+                                    </div>
+                                </div>
+                                <div class="trust-item">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <div>
+                                        <strong>Cobertura Regional</strong>
+                                        <span>Atendemos toda região metropolitana com mais de 500 anunciantes ativas</span>
+                                    </div>
+                                </div>
+                                <div class="trust-item">
+                                    <i class="bi bi-award-fill"></i>
+                                    <div>
+                                        <strong>Referência no Mercado</strong>
+                                        <span>Líder em qualidade e segurança desde nossa fundação</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="authority-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">17+</span>
+                                    <span class="stat-label">Anos de Experiência</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">500+</span>
+                                    <span class="stat-label">Anunciantes Ativas</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">100%</span>
+                                    <span class="stat-label">Perfis Verificados</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">24/7</span>
+                                    <span class="stat-label">Suporte ao Cliente</span>
+                                </div>
+                            </div>
                         </div>
-                    <?php endif; ?>
+                    </div>
                 </div>
 
-                <!-- Lista de Mulheres -->
+                <?php if (!empty($_REQUEST["flagTipo"]) && anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual"): ?>
+                    <div class="virtual-notice">
+                        <div class="notice-icon">
+                            <i class="bi bi-camera-video-fill"></i>
+                        </div>
+                        <div class="notice-content">
+                            <h3>Serviços Virtuais Exclusivos</h3>
+                            <p>Este espaço é destinado a destacar as acompanhantes que oferecem:</p>
+                            <ul>
+                                <li>Shows privados pelo WhatsApp</li>
+                                <li>Venda de pacotes de fotos exclusivas</li>
+                                <li>Vídeos personalizados</li>
+                            </ul>
+                            <p class="notice-alert"><i class="bi bi-info-circle"></i> Consulte diretamente com a anunciante os serviços oferecidos!</p>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Lista de Acompanhantes -->
                 <section class="acompanhantes-section">
+                    <div class="section-header">
+                        <h2 class="section-subtitle">Escolha entre nossas profissionais verificadas</h2>
+                    </div>
+                    
                     <div class="grid-premium">
                         <?php
                         // Montar WHERE
@@ -179,9 +259,33 @@ if (!empty($_REQUEST["idCidade"])) {
                     </div>
                 </section>
 
-                <?php include("../banner_informativo.php") ?>
-                <?php include("../banner_informativo2.php") ?>
-                <?php include("../banner_informativo3.php") ?>
+                <!-- Seção de Segurança e Garantias -->
+                <div class="security-section">
+                    <h3>Por que escolher o Vip Luxúria?</h3>
+                    <div class="security-grid">
+                        <div class="security-item">
+                            <i class="bi bi-fingerprint"></i>
+                            <h4>Verificação Rigorosa</h4>
+                            <p>Processo de verificação em múltiplas etapas para garantir autenticidade</p>
+                        </div>
+                        <div class="security-item">
+                            <i class="bi bi-clock-history"></i>
+                            <h4>Tradição e Confiança</h4>
+                            <p>Primeira plataforma do segmento no RS, estabelecida em 2007</p>
+                        </div>
+                        <div class="security-item">
+                            <i class="bi bi-headset"></i>
+                            <h4>Suporte Dedicado</h4>
+                            <p>Equipe especializada para auxiliar clientes e anunciantes</p>
+                        </div>
+                        <div class="security-item">
+                            <i class="bi bi-shield-check"></i>
+                            <h4>Segurança Total</h4>
+                            <p>Proteção de dados e navegação anônima garantida</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 

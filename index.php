@@ -101,108 +101,119 @@ mysqli_free_result($resultado);
                 </section>
 
                 <!-- Banner Não Encontrou  -->
-                <section class="banner-nao-encontrou">
-                    <div class="container">
-                        <div class="nao-encontrou-content">
-                            <div class="icon-search">
-                                <i class="bi bi-search-heart"></i>
-                            </div>
-                            <h2>Não encontrou o que procura?</h2>
-                            <p>Temos mais de 500 acompanhantes cadastradas. Use os filtros ou entre em contato.</p>
+                <div class="banner-nao-encontrou-suave">
+    <div class="nao-encontrou-content">
+        <div class="icon-search-suave">
+            <i class="bi bi-search-heart"></i>
+        </div>
+        
+        <h2>Não encontrou o que procura?</h2>
+        <p>Temos mais de 500 acompanhantes cadastradas. Use os filtros ou entre em contato.</p>
+        
+        <div class="action-buttons">
+            <a href="/conteudo/mulheres.php" class="btn-ver-todas-suave">
+                <i class="bi bi-grid-3x3-gap"></i> Ver Todas Acompanhantes
+            </a>
+        </div>
+        
+        <div class="whatsapp-help-suave">
+            <span>Precisa de ajuda?</span>
+            <a href="https://wa.me/5551981440470" class="whatsapp-link-suave">
+                <i class="bi bi-whatsapp"></i> (51) 98144-0470
+            </a>
+        </div>
+    </div>
+</div>
 
-                            <div class="action-buttons">
-                                <a href="/mulheres-acompanhantes-porto-alegre-poa/" class="btn-ver-todas">
-                                    <i class="bi bi-grid-3x3-gap"></i>
-                                    Ver Todas Acompanhantes
-                                </a>
-                            </div>
-
-                            <div class="whatsapp-help">
-                                <span>Precisa de ajuda?</span>
-                                <a href="https://wa.me/5551981440470" class="whatsapp-link">
-                                    <i class="bi bi-whatsapp"></i> (51) 98144-0470
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- CTA Premium para Anunciantes  -->
-                <section class="cta-anunciantes">
-                    <div class="container">
-                        <div class="cta-card-premium-center">
-                            <div class="cta-stars">
-                                <i class="bi bi-stars"></i>
-                            </div>
-
-                            <h2>Torne-se uma Anunciante VIP</h2>
-                            <p class="cta-subtitle">Alcance milhares de clientes premium em Porto Alegre</p>
-
-                            <div class="cta-benefits-center">
-                                <div class="benefit-item">
-                                    <i class="bi bi-patch-check-fill"></i>
-                                    <span>Perfil destacado com selo de verificação</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <i class="bi bi-headset"></i>
-                                    <span>Suporte personalizado via WhatsApp</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <i class="bi bi-graph-up-arrow"></i>
-                                    <span>Estatísticas de visualização em tempo real</span>
-                                </div>
-                            </div>
-
-                            <div class="cta-action-center">
-                                <a href="/como-anunciar/" class="btn-premium-gold-big">
-                                    <span>Quero Anunciar</span>
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
-                            </div>
-
-                            <div class="cta-whatsapp-center">
-                                <i class="bi bi-whatsapp"></i> (51) 98144-0470
-                            </div>
-                        </div>
-                    </div>
-                </section>
+               <!-- CTA Anunciantes - Layout Horizontal Compacto -->
+<!-- OPÇÃO ALTERNATIVA: CTA com 3 benefícios reais -->
+<div class="cta-anunciantes">
+    <div class="cta-card-premium-center">
+        <div class="cta-stars">
+            <i class="bi bi-stars"></i>
+        </div>
+        
+        <h2>Torne-se uma Anunciante VIP</h2>
+        <p class="cta-subtitle">Alcance milhares de clientes premium em Porto Alegre</p>
+        
+        <div class="cta-benefits-horizontal">
+            <div class="benefit-item-horizontal">
+                <i class="bi bi-patch-check-fill benefit-icon-horizontal"></i>
+                <span class="benefit-text-horizontal">Perfil destacado com selo de verificação</span>
+            </div>
+            
+            <div class="benefit-item-horizontal">
+                <i class="bi bi-headset benefit-icon-horizontal"></i>
+                <span class="benefit-text-horizontal">Suporte personalizado via WhatsApp</span>
+            </div>
+        
+            <div class="benefit-item-horizontal">
+                <i class="bi bi-people-fill benefit-icon-horizontal"></i>
+                <span class="benefit-text-horizontal">Alcance de +10.000 visitantes diários</span>
+            </div>
+        </div>
+        
+        <div class="cta-footer-horizontal">
+            <a href="#" class="btn-premium-gold-compact">
+                Quero Anunciar <i class="bi bi-arrow-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
 
                 <!-- Seção de Confiança -->
-                <section class="trust-section">
-                    <div class="trust-container">
-                        <h2 class="section-title">Por que somos líderes há 17 anos?</h2>
-                        <div class="trust-grid">
-                            <div class="trust-item">
-                                <div class="trust-icon">
-                                    <i class="bi bi-shield-fill-check"></i>
-                                </div>
-                                <h3>Verificação Rigorosa</h3>
-                                <p>100% das acompanhantes passam por verificação presencial com documentação</p>
-                            </div>
-                            <div class="trust-item">
-                                <div class="trust-icon">
-                                    <i class="bi bi-geo-alt-fill"></i>
-                                </div>
-                                <h3>Cobertura Regional</h3>
-                                <p>Porto Alegre e mais de 14 cidades da região metropolitana</p>
-                            </div>
-                            <div class="trust-item">
-                                <div class="trust-icon">
-                                    <i class="bi bi-clock-fill"></i>
-                                </div>
-                                <h3>Atendimento 24h</h3>
-                                <p>Acompanhantes disponíveis a qualquer hora do dia ou da noite</p>
-                            </div>
-                            <div class="trust-item">
-                                <div class="trust-icon">
-                                    <i class="bi bi-lock-fill"></i>
-                                </div>
-                                <h3>Total Discrição</h3>
-                                <p>Sigilo absoluto e segurança em todas as transações</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <section class="trust-section-leaders">
+    <div class="container">
+        <h2 class="trust-title-leaders">Há 17 anos trabalhando com as melhores acompanhantes</h2>
+        
+        <div class="trust-grid-leaders">
+            <!-- Card 1: Verificação Rigorosa -->
+            <div class="trust-card-leader">
+                <div class="trust-icon-leader">
+                    <i class="bi bi-shield-check-fill"></i>
+                </div>
+                <h3 class="trust-card-title">Verificação Rigorosa</h3>
+                <p class="trust-card-description">
+                    <span class="trust-card-stat">100%</span> das acompanhantes passam por verificação presencial com documentação
+                </p>
+            </div>
+            
+            <!-- Card 2: Cobertura Regional -->
+            <div class="trust-card-leader">
+                <div class="trust-icon-leader">
+                    <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <h3 class="trust-card-title">Cobertura Regional</h3>
+                <p class="trust-card-description">
+                    Porto Alegre e mais de <span class="trust-card-stat">14 cidades</span> da região metropolitana
+                </p>
+            </div>
+            
+            <!-- Card 3: Atendimento 24h -->
+            <div class="trust-card-leader">
+                <div class="trust-icon-leader">
+                    <i class="bi bi-clock-fill"></i>
+                </div>
+                <h3 class="trust-card-title">Atendimento 24h</h3>
+                <p class="trust-card-description">
+                    Acompanhantes disponíveis a qualquer hora do dia ou da noite
+                </p>
+            </div>
+            
+            <!-- Card 4: Total Discrição -->
+            <div class="trust-card-leader">
+                <div class="trust-icon-leader">
+                    <i class="bi bi-lock-fill"></i>
+                </div>
+                <h3 class="trust-card-title">Total Discrição</h3>
+                <p class="trust-card-description">
+                    Sigilo absoluto e segurança em todas as transações
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
             </div>
 
             <?php include("rodape-novo.php"); ?>
