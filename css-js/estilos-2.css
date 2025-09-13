@@ -3444,3 +3444,69 @@ a:hover {
 .top-header-fino {
 	background-color: #AD1457;
 }
+
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    flex: 1 1 300px; /* flexível, mínimo 300px */
+    max-width: 400px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card .icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.card .content h3 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.2rem;
+}
+
+.card .content p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* cores específicas */
+.card.dicas {
+    background-color: #6a1b4d; /* vinho */
+}
+
+.card.duvidas {
+    background-color: #0d47a1; /* azul escuro */
+}
+
+.tip-icon {
+	background-color: #E91E63;
+}
+
+.faq-icon {
+	background-color: #1976d2;
+}
+
+.tips-text {
+	color: #E91E63;
+}
+
+.no-decoration {
+	text-decoration: none;
+}

@@ -174,6 +174,27 @@ for ($i=1; $i<=8; $i++) {
     $key = "imagemCentral{$i}";
     if (!empty($perfil[$key])) $arrImgs[] = 'https://vipluxuria.com/sistema/content/' . $perfil[$key];
 }
+
+$itensFaco = [
+    'Beijo na Boca' => $p_flagBeijoBoca ?? '',
+    'Oral' => $p_flagOral ?? '',
+    'Sexo Anal' => $p_flagAnal ?? '',
+    'Dominação' => $p_flagDominacao ?? '',
+    'Inversão' => $p_flagInversao ?? '',
+    'Massagem' => $p_flagMassagem ?? '',
+    'Fantasias' => $p_flagFantasias ?? '',
+    'Atendo eles' => $p_flagAtendoEles ?? '',
+    'Atendo elas' => $p_flagAtendoElas ?? '',
+    'Atendo casais' => $p_flagAtendoCasais ?? '',
+    'Acessórios' => $p_flagAcessorios ?? '',
+    'Eventos' => $p_flagEventos ?? '',
+    'Viagens' => $p_flagViagens ?? '',
+    'Tenho amigas' => $p_flagTenhoAmigas ?? '',
+];
+
+// filtra apenas os que são "Sim"
+$itensFaco = array_filter($itensFaco, fn($v) => $v === 'Sim');
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
@@ -271,7 +292,7 @@ document.onmouseup = desabilitaBotaoDireito;
 <div class="perfil-wrapper container mt-3">
     <div class="row">
         <!-- Coluna esquerda: foto + galeria -->
-        <div class="col-12 col-lg-5 mb-4">
+        <div class="col-12 col-lg-5 my-auto">
             <div class="perfil-foto text-center d-flex">
                 <img src="<?php echo htmlspecialchars('https://vipluxuria.com/sistema/content/'.$p_imagemCentral1 ?? '', ENT_QUOTES, 'UTF-8'); ?>" 
                      alt="Foto de <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>" 
@@ -354,47 +375,62 @@ document.onmouseup = desabilitaBotaoDireito;
 
             <!-- Como sou e O que faço -->
             <div class="row g-3">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 <?php if (empty($itensFaco)) { echo 'w-100 text-center'; } ?>">
                     <div class="bloco como-sou p-3 rounded h-100">
                         <h2>Como Sou</h2>
                         <ul class="list-unstyled">
-                            <li><span>Idade:</span> <?php echo htmlspecialchars($p_idade ?? '', ENT_QUOTES, 'UTF-8'); ?> anos</li>
-                            <li><span>Altura:</span> <?php echo htmlspecialchars($p_altura ?? '', ENT_QUOTES, 'UTF-8'); ?>m</li>
-                            <li><span>Peso:</span> <?php echo htmlspecialchars($p_peso ?? '', ENT_QUOTES, 'UTF-8'); ?>kg</li>
-                            <li><span>Olhos:</span> <?php echo htmlspecialchars($p_olhos ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                            <li><span>Cabelos:</span> <?php echo htmlspecialchars($p_cabelos ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                            <li><span>Busto:</span> <?php echo htmlspecialchars($p_busto ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
-                            <li><span>Quadril:</span> <?php echo htmlspecialchars($p_quadril ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
-                            <li><span>Cintura:</span> <?php echo htmlspecialchars($p_cintura ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li>
-                            <li><span>Pés:</span> <?php echo htmlspecialchars($p_pes ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                            <li><span>Manequim:</span> <?php echo htmlspecialchars($p_manequim ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                            <?php if(ISSET($p_idade)) : ?><li><span>Idade:</span> <?php echo htmlspecialchars($p_idade ?? '', ENT_QUOTES, 'UTF-8'); ?> anos</li><?php endif; ?>
+                            <?php if(ISSET($p_altura)) : ?><li><span>Altura:</span> <?php echo htmlspecialchars($p_altura ?? '', ENT_QUOTES, 'UTF-8'); ?>m</li><?php endif; ?>
+                            <?php if(ISSET($p_peso)) : ?><li><span>Peso:</span> <?php echo htmlspecialchars($p_peso ?? '', ENT_QUOTES, 'UTF-8'); ?>kg</li><?php endif; ?>
+                            <?php if(ISSET($p_olhos)) : ?><li><span>Olhos:</span> <?php echo htmlspecialchars($p_olhos ?? '', ENT_QUOTES, 'UTF-8'); ?></li><?php endif; ?>
+                            <?php if(ISSET($p_cabelos)) : ?><li><span>Cabelos:</span> <?php echo htmlspecialchars($p_cabelos ?? '', ENT_QUOTES, 'UTF-8'); ?></li><?php endif; ?>
+                            <?php if(ISSET($p_busto)) : ?><li><span>Busto:</span> <?php echo htmlspecialchars($p_busto ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li><?php endif; ?>
+                            <?php if(ISSET($p_quadril)) : ?><li><span>Quadril:</span> <?php echo htmlspecialchars($p_quadril ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li><?php endif; ?>
+                            <?php if(ISSET($p_cintura)) : ?><li><span>Cintura:</span> <?php echo htmlspecialchars($p_cintura ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li><?php endif; ?>
+                            <?php if(ISSET($p_pes)) : ?><li><span>Pés:</span> <?php echo htmlspecialchars($p_pes ?? '', ENT_QUOTES, 'UTF-8'); ?></li><?php endif; ?>
+                            <?php if(ISSET($p_manequim)) : ?><li><span>Manequim:</span> <?php echo htmlspecialchars($p_manequim ?? '', ENT_QUOTES, 'UTF-8'); ?></li><?php endif; ?>
                         </ul>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6">
-                    <div class="bloco o-que-faco p-3 rounded h-100">
-                        <h2>O que Faço</h2>
-                        <div class="tags-faco">
-                            <?php if (!empty($p_flagBeijoBoca) && $p_flagBeijoBoca === 'Sim') echo '<span class="badge bg-dark">Beijo na Boca</span>'; ?>
-                            <?php if (!empty($p_flagOral) && $p_flagOral === 'Sim') echo '<span class="badge bg-dark">Oral</span>'; ?>
-                            <?php if (!empty($p_flagAnal) && $p_flagAnal === 'Sim') echo '<span class="badge bg-dark">Sexo Anal</span>'; ?>
-                            <?php if (!empty($p_flagDominacao) && $p_flagDominacao === 'Sim') echo '<span class="badge bg-dark">Dominação</span>'; ?>
-                            <?php if (!empty($p_flagInversao) && $p_flagInversao === 'Sim') echo '<span class="badge bg-dark">Inversão</span>'; ?>
-                            <?php if (!empty($p_flagMassagem) && $p_flagMassagem === 'Sim') echo '<span class="badge bg-dark">Massagem</span>'; ?>
-                            <?php if (!empty($p_flagFantasias) && $p_flagFantasias === 'Sim') echo '<span class="badge bg-dark">Fantasias</span>'; ?>
-                            <?php if (!empty($p_flagAtendoEles) && $p_flagAtendoEles === 'Sim') echo '<span class="badge bg-dark">Atendo eles</span>'; ?>
-                            <?php if (!empty($p_flagAtendoElas) && $p_flagAtendoElas === 'Sim') echo '<span class="badge bg-dark">Atendo elas</span>'; ?>
-                            <?php if (!empty($p_flagAtendoCasais) && $p_flagAtendoCasais === 'Sim') echo '<span class="badge bg-dark">Atendo casais</span>'; ?>
-                            <?php if (!empty($p_flagAcessorios) && $p_flagAcessorios === 'Sim') echo '<span class="badge bg-dark">Acessórios</span>'; ?>
-                            <?php if (!empty($p_flagEventos) && $p_flagEventos === 'Sim') echo '<span class="badge bg-dark">Eventos</span>'; ?>
-                            <?php if (!empty($p_flagViagens) && $p_flagViagens === 'Sim') echo '<span class="badge bg-dark">Viagens</span>'; ?>
-                            <?php if (!empty($p_flagTenhoAmigas) && $p_flagTenhoAmigas === 'Sim') echo '<span class="badge bg-dark">Tenho amigas</span>'; ?>
+                <?php if (!empty($itensFaco)): ?>
+                    <div class="col-12 col-md-6">
+                        <div class="bloco o-que-faco p-3 rounded h-100">
+                            <h2>O que Faço</h2>
+                            <div class="tags-faco">
+                                <?php foreach ($itensFaco as $nome => $valor): ?>
+                                    <span class="badge bg-dark"><?= htmlspecialchars($nome) ?></span>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
+            <div class="cards-container bloco mt-5 mx-auto w-75">
+                <div class="card dicas d-flex justify-content-center">
+                    <a href="/dicas.php" class="no-decoration">
+                        <div class="content d-flex align-items-center">
+                            <div class="icon tip-icon rounded-circle">💡</div>
+                            <div>
+                                <h3 class="tips-text fw-bold">Dicas</h3>
+                                <p>Tudo que você precisa saber antes de contratar uma GP</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card duvidas d-flex justify-content-center">
+                    <a href="/duvidas.php" class="no-decoration">
+                        <div class="content d-flex align-items-center">
+                            <div class="icon faq-icon rounded-circle">❓</div>
+                            <div>
+                                <h3 class="tips-text fw-bold">Dúvidas Frequentes</h3>
+                                <p>Respostas para suas principais perguntas</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
     </div>
 </div>
 
