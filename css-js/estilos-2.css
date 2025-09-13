@@ -1737,6 +1737,7 @@ ul.pagination li a:hover:not(.active) {
 }
 #slider-content-2020 {
 	width: 946px;
+	max-width: 80%;
 	margin-right: auto;
 	margin-left: auto;
 }
