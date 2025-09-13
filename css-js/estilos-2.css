@@ -2285,6 +2285,7 @@ ul.pagination li a:hover:not(.active) {
   text-decoration: none;
   transition: transform 0.2s ease-in-out;
 }
+
 .btn-agendar:hover {
   background-color: #218838;
   transform: scale(1.05);
@@ -4078,4 +4079,21 @@ body {
 
 
     border-color: #1e7e34;
+}
+
+.btn-wpp-perfil {
+	display: inline-block !important;
+  	background-color: #28a745 !important;
+  	color: #fff !important;
+  	font-weight: bold !important;
+  	padding: 12px 20px !important;
+  	border-radius: 30px !important;
+  	text-decoration: none !important;
+  	transition: transform 0.2s ease-in-out !important;
+}
+
+.btn-wpp-perfil:hover {
+  background-color: #218838 !important;
+  transform: scale(1.05);
+  color: #fff;
 }

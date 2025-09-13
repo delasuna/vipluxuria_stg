@@ -350,7 +350,7 @@ document.onmouseup = desabilitaBotaoDireito;
                     <!-- Botão WhatsApp -->
                      <div class="text-center w-100">
                          <?php if (!empty($p_flagWhats) && $p_flagWhats === 'S'): ?>
-                             <a class="btn btn-success d-inline-flex align-items-center mb-3 w-75 justify-content-center"
+                             <a class="btn btn-wpp-perfil d-inline-flex align-items-center mb-3 w-75 justify-content-center"
                              href="https://api.whatsapp.com/send?phone=<?php echo '55' . preg_replace('/\D+/', '', $p_ddd . $p_telefone); ?>&text=<?php echo urlencode('Tudo bem? Te vi no site Vip Luxuria. Gostaria de saber mais sobre o seu atendimento!'); ?>" 
                              target="_blank">
                                  <i class="bi bi-whatsapp me-2"></i>
