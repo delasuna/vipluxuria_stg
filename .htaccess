@@ -1,7 +1,5 @@
 #FORÇA HTTPS
 RewriteEngine On
-Options -MultiViews
-RewriteBase /
 RewriteCond %{SERVER_PORT} 80
 # RewriteRule ^(.*)$ https://vipluxuria.com/$1 [R,L]
 
