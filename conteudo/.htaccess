@@ -27,7 +27,7 @@ RewriteEngine On
 
 
 
-# RewriteRule ^perfil/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil.php?id=$1&nome=$2 [NC]
+RewriteRule ^perfil/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil.php?id=$1&nome=$2 [NC]
 
 RewriteRule ^perfil-homens/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil-homens.php?id=$1&nome=$2 [NC]
 
