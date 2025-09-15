@@ -19,6 +19,7 @@ RewriteCond %{SERVER_PORT} 80
 	</IfModule>
 </FilesMatch>
 
+RewriteRule ^teste/?$ /conteudo/perfil.php?id=$1&nome=$2 [NC,L]
 RewriteRule ^mulher/([0-9]+)/([^/]+)/?$ /conteudo/perfil.php?id=$1&nome=$2 [NC,L]
 RewriteRule ^perfil-homens/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil-homens.php?id=$1&nome=$2 [NC,L]
 RewriteRule ^perfil-transex/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil-transex.php?id=$1&nome=$2 [NC,L]
