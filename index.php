@@ -69,7 +69,7 @@ mysqli_free_result($resultado);
                             $imagemCapa = $row['imagemCapa'];
                             $flagVerificada = $row['flagVerificada'] ?? 'Não';
 
-                            $linkPerfil = "/perfil/" . $idMulher . "/" . str_replace($comAcentos, $semAcentos, $nome);
+                            $linkPerfil = "/mulher/" . $idMulher . "/" . str_replace($comAcentos, $semAcentos, $nome);
                             if (!empty($sobrenome)) {
                                 $linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
                             }
