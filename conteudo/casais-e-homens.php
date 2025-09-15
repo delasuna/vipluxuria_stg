@@ -31,7 +31,9 @@ mysqli_free_result($resultado);
             <?php include("../php/menu-2.php"); ?>
             <div id="topo"><?php include("../php/topo-2.php"); ?></div>
         </div>
-        <?php include("../php/slider-homens.php"); ?>
+
+        <?php include("../site-badges.php"); ?>
+
         <?php include '../filters.php' ?>
 
         <div class="text-light py-4">

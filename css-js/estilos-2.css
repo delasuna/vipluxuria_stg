@@ -1684,3 +1684,61 @@ img[loading="lazy"] {
 #coluna-full .anuncio-corpo .aceito-cartoes {
     margin-top: 20px;
 }
+/* Hero Section */
+.hero-premium {
+    position: relative;
+    background: linear-gradient(135deg, var(--rosa-dark), var(--rosa-primary));
+    padding: 100px 0 80px;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/imagens/pattern-luxury.png') repeat;
+    opacity: 0.1;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.gold-text {
+    background: linear-gradient(135deg, var(--gold), var(--gold-premium));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle-hero {
+    font-size: 36px;
+    color: white;
+}
+
+.hero-description {
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 30px;
+}
+
+.hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.badge-hero {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+}
