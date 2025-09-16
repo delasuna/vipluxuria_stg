@@ -9,10 +9,10 @@
       <div class="col-6 col-md-3 mb-4">
         <h6 class="rodape-titulo">Institucional</h6>
         <ul class="rodape-lista">
-          <li><a href="/sobre-nos/">Sobre Nós</a></li>
+          <li><a href="/vip-luxuria.php">Sobre Nós</a></li>
           <li><a href="/como-anunciar/">Como Anunciar</a></li>
-          <li><a href="/duvidas/">Dúvidas Frequentes</a></li>
-          <li><a href="/dicas/">Dicas</a></li>
+          <li><a href="/duvidas.php">Dúvidas Frequentes</a></li>
+          <li><a href="/dicas.php">Dicas</a></li>
         </ul>
       </div>
 
@@ -20,11 +20,11 @@
       <div class="col-6 col-md-3 mb-4">
         <h6 class="rodape-titulo">Categorias</h6>
         <ul class="rodape-lista">
-          <li><a href="/acompanhantes-loiras/">Loiras</a></li>
-          <li><a href="/acompanhantes-morenas/">Morenas</a></li>
-          <li><a href="/acompanhantes-transex/">Transex</a></li>
-          <li><a href="/com-local/">Com Local</a></li>
-          <li><a href="/atendimento-24h/">24 Horas</a></li>
+          <li><button onclick="carregaAnunciantes('Loiras')">Loiras</button></li>
+          <li><button onclick="carregaAnunciantes('Morenas')">Morenas</button></li>
+          <li><button onclick="window.location.href='/transex-porto-alegre-poa/'">Transex</button></li>
+          <li><button onclick="carregaAnuncianteComLocal('S')">Com Local</button></li>
+          <li><button onclick="carregaAnunciante24Horas('S')">24 Horas</button></li>
         </ul>
       </div>
 
@@ -32,14 +32,16 @@
       <div class="col-6 col-md-3 mb-4">
         <h6 class="rodape-titulo">Contato</h6>
         <div class="rodape-contato">
-          <p class="whatsapp-rodape">
-            <i class="bi bi-whatsapp"></i> (51) 98144-0470
-          </p>
+          <a href="https://wa.me/5591981440470" target="_blank">
+            <p class="whatsapp-rodape">
+              <i class="bi bi-whatsapp"></i> (51) 98144-0470
+            </p>
+          </a>
           <!-- Redes Sociais -->
           <div class="redes-sociais">
             <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/amigas_do_vip?igsh=MWF6OXo1YTh5emxwNg%3D%3D" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://x.com/vipluxuriacom" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
           </div>
         </div>
       </div>
