@@ -538,6 +538,7 @@ a:hover {
     padding: 10px;
     border-radius: 8px;
     background: linear-gradient(135deg, #1a1a1a, var(--card-gray));
+    color: white;
 }
 
 .perfil-dados div {
@@ -1997,4 +1998,196 @@ img[loading="lazy"] {
 .btn-ver-todas-suave:hover {
     background: var(--rosa-primary);
     color: white;
+}
+
+.perfil-foto {
+	min-height: 545px;
+}
+
+.perfil-galeria {
+
+
+  margin-top: 1rem;
+
+
+  display: flex;
+
+
+  gap: .5rem;
+
+
+  flex-wrap: wrap;
+
+
+}
+
+
+.thumb-galeria {
+  width: 50px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.perfil-info {
+  flex: 1;
+}
+
+.perfil-nome {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff4081;
+  margin-bottom: 1rem;
+}
+
+.bloco {
+  background: #1c1c1c;
+  border-radius: 12px;
+}
+
+.bloco h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff4081;
+  margin-bottom: .8rem;
+}
+
+.bloco p {
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.perfil-dupla {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+
+.como-sou ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.como-sou li {
+  border-bottom: 1px solid #333;
+  padding: .5rem 0;
+  color: #ccc;
+}
+
+
+.como-sou span {
+  font-weight: bold;
+  color: #fff;
+}
+
+.tags-faco {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+@media (min-width: 768px) {
+  .tags-faco {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .tags-faco span {
+    flex: 1 1 calc(100% - 12px);
+    text-align: center;
+    padding: 10px 14px;
+    font-weight: 600;
+    border-radius: 20px;
+    background: #2b2b2b;
+    color: #f06;
+  }
+}
+
+.tags-faco span {
+  background: #2a2a2a;
+  color: #ff4081;
+  padding: .4rem .8rem;
+  border-radius: 20px;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.o-que-faco {
+	padding: 1.5rem;
+}
+
+.perfil-foto {
+	min-height: 545px;
+}
+
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    flex: 1 1 300px; /* flexível, mínimo 300px */
+    max-width: 400px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card .icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.card .content h3 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.2rem;
+}
+
+.card .content p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.card.dicas {
+    background-color: #6a1b4d; /* vinho */
+}
+
+.card.duvidas {
+    background-color: #0d47a1; /* azul escuro */
+}
+
+.tip-icon {
+	background-color: #E91E63;
+}
+
+
+.faq-icon {
+	background-color: #1976d2;
+}
+
+.tips-text {
+	color: #E91E63;
+}
+
+.no-decoration {
+	text-decoration: none;
 }

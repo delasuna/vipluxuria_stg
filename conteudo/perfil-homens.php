@@ -359,10 +359,10 @@ document.onmouseup = desabilitaBotaoDireito;
                          <?php endif; ?>
                      </div>
                     <div class="perfil-dados">
-                        <div><span>Cachê</span><strong><?php echo htmlspecialchars($p_cache ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-                        <div><span>Locais</span><strong><?php echo htmlspecialchars($p_locais ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-                        <div><span>Cidades</span><strong><?php echo htmlspecialchars($p_cidades ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-                        <div><span>Horário</span><strong><?php echo htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Cachê: </span><strong><?php echo htmlspecialchars($p_cache ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Locais: </span><strong><?php echo htmlspecialchars($p_locais ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Cidades: </span><strong><?php echo htmlspecialchars($p_cidades ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
+                        <div><span>Horário: </span><strong><?php echo htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
                     </div>
                  </div>
             </div>
