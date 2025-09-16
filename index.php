@@ -169,7 +169,7 @@ mysqli_free_result($resultado);
             <!-- Card 1: Verificação Rigorosa -->
             <div class="trust-card-leader">
                 <div class="trust-icon-leader">
-                    <i class="bi bi-shield-check-fill"></i>
+                    <i class="bi bi-shield-fill-check"></i>
                 </div>
                 <h3 class="trust-card-title">Verificação Rigorosa</h3>
                 <p class="trust-card-description">
