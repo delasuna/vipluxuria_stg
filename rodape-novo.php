@@ -39,7 +39,6 @@
           </a>
           <!-- Redes Sociais -->
           <div class="redes-sociais">
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
             <a href="https://www.instagram.com/amigas_do_vip?igsh=MWF6OXo1YTh5emxwNg%3D%3D" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
             <a href="https://x.com/vipluxuriacom" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
           </div>
@@ -68,9 +67,6 @@
         <a href="#" class="parceiro-texto">Love Store</a>
       </div>
     </div>
-
-    <!-- Linha Divisória -->
-    <hr class="rodape-divisor">
 
     <!-- Copyright Simplificado -->
     <div class="rodape-copyright">

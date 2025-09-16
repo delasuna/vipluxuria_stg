@@ -1749,9 +1749,6 @@ img[loading="lazy"] {
   padding: 60px 0 30px;
   margin-top: 80px;
 }
-.rodape-menus {
-  margin-bottom: 50px;
-}
 .rodape-titulo {
   color: #E91E63;
   font-size: 14px;
@@ -1871,7 +1868,6 @@ img[loading="lazy"] {
   background: linear-gradient(90deg, #AD1457, #E91E63);
 }
 .parceiros-section {
-  margin: 40px 0;
   padding: 40px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
