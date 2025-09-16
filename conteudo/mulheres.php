@@ -8,7 +8,7 @@ function anti_injection($str)
     return addslashes(strip_tags(trim($str)));
 }
 
-// SEO
+// SEO (mantém como está)
 $whereSEO = " descricao = 'Home' ";
 if (!empty($_REQUEST["flagTipo"])) {
     $flag = anti_injection($_REQUEST["flagTipo"]);
@@ -66,109 +66,53 @@ if (!empty($_REQUEST["idCidade"])) {
             <div id="topo"><?php include("../php/topo-2.php"); ?></div>
         </div>
 
-        <?php include("../php/slider.php"); ?>
-        
-        <?php include("../site-badges.php"); ?>
-        
-        <?php include '../filters.php' ?>
-
         <div class="main-content">
             <div class="container">
+                
+                <!-- Título da Página -->
+                <div class="page-header-elegant">
+                    <h1>Acompanhantes <?= htmlspecialchars($cidade) ?></h1>
+                    <p class="subtitle-page">Escolha entre profissionais verificadas e confiáveis</p>
+                </div>
 
-                <!-- Seção de Autoridade e Confiança -->
-                <div class="authority-section">
-                    <div class="authority-content">
-                        <h1 class="authority-title">
-                            Acompanhantes <?= htmlspecialchars($cidade) ?> 
-                            <span class="authority-badge">Desde 2007</span>
-                        </h1>
-                        
-                        <div class="authority-text">
-                            <p class="lead-text">
-                                O Vip Luxúria é a plataforma pioneira e mais confiável de acompanhantes do Sul do Brasil, 
-                                com <strong>17 anos de experiência</strong> conectando clientes a profissionais verificadas.
-                            </p>
-                            
-                            <div class="trust-points">
-                                <div class="trust-item">
-                                    <i class="bi bi-patch-check-fill"></i>
-                                    <div>
-                                        <strong>100% Verificadas</strong>
-                                        <span>Todas as fotos são autenticadas por nossa equipe</span>
-                                    </div>
-                                </div>
-                                <div class="trust-item">
-                                    <i class="bi bi-shield-lock-fill"></i>
-                                    <div>
-                                        <strong>Total Discrição</strong>
-                                        <span>Navegação segura com certificado SSL e proteção de dados</span>
-                                    </div>
-                                </div>
-                                <div class="trust-item">
-                                    <i class="bi bi-geo-alt-fill"></i>
-                                    <div>
-                                        <strong>Cobertura Regional</strong>
-                                        <span>Atendemos toda região metropolitana com mais de 500 anunciantes ativas</span>
-                                    </div>
-                                </div>
-                                <div class="trust-item">
-                                    <i class="bi bi-award-fill"></i>
-                                    <div>
-                                        <strong>Referência no Mercado</strong>
-                                        <span>Líder em qualidade e segurança desde nossa fundação</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="authority-stats">
-                                <div class="stat-item">
-                                    <span class="stat-number">17+</span>
-                                    <span class="stat-label">Anos de Experiência</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number">500+</span>
-                                    <span class="stat-label">Anunciantes Ativas</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number">100%</span>
-                                    <span class="stat-label">Perfis Verificados</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number">24/7</span>
-                                    <span class="stat-label">Suporte ao Cliente</span>
-                                </div>
-                            </div>
-                        </div>
+              
+
+                <!-- Filtros -->
+                <?php include '../filters.php' ?>
+
+                <!-- Seção de Confiança Compacta -->
+                <div class="trust-bar">
+                    <div class="trust-item">
+                        <i class="bi bi-patch-check-fill"></i>
+                        <span><strong>100% Verificadas</strong> Todas as fotos são autenticadas por nossa equipe</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-shield-lock-fill"></i>
+                        <span><strong>Total Discrição</strong> Navegação segura com certificado SSL e proteção de dados</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span><strong>Cobertura Regional</strong> Atendemos toda região metropolitana com mais de 500 anunciantes ativas</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-award-fill"></i>
+                        <span><strong>Referência no Mercado</strong> Líder em qualidade e segurança desde nossa fundação</span>
                     </div>
                 </div>
 
+                <!-- Aviso para Sexo Virtual se aplicável -->
                 <?php if (!empty($_REQUEST["flagTipo"]) && anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual"): ?>
-                    <div class="virtual-notice">
-                        <div class="notice-icon">
-                            <i class="bi bi-camera-video-fill"></i>
-                        </div>
-                        <div class="notice-content">
-                            <h3>Serviços Virtuais Exclusivos</h3>
-                            <p>Este espaço é destinado a destacar as acompanhantes que oferecem:</p>
-                            <ul>
-                                <li>Shows privados pelo WhatsApp</li>
-                                <li>Venda de pacotes de fotos exclusivas</li>
-                                <li>Vídeos personalizados</li>
-                            </ul>
-                            <p class="notice-alert"><i class="bi bi-info-circle"></i> Consulte diretamente com a anunciante os serviços oferecidos!</p>
-                        </div>
+                    <div class="virtual-notice-simple">
+                        <i class="bi bi-camera-video-fill"></i>
+                        <span>Serviços virtuais: Shows privados, fotos e vídeos personalizados via WhatsApp</span>
                     </div>
                 <?php endif; ?>
 
-                <!-- Lista de Acompanhantes -->
+                <!-- Grid de Acompanhantes -->
                 <section class="acompanhantes-section">
-                    <div class="section-header">
-                        <h2 class="section-subtitle">Escolha entre nossas profissionais verificadas</h2>
-                    </div>
-                    
                     <div class="grid-premium">
                         <?php
-                        // Montar WHERE
+                        // Montar WHERE (mantém como está)
                         $where = " WHERE flagAtivo = 'Sim' ";
                         if (!empty($_REQUEST["nome"])) {
                             $nome = mysqli_real_escape_string($conexao, $_REQUEST["nome"]);
@@ -237,9 +181,9 @@ if (!empty($_REQUEST["idCidade"])) {
                             $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
                         ?>
                             <a href="<?= $linkPerfil ?>" class="text-decoration-none">
-                                <div class="acompanhante-card hover-lift fade-in">
+                                <div class="acompanhante-card hover-lift">
                                     <?php if ($flagVerificada == 'Sim'): ?>
-                                        <span class="badge-verificada">✓ Verificada</span>
+                                        <span class="badge-verificada">✔ Verificada</span>
                                     <?php endif; ?>
                                     <div class="card-img-wrapper">
                                         <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
@@ -250,40 +194,42 @@ if (!empty($_REQUEST["idCidade"])) {
                                     </div>
                                 </div>
                             </a>
+
+                            <?php 
+                            // Banner de destaque após 18 cards
+                            if (++$contadorCarrossel == 18) { ?>
+                                <div class="carousel-container">
+                                    <?php include("../php/carousel.php"); ?>
+                                </div>
+                            <?php } ?>
                         <?php } ?>
                     </div>
                 </section>
 
-                <!-- Seção de Segurança e Garantias -->
-                <div class="security-section">
-                    <h3>Por que escolher o Vip Luxúria?</h3>
-                    <div class="security-grid">
-                        <div class="security-item">
-                            <i class="bi bi-fingerprint"></i>
-                            <h4>Verificação Rigorosa</h4>
-                            <p>Processo de verificação em múltiplas etapas para garantir autenticidade</p>
-                        </div>
-                        <div class="security-item">
-                            <i class="bi bi-clock-history"></i>
-                            <h4>Tradição e Confiança</h4>
-                            <p>Primeira plataforma do segmento no RS, estabelecida em 2007</p>
-                        </div>
-                        <div class="security-item">
-                            <i class="bi bi-headset"></i>
-                            <h4>Suporte Dedicado</h4>
-                            <p>Equipe especializada para auxiliar clientes e anunciantes</p>
-                        </div>
-                        <div class="security-item">
-                            <i class="bi bi-shield-check"></i>
-                            <h4>Segurança Total</h4>
-                            <p>Proteção de dados e navegação anônima garantida</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-
+  <!-- Cards de Dicas e Dúvidas -->
+                <div class="info-cards-container">
+                    <a href="/conteudo/dicas-contratar-acompanhante.php" class="info-card card-dicas">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Dicas Importantes</h3>
+                            <p>O que saber antes de contratar</p>
+                        </div>
+                    </a>
+                    
+                    <a href="/conteudo/duvidas-frequentes.php" class="info-card card-duvidas">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-question-circle-fill"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Dúvidas Frequentes</h3>
+                            <p>Respostas para suas perguntas</p>
+                        </div>
+                    </a>
+                </div>
         <?php include("../rodape-novo.php"); ?>
 
         <script type="text/javascript">
