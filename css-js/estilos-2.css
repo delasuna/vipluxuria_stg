@@ -1924,3 +1924,10 @@ img[loading="lazy"] {
   font-size: 12px;
   margin-top: 10px;
 }
+
+/* Carousel container */
+
+.carousel-container {
+    grid-column: 1 / -1;
+    margin: 40px 0;
+}
