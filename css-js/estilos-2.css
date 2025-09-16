@@ -688,7 +688,7 @@ a:hover {
     letter-spacing: 0.5px;
 }
 
-.banner-nao-encontrou-suave p {
+.banner-nao-encontrou-suave span {
     color: rgba(255,255,255,0.7);
     font-size: 18px;
     margin-bottom: 35px;
@@ -1930,4 +1930,76 @@ img[loading="lazy"] {
 .carousel-container {
     grid-column: 1 / -1;
     margin: 40px 0;
+}
+
+.banner-nao-encontrou-suave {
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    border: 1px solid rgba(233, 30, 99, 0.2);
+    padding: 60px 40px;
+    margin: 80px auto;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-nao-encontrou-suave::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(233, 30, 99, 0.05), transparent);
+    animation: floatSoft 20s ease-in-out infinite;
+}
+
+.nao-encontrou-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.icon-search-suave {
+    font-size: 50px;
+    color: var(--rosa-primary);
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.banner-nao-encontrou-suave h2 {
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.banner-nao-encontrou-suave p {
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    margin-bottom: 35px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.btn-ver-todas-suave {
+    background: transparent;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    border: 2px solid var(--rosa-primary);
+}
+
+.btn-ver-todas-suave:hover {
+    background: var(--rosa-primary);
+    color: white;
 }
