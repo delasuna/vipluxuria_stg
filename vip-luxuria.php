@@ -13,6 +13,10 @@ if (mysqli_num_rows($resultado) > 0) {
     $title = $row['title'];
     $description = $row['description'];
     $keywords = $row['keywords'];
+} else {
+    $title = "Conheça o Vip Luxúria - Sobre Nós";
+    $description = "";
+    $keywords = "";
 }
 mysqli_free_result($resultado);
 ?>
@@ -27,74 +31,177 @@ mysqli_free_result($resultado);
             <?php include("php/menu-2.php"); ?>
             <div id="topo"><?php include("php/topo-2.php"); ?></div>
         </div>
-        <?php include("php/slider.php"); ?>
-        <?php include 'filters.php' ?>
-        
-        <div class="bg-dark text-light py-4">
+
+        <?php include("site-badges.php"); ?>
+
+        <div class="text-light py-4">
             <div class="container">
                 
-                <!-- Título -->
-                <div class="text-center mb-5">
-                    <h1 class="display-6 fw-bold">Conheça o Vip Luxúria</h1>
+                <!-- Header Elegante -->
+                <div class="about-header-vip">
+                    <h1 class="about-title-main">
+                        Conheça o <span class="text-gold-gradient">VIP LUXÚRIA</span>
+                    </h1>
+                    <p class="about-subtitle">A referência em acompanhantes de luxo no Sul do Brasil</p>
+                    
+                    <div class="about-stats-row">
+                        <div class="stat-box-vip">
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Anos de Mercado</div>
+                        </div>
+                        <div class="stat-box-vip">
+                            <div class="stat-value">500+</div>
+                            <div class="stat-label">Anunciantes</div>
+                        </div>
+                        <div class="stat-box-vip">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Verificadas</div>
+                        </div>
+                        <div class="stat-box-vip">
+                            <div class="stat-value">24/7</div>
+                            <div class="stat-label">Disponível</div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Conteúdo -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="p-4 bg-secondary rounded">
-                            <p class="lead">O <strong>VIP LUXÚRIA</strong> é um site de anúncio classificados de acompanhantes, de produtos e serviços eróticos, direcionado para um público adulto, maior de 18 anos, que procura desfrutar momentos de prazer ao lado de acompanhantes de alto nível.</p>
+                <!-- Conteúdo Principal em Grid -->
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-8">
+                        <!-- Card Principal -->
+                        <div class="about-content-card">
+                            <h2 class="section-title-vip">Nossa Plataforma</h2>
                             
-                            <p>Não temos nenhum vínculo com nenhuma de nossas anunciantes no que diz respeito à prestação de serviço, muito menos fazemos seleção para entrar no site. As anunciantes têm que ser maior de idade e quanto às suas fotos, não temos como identificar se foi feito photoshop ou não.</p>
-                            
-                            <p>A anunciante deverá se dirigir ao estúdio para assinar um termo de autorização de imagem munida de documentos, ou seja, todas elas existem, o que não impede elas de poder mandar outras no lugar.</p>
-                            
-                            <p>Nós do Vip Luxúria aconselhamos as anunciantes a prestar um bom serviço, mas preciso que você entenda que somos contratados e não contratantes.</p>
-                            
-                            <div class="alert alert-info mt-4">
-                                <p><strong>Por exemplo:</strong> Se você olha um anúncio de uma promoção ou prestação de serviço em um jornal e esse anúncio não corresponde à verdade, o que você faz? Reclama na loja ou denuncia a loja no PROCON e não para o Jornal. O Jornal vende espaços publicitários assim como o Vip Luxúria.</p>
+                            <p class="about-lead">
+                                O <strong>VIP LUXÚRIA</strong> é a plataforma líder em anúncios de acompanhantes premium, 
+                                conectando profissionais de alto nível a clientes exigentes há mais de 15 anos.
+                            </p>
+
+                            <div class="about-highlight-box">
+                                <i class="bi bi-shield-check"></i>
+                                <div>
+                                    <h4>Transparência Total</h4>
+                                    <p>Somos uma plataforma de divulgação. Não temos vínculo empregatício com as anunciantes - 
+                                    cada profissional é independente e responsável por seu próprio serviço.</p>
+                                </div>
                             </div>
+
+                            <h3 class="section-subtitle-vip">Como Funciona</h3>
                             
-                            <p>O Vip Luxúria é uma vitrine para clientes que buscam serviços e produtos eróticos. Então navegue pelo site e verifique que oferecemos bem mais que somente anúncio de acompanhantes e estamos sempre buscando trazer ferramentas novas para facilitar sua escolha.</p>
+                            <div class="process-timeline">
+                                <div class="timeline-item">
+                                    <span class="timeline-number">01</span>
+                                    <div class="timeline-content">
+                                        <h5>Verificação</h5>
+                                        <p>Anunciantes comparecem ao estúdio com documentos para autorização de imagem</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-number">02</span>
+                                    <div class="timeline-content">
+                                        <h5>Publicação</h5>
+                                        <p>Perfil aprovado é publicado com fotos e informações fornecidas</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-number">03</span>
+                                    <div class="timeline-content">
+                                        <h5>Contato Direto</h5>
+                                        <p>Clientes contactam diretamente as profissionais sem intermediação</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="about-example-card">
+                                <div class="example-header">
+                                    <i class="bi bi-lightbulb"></i>
+                                    <span>Exemplo Prático</span>
+                                </div>
+                                <p>Assim como um jornal vende espaços publicitários, o Vip Luxúria oferece uma vitrine digital. 
+                                Se um anúncio não corresponde à realidade, a responsabilidade é do anunciante, não da plataforma.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <!-- Sidebar com Navegação -->
+                        <div class="about-sidebar-card">
+                            <h3 class="sidebar-title">Navegação Rápida</h3>
                             
-                            <hr class="my-4">
-                            
-                            <h3>Como Navegar no Site</h3>
-                            <p>A navegação do site é simples e intuitiva, todos os links para as páginas estão disponíveis no menu principal.</p>
-                            
-                            <h4 class="mt-4">Categorias de Anunciantes:</h4>
-                            <ul class="list-unstyled">
-                                <li class="mb-2">📍 <a href="/conteudo/mulheres.php" class="text-warning">Acompanhantes Mulheres</a>
-                                    <ul class="ms-4 mt-2">
-                                        <li><a href="/Acompanhantes-Loiras" class="text-light">Acompanhantes Loiras</a></li>
-                                        <li><a href="/Acompanhantes-Morenas" class="text-light">Acompanhantes Morenas</a></li>
-                                        <li><a href="/Acompanhantes-Mulatas" class="text-light">Acompanhantes Mulatas</a></li>
-                                        <li><a href="/Acompanhantes-ComVideo" class="text-light">Acompanhantes com Vídeo</a></li>
-                                        <li><a href="/Acompanhantes-Atende24Horas" class="text-light">Acompanhantes 24 horas</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mb-2">📍 <a href="/conteudo/homens.php" class="text-warning">Acompanhantes Homens</a></li>
-                                <li class="mb-2">📍 <a href="/conteudo/transex.php" class="text-warning">Acompanhantes Transex</a></li>
-                            </ul>
-                            
-                            <h4 class="mt-4">Busca por Região:</h4>
-                            <ul class="list-unstyled">
-                                <li>📌 <a href="/Acompanhantes/2/Novo-Hamburgo" class="text-light">Acompanhantes de Novo Hamburgo</a></li>
-                                <li>📌 <a href="/Acompanhantes/1/Porto-Alegre" class="text-light">Acompanhantes de Porto Alegre</a></li>
-                                <li>📌 <a href="/Acompanhantes/6/Grande-Porto-Alegre" class="text-light">Acompanhantes da Grande Porto Alegre</a></li>
-                                <li>📌 <a href="/Acompanhantes/3/Vale-dos-Sinos" class="text-light">Acompanhante do Vale dos Sinos</a></li>
-                                <li>📌 <a href="/Acompanhantes/5/Litoral-Gaucho" class="text-light">Acompanhantes do Litoral Gaúcho</a></li>
-                            </ul>
-                            
-                            <div class="alert alert-warning mt-4">
-                                <strong>Obs.:</strong> O <strong>VIP LUXÚRIA</strong> não intermedia os contatos das empresas e/ou clientes anunciantes. As informações contidas nos anúncios são de inteira responsabilidade dos anunciantes.
+                            <div class="nav-category">
+                                <h5><i class="bi bi-gender-female"></i> Mulheres</h5>
+                                <div class="nav-links">
+                                    <a href="/Acompanhantes-Loiras">• Loiras</a>
+                                    <a href="/Acompanhantes-Morenas">• Morenas</a>
+                                    <a href="/Acompanhantes-Mulatas">• Mulatas</a>
+                                    <a href="/Acompanhantes-ComVideo">• Com Vídeo</a>
+                                    <a href="/Acompanhantes-Atende24Horas">• 24 Horas</a>
+                                </div>
+                            </div>
+
+                            <div class="nav-category">
+                                <h5><i class="bi bi-gender-male"></i> Homens</h5>
+                                <div class="nav-links">
+                                    <a href="/conteudo/casais-e-homens.php">• Ver Todos</a>
+                                </div>
+                            </div>
+
+                            <div class="nav-category">
+                                <h5><i class="bi bi-gender-trans"></i> Trans</h5>
+                                <div class="nav-links">
+                                    <a href="/conteudo/transex.php">• Ver Todas</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card de Regiões -->
+                        <div class="about-regions-card">
+                            <h4 class="regions-title">Por Região</h4>
+                            <div class="region-pills">
+                                <a href="/Acompanhantes/1/Porto-Alegre" class="region-pill">Porto Alegre</a>
+                                <a href="/Acompanhantes/2/Novo-Hamburgo" class="region-pill">Novo Hamburgo</a>
+                                <a href="/Acompanhantes/6/Grande-Porto-Alegre" class="region-pill">Grande POA</a>
+                                <a href="/Acompanhantes/3/Vale-dos-Sinos" class="region-pill">Vale dos Sinos</a>
+                                <a href="/Acompanhantes/5/Litoral-Gaucho" class="region-pill">Litoral</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <?php include("banner_informativo.php") ?>
-                <?php include("banner_informativo2.php") ?>
-                <?php include("banner_informativo3.php") ?>
+                <!-- Diferenciais -->
+                <div class="about-features-grid">
+                    <div class="feature-card-vip">
+                        <i class="bi bi-shield-lock-fill"></i>
+                        <h4>Segurança</h4>
+                        <p>SSL e proteção total de dados</p>
+                    </div>
+                    <div class="feature-card-vip">
+                        <i class="bi bi-patch-check-fill"></i>
+                        <h4>Verificação</h4>
+                        <p>Todos os perfis autenticados</p>
+                    </div>
+                    <div class="feature-card-vip">
+                        <i class="bi bi-incognito"></i>
+                        <h4>Discrição</h4>
+                        <p>Navegação 100% anônima</p>
+                    </div>
+                    <div class="feature-card-vip">
+                        <i class="bi bi-star-fill"></i>
+                        <h4>Qualidade</h4>
+                        <p>Apenas profissionais premium</p>
+                    </div>
+                </div>
+
+                <!-- Aviso Legal -->
+                <div class="legal-notice-vip">
+                    <i class="bi bi-info-circle-fill"></i>
+                    <div>
+                        <h5>Aviso Legal</h5>
+                        <p>O VIP LUXÚRIA não intermedia contatos. As informações dos anúncios são de responsabilidade 
+                        dos anunciantes. Somos exclusivamente uma plataforma de divulgação.</p>
+                    </div>
+                </div>
+
+            
             </div>
         </div>
 
@@ -102,6 +209,7 @@ mysqli_free_result($resultado);
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <?php include("php/google.php"); ?>
 </body>
 </html>
