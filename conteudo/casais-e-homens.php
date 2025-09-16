@@ -1,24 +1,43 @@
 <?php
+// Conexão
 $conexao = require_once '../php/conecta_mysql.php';
 
-// Buscar SEO
-$sql = "SELECT * FROM seo 
-        JOIN tipoSeo ON seo.idTipoSeo = tipoSeo.idTipoSeo 
-        WHERE descricao = 'Homens'";
+// Função anti_injection
+function anti_injection($str)
+{
+    return addslashes(strip_tags(trim($str)));
+}
+
+// SEO - Para página de Homens
+$whereSEO = " descricao = 'Homens' ";
+
+$sql = "SELECT * 
+        FROM seo 
+        INNER JOIN tipoSeo ON seo.idTipoSeo = tipoSeo.idTipoSeo 
+        WHERE $whereSEO";
 
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
     die("Impossível visualizar SEO: " . mysqli_error($conexao));
 }
 
-$title = $description = $keywords = "";
-if (mysqli_num_rows($resultado) > 0) {
-    $row = mysqli_fetch_assoc($resultado);
-    $title = $row['title'];
-    $description = $row['description'];
-    $keywords = $row['keywords'];
-}
+$seo = mysqli_fetch_assoc($resultado);
+$title = $seo['title'] ?? 'Casais e Homens - Vip Luxúria';
+$description = $seo['description'] ?? '';
+$keywords = $seo['keywords'] ?? '';
 mysqli_free_result($resultado);
+
+// Cidade
+$cidade = "Porto Alegre";
+if (!empty($_REQUEST["idCidade"])) {
+    $idCidade = (int) $_REQUEST["idCidade"];
+    $sql = "SELECT cidade FROM cidade WHERE idCidade = $idCidade";
+    $resultado = mysqli_query($conexao, $sql);
+    if ($row = mysqli_fetch_assoc($resultado)) {
+        $cidade = $row['cidade'];
+    }
+    mysqli_free_result($resultado);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -32,32 +51,52 @@ mysqli_free_result($resultado);
             <div id="topo"><?php include("../php/topo-2.php"); ?></div>
         </div>
 
-        <?php include("../site-badges.php"); ?>
-
-        <?php include '../filters.php' ?>
-
-        <div class="text-light py-4">
+        <div class="main-content">
             <div class="container">
-
-                <!-- Título -->
-                <div class="text-center mb-5">
-                    <h1 class="display-6 fw-bold">Casais e Homens - Porto Alegre</h1>
+                
+                <!-- Título da Página -->
+                <div class="page-header-elegant">
+                    <h1>Casais e Homens <?= htmlspecialchars($cidade) ?></h1>
+                    <p class="subtitle-page">Profissionais masculinos e casais para suas fantasias</p>
                 </div>
 
-                <!-- Lista de Homens -->
+                <!-- Filtros -->
+                <?php include '../filters.php' ?>
+
+                <?php include("../conteudo/trust-bar.php"); ?>
+
+                <!-- Grid de Acompanhantes -->
                 <section class="acompanhantes-section">
                     <div class="grid-premium">
                         <?php
-                        $sql = "SELECT * FROM homem WHERE flagAtivo = 'Sim' ORDER BY RAND()";
-                        $resultado = mysqli_query($conexao, $sql);
+                        // Montar WHERE
+                        $where = " WHERE flagAtivo = 'Sim' ";
+                        if (!empty($_REQUEST["nome"])) {
+                            $nome = mysqli_real_escape_string($conexao, $_REQUEST["nome"]);
+                            $where .= " AND nome LIKE '%$nome%'";
+                        }
 
+                        // Query conforme cidade
+                        if (!empty($_REQUEST["idCidade"])) {
+                            $idCidade = (int) $_REQUEST["idCidade"];
+                            $sql = "SELECT homem.* FROM homem
+                                    JOIN homemCidade ON (homem.idHomem = homemCidade.idHomem AND homemCidade.idCidade = $idCidade)
+                                    $where
+                                    ORDER BY RAND()";
+                        } else {
+                            $sql = "SELECT * FROM homem
+                                    $where
+                                    ORDER BY RAND()";
+                        }
+
+                        $resultado = mysqli_query($conexao, $sql);
                         if (!$resultado) {
                             die("Impossível visualizar os anunciantes: " . mysqli_error($conexao));
                         }
 
                         $contadorCarrossel = 0;
                         $comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'O', 'Ù', 'Ü', 'Ú'];
-                        $semAcentos  = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
+                        $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
 
                         while ($row = mysqli_fetch_assoc($resultado)) {
                             $idHomem = $row['idHomem'];
@@ -71,12 +110,12 @@ mysqli_free_result($resultado);
                                 $linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
                             }
                             $linkPerfil = htmlspecialchars($linkPerfil);
-                            $nomeCompleto = htmlspecialchars(trim($nome . ' ' . $sobrenome));
+                            $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
                         ?>
                             <a href="<?= $linkPerfil ?>" class="text-decoration-none">
-                                <div class="acompanhante-card hover-lift fade-in">
+                                <div class="acompanhante-card hover-lift">
                                     <?php if ($flagVerificada == 'Sim'): ?>
-                                        <span class="badge-verificada">✓ Verificada</span>
+                                        <span class="badge-verificada">✔ Verificada</span>
                                     <?php endif; ?>
                                     <div class="card-img-wrapper">
                                         <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemComNome) ?>"
@@ -88,36 +127,54 @@ mysqli_free_result($resultado);
                                 </div>
                             </a>
 
-                            <?php if (++$contadorCarrossel == 18) { ?>
+                            <?php 
+                            // Banner de destaque após 18 cards
+                            if (++$contadorCarrossel == 18) { ?>
                                 <div class="carousel-container">
                                     <?php include("../php/carousel.php"); ?>
                                 </div>
+                                <?php $contadorCarrossel = 0; // Reset contador ?>
                             <?php } ?>
                         <?php } ?>
                     </div>
                 </section>
 
-
-                <!-- Box de Texto SEO -->
-                <div class="mt-5 p-4 bg-secondary rounded">
-                    <h2>Casais e Homens</h2>
-                    <p>Nessa página do Vip Luxúria você vai encontrar casais profissionais pagos, para encontros de swing!!!</p>
-
-                    <h3 class="mt-4">O que é Swing?</h3>
-                    <p>O swing é uma prática na qual casais consentem em trocar parceiros sexualmente temporariamente, com o objetivo de vivenciar novas experiências e explorar sua sexualidade em um ambiente seguro e consensual. É importante destacar que a participação no swing é uma escolha pessoal, devendo sempre ser baseado no respeito mútuo e na comunicação aberta entre os parceiros.</p>
+               
+        <!-- Cards de Dicas e Dúvidas -->
+        <div class="info-cards-container">
+            <a href="/conteudo/dicas-contratar-acompanhante.php" class="info-card card-dicas">
+                <div class="icon-wrapper">
+                    <i class="bi bi-lightbulb-fill"></i>
                 </div>
-
-                <?php include("../banner_informativo.php") ?>
-                <?php include("../banner_informativo2.php") ?>
-                <?php include("../banner_informativo3.php") ?>
-            </div>
+                <div class="card-content">
+                    <h3>Dicas Importantes</h3>
+                    <p>O que saber antes de contratar</p>
+                </div>
+            </a>
+            
+            <a href="/conteudo/duvidas-frequentes.php" class="info-card card-duvidas">
+                <div class="icon-wrapper">
+                    <i class="bi bi-question-circle-fill"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Dúvidas Frequentes</h3>
+                    <p>Respostas para suas perguntas</p>
+                </div>
+            </a>
         </div>
-
+ <!-- Banner Não Encontrou  -->
+                <?php include("../nao-encontrou.php"); ?>
+     
         <?php include("../rodape-novo.php"); ?>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <?php include("../php/google.php"); ?>
+        <script type="text/javascript">
+            Cufon.now();
+        </script>
+        <?php include("../php/google.php");
+        mysqli_close($conexao); ?>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    </div>
 </body>
 
 </html>
