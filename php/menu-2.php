@@ -107,6 +107,22 @@ function geraOpcoesCidades($conexao)
             <a class="text-light nav-link" href="/dicas.php">Dicas</a>
           </div>
 
+          <!-- Badges Centralizados - Mulheres, Transex, Casais -->
+          <div class="header-badges-center mx-auto">
+            <a href="javascript:carregaAnunciantes('Mulheres')" class="badge-category-menu">
+              <i class="bi bi-gender-female"></i>
+              <span>Mulheres</span>
+            </a>
+            <a href="javascript:carregaAnunciantes('Transex')" class="badge-category-menu">
+              <i class="bi bi-gender-trans"></i>
+              <span>Transex</span>
+            </a>
+            <a href="javascript:carregaAnunciantes('Casais')" class="badge-category-menu">
+              <i class="bi bi-people-fill"></i>
+              <span>Casais</span>
+            </a>
+          </div>
+
           <div>
             <!-- Botão Anuncie Aqui -->
             <a href="/como-anunciar/" class="btn-anuncie-badge me-3 no-decoration text-white">
@@ -114,17 +130,75 @@ function geraOpcoesCidades($conexao)
             </a>
           </div>
 
-          <!-- WhatsApp -->
-          <div class="whatsapp-header text-white">
-            <a href="https://api.whatsapp.com/send/?phone=51981440470&text&type=phone_number&app_absent=0" target="_blank" class="no-decoration text-white">
-              <i class="bi bi-whatsapp"></i> (51) 98144-0470
-            </a>
-          </div>
+          
         </div>
       </div>
     </nav>
   </div>
 </div>
+
+<style>
+/* Header superior dark */
+.top-header-fino {
+    background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
+    border-bottom: 2px solid var(--rosa-primary);
+    padding: 10px 0;
+}
+
+/* Badges de Categorias no Centro */
+.header-badges-center {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-category-menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.3);
+    padding: 8px 16px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.badge-category-menu:hover {
+    background: var(--rosa-primary);
+    border-color: var(--rosa-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.badge-category-menu i {
+    font-size: 16px;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    .header-badges-center {
+        margin: 15px 0;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 575px) {
+    .badge-category-menu {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .badge-category-menu i {
+        font-size: 14px;
+    }
+}
+</style>
 
 <!-- JS para submenus multi-nível -->
 <script>
