@@ -1,12 +1,5 @@
 ul#navmenu-h {
-	list-style: none;
-	position: absolute;
-	height: 40px;
 	margin-top: 5px;
-	margin-bottom: 0px;
-	margin-left: 20px;
-	margin-right: auto;
-	z-index: 5000;
 }
 
 ul#navmenu-h ul {
@@ -63,7 +56,7 @@ ul#navmenu-h a {
 ul#navmenu-h a:hover,ul#navmenu-h li:hover a,ul#navmenu-h li.iehover a {
 	color: #FFF;
 	background-color: #BC1894;
-	height: 27px;
+	height: 40px;
 	z-index: 2000;
 	margin-top: -1px;
 	margin-bottom: -2px;

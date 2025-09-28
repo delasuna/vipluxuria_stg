@@ -91,14 +91,8 @@ body {
 	background-color: #E32AB4;
 }
 #menu-content {
-	width: 1024px;
-	margin-right: auto;
-	margin-left: auto;
-	text-align: left;
-	z-index: 1;
-	padding: 0px;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	display: flex;
+	justify-content: center;
 }
 #banner-inicio {
 	width:100%;
