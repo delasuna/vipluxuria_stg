@@ -1,45 +1,39 @@
 <?php require_once("verifica.php"); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
     <meta name="robots" content="index,follow">
     <meta name="description" content="Acompanhantes Porto Alegre , Acompanhante em Porto Alegre , Garota de Programa Porto Alegre , Acompanhante Rio Grande do Sul, Acompanhante RS" />
     <meta name="keywords" content="Acompanhantes Porto Alegre , Acompanhante em Porto Alegre , Garota de Programa Porto Alegre , Acompanhante Rio Grande do Sul, Acompanhante RS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Vip Lux&uacute;ria - Acompanhantes Porto Alegre</title>
+    <title>Vip Luxúria - Acompanhantes Porto Alegre</title>
 
-    <!-- CSS Principais -->
-    <link href="/sistema/content/css-js/estilos-sistema.css" rel="stylesheet" type="text/css" />
-    <link href="/sistema/content/css-js/menu-sistema.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../css/config.css" type="text/css" /> 
-    <link rel="stylesheet" href="../css/text.css" type="text/css" />
-    <link rel="stylesheet" href="../css/lightbox.css" type="text/css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../css/content_sis.css">
-    <link rel="stylesheet" type="text/css" href="../css/header_sis.css">  
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <script type="text/javascript" src="../imagens/js/prototype.js"></script>
-    <script type="text/javascript" src="../imagens/js/scriptaculous.js?load=effects"></script>
-    <script type="text/javascript" src="../imagens/js/lightbox.js"></script>
-    <script type="text/javascript" src="../js/checkall.js"></script>
-    <script src="/css-js/cufon-yui.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/css-js/Bauhaus_Md_BT_400.font.js"></script>
-    <script src="/css-js/functions.js" type="text/javascript"></script>
-    
-    <script type="text/javascript">
-        Cufon.replace('#navmenu-h');
-        Cufon.replace('#slogan');
-        Cufon.replace('h1, h2, h3, h4');
-        Cufon.replace('.menu-rodape');
-    </script>
+    <!-- CSS antigos -->
+    <link href="/sistema/content/css-js/estilos-sistema.css" rel="stylesheet" />
+    <link href="/sistema/content/css-js/menu-sistema.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/config.css" />
+    <link rel="stylesheet" href="../css/text.css" />
+    <link rel="stylesheet" href="../css/lightbox.css" />
+    <link rel="stylesheet" href="../css/content_sis.css">
+    <link rel="stylesheet" href="../css/header_sis.css">  
+
+    <style>
+        table.table {
+            font-size: 0.95rem;
+        }
+    </style>
 </head>
 
 <body> 
 <a name="inicio"></a> 
 <div class="voltar-inicio">
-    <a href="#inicio"><img src="/imagens/base/seta-topo.png" alt="Retornar Topo da P&aacute;gina" width="30" height="30" border="0" /></a>
+    <a href="#inicio"><img src="/imagens/base/seta-topo.png" alt="Retornar Topo da Página" width="30" height="30" /></a>
 </div>
 
 <div id="tudo">
@@ -62,84 +56,24 @@
             </div>
         </div>
 
-        <div id="titulo">
-            <div id="titulo-content">
-                <h1>Anunciantes - Mulheres</h1>
+        <div class="container-fluid mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="text-light">Anunciantes - Mulheres</h1>
             </div>
-            <div class="traco"></div>
-        </div>
+            <hr>
 
-        <div id="principal">
-            <div id="principal-topo"></div>
-            <div id="principal-content">
-                <div id="coluna-esquerda-full">
-                    <p> 
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    
                     <?php
                         include("../inc/common.php");
                         pageTitle("", "Lista");
-                    ?>
-                    
-                    <script type="text/javascript">
-                        function excluir() {
-                            if (confirm('Excluir registros selecionados?')) {
-                                document.frm.action = "mulher_excluir.php";
-                                document.frm.submit();
-                            }
-                        }
-                    </script>  
 
-                    <?php
                         $conn = new db();
                         $conn->open();
 
                         $pg = getParam("pagina");
                         if ($pg == "") $pg = 1;
-
-                        if (getParam("clear") == 1) {
-                            setSession("sOrder", "");
-                            setSession("where", "");
-                            setSession("pagina_atual", "");
-                            setSession("numeroRegistros", ""); 
-                        }
-
-                        if (getParam("numeroRegistros") != "") {
-                            setSession("numeroRegistros", getParam("numeroRegistros"));    
-                        }
-
-                        setSession("redirectAnunciante", "mulher_lista.php");    
-
-                        $mesma_pagina = true;
-                        if ($_SERVER['PHP_SELF'] != getSession("pagina_atual")) {
-                            $mesma_pagina = false;
-                            setSession("pagina_atual", $_SERVER['PHP_SELF']);
-                        }
-
-                        $iSort = getParam("Sorting");
-                        $iSorted = getParam("Sorted");
-                        if ((!$iSort) && (!$mesma_pagina)) {
-                            $form_sorting = "";
-                            if (getSession("sOrder") == "") {
-                                $iSort = 2;
-                                $iSorted = "";
-                            }
-                        }
-
-                        if ($iSort) {
-                            if ($iSort == $iSorted) {
-                                $form_sorting = "";
-                                $sDirection = " DESC";
-                                $sSortParams = "Sorting=" . $iSort . "&Sorted=" . $iSort . "&";
-                            } else {
-                                $form_sorting = $iSort;
-                                $sDirection = " ASC";
-                                $sSortParams = "Sorting=" . $iSort . "&Sorted=" . "&";
-                            }
-
-                            if ($iSort == 2) setSession("sOrder", " order by nomeUrl" . $sDirection); 
-                            if ($iSort == 3) setSession("sOrder", " order by email" . $sDirection); 
-                            if ($iSort == 4) setSession("sOrder", " order by telefone" . $sDirection);
-                            if ($iSort == 5) setSession("sOrder", " order by flagAtivo" . $sDirection);
-                        }
 
                         $sql = "SELECT * FROM mulher WHERE flagAtivo = 'Sim' " . getSession("sOrder");
 
@@ -155,135 +89,108 @@
                         $rs = new query($conn, $sql, $pg, $numeroRegistros); 
                         $pg_ant = $pg-1;
                         $pg_prox = $pg+1;
+                        $totalPaginas = $rs->totalpages();
                     ?>
 
-                    <form name="form2" id="form2" method="post" action="mulher_lista.php">
-                        <div align="right">
-                            <table height="5px">
-                                <tr>
-                                    <td class="LabelFONT">
-                                        <input type="hidden" name="rodou" value="s">            
-                                        Registros por página:
-                                    </td>
-                                    <td class="campoSelect">
-                                        <select name="numeroRegistros" size="1">
-                                            <option value="Todos">Todos</option>
-                                            <option value="15" <?php if (getParam("numeroRegistros") == 15 || getSession("numeroRegistros") == 15 || getSession("numeroRegistros") == "") echo "selected"; ?>>15</option>
-                                            <option value="30" <?php if (getParam("numeroRegistros") == 30 || getSession("numeroRegistros") == 30) echo "selected"; ?>>30</option>
-                                            <option value="60" <?php if (getParam("numeroRegistros") == 60 || getSession("numeroRegistros") == 60) echo "selected"; ?>>60</option>
-                                        </select>
-                                    </td>
-                                    <td>            
-                                        <input type="button" name="botaoOk" value=" OK " onClick="document.getElementById('form2').submit();" style="cursor:pointer;">
-                                    </td>            
-                                </tr>
+                    <div>
+                        <a class="btn btn-primary" href="mulher_edicao.php">Novo</a>
+                        <a class="btn btn-danger" href="javascript:excluir()">Excluir</a>
+                    </div>
+
+                    <!-- Seleção de registros por página -->
+                    <form name="form2" id="form2" method="post" action="mulher_lista.php" class="row g-2 mb-3 justify-content-end">
+                        <div class="col-auto">
+                            <label class="form-label mb-0">Registros por página:</label>
+                        </div>
+                        <div class="col-auto">
+                            <select name="numeroRegistros" class="form-select form-select-sm">
+                                <option value="Todos">Todos</option>
+                                <option value="15" <?php if (getParam("numeroRegistros") == 15 || getSession("numeroRegistros") == 15 || getSession("numeroRegistros") == "") echo "selected"; ?>>15</option>
+                                <option value="30" <?php if (getParam("numeroRegistros") == 30 || getSession("numeroRegistros") == 30) echo "selected"; ?>>30</option>
+                                <option value="60" <?php if (getParam("numeroRegistros") == 60 || getSession("numeroRegistros") == 60) echo "selected"; ?>>60</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-sm btn-secondary">OK</button>
+                        </div>
+                    </form>
+
+                    <!-- Lista -->
+                    <form name="frm" id="frm" method="post">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th><input type="checkbox" onclick="CheckAll()"></th>
+                                        <th>Nome</th>
+                                        <th>E-mail</th>
+                                        <th>Telefone</th>
+                                        <th>Ativo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if ($rs->numrows()>0) {
+                                        while ($rs->getrow()) {
+                                            $id = $rs->field("idMulher");
+                                            echo "<tr>";
+                                            echo "<td><input type='checkbox' name='sel[]' value='$id'></td>";
+                                            echo "<td><a href='mulher_edicao.php?id=$id&pagina=$pg' class='fw-semibold text-decoration-none'>{$rs->field('nomeUrl')}</a></td>";
+                                            echo "<td>{$rs->field('email')}</td>";
+                                            echo "<td>{$rs->field('telefone')}</td>";
+                                            echo "<td>{$rs->field('flagAtivo')}</td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5' class='text-center text-muted'>Nenhum registro encontrado!</td></tr>";
+                                    }
+                                    ?>
+                                </tbody>
                             </table>
                         </div>
                     </form>
 
-                    <div class='acoes2'>
-                        <table width="100%">
-                            <tr>
-                                <td>
-                                    &nbsp; <a class='botao' href='mulher_edicao.php' target=''>&nbsp;Novo&nbsp;</a>
-                                    <a class='botao' href='javascript:excluir()' target=''>&nbsp;Excluir &nbsp;</a>                
-                                </td>
-                                <td align="right">
-                                    <?php if ($pg>1) { ?>
-                                        &nbsp; <a class='botao' href='<?php echo $_SERVER['PHP_SELF']."?pagina=$pg_ant"; ?>' target=''>&nbsp;<?=LISTA_ANTERIOR?> &nbsp;</a>
-                                    <?php } ?>              
-                                    <?php if ($pg<$rs->totalpages()) { ?>
-                                        <a class='botao' href='<?php echo $_SERVER['PHP_SELF']."?pagina=$pg_prox"; ?>' target=''>&nbsp;<?=LISTA_PROXIMO?> &nbsp;</a>    
-                                    <?php } ?>                      
-                                </td>                                            
-                            </tr>
-                        </table>
-                    </div>
+                    <!-- Paginação -->
+                    <?php if ($totalPaginas > 1) { ?>
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <?php if ($pg > 1) { ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<?php echo $_SERVER['PHP_SELF']."?pagina=$pg_ant"; ?>">Anterior</a>
+                                    </li>
+                                <?php } ?>
 
-                    <!-- Lista -->
-                    <div align="center">
-                        <form name="frm" id="frm" method="post">
-                        <?php
-                            if ($rs->numrows()>0) {
-                                echo "<table width='100%' border='0'> ";
-                                echo "<tr>";
-                                echo "<td class='DataFONT' align='right' width='53%'>&nbsp;Página ".$pg." de ".$rs->totalpages()."</td>";
-                                if ($rs->numrows() == 1)
-                                    echo "<td class='DataFONT' align='right' width='47%'>&nbsp;Foi encontrado " . $rs->numrows() . " registro.</td>";
-                                else 
-                                    echo "<td class='DataFONT' align='right' width='47%'>&nbsp;Foram encontrados " . $rs->numrows() . " registros.</td>";
-                                echo "</tr>";
-                                echo "</table>";
-                            } else {
-                                echo "<div class='DataFONT'>Nenhum registro encontrado!</div>";
-                            }
+                                <?php 
+                                for ($i = 1; $i <= $totalPaginas; $i++) {
+                                    $active = ($i == $pg) ? "active" : "";
+                                    echo "<li class='page-item $active'><a class='page-link' href='{$_SERVER['PHP_SELF']}?pagina=$i'>$i</a></li>";
+                                }
+                                ?>
 
-                            $table = new Table("", "100%", 4); // Título, Largura, Quantidade de colunas
-                            $table->addColumnHeader("<input type=\"checkbox\" name=\"checkall\" onclick=\"CheckAll()\">");
-                            $table->addColumnHeader("Nome", true, "35%", "L");
-                            $table->addColumnHeader("E-mail", true, "30%", "L");
-                            $table->addColumnHeader("Telefone", true, "20%", "L");
-                            $table->addColumnHeader("Ativo", true, "15%", "L");
-                            $table->addRow();
+                                <?php if ($pg < $totalPaginas) { ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<?php echo $_SERVER['PHP_SELF']."?pagina=$pg_prox"; ?>">Próximo</a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </nav>
+                    <?php } ?>
 
-                            while ($rs->getrow()) {
-                                $id = $rs->field("idMulher");
-                                $table->addData("<input type=\"checkbox\" name=\"sel[]\" value=\"$id\">");
-                                $table->addData(addLink($rs->field("nomeUrl"),"mulher_edicao.php?id=$id&pagina=$pg","Clique para consultar ou editar registro"));
-                                $table->addData($rs->field("email")); 
-                                $table->addData($rs->field("telefone"));
-                                $table->addData($rs->field("flagAtivo"));
-                                $table->addRow();    
-                            }
-
-                            if ($rs->numrows()>0) {
-                                echo $table->writeHTML();
-                                echo "<table width='100%' border='0'> ";
-                                echo "<tr>";
-                                echo "<td class='DataFONT' align='right' width='53%'>&nbsp;Página ".$pg." de ".$rs->totalpages()."</td>";
-                                echo "<td class='DataFONT' align='right' width='47%'>&nbsp;</td>";
-                                echo "</tr>";
-                                echo "</table>";
-                            }
-
-                            $conn->close();
-                        ?>
-                        </form>
-                    </div>
-
-                </p>
-                </div><!-- FIM COLUNA-ESQUERDA-FULL -->
-            </div><!-- FIM PRINCIPAL-CONTENT -->
-
-            <div id="principal-rodape"></div>
-            <div class="clear"></div>             
+                </div>
+            </div>
         </div>
-    </div> <!-- Fim da div#conteudo -->
+    </div> 
 
-    <div id="rodape">
-        <div class="traco"></div>
-        <div id="rodape-content">
-            <?php include("php/menu-rodape-sistema.php"); ?>
-        </div>
-    </div>
 </div> 
-<!-- Fim da div#tudo -->
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-3970078-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function excluir() {
+    if (confirm('Excluir registros selecionados?')) {
+        document.frm.action = "mulher_excluir.php";
+        document.frm.submit();
+    }
+}
 </script>
-
-<script type="text/javascript">
-    Cufon.now();
-</script>
-
 </body>
 </html>

@@ -1,234 +1,209 @@
-<?php require_once("verifica.php"); ?>
-<?php include("../inc/common.php"); ?>
+<?php
+require_once("verifica.php");
+include("../inc/common.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-	<meta charset="UTF-8" />
-	<meta name="robots" content="index,follow">
-	<meta name="description" content="Acompanhantes Porto Alegre , Acompanhante em Porto Alegre , Garota de Programa Porto Alegre , Acompanhante Rio Grande do Sul, Acompanhante RS" />
-	<meta name="keywords" content="Acompanhantes Porto Alegre , Acompanhante em Porto Alegre , Garota de Programa Porto Alegre , Acompanhante Rio Grande do Sul, Acompanhante RS" />
+    <meta charset="UTF-8">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="Acompanhantes Porto Alegre , Acompanhante em Porto Alegre , Garota de Programa Porto Alegre , Acompanhante Rio Grande do Sul, Acompanhante RS" />
+    <meta name="keywords" content="Acompanhantes Porto Alegre , Acompanhante em Porto Alegre , Garota de Programa Porto Alegre , Acompanhante Rio Grande do Sul, Acompanhante RS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Vip Luxúria - Acompanhantes Porto Alegre</title>
+    <title>Vip Luxúria - Mural</title>
 
-	<!-- CSS Principais -->
-	<link href="/sistema/content/css-js/estilos-sistema.css" rel="stylesheet" type="text/css" />
-	<link href="/sistema/content/css-js/menu-sistema.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="../css/config.css" type="text/css" />
-	<link rel="stylesheet" href="../css/text.css" type="text/css" />
-	<link rel="stylesheet" href="../css/lightbox.css" type="text/css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../css/content_sis.css">
-	<link rel="stylesheet" type="text/css" href="../css/header_sis.css">	
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- JS -->
-	<script src="../imagens/js/prototype.js"></script>
-	<script src="../imagens/js/scriptaculous.js?load=effects"></script>
-	<script src="../imagens/js/lightbox.js"></script>
-	<script src="../js/checkall.js"></script>
-	<script src="/css-js/functions.js"></script>
-
-	<!-- Cufon -->
-	<script src="/css-js/cufon-yui.js"></script>
-	<script src="/css-js/Bauhaus_Md_BT_400.font.js"></script>
-	<script>
-		Cufon.replace('#navmenu-h');
-		Cufon.replace('#slogan');
-		Cufon.replace('h1, h2, h3, h4');
-		Cufon.replace('.menu-rodape');
-	</script>
+    <!-- CSS antigos -->
+    <link href="/sistema/content/css-js/estilos-sistema.css" rel="stylesheet" />
+    <link href="/sistema/content/css-js/menu-sistema.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/config.css" />
+    <link rel="stylesheet" href="../css/text.css" />
+    <link rel="stylesheet" href="../css/lightbox.css" />
+    <link rel="stylesheet" href="../css/content_sis.css">
+    <link rel="stylesheet" href="../css/header_sis.css">
 </head>
 
-<body> 
-<a name="inicio"></a> 
-<div class="voltar-inicio"><a href="#inicio"><img src="/imagens/base/seta-topo.png" alt="Retornar Topo da Página" width="30" height="30" /></a></div>
+<body>
+<a name="inicio"></a>
+<div class="voltar-inicio">
+    <a href="#inicio"><img src="/imagens/base/seta-topo.png" alt="Retornar Topo da Página" width="30" height="30" /></a>
+</div>
 
 <div id="tudo">
     <div id="conteudo">
-        <div id="topo"><div id="topo-content"><?php include("php/topo-sistema.php"); ?></div></div>
-        <div id="header"><div id="header-content"><?php include("php/header-sistema.php"); ?></div></div>
-        <div id="menu"><div id="menu-content"><?php include("php/menu-sistema.php"); ?></div></div>
 
-        <div id="titulo">
-       		<div id="titulo-content"><h1>Mural</h1></div>
-            <div class="traco"></div>
-      	</div>
-    
-        <div id="principal">
-        	<div id="principal-topo"></div>
-            <div id="principal-content">
-			    <div id="coluna-esquerda-full">
-            		<p> 
-					<?php pageTitle("","Lista"); ?>
-					
-					<script>
-						function excluir() {
-							if (confirm('Excluir registros selecionados?')) {
-								document.frm.action = "mural_excluir.php";
-								document.frm.submit();
-							}
-						}
-					</script>	
+        <div id="topo">
+            <div id="topo-content"><?php include("php/topo-sistema.php"); ?></div>
+        </div>
 
-					<?php
-						$conn = new db();
-						$conn->open();
+        <div id="header">
+            <div id="header-content"><?php include("php/header-sistema.php"); ?></div>
+        </div>
 
-						$pg = getParam("pagina");
-						if ($pg == "") $pg = 1;
+        <div id="menu">
+            <div id="menu-content"><?php include("php/menu-sistema.php"); ?></div>
+        </div>
 
-						// Reset
-						if (getParam("clear")==1) {
-							setSession("sOrder","");
-							setSession("where","");
-							setSession("pagina_atual","");
-							setSession("numeroRegistros",""); 
-						}
-
-						if (getParam("numeroRegistros") != "") {
-							setSession("numeroRegistros",getParam("numeroRegistros"));	
-						}
-
-						// Página atual
-						if ($_SERVER['PHP_SELF'] != getSession("pagina_atual")) {
-							$mesma_pagina = false;
-							setSession("pagina_atual",$_SERVER['PHP_SELF']);
-						} else {
-							$mesma_pagina = true;
-						}
-
-						// Ordenação
-						$iSort = getParam("Sorting");
-						$iSorted = getParam("Sorted");
-						if ((!$iSort)&&(!$mesma_pagina)) {
-							$form_sorting = "";
-							if (getSession("sOrder") == "") {
-								$iSort = 2; 
-								$iSorted = ""; 
-							}
-						}
-						if ($iSort) {
-							if ($iSort == $iSorted) {
-								$form_sorting = "";
-								$sDirection = " DESC";
-								$sSortParams = "Sorting=" . $iSort . "&Sorted=" . $iSort . "&";
-							} else {
-								$form_sorting = $iSort;
-								$sDirection = " ASC";
-								$sSortParams = "Sorting=" . $iSort . "&Sorted=&";
-							}
-							if ($iSort == 2) setSession("sOrder"," order by dataPublicacao " . $sDirection); 
-							if ($iSort == 3) setSession("sOrder"," order by nome " . $sDirection); 
-							if ($iSort == 4) setSession("sOrder"," order by flagAprovado " . $sDirection); 
-						}
-
-						// Query
-						$sql = "SELECT * FROM mural " . getSession("sOrder");
-
-						if (getSession("numeroRegistros") == "Todos") {
-							$rs = new query($conn, $sql); 
-							$numeroRegistros = $rs->numrows();
-						} else if (getSession("numeroRegistros") != "") {
-							$numeroRegistros = getSession("numeroRegistros");
-						} else {
-							$numeroRegistros = 15;
-						}
-
-						$rs = new query($conn, $sql, $pg, $numeroRegistros); 
-						$pg_ant = $pg-1;
-						$pg_prox = $pg+1;
-					?>
-
-					<form name="form2" method="post" action="mural_lista.php">
-						<div align="right">
-							<table>
-								<tr>
-									<td class="LabelFONT">Registros por página:</td>
-									<td class="campoSelect">
-										<select name="numeroRegistros">
-											<option value="Todos">Todos</option>
-											<option value="15" <?= (getSession("numeroRegistros")==15 || getSession("numeroRegistros")=="")?"selected":"" ?>>15</option>
-											<option value="30" <?= (getSession("numeroRegistros")==30)?"selected":"" ?>>30</option>
-											<option value="60" <?= (getSession("numeroRegistros")==60)?"selected":"" ?>>60</option>
-										</select>
-									</td>
-									<td><input type="submit" value="OK" style="cursor:pointer;"></td>
-								</tr>
-							</table>
-						</div>
-					</form>
-					
-					<div class='acoes2'>
-						<table width="100%">
-							<tr>
-								<td>
-									<a class='botao' href='mural_edicao.php'>&nbsp;Novo&nbsp;</a>
-									<a class='botao' href='javascript:excluir()'>&nbsp;Excluir&nbsp;</a>
-								</td>
-								<td align="right">
-									<?php if ($pg>1) { ?>
-										<a class='botao' href='<?=$_SERVER['PHP_SELF']."?pagina=$pg_ant"?>'>&nbsp;<?=LISTA_ANTERIOR?>&nbsp;</a>
-									<?php } ?>				
-									<?php if ($pg<$rs->totalpages()) { ?>
-										<a class='botao' href='<?=$_SERVER['PHP_SELF']."?pagina=$pg_prox"?>'>&nbsp;<?=LISTA_PROXIMO?>&nbsp;</a>	
-									<?php } ?>						
-								</td>											
-							</tr>
-						</table>
-					</div>
-					
-					<div align="center">
-					<form name="frm" method="post">
-					<?php
-						if ($rs->numrows()>0) {
-							echo "<table width='100%' border='0'> ";
-							echo "<tr>";
-							echo "<td class='DataFONT' align='right' width='53%'>&nbsp;Página ".$pg." de ".$rs->totalpages()."</td>";
-							echo "<td class='DataFONT' align='right' width='47%'>&nbsp;Foram encontrados " . $rs->numrows() . " registros.</td>";
-							echo "</tr></table>";
-						} else {
-							echo "<div class='DataFONT'>Nenhum registro encontrado!</div>";
-						}
-
-						$table = new Table("","100%",4);
-						$table->addColumnHeader("<input type=\"checkbox\" name=\"checkall\" onclick=\"CheckAll()\">");
-						$table->addColumnHeader("Data Publicação",true,"30%","L");
-						$table->addColumnHeader("Nome",true,"40%","L");
-						$table->addColumnHeader("Aprovado",true,"30%","L");
-						$table->addRow();
-
-						while ($rs->getrow()) {
-							$id = $rs->field("idMural");
-							$table->addData("<input type=\"checkbox\" name=\"sel[]\" value=\"$id\">");
-							$table->addData(addLink($rs->field("dataPublicacao"),"mural_edicao.php?id=$id&pagina=$pg","Editar"));
-							$table->addData(addLink($rs->field("nome"),"mural_edicao.php?id=$id&pagina=$pg","Editar"));
-							$table->addData(addLink($rs->field("flagAprovado"),"mural_edicao.php?id=$id&pagina=$pg","Editar"));
-							$table->addRow();	
-						}
-
-						if ($rs->numrows()>0) {
-							echo $table->writeHTML();
-							echo "<table width='100%' border='0'><tr>";
-							echo "<td class='DataFONT' align='right' width='53%'>&nbsp;Página ".$pg." de ".$rs->totalpages()."</td>";
-							echo "<td class='DataFONT' align='right' width='47%'>&nbsp;</td>";
-							echo "</tr></table>";
-						}
-
-						$conn->close();
-					?>
-					</form>
-					</div>
-            	</div>
+        <div class="container-fluid mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="text-light">Mural</h1>
             </div>
-            <div id="principal-rodape"></div>
-            <div class="clear"></div>             
-      	</div>
+            <hr>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <?php pageTitle("","Lista"); ?>
+
+                    <script>
+                        function excluir() {
+                            if (confirm('Excluir registros selecionados?')) {
+                                document.frm.action = "mural_excluir.php";
+                                document.frm.submit();
+                            }
+                        }
+                    </script>
+
+                    <?php
+                    $conn = new db();
+                    $conn->open();
+
+                    $pg = getParam("pagina") ?: 1;
+
+                    // Reset
+                    if (getParam("clear")==1) {
+                        setSession("sOrder","");
+                        setSession("where","");
+                        setSession("pagina_atual","");
+                        setSession("numeroRegistros",""); 
+                    }
+
+                    if (getParam("numeroRegistros") != "") setSession("numeroRegistros", getParam("numeroRegistros"));
+
+                    $mesma_pagina = ($_SERVER['PHP_SELF'] == getSession("pagina_atual"));
+                    if (!$mesma_pagina) setSession("pagina_atual", $_SERVER['PHP_SELF']);
+
+                    // Ordenação
+                    $iSort = getParam("Sorting");
+                    $iSorted = getParam("Sorted");
+
+                    if ((!$iSort) && (!$mesma_pagina) && getSession("sOrder") == "") {
+                        $iSort = 2;
+                        $iSorted = "";
+                    }
+
+                    if ($iSort) {
+                        $sDirection = ($iSort == $iSorted) ? " DESC" : " ASC";
+                        if ($iSort == 2) setSession("sOrder"," order by dataPublicacao " . $sDirection); 
+                        if ($iSort == 3) setSession("sOrder"," order by nome " . $sDirection); 
+                        if ($iSort == 4) setSession("sOrder"," order by flagAprovado " . $sDirection); 
+                    }
+
+                    $sql = "SELECT * FROM mural " . getSession("sOrder");
+
+                    if (getSession("numeroRegistros") == "Todos") {
+                        $rs = new query($conn, $sql);
+                        $numeroRegistros = $rs->numrows();
+                    } else if (getSession("numeroRegistros") != "") {
+                        $numeroRegistros = getSession("numeroRegistros");
+                    } else {
+                        $numeroRegistros = 15;
+                    }
+
+                    $rs = new query($conn, $sql, $pg, $numeroRegistros); 
+                    $pg_ant = $pg-1;
+                    $pg_prox = $pg+1;
+                    $totalPaginas = $rs->totalpages();
+                    ?>
+
+                    <!-- Botões e registros por página -->
+                    <div class="d-flex justify-content-between mb-3">
+                        <div>
+                            <a class="btn btn-primary" href="mural_edicao.php">Novo</a>
+                            <a class="btn btn-danger" href="javascript:excluir()">Excluir</a>
+                        </div>
+                        <form method="post" class="d-flex align-items-center" action="mural_lista.php">
+                            <label class="me-2 mb-0">Registros por página:</label>
+                            <select name="numeroRegistros" class="form-select form-select-sm me-2" onchange="this.form.submit()">
+                                <option value="Todos">Todos</option>
+                                <option value="15" <?= (getSession("numeroRegistros")==15 || getSession("numeroRegistros")=="")?"selected":"" ?>>15</option>
+                                <option value="30" <?= (getSession("numeroRegistros")==30)?"selected":"" ?>>30</option>
+                                <option value="60" <?= (getSession("numeroRegistros")==60)?"selected":"" ?>>60</option>
+                            </select>
+                            <button class="btn btn-sm btn-secondary" type="submit">OK</button>
+                        </form>
+                    </div>
+
+                    <!-- Tabela -->
+                    <form name="frm" method="post">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th><input type="checkbox" onclick="CheckAll()"></th>
+                                        <th>Data Publicação</th>
+                                        <th>Nome</th>
+                                        <th>Aprovado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if ($rs->numrows() > 0) {
+                                        while ($rs->getrow()) {
+                                            $id = $rs->field("idMural");
+                                            echo "<tr>";
+                                            echo "<td><input type='checkbox' name='sel[]' value='$id'></td>";
+                                            echo "<td><a href='mural_edicao.php?id=$id&pagina=$pg' class='text-decoration-none'>{$rs->field('dataPublicacao')}</a></td>";
+                                            echo "<td><a href='mural_edicao.php?id=$id&pagina=$pg' class='text-decoration-none'>{$rs->field('nome')}</a></td>";
+                                            echo "<td><a href='mural_edicao.php?id=$id&pagina=$pg' class='text-decoration-none'>{$rs->field('flagAprovado')}</a></td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='4' class='text-center text-muted'>Nenhum registro encontrado!</td></tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                    <!-- Paginação -->
+                    <?php if ($totalPaginas > 1) { ?>
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <?php if ($pg > 1) { ?>
+                                    <li class="page-item"><a class="page-link" href="<?= $_SERVER['PHP_SELF'] . "?pagina=$pg_ant" ?>">Anterior</a></li>
+                                <?php } ?>
+                                <?php 
+                                for ($i = 1; $i <= $totalPaginas; $i++) {
+                                    $active = ($i == $pg) ? "active" : "";
+                                    echo "<li class='page-item $active'><a class='page-link' href='{$_SERVER['PHP_SELF']}?pagina=$i'>$i</a></li>";
+                                }
+                                ?>
+                                <?php if ($pg < $totalPaginas) { ?>
+                                    <li class="page-item"><a class="page-link" href="<?= $_SERVER['PHP_SELF'] . "?pagina=$pg_prox" ?>">Próximo</a></li>
+                                <?php } ?>
+                            </ul>
+                        </nav>
+                    <?php } ?>
+
+                    <?php $conn->close(); ?>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-	<div id="rodape">
-	 	<div class="traco"></div>
-		<div id="rodape-content"><?php include("php/menu-rodape-sistema.php"); ?></div>
-	</div>
-</div> 
+    <div id="rodape">
+        <div class="traco"></div>
+        <div id="rodape-content"><?php include("php/menu-rodape-sistema.php"); ?></div>
+    </div>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>Cufon.now();</script>
 </body>
 </html>

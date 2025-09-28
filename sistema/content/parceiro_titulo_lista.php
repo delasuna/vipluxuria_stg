@@ -1,24 +1,32 @@
-<?php require_once("verifica.php"); ?>
+<?php
+require_once("verifica.php");
+include("../inc/common.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="index,follow">
     <meta name="description" content="Acompanhantes Porto Alegre , Acompanhante em Porto Alegre , Garota de Programa Porto Alegre , Acompanhante Rio Grande do Sul, Acompanhante RS">
     <meta name="keywords" content="Acompanhantes Porto Alegre , Acompanhante em Porto Alegre , Garota de Programa Porto Alegre , Acompanhante Rio Grande do Sul, Acompanhante RS">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Vip Luxúria - Acompanhantes Porto Alegre</title>
+    <title>Vip Luxúria - Parceiros</title>
 
-    <!-- CSS Principais -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS antigos -->
     <link href="/sistema/content/css-js/estilos-sistema.css" rel="stylesheet">
     <link href="/sistema/content/css-js/menu-sistema.css" rel="stylesheet">
     <link href="../css/config.css" rel="stylesheet">
     <link href="../css/text.css" rel="stylesheet">
-    <link href="../css/lightbox.css" rel="stylesheet" media="screen">
+    <link href="../css/lightbox.css" rel="stylesheet">
     <link href="../css/content_sis.css" rel="stylesheet">
     <link href="../css/header_sis.css" rel="stylesheet">
 
-    <!-- Scripts Principais -->
+    <!-- JS -->
     <script src="../imagens/js/prototype.js"></script>
     <script src="../imagens/js/scriptaculous.js?load=effects"></script>
     <script src="../imagens/js/lightbox.js"></script>
@@ -35,6 +43,7 @@
         Cufon.replace('.menu-rodape');
     </script>
 </head>
+
 <body>
 <a name="inicio"></a>
 <div class="voltar-inicio">
@@ -43,197 +52,141 @@
 
 <div id="tudo">
     <div id="conteudo">
-        <div id="topo">
-            <div id="topo-content">
-                <?php include("php/topo-sistema.php"); ?>
-            </div>
-        </div>
 
-        <div id="header">
-            <div id="header-content">
-                <?php include("php/header-sistema.php"); ?>
-            </div>
-        </div>
+        <div id="topo"><div id="topo-content"><?php include("php/topo-sistema.php"); ?></div></div>
+        <div id="header"><div id="header-content"><?php include("php/header-sistema.php"); ?></div></div>
+        <div id="menu"><div id="menu-content"><?php include("php/menu-sistema.php"); ?></div></div>
 
-        <div id="menu">
-            <div id="menu-content">
-                <?php include("php/menu-sistema.php"); ?>
+        <div class="container-fluid mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="text-light">Parceiros - Título</h1>
             </div>
-        </div>
+            <hr>
 
-        <div id="titulo">
-            <div id="titulo-content">
-                <h1>Parceiros - Título</h1>
-            </div>
-            <div class="traco"></div>
-        </div>
+            <div class="card shadow-sm">
+                <div class="card-body">
 
-        <div id="principal">
-            <div id="principal-topo"></div>
-            <div id="principal-content">
-                <div id="coluna-esquerda-full">
                     <?php
-                        include("../inc/common.php");
-                        pageTitle("", "Lista");
+                    pageTitle("", "Lista");
 
-                        $conn = new db();
-                        $conn->open();
+                    $conn = new db();
+                    $conn->open();
 
-                        $pg = getParam("pagina") ?: 1;
+                    $pg = getParam("pagina") ?: 1;
 
-                        if (getParam("clear") == 1) {
-                            setSession("sOrder", "");
-                            setSession("where", "");
-                            setSession("pagina_atual", "");
-                            setSession("numeroRegistros", "");
-                        }
+                    if (getParam("clear") == 1) {
+                        setSession("sOrder", "");
+                        setSession("where", "");
+                        setSession("pagina_atual", "");
+                        setSession("numeroRegistros", "");
+                    }
 
-                        if (getParam("numeroRegistros") != "") {
-                            setSession("numeroRegistros", getParam("numeroRegistros"));
-                        }
+                    if (getParam("numeroRegistros") != "") setSession("numeroRegistros", getParam("numeroRegistros"));
 
-						$pagina_atual = getSession("pagina_atual");
-                        $mesma_pagina = ($_SERVER['PHP_SELF'] == $pagina_atual);
-                        if (!$mesma_pagina) {
-                            setSession("pagina_atual", $_SERVER['PHP_SELF']);
-                        }
+                    $mesma_pagina = ($_SERVER['PHP_SELF'] == getSession("pagina_atual"));
+                    if (!$mesma_pagina) setSession("pagina_atual", $_SERVER['PHP_SELF']);
 
-                        $iSort = getParam("Sorting");
-                        $iSorted = getParam("Sorted");
-                        if ((!$iSort) && (!$mesma_pagina)) {
-                            $form_sorting = "";
-                            if (getSession("sOrder") == "") {
-                                $iSort = 2;
-                                $iSorted = "";
-                            }
-                        }
+                    $iSort = getParam("Sorting");
+                    $iSorted = getParam("Sorted");
+                    if (!$iSort && !$mesma_pagina && getSession("sOrder") == "") {
+                        $iSort = 2;
+                        $iSorted = "";
+                    }
 
-                        if ($iSort) {
-                            if ($iSort == $iSorted) {
-                                $form_sorting = "";
-                                $sDirection = " DESC";
-                                $sSortParams = "Sorting=" . $iSort . "&Sorted=" . $iSort . "&";
-                            } else {
-                                $form_sorting = $iSort;
-                                $sDirection = " ASC";
-                                $sSortParams = "Sorting=" . $iSort . "&Sorted=&";
-                            }
+                    if ($iSort) {
+                        $sDirection = ($iSort == $iSorted) ? " DESC" : " ASC";
+                        if ($iSort == 2) setSession("sOrder", " ORDER BY titulo" . $sDirection);
+                    }
 
-                            if ($iSort == 2) setSession("sOrder", " ORDER BY titulo" . $sDirection);
-                        }
+                    $sql = "SELECT * FROM parceirotitulo " . getSession("sOrder");
 
-                        $sql = "SELECT * FROM parceirotitulo " . getSession("sOrder");
+                    if (getSession("numeroRegistros") == "Todos") {
+                        $rs = new query($conn, $sql);
+                        $numeroRegistros = $rs->numrows();
+                    } else {
+                        $numeroRegistros = getSession("numeroRegistros") ?: 15;
+                    }
 
-                        if (getSession("numeroRegistros") == "Todos") {
-                            $rs = new query($conn, $sql);
-                            $numeroRegistros = $rs->numrows();
-                        } else if (getSession("numeroRegistros") != "") {
-                            $numeroRegistros = getSession("numeroRegistros");
-                        } else {
-                            $numeroRegistros = 15;
-                        }
-
-                        $rs = new query($conn, $sql, $pg, $numeroRegistros);
-                        $pg_ant = $pg - 1;
-                        $pg_prox = $pg + 1;
+                    $rs = new query($conn, $sql, $pg, $numeroRegistros);
+                    $pg_ant = $pg - 1;
+                    $pg_prox = $pg + 1;
+                    $totalPaginas = $rs->totalpages();
                     ?>
 
-                    <form name="form2" method="post" action="parceiro_titulo_lista.php">
-                        <div align="right">
-                            <table height="5px">
-                                <tr>
-                                    <td class="LabelFONT">
-                                        <input type="hidden" name="rodou" value="s">
-                                        Registros por página:
-                                    </td>
-                                    <td class="campoSelect">
-                                        <select name="numeroRegistros">
-                                            <option value="Todos">Todos</option>
-                                            <option value="15" <?php if (getParam("numeroRegistros") == 15 || getSession("numeroRegistros") == 15 || getSession("numeroRegistros") == "") echo "selected"; ?>>15</option>
-                                            <option value="30" <?php if (getParam("numeroRegistros") == 30 || getSession("numeroRegistros") == 30) echo "selected"; ?>>30</option>
-                                            <option value="60" <?php if (getParam("numeroRegistros") == 60 || getSession("numeroRegistros") == 60) echo "selected"; ?>>60</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="button" value=" OK " onclick="document.form2.submit()" style="cursor:pointer;">
-                                    </td>
-                                </tr>
+                    <!-- Botões e registros por página -->
+                    <div class="d-flex justify-content-between mb-3">
+                        <div>
+                            <a class="btn btn-primary" href="parceiro_titulo_edicao.php">Novo</a>
+                            <a class="btn btn-danger" href="javascript:excluir()">Excluir</a>
+                        </div>
+                        <form method="post" class="d-flex align-items-center" action="parceiro_titulo_lista.php">
+                            <label class="me-2 mb-0">Registros por página:</label>
+                            <select name="numeroRegistros" class="form-select form-select-sm me-2" onchange="this.form.submit()">
+                                <option value="Todos">Todos</option>
+                                <option value="15" <?= ($numeroRegistros == 15)?"selected":"" ?>>15</option>
+                                <option value="30" <?= ($numeroRegistros == 30)?"selected":"" ?>>30</option>
+                                <option value="60" <?= ($numeroRegistros == 60)?"selected":"" ?>>60</option>
+                            </select>
+                            <button class="btn btn-sm btn-secondary" type="submit">OK</button>
+                        </form>
+                    </div>
+
+                    <!-- Tabela -->
+                    <form name="frm" method="post">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th><input type="checkbox" onclick="CheckAll()"></th>
+                                        <th>Título</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if ($rs->numrows() > 0) {
+                                        while ($rs->getrow()) {
+                                            $id = $rs->field("idParceiroTitulo");
+                                            $titulo = addLink($rs->field("titulo"), "parceiro_titulo_edicao.php?id=$id&pagina=$pg", "Clique para consultar ou editar registro");
+                                            echo "<tr>";
+                                            echo "<td><input type='checkbox' name='sel[]' value='$id'></td>";
+                                            echo "<td>$titulo</td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='2' class='text-center text-muted'>Nenhum registro encontrado!</td></tr>";
+                                    }
+                                    ?>
+                                </tbody>
                             </table>
                         </div>
                     </form>
 
-                    <div class='acoes2'>
-                        <table width="100%">
-                            <tr>
-                                <td>
-                                    <a class='botao' href='parceiro_titulo_edicao.php'>&nbsp;Novo&nbsp;</a>
-                                    <a class='botao' href='javascript:excluir()'>&nbsp;Excluir&nbsp;</a>
-                                </td>
-                                <td align="right">
-                                    <?php if ($pg > 1) { ?>
-                                        <a class='botao' href='<?php echo $_SERVER['PHP_SELF']."?pagina=$pg_ant"; ?>'>&nbsp;<?=LISTA_ANTERIOR?>&nbsp;</a>
-                                    <?php } ?>
-                                    <?php if ($pg < $rs->totalpages()) { ?>
-                                        <a class='botao' href='<?php echo $_SERVER['PHP_SELF']."?pagina=$pg_prox"; ?>'>&nbsp;<?=LISTA_PROXIMO?>&nbsp;</a>
-                                    <?php } ?>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div align="center">
-                        <form name="frm" method="post">
-                            <?php
-                                if ($rs->numrows() > 0) {
-                                    echo "<table width='100%' border='0'>";
-                                    echo "<tr>";
-                                    echo "<td class='DataFONT' align='right' width='53%'>&nbsp;Página $pg de ".$rs->totalpages()."</td>";
-                                    echo "<td class='DataFONT' align='right' width='47%'>&nbsp;".($rs->numrows() == 1 ? "Foi encontrado 1 registro." : "Foram encontrados ".$rs->numrows()." registros.")."</td>";
-                                    echo "</tr>";
-                                    echo "</table>";
-                                } else {
-                                    echo "<div class='DataFONT'>Nenhum registro encontrado!</div>";
+                    <!-- Paginação -->
+                    <?php if ($totalPaginas > 1) { ?>
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <?php if ($pg > 1) { ?>
+                                    <li class="page-item"><a class="page-link" href="<?= $_SERVER['PHP_SELF']."?pagina=$pg_ant" ?>">Anterior</a></li>
+                                <?php } ?>
+                                <?php 
+                                for ($i = 1; $i <= $totalPaginas; $i++) {
+                                    $active = ($i == $pg) ? "active" : "";
+                                    echo "<li class='page-item $active'><a class='page-link' href='{$_SERVER['PHP_SELF']}?pagina=$i'>$i</a></li>";
                                 }
+                                ?>
+                                <?php if ($pg < $totalPaginas) { ?>
+                                    <li class="page-item"><a class="page-link" href="<?= $_SERVER['PHP_SELF']."?pagina=$pg_prox" ?>">Próximo</a></li>
+                                <?php } ?>
+                            </ul>
+                        </nav>
+                    <?php } ?>
 
-                                $table = new Table("", "100%", 4);
-                                $table->addColumnHeader("<input type=\"checkbox\" name=\"checkall\" onclick=\"CheckAll()\">");
-                                $table->addColumnHeader("Título", true, "100%", "L");
-                                $table->addRow();
-
-                                while ($rs->getrow()) {
-                                    $id = $rs->field("idParceiroTitulo");
-                                    $table->addData("<input type=\"checkbox\" name=\"sel[]\" value=\"$id\">");
-                                    $table->addData(addLink($rs->field("titulo"), "parceiro_titulo_edicao.php?id=$id&pagina=$pg", "Clique para consultar ou editar registro"));
-                                    $table->addRow();
-                                }
-
-                                if ($rs->numrows() > 0) {
-                                    echo $table->writeHTML();
-                                    echo "<table width='100%' border='0'>";
-                                    echo "<tr>";
-                                    echo "<td class='DataFONT' align='right' width='53%'>&nbsp;Página $pg de ".$rs->totalpages()."</td>";
-                                    echo "<td class='DataFONT' align='right' width='47%'>&nbsp;</td>";
-                                    echo "</tr>";
-                                    echo "</table>";
-                                }
-
-                                $conn->close();
-                            ?>
-                        </form>
-                    </div>
+                    <?php $conn->close(); ?>
                 </div>
             </div>
-            <div id="principal-rodape"></div>
-            <div class="clear"></div>
         </div>
     </div>
 
-    <div id="rodape">
-        <div class="traco"></div>
-        <div id="rodape-content">
-            <?php include("php/menu-rodape-sistema.php"); ?>
-        </div>
-    </div>
 </div>
 
 <script type="text/javascript">
@@ -244,6 +197,7 @@ function excluir() {
     }
 }
 
+// Google Analytics
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-3970078-1']);
 _gaq.push(['_trackPageview']);
@@ -255,5 +209,9 @@ _gaq.push(['_trackPageview']);
 
 Cufon.now();
 </script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
