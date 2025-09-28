@@ -17,7 +17,7 @@ define('SIS_URL', 'www.vipluxuria.com');
 define("DB_DATABASE","vipluxuriagold");
 define("DB_HOST","mysql.vipluxuriagold.net");
 define("DB_USER", "vipluxuria_add1");
-define("DB_PASSWORD","luxuria18");
+define("DB_PASSWORD","BT2D82vWc5Fy");
 
 define("DB_PERSISTENT",false);
 
