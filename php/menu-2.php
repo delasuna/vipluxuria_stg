@@ -99,7 +99,7 @@ function geraOpcoesCidades($conexao)
 
         <!-- Itens do Menu -->
         <div class="collapse navbar-collapse" id="menuFino">
-          <div class="navbar-nav me-auto menu-institucional">
+          <div class="navbar-nav menu-institucional">
             <a class="text-light nav-link bi bi-house-fill" href="/" title="Início"><i class="bi bi-house-door-fill d-none"></i></a>
             <a class="text-light nav-link" href="/vip-luxuria.php">Sobre</a>
             <a class="text-light nav-link" href="/vip-blog">Blog</a>
@@ -108,7 +108,7 @@ function geraOpcoesCidades($conexao)
           </div>
 
           <!-- Badges Centralizados - Mulheres, Transex, Casais -->
-          <div class="header-badges-center mx-auto">
+          <div class="header-badges-center">
             <a href="javascript:carregaAnunciantes('Mulheres')" class="badge-category-menu">
               <i class="bi bi-gender-female"></i>
               <span>Mulheres</span>
@@ -123,91 +123,14 @@ function geraOpcoesCidades($conexao)
             </a>
           </div>
 
-          <div>
+          <div class="header-anuncie">
             <!-- Botão Anuncie Aqui -->
-            <a href="/como-anunciar/" class="btn-anuncie-badge me-3 no-decoration text-white">
+            <a href="/como-anunciar/" class="btn-anuncie-badge">
               <span>ANUNCIE AQUI</span>
             </a>
           </div>
-
-          
         </div>
       </div>
     </nav>
   </div>
 </div>
-
-<style>
-/* Header superior dark */
-.top-header-fino {
-    background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
-    border-bottom: 2px solid var(--rosa-primary);
-    padding: 10px 0;
-}
-
-/* Badges de Categorias no Centro */
-.header-badges-center {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    justify-content: center;
-}
-
-.badge-category-menu {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(233, 30, 99, 0.1);
-    border: 1px solid rgba(233, 30, 99, 0.3);
-    padding: 8px 16px;
-    border-radius: 25px;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.badge-category-menu:hover {
-    background: var(--rosa-primary);
-    border-color: var(--rosa-primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
-}
-
-.badge-category-menu i {
-    font-size: 16px;
-}
-
-/* Responsividade */
-@media (max-width: 991px) {
-    .header-badges-center {
-        margin: 15px 0;
-        flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 575px) {
-    .badge-category-menu {
-        padding: 6px 12px;
-        font-size: 13px;
-    }
-    
-    .badge-category-menu i {
-        font-size: 14px;
-    }
-}
-</style>
-
-<!-- JS para submenus multi-nível -->
-<script>
-  document.querySelectorAll('.dropdown-submenu .dropdown-toggle').forEach(function(element) {
-    element.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      let submenu = this.nextElementSibling;
-      if (submenu) submenu.classList.toggle('show');
-    });
-  });
-</script>

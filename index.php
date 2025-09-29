@@ -99,7 +99,7 @@ mysqli_free_result($resultado);
 <section class="trust-section-leaders">
     <div class="container">
         <!-- Título Principal -->
-        <h2 class="trust-title-leaders">Há 17 anos trabalhando com as melhores acompanhantes de Porto Alegre e região.</h2>
+        <h2 class="trust-title-leaders">Há 17 anos trabalhando com as melhores acompanhantes.</h2>
         
         <!-- Texto SEO em Collapse -->
         <div class="seo-content-wrapper">
