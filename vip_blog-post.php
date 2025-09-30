@@ -4,8 +4,8 @@ $conexao = require_once 'php/conecta_mysql.php';
 // Função simples para anti-injection
 function anti_injection($data)
 {
-	global $conexao;
-	return mysqli_real_escape_string($conexao, strip_tags($data));
+    global $conexao;
+    return mysqli_real_escape_string($conexao, strip_tags($data));
 }
 
 // SEO
@@ -16,11 +16,10 @@ $resultadoSeo = mysqli_query($conexao, $sqlSeo);
 
 $title = $description = $keywords = $assunto = '';
 if ($resultadoSeo && mysqli_num_rows($resultadoSeo) > 0) {
-	$rowSeo = mysqli_fetch_assoc($resultadoSeo);
-	$title = $rowSeo['title'];
-	$description = $rowSeo['description'];
-	$keywords = $rowSeo['keywords'];
-	$assunto = $rowSeo['assunto'] ?? '';
+    $rowSeo = mysqli_fetch_assoc($resultadoSeo);
+    $title = $rowSeo['title'];
+    $description = $rowSeo['description'];
+    $keywords = $rowSeo['keywords'];
 }
 
 // Obter post pelo ID
@@ -39,88 +38,193 @@ $post = mysqli_fetch_assoc($resultPost);
 <html lang="pt-BR">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="robots" content="index,follow">
-	<meta name="description" content="<?php echo htmlspecialchars($description); ?>">
-	<meta name="keywords" content="<?php echo htmlspecialchars($keywords); ?>">
-	<title><?php echo htmlspecialchars($title . ' - ' . $assunto); ?></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="<?php echo htmlspecialchars($description); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($keywords); ?>">
+    <title><?php echo htmlspecialchars($post ? $post['assunto'] : 'Blog') . ' - Vip Luxúria'; ?></title>
 
-	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- CSS custom -->
-	<link href="/css-js/estilos-2.css" rel="stylesheet">
-	<link href="/css-js/menu-2.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- CSS custom -->
+    <link href="/css-js/estilos-2.css" rel="stylesheet">
 </head>
 
 <body>
-	<div class="wrap">
+    <div id="wrap">
+        <div>
+            <?php include("php/menu-2.php"); ?>
+        </div>
 
-		<div>
-			<?php include("php/menu-2.php"); ?>
-			<div id="topo"><?php include("php/topo-2.php"); ?></div>
-		</div>
+        <?php if ($post): ?>
+            <!-- Hero Header Simplificado -->
+            <div class="blog-post-hero-simple">
+                <div class="container">
+                    <div class="hero-content-simple">
+                        <h1 class="hero-title-simple"><?php echo htmlspecialchars($post['assunto']); ?></h1>
+                    </div>
+                </div>
+            </div>
 
-		<!-- Título da página -->
-		<div class="text-center my-4">
-			<img src="/imagens/estrutura/titulo-blog.png" class="img-fluid" alt="Título Blog">
-		</div>
+            <!-- Barra de Progresso Fixa -->
+            <div class="progress-bar-fixed">
+                <div class="progress-fill-horizontal"></div>
+            </div>
 
-		<?php if ($post): ?>
-			<!-- Título do blog -->
-			<div class="text-center mb-4">
-				<div class="d-flex align-items-center justify-content-center">
-					<div class="bg-warning rounded-circle d-flex align-items-center justify-content-center me-3" style="width:60px; height:60px;">
-						<img src="/imagens/estrutura/icone-blog.png" class="icone-blog">
-					</div>
-					<h1 class="fw-bold text-white display-6"><?php echo htmlspecialchars($post['assunto']); ?></h1>
-				</div>
-				<?php if (!empty($post['dataPublicacao'])): ?>
-					<small class="text-white-50">Publicado em <?php echo htmlspecialchars($post['dataPublicacao']); ?></small>
-				<?php endif; ?>
-			</div>
+            <!-- Conteúdo Principal -->
+            <div class="blog-post-container">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <!-- Conteúdo do Artigo Centralizado -->
+                        <div class="col-lg-8 col-md-10">
+                            <article class="post-article-content">
+                                <div class="post-body-formatted">
+                                    <?php 
+                                    // Adiciona classes especiais para melhor formatação
+                                    $mensagem = str_replace('<p>', '<p class="paragraph-styled">', $post['mensagem']);
+                                    $mensagem = str_replace('<h2>', '<h2 class="heading-styled"><span class="heading-decorator"></span>', $mensagem);
+                                    $mensagem = str_replace('<h3>', '<h3 class="subheading-styled">', $mensagem);
+                                    
+                                    echo $mensagem;
+                                    ?>
+                                </div>
+                                
+                                <!-- Vídeo se houver -->
+                                <?php if (!empty($post['video'])): ?>
+                                    <div class="post-video-section">
+                                        <div class="video-wrapper">
+                                            <?php echo $post['video']; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                
+                                <!-- Footer do Post -->
+                                <footer class="post-footer">
+                                    <?php if (!empty($post['nomeTag1'])): ?>
+                                        <div class="post-tags-section">
+                                            <i class="bi bi-tags-fill"></i>
+                                            <div class="tags-list">
+                                                <a href="<?php echo htmlspecialchars($post['paginaTag1']); ?>" class="tag-pill">
+                                                    # <?php echo htmlspecialchars($post['nomeTag1']); ?>
+                                                </a>
+                                                <?php if (!empty($post['nomeTag2'])): ?>
+                                                    <a href="<?php echo htmlspecialchars($post['paginaTag2']); ?>" class="tag-pill">
+                                                        # <?php echo htmlspecialchars($post['nomeTag2']); ?>
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                    
+                                    <div class="post-cta-box">
+                                        <div class="cta-content">
+                                            <h4>Gostou do conteúdo?</h4>
+                                            <p>Explore nossos perfis verificados e encontre a acompanhante ideal para você.</p>
+                                            <a href="/" class="btn-explore">
+                                                <i class="bi bi-search"></i> Explorar Perfis
+                                            </a>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<!-- Conteúdo -->
-			<div class="card bg-dark text-light p-4 mb-3 container">
-				<?php echo $post['mensagem']; ?>
+            <!-- Posts Relacionados -->
+            <section class="related-posts-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h3>Continue Lendo</h3>
+                        <p>Artigos que você pode gostar</p>
+                    </div>
+                    
+                    <div class="related-posts-grid">
+                        <?php
+                        $sqlRelated = "SELECT idBlog, assunto, imagem2 FROM blog 
+                                      WHERE idBlog != ? 
+                                      ORDER BY RAND() 
+                                      LIMIT 3";
+                        $stmtRelated = mysqli_prepare($conexao, $sqlRelated);
+                        mysqli_stmt_bind_param($stmtRelated, 'i', $idBlog);
+                        mysqli_stmt_execute($stmtRelated);
+                        $resultRelated = mysqli_stmt_get_result($stmtRelated);
+                        
+                        while ($related = mysqli_fetch_assoc($resultRelated)):
+                            $comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ'];
+                            $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y'];
+                            $linkRelated = "/vip-blog-post/" . $related['idBlog'] . "/" . 
+                                          str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $related['assunto']));
+                        ?>
+                            <article class="related-post-card">
+                                <a href="<?php echo htmlspecialchars($linkRelated); ?>">
+                                    <div class="related-post-image">
+                                        <img src="<?php echo "/sistema/content/" . htmlspecialchars($related['imagem2']); ?>" 
+                                             alt="<?php echo htmlspecialchars($related['assunto']); ?>">
+                                        <div class="overlay">
+                                            <span class="read-more">Ler Mais</span>
+                                        </div>
+                                    </div>
+                                    <div class="related-post-content">
+                                        <h4><?php echo htmlspecialchars($related['assunto']); ?></h4>
+                                        <span class="related-link">
+                                            Continuar lendo <i class="bi bi-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </a>
+                            </article>
+                        <?php endwhile; ?>
+                    </div>
+                </div>
+            </section>
 
-				<?php if (!empty($post['imagem'])): ?>
-					<div class="my-3 text-center">
-						<img src="<?php echo "/sistema/content/" . htmlspecialchars($post['imagem']); ?>" class="img-fluid rounded" alt="<?php echo htmlspecialchars($post['assunto']); ?>">
-					</div>
-				<?php endif; ?>
+        <?php else: ?>
+            <!-- Post não encontrado -->
+            <div class="error-404-container">
+                <div class="container">
+                    <div class="error-content">
+                        <div class="error-icon">
+                            <i class="bi bi-emoji-frown"></i>
+                        </div>
+                        <h2>Oops! Conteúdo não encontrado</h2>
+                        <p>O artigo que você procura não está disponível ou foi removido.</p>
+                        <div class="error-actions">
+                            <a href="/vip-blog" class="btn-primary-custom">
+                                <i class="bi bi-grid-3x3-gap"></i> Ver Todos os Posts
+                            </a>
+                            <a href="/" class="btn-secondary-custom">
+                                <i class="bi bi-house"></i> Página Inicial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
 
-				<?php if (!empty($post['video'])): ?>
-					<div class="my-3">
-						<?php echo $post['video']; ?>
-					</div>
-				<?php endif; ?>
+        <?php include("rodape-novo.php"); ?>
+    </div>
 
-				<!-- Tags -->
-				<?php if (!empty($post['nomeTag1'])): ?>
-					<p class="mt-4 text-white-50">
-						Tags:
-						<a href="<?php echo htmlspecialchars($post['paginaTag1']); ?>" class="text-warning"><?php echo htmlspecialchars($post['nomeTag1']); ?></a>
-						<?php if (!empty($post['nomeTag2'])): ?>
-							, <a href="<?php echo htmlspecialchars($post['paginaTag2']); ?>" class="text-warning"><?php echo htmlspecialchars($post['nomeTag2']); ?></a>
-						<?php endif; ?>
-					</p>
-				<?php endif; ?>
-
-				<a href="javascript:history.back()" class="btn btn-outline-warning mt-3">
-					<i class="bi bi-arrow-left-circle"></i> Voltar
-				</a>
-			</div>
-		<?php else: ?>
-			<div class="alert alert-warning">Post não encontrado.</div>
-		<?php endif; ?>
-
-		<?php include("rodape-novo.php"); ?>
-
-	</div>
-
-	<!-- Bootstrap JS -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-	<?php include("php/google.php"); ?>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Barra de progresso de leitura fixa
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            
+            const progressBar = document.querySelector('.progress-fill-horizontal');
+            
+            if(progressBar) {
+                progressBar.style.width = scrolled + '%';
+            }
+        });
+    </script>
+    
+    <?php include("php/google.php"); ?>
 </body>
-
 </html>

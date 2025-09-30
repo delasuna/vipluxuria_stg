@@ -29,7 +29,7 @@ mysqli_free_result($resultado);
     <div id="wrap">
         <div>
             <?php include("php/menu-2.php"); ?>
-            <div id="topo"><?php include("php/topo-2.php"); ?></div>
+            
         </div>
 
         <?php include("site-badges.php"); ?>
@@ -44,24 +44,20 @@ mysqli_free_result($resultado);
                     </h1>
                     <p class="about-subtitle">A referência em acompanhantes de luxo no Sul do Brasil</p>
                     
-                    <div class="about-stats-row">
-                        <div class="stat-box-vip">
-                            <div class="stat-value">15+</div>
-                            <div class="stat-label">Anos de Mercado</div>
-                        </div>
-                        <div class="stat-box-vip">
-                            <div class="stat-value">500+</div>
-                            <div class="stat-label">Anunciantes</div>
-                        </div>
-                        <div class="stat-box-vip">
-                            <div class="stat-value">100%</div>
-                            <div class="stat-label">Verificadas</div>
-                        </div>
-                        <div class="stat-box-vip">
-                            <div class="stat-value">24/7</div>
-                            <div class="stat-label">Disponível</div>
-                        </div>
-                    </div>
+                   <div class="about-stats-row">
+    <div class="stat-box-vip">
+        <div class="stat-value">Desde 2008</div>
+        <div class="stat-label">No Mercado</div>
+    </div>
+    <div class="stat-box-vip">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Verificadas</div>
+    </div>
+    <div class="stat-box-vip">
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">Disponível</div>
+    </div>
+</div>
                 </div>
 
                 <!-- Conteúdo Principal em Grid -->
@@ -182,7 +178,7 @@ mysqli_free_result($resultado);
                     <div class="feature-card-vip">
                         <i class="bi bi-incognito"></i>
                         <h4>Discrição</h4>
-                        <p>Navegação 100% anônima</p>
+                        <p> O mais confiável catalogo de acompanhantes de Porto Alegre e região.</p>
                     </div>
                     <div class="feature-card-vip">
                         <i class="bi bi-star-fill"></i>

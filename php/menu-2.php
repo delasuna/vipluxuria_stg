@@ -99,7 +99,7 @@ function geraOpcoesCidades($conexao)
 
         <!-- Itens do Menu -->
         <div class="collapse navbar-collapse" id="menuFino">
-          <div class="navbar-nav me-auto menu-institucional">
+          <div class="navbar-nav menu-institucional">
             <a class="text-light nav-link bi bi-house-fill" href="/" title="Início"><i class="bi bi-house-door-fill d-none"></i></a>
             <a class="text-light nav-link" href="/vip-luxuria.php">Sobre</a>
             <a class="text-light nav-link" href="/vip-blog">Blog</a>
@@ -107,17 +107,26 @@ function geraOpcoesCidades($conexao)
             <a class="text-light nav-link" href="/dicas.php">Dicas</a>
           </div>
 
-          <div>
-            <!-- Botão Anuncie Aqui -->
-            <a href="/como-anunciar/" class="btn-anuncie-badge me-3 no-decoration text-white">
-              <span>ANUNCIE AQUI</span>
+          <!-- Badges Centralizados - Mulheres, Transex, Casais -->
+          <div class="header-badges-center">
+            <a href="javascript:carregaAnunciantes('Mulheres')" class="badge-category-menu">
+              <i class="bi bi-gender-female"></i>
+              <span>Mulheres</span>
+            </a>
+            <a href="javascript:carregaAnunciantes('Transex')" class="badge-category-menu">
+              <i class="bi bi-gender-trans"></i>
+              <span>Transex</span>
+            </a>
+            <a href="javascript:carregaAnunciantes('Casais')" class="badge-category-menu">
+              <i class="bi bi-people-fill"></i>
+              <span>Casais</span>
             </a>
           </div>
 
-          <!-- WhatsApp -->
-          <div class="whatsapp-header text-white">
-            <a href="https://api.whatsapp.com/send/?phone=51981440470&text&type=phone_number&app_absent=0" target="_blank" class="no-decoration text-white">
-              <i class="bi bi-whatsapp"></i> (51) 98144-0470
+          <div class="header-anuncie">
+            <!-- Botão Anuncie Aqui -->
+            <a href="/como-anunciar/" class="btn-anuncie-badge">
+              <span>ANUNCIE AQUI</span>
             </a>
           </div>
         </div>
@@ -125,15 +134,3 @@ function geraOpcoesCidades($conexao)
     </nav>
   </div>
 </div>
-
-<!-- JS para submenus multi-nível -->
-<script>
-  document.querySelectorAll('.dropdown-submenu .dropdown-toggle').forEach(function(element) {
-    element.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      let submenu = this.nextElementSibling;
-      if (submenu) submenu.classList.toggle('show');
-    });
-  });
-</script>
