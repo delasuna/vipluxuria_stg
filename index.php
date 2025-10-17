@@ -33,15 +33,31 @@ mysqli_free_result($resultado);
             <div id="topo"><?php include("php/topo-2.php"); ?></div>
         </div>
 
-        <!-- REMOVIDO: slider.php separado - agora está integrado no topo-2 -->
+        <!-- NOVO: Badges de Categoria APÓS o banner -->
+        <div class="category-badges-section">
+            <div class="container">
+                <div class="category-badges-container">
+                    <a href="javascript:carregaAnunciantes('Mulheres')" class="badge-category-main">
+                        <i class="bi bi-gender-female"></i>
+                        <span>Mulheres</span>
+                    </a>
+                    <a href="javascript:carregaAnunciantes('Transex')" class="badge-category-main">
+                        <i class="bi bi-gender-trans"></i>
+                        <span>Transex</span>
+                    </a>
+                    <a href="javascript:carregaAnunciantes('Casais')" class="badge-category-main">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Casais</span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-        <!-- Filtros logo após o topo integrado -->
+        <!-- Filtros logo após as badges -->
         <?php include 'filters.php' ?>
 
         <div class="main-content">
             <div class="container">
-
-            
 
                 <!-- Grid de Acompanhantes -->
                 <section class="acompanhantes-section">
@@ -74,7 +90,7 @@ mysqli_free_result($resultado);
                             <a href="<?= $linkPerfil ?>" class="text-decoration-none">
                                 <div class="acompanhante-card hover-lift fade-in">
                                     <?php if ($flagVerificada == 'Sim'): ?>
-                                        <span class="badge-verificada">✔ Verificada</span>
+                                        <span class="badge-verificada">✓ Verificada</span>
                                     <?php endif; ?>
                                     <div class="card-img-wrapper">
                                         <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
@@ -87,13 +103,11 @@ mysqli_free_result($resultado);
                             </a>
 
                             <?php if (++$contadorCarrossel == 18) { ?>
-                                
+                                <!-- Espaço para banner/carrossel futuro -->
                             <?php } ?>
                         <?php } ?>
                     </div>
                 </section>
-
-            
 
                <!-- Seção de Confiança com SEO -->
 <section class="trust-section-leaders">
@@ -287,128 +301,6 @@ mysqli_free_result($resultado);
         </div>
     </div>
 </section>
-
-<style>
-/* Seção de Confiança com SEO */
-.trust-section-leaders {
-    background: url('/imagens/estrutura/textura-couro-preto.jpg') center/cover,
-                linear-gradient(180deg, var(--bg-black), #1a1a1a);
-    background-blend-mode: multiply;
-    padding: 80px 20px;
-    margin: 60px 0 0 0;
-    position: relative;
-}
-
-/* Wrapper do conteúdo SEO */
-.seo-content-wrapper {
-    max-width: 1000px;
-    margin: 0 auto 60px;
-}
-
-/* Botão de Expandir */
-.btn-expand-seo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: rgba(233, 30, 99, 0.1);
-    border: 1px solid rgba(233, 30, 99, 0.3);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    margin: 0 auto 30px;
-    transition: all 0.3s ease;
-}
-
-.btn-expand-seo:hover {
-    background: rgba(233, 30, 99, 0.2);
-    border-color: var(--rosa-primary);
-    transform: translateY(-2px);
-}
-
-.btn-expand-seo i {
-    font-size: 18px;
-    transition: transform 0.3s ease;
-}
-
-.btn-expand-seo[aria-expanded="true"] i {
-    transform: rotate(180deg);
-}
-
-/* Conteúdo SEO */
-.seo-text-content {
-    background: rgba(44, 44, 44, 0.5);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(233, 30, 99, 0.1);
-    border-radius: 20px;
-    padding: 40px;
-    margin-top: 20px;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.8;
-}
-
-.seo-text-content h3 {
-    color: var(--rosa-primary);
-    font-size: 24px;
-    font-weight: 600;
-    margin: 30px 0 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(233, 30, 99, 0.2);
-}
-
-.seo-text-content p {
-    margin-bottom: 20px;
-    text-align: justify;
-}
-
-.seo-text-content .lead-text {
-    font-size: 18px;
-    font-weight: 500;
-    color: white;
-    margin-bottom: 25px;
-}
-
-/* Título Principal ajustado */
-.trust-title-leaders {
-    font-size: 36px;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 30px;
-    color: white;
-    position: relative;
-}
-
-.trust-title-leaders::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--rosa-primary), var(--rosa-dark));
-    border-radius: 2px;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .seo-text-content {
-        padding: 25px;
-    }
-    
-    .trust-title-leaders {
-        font-size: 28px;
-    }
-    
-    .btn-expand-seo {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-}
-</style>
                 </section>
             </div>
 

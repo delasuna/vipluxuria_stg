@@ -40,9 +40,6 @@ function anti_injection($str, $link = null) {
     return $str;
 }
 
-// Função para criar URL amigável (remove acentos etc.)
-
-
 // ==================================================
 //  ENVIO DE INDICAÇÃO (FORMULÁRIO "Me indique")
 // ==================================================
@@ -168,11 +165,24 @@ if (!empty($p_flagTipo)) {
     elseif ($p_flagTipo === 'Mu') $tipo = 'Mulata';
 }
 
-// Constrói array de imagens central (mantendo até 8)
-$arrImgs = [];
+// Constrói array de FOTOS PROFISSIONAIS (imagemCentral 1-8)
+$fotosProfissionais = [];
 for ($i=1; $i<=8; $i++) {
     $key = "imagemCentral{$i}";
-    if (!empty($perfil[$key])) $arrImgs[] = 'https://vipluxuria.com/sistema/content/' . $perfil[$key];
+    if (!empty($perfil[$key])) {
+        $fotosProfissionais[] = 'https://vipluxuria.com/sistema/content/' . $perfil[$key];
+    }
+}
+
+// Constrói array de FOTOS CASEIRAS (imagemExtra 1-6)
+$fotosCaseiras = [];
+if (!empty($p_flagMostraConteudoExtra) && $p_flagMostraConteudoExtra === 'S') {
+    for ($i=1; $i<=6; $i++) {
+        $key = "imagemExtra{$i}";
+        if (!empty($perfil[$key])) {
+            $fotosCaseiras[] = 'https://vipluxuria.com/sistema/content/' . $perfil[$key];
+        }
+    }
 }
 
 $itensFaco = [
@@ -192,8 +202,10 @@ $itensFaco = [
     'Tenho amigas' => $p_flagTenhoAmigas ?? '',
 ];
 
-// filtra apenas os que são "Sim"
-$itensFaco = array_filter($itensFaco, fn($v) => $v === 'Sim');
+// Separa em Sim/Não/Talvez
+$facaSim = array_filter($itensFaco, fn($v) => $v === 'Sim');
+$facaNao = array_filter($itensFaco, fn($v) => $v === 'Não');
+$facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 
 ?>
 <!DOCTYPE html>
@@ -208,23 +220,15 @@ $itensFaco = array_filter($itensFaco, fn($v) => $v === 'Sim');
 <!-- CSS -->
 <link href="../../css-js/estilos-2.css" rel="stylesheet" type="text/css" />
 <link href="../../css-js/menu-2.css" rel="stylesheet" type="text/css" />
-<link href="../../css-js/ampliacao-2.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
 <!-- Fontes / scripts -->
 <script src="../../css-js/cufon-yui.js" type="text/javascript"></script>
 <script src="../../css-js/nome_400.font.js" type="text/javascript"></script>
 <script src="../../css-js/titulo_400.font.js" type="text/javascript"></script>
-<script src="https://vipluxuria.com/Scripts/swfobject_modified.js" type="text/javascript"></script>
-
-<!-- Visualizador / lightbox -->
-<script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.js"></script>
-<script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/jquery.lightbox-0.5.js"></script>
-<script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/common.js"></script>
 
 <script type="text/javascript">
-    // array de imagens para o visualizador
-    var arrImg = <?php echo json_encode($arrImgs, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE); ?>;
-
     function gravaVotacao(voto) {
         document.form2.votacao.value = 'S';
         document.form2.voto.value = voto;
@@ -240,39 +244,214 @@ $itensFaco = array_filter($itensFaco, fn($v) => $v === 'Sim');
         document.form3.amigoIndicado.value = 'S';
         document.form3.submit();
     }
+
+    // Galeria Modal
+    let currentImageIndex = 0;
+    let currentGallery = [];
+
+    function openGallery(images, startIndex) {
+        currentGallery = images;
+        currentImageIndex = startIndex;
+        showImage();
+        document.getElementById('galleryModal').style.display = 'flex';
+    }
+
+    function closeGallery() {
+        document.getElementById('galleryModal').style.display = 'none';
+    }
+
+    function changeImage(direction) {
+        currentImageIndex += direction;
+        if (currentImageIndex < 0) currentImageIndex = currentGallery.length - 1;
+        if (currentImageIndex >= currentGallery.length) currentImageIndex = 0;
+        showImage();
+    }
+
+    function showImage() {
+        document.getElementById('modalImage').src = currentGallery[currentImageIndex];
+        document.getElementById('imageCounter').textContent = (currentImageIndex + 1) + ' / ' + currentGallery.length;
+    }
+
+    // Navegação por teclado
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('galleryModal').style.display === 'flex') {
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+            if (e.key === 'Escape') closeGallery();
+        }
+    });
 </script>
 
-<!-- desabilita botão direito (mantive como no original) -->
-<script type="text/javascript">
-// desabilitação do menu de contexto (original)
-function desabilitaMenu(e) {
-    if (window.Event) {
-        if (e.which == 2 || e.which == 3) return false;
-    } else {
-        event.cancelBubble = true;
-        event.returnValue = false;
-        return false;
-    }
+<style>
+/* Modal da Galeria */
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
 }
-function desabilitaBotaoDireito(e) {
-    if (window.Event) {
-        if (e.which == 2 || e.which == 3) return false;
-    } else if (event.button == 2 || event.button == 3) {
-        event.cancelBubble = true;
-        event.returnValue = false;
-        return false;
-    }
-}
-if (window.Event) document.captureEvents(Event.MOUSEUP);
-if (document.layers) document.captureEvents(Event.MOUSEDOWN);
-document.oncontextmenu = desabilitaMenu;
-document.onmousedown = desabilitaBotaoDireito;
-document.onmouseup = desabilitaBotaoDireito;
-</script>
 
-<link rel="stylesheet" type="text/css" href="/css-js/jquery.fancybox.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+.gallery-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.gallery-modal-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+}
+
+.gallery-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.gallery-close:hover {
+    color: var(--rosa-primary);
+}
+
+.gallery-prev,
+.gallery-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.gallery-prev:hover,
+.gallery-next:hover {
+    background: var(--rosa-primary);
+}
+
+.gallery-prev {
+    left: 20px;
+}
+
+.gallery-next {
+    right: 20px;
+}
+
+.gallery-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* Grid de Fotos */
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    aspect-ratio: 3/4;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Layout Perfil 2 Colunas */
+.perfil-container-2col {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.perfil-col-left {
+    background: rgba(44, 44, 44, 0.5);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(233, 30, 99, 0.2);
+}
+
+.perfil-col-right {
+    background: rgba(44, 44, 44, 0.5);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(233, 30, 99, 0.2);
+}
+
+.section-title-perfil {
+    color: var(--rosa-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(233, 30, 99, 0.3);
+}
+
+/* Responsivo */
+@media (max-width: 991px) {
+    .perfil-container-2col {
+        grid-template-columns: 1fr;
+    }
+
+    .photos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .photos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery-prev,
+    .gallery-next {
+        font-size: 30px;
+        padding: 15px;
+    }
+}
+</style>
 
 </head>
 <body>
@@ -289,159 +468,191 @@ document.onmouseup = desabilitaBotaoDireito;
 		<div id="topo"><?php include("../php/topo-2.php"); ?></div>
 	</div>
 
-<div class="perfil-wrapper container mt-3">
-    <div class="row">
-        <!-- Coluna esquerda: foto + galeria -->
-        <div class="col-12 col-lg-5 my-auto">
-            <div class="perfil-foto text-center d-flex">
-                <img src="<?php echo htmlspecialchars('https://vipluxuria.com/sistema/content/'.$p_imagemCentral1 ?? '', ENT_QUOTES, 'UTF-8'); ?>" 
-                     alt="Foto de <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>" 
-                     id="fotoPerfil" 
-                     class="img-fluid rounded"/>
-            </div>
+    <!-- Modal da Galeria -->
+    <div id="galleryModal" class="gallery-modal" onclick="if(event.target === this) closeGallery()">
+        <span class="gallery-close" onclick="closeGallery()">&times;</span>
+        <div class="gallery-modal-content">
+            <img id="modalImage" src="" alt="Foto">
+            <span class="gallery-prev" onclick="changeImage(-1)">&#10094;</span>
+            <span class="gallery-next" onclick="changeImage(1)">&#10095;</span>
+            <div class="gallery-counter" id="imageCounter"></div>
+        </div>
+    </div>
 
-            <!-- Galeria -->
-            <div class="perfil-galeria mt-3 d-flex flex-wrap gap-2 justify-content-center">
-                <?php
-                // Galeria principal
-                for ($i = 1; $i <= 8; $i++) {
-                    $k = "imagemCentral{$i}";
-                    if (!empty($perfil[$k])) {
-                        $src = 'https://vipluxuria.com/sistema/content/' . $perfil[$k];
-                        echo '<img class="thumb-galeria img-thumbnail" src="'.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'" 
-                              onclick="document.getElementById(\'fotoPerfil\').src=\''.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'\'" />';
-                    }
-                }
+    <div class="container mt-4 mb-5">
+        <!-- Nome e WhatsApp Centralizados -->
+        <div class="text-center mb-4">
+            <h1 class="perfil-nome">
+                <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>
+            </h1>
 
-                // Fotos caseiras
-                if (!empty($p_flagMostraConteudoExtra) && $p_flagMostraConteudoExtra === 'S') {
-                    for ($i = 1; $i <= 6; $i++) {
-                        $k = 'imagemExtra' . $i;
-                        if (!empty($perfil[$k])) {
-                            $src = 'https://vipluxuria.com/sistema/content/' . $perfil[$k];
-                            echo '<img class="thumb-galeria img-thumbnail" src="'.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'" 
-                                  onclick="document.getElementById(\'fotoPerfil\').src=\''.htmlspecialchars($src, ENT_QUOTES, 'UTF-8').'\'" />';
-                        }
-                    }
-                }
-                ?>
-            </div>
-
-            <!-- Vídeo -->
-            <?php if (!empty($p_video) && (!isset($p_flagTemVideo) || $p_flagTemVideo !== 'Nao')): ?>
-                <div class="perfil-video mt-5">
-                    <video class="w-100 rounded shadow-sm" controls>
-                        <source src="https://vipluxuria.com/sistema/content/<?php echo htmlspecialchars($p_video, ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
-                        Seu navegador não suporta a reprodução de vídeo.
-                    </video>
-                </div>
+            <?php if (!empty($p_flagWhats) && $p_flagWhats === 'S'): ?>
+                <a class="btn btn-wpp-perfil d-inline-flex align-items-center mt-3"
+                   href="https://api.whatsapp.com/send?phone=<?php echo '55' . preg_replace('/\D+/', '', $p_ddd . $p_telefone); ?>&text=<?php echo urlencode('Tudo bem? Te vi no site Vip Luxuria. Gostaria de saber mais sobre o seu atendimento!'); ?>" 
+                   target="_blank">
+                    <i class="bi bi-whatsapp me-2"></i>
+                    WhatsApp: (<?php echo htmlspecialchars($p_ddd, ENT_QUOTES, 'UTF-8'); ?>) <?php echo htmlspecialchars($p_telefone, ENT_QUOTES, 'UTF-8'); ?>
+                </a>
             <?php endif; ?>
         </div>
 
-        <!-- Coluna direita: informações -->
-        <div class="col-12 col-lg-7">
-            <div class="perfil-info mb-3">
-                <h1 class="perfil-nome text-center">
-                    <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>
-                </h1>
-
-                <!-- Infos básicas -->
-                 <div>
-                    <!-- Botão WhatsApp -->
-                     <div class="text-center w-100">
-                         <?php if (!empty($p_flagWhats) && $p_flagWhats === 'S'): ?>
-                             <a class="btn btn-wpp-perfil d-inline-flex align-items-center mb-3 w-75 justify-content-center"
-                             href="https://api.whatsapp.com/send?phone=<?php echo '55' . preg_replace('/\D+/', '', $p_ddd . $p_telefone); ?>&text=<?php echo urlencode('Tudo bem? Te vi no site Vip Luxuria. Gostaria de saber mais sobre o seu atendimento!'); ?>" 
-                             target="_blank">
-                                 <i class="bi bi-whatsapp me-2"></i>
-                                 WhatsApp: (<?php echo htmlspecialchars($p_ddd, ENT_QUOTES, 'UTF-8'); ?>) <?php echo htmlspecialchars($p_telefone, ENT_QUOTES, 'UTF-8'); ?>
-                             </a>
-                         <?php endif; ?>
-                     </div>
+        <!-- Layout 2 Colunas -->
+        <div class="perfil-container-2col">
+            
+            <!-- COLUNA ESQUERDA -->
+            <div class="perfil-col-left">
+                
+                <!-- Aparência -->
+                <div class="mb-4">
+                    <h2 class="section-title-perfil">Como Sou</h2>
                     <div class="perfil-dados">
-                        <div><span>Cachê: </span><strong><?php echo htmlspecialchars($p_cache ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-                        <div><span>Locais: </span><strong><?php echo htmlspecialchars($p_locais ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-                        <div><span>Cidades: </span><strong><?php echo htmlspecialchars($p_cidades ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-                        <div><span>Horário: </span><strong><?php echo htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '', ENT_QUOTES, 'UTF-8'); ?></strong></div>
-                    </div>
-                 </div>
-            </div>
-
-            <!-- Sobre mim -->
-            <div class="bloco sobre-mim mb-3 p-3 rounded">
-                <h2>Sobre Mim</h2>
-                <p><?php echo nl2br($p_mensagem1 ?? ''); ?></p>
-            </div>
-
-            <!-- Como sou e O que faço -->
-            <div class="row g-3">
-                <div class="col-12 col-md-6 <?php if (empty($itensFaco)) { echo 'w-100 text-center'; } ?>">
-                    <div class="bloco como-sou p-3 rounded h-100">
-                        <h2>Como Sou</h2>
-                        <ul class="list-unstyled">
-                            <?php if(ISSET($p_idade)) : ?><li><span>Idade:</span> <?php echo htmlspecialchars($p_idade ?? '', ENT_QUOTES, 'UTF-8'); ?> anos</li><?php endif; ?>
-                            <?php if(ISSET($p_altura)) : ?><li><span>Altura:</span> <?php echo htmlspecialchars($p_altura ?? '', ENT_QUOTES, 'UTF-8'); ?>m</li><?php endif; ?>
-                            <?php if(ISSET($p_peso)) : ?><li><span>Peso:</span> <?php echo htmlspecialchars($p_peso ?? '', ENT_QUOTES, 'UTF-8'); ?>kg</li><?php endif; ?>
-                            <?php if(ISSET($p_olhos)) : ?><li><span>Olhos:</span> <?php echo htmlspecialchars($p_olhos ?? '', ENT_QUOTES, 'UTF-8'); ?></li><?php endif; ?>
-                            <?php if(ISSET($p_cabelos)) : ?><li><span>Cabelos:</span> <?php echo htmlspecialchars($p_cabelos ?? '', ENT_QUOTES, 'UTF-8'); ?></li><?php endif; ?>
-                            <?php if(ISSET($p_busto)) : ?><li><span>Busto:</span> <?php echo htmlspecialchars($p_busto ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li><?php endif; ?>
-                            <?php if(ISSET($p_quadril)) : ?><li><span>Quadril:</span> <?php echo htmlspecialchars($p_quadril ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li><?php endif; ?>
-                            <?php if(ISSET($p_cintura)) : ?><li><span>Cintura:</span> <?php echo htmlspecialchars($p_cintura ?? '', ENT_QUOTES, 'UTF-8'); ?> cm</li><?php endif; ?>
-                            <?php if(ISSET($p_pes)) : ?><li><span>Pés:</span> <?php echo htmlspecialchars($p_pes ?? '', ENT_QUOTES, 'UTF-8'); ?></li><?php endif; ?>
-                            <?php if(ISSET($p_manequim)) : ?><li><span>Manequim:</span> <?php echo htmlspecialchars($p_manequim ?? '', ENT_QUOTES, 'UTF-8'); ?></li><?php endif; ?>
-                        </ul>
+                        <?php if(isset($p_idade)): ?><div><span>Idade:</span> <strong><?= htmlspecialchars($p_idade) ?> anos</strong></div><?php endif; ?>
+                        <?php if(isset($p_altura)): ?><div><span>Altura:</span> <strong><?= htmlspecialchars($p_altura) ?>m</strong></div><?php endif; ?>
+                        <?php if(isset($p_peso)): ?><div><span>Peso:</span> <strong><?= htmlspecialchars($p_peso) ?>kg</strong></div><?php endif; ?>
+                        <?php if(isset($p_olhos)): ?><div><span>Olhos:</span> <strong><?= htmlspecialchars($p_olhos) ?></strong></div><?php endif; ?>
+                        <?php if(isset($p_cabelos)): ?><div><span>Cabelos:</span> <strong><?= htmlspecialchars($p_cabelos) ?></strong></div><?php endif; ?>
+                        <?php if(isset($p_busto)): ?><div><span>Busto:</span> <strong><?= htmlspecialchars($p_busto) ?> cm</strong></div><?php endif; ?>
+                        <?php if(isset($p_quadril)): ?><div><span>Quadril:</span> <strong><?= htmlspecialchars($p_quadril) ?> cm</strong></div><?php endif; ?>
+                        <?php if(isset($p_cintura)): ?><div><span>Cintura:</span> <strong><?= htmlspecialchars($p_cintura) ?> cm</strong></div><?php endif; ?>
+                        <?php if(isset($p_pes)): ?><div><span>Pés:</span> <strong><?= htmlspecialchars($p_pes) ?></strong></div><?php endif; ?>
+                        <?php if(isset($p_manequim)): ?><div><span>Manequim:</span> <strong><?= htmlspecialchars($p_manequim) ?></strong></div><?php endif; ?>
                     </div>
                 </div>
 
-                <?php if (!empty($itensFaco)): ?>
-                    <div class="col-12 col-md-6">
-                        <div class="bloco o-que-faco p-3 rounded h-100">
-                            <h2>O que Faço</h2>
-                            <div class="tags-faco">
-                                <?php foreach ($itensFaco as $nome => $valor): ?>
-                                    <span class="badge bg-dark"><?= htmlspecialchars($nome) ?></span>
-                                <?php endforeach; ?>
-                            </div>
+                <!-- Informações de Atendimento -->
+                <div class="mb-4">
+                    <h2 class="section-title-perfil">Atendimento</h2>
+                    <div class="perfil-dados">
+                        <div><span>Cachê:</span> <strong><?= htmlspecialchars($p_cache ?? '') ?></strong></div>
+                        <div><span>Locais:</span> <strong><?= htmlspecialchars($p_locais ?? '') ?></strong></div>
+                        <div><span>Cidades:</span> <strong><?= htmlspecialchars($p_cidades ?? '') ?></strong></div>
+                        <div><span>Horário:</span> <strong><?= htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '') ?></strong></div>
+                    </div>
+                </div>
+
+                <!-- Vídeo -->
+                <?php if (!empty($p_video) && (!isset($p_flagTemVideo) || $p_flagTemVideo !== 'Nao')): ?>
+                    <div class="mb-4">
+                        <h2 class="section-title-perfil">Vídeo</h2>
+                        <video class="w-100 rounded shadow-sm" controls>
+                            <source src="https://vipluxuria.com/sistema/content/<?= htmlspecialchars($p_video) ?>" type="video/mp4">
+                            Seu navegador não suporta a reprodução de vídeo.
+                        </video>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Fotos Caseiras -->
+                <?php if (!empty($fotosCaseiras)): ?>
+                    <div class="mb-4">
+                        <h2 class="section-title-perfil">Fotos Caseiras</h2>
+                        <div class="photos-grid">
+                            <?php foreach ($fotosCaseiras as $index => $foto): ?>
+                                <div class="photo-item" onclick='openGallery(<?= json_encode($fotosCaseiras) ?>, <?= $index ?>)'>
+                                    <img src="<?= htmlspecialchars($foto) ?>" alt="Foto caseira <?= $index + 1 ?>" loading="lazy">
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 <?php endif; ?>
+
+            </div>
+
+            <!-- COLUNA DIREITA -->
+            <div class="perfil-col-right">
+                
+                <!-- Fotos Profissionais em DESTAQUE -->
+                <?php if (!empty($fotosProfissionais)): ?>
+                    <div class="mb-4">
+                        <h2 class="section-title-perfil">Fotos Profissionais</h2>
+                        <div class="photos-grid">
+                            <?php foreach ($fotosProfissionais as $index => $foto): ?>
+                                <div class="photo-item" onclick='openGallery(<?= json_encode($fotosProfissionais) ?>, <?= $index ?>)'>
+                                    <img src="<?= htmlspecialchars($foto) ?>" alt="Foto <?= $index + 1 ?>" loading="lazy">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Bio/Sobre Mim -->
+                <?php if (!empty($p_mensagem1)): ?>
+                    <div class="mb-4">
+                        <h2 class="section-title-perfil">Sobre Mim</h2>
+                        <p style="color: rgba(255,255,255,0.85); line-height: 1.7;">
+                            <?= nl2br(htmlspecialchars($p_mensagem1)) ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+
+                <!-- O que Faço - SIM/NÃO/TALVEZ -->
+                <div class="mb-4">
+                    <h2 class="section-title-perfil">O que Faço</h2>
+                    
+                    <?php if (!empty($facaSim)): ?>
+                        <h4 style="color: #4CAF50; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✓ Sim</h4>
+                        <div class="tags-faco">
+                            <?php foreach (array_keys($facaSim) as $nome): ?>
+                                <span class="badge bg-success"><?= htmlspecialchars($nome) ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($facaTalvez)): ?>
+                        <h4 style="color: #FFA500; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">~ Talvez</h4>
+                        <div class="tags-faco">
+                            <?php foreach (array_keys($facaTalvez) as $nome): ?>
+                                <span class="badge bg-warning text-dark"><?= htmlspecialchars($nome) ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($facaNao)): ?>
+                        <h4 style="color: #FF6B6B; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✗ Não</h4>
+                        <div class="tags-faco">
+                            <?php foreach (array_keys($facaNao) as $nome): ?>
+                                <span class="badge bg-danger"><?= htmlspecialchars($nome) ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Cards Dicas e Dúvidas -->
+        <div class="cards-container bloco mt-5 mx-auto" style="max-width: 800px;">
+            <div class="card dicas d-flex justify-content-center">
+                <a href="/dicas.php" class="no-decoration">
+                    <div class="content d-flex align-items-center">
+                        <div class="icon tip-icon rounded-circle">💡</div>
+                        <div>
+                            <h3 class="tips-text fw-bold">Dicas</h3>
+                            <p>Tudo que você precisa saber antes de contratar uma GP</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card duvidas d-flex justify-content-center">
+                <a href="/duvidas.php" class="no-decoration">
+                    <div class="content d-flex align-items-center">
+                        <div class="icon faq-icon rounded-circle">❓</div>
+                        <div>
+                            <h3 class="tips-text fw-bold">Dúvidas Frequentes</h3>
+                            <p>Respostas para suas principais perguntas</p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
-            <div class="cards-container bloco mt-5 mx-auto w-75">
-                <div class="card dicas d-flex justify-content-center">
-                    <a href="/dicas.php" class="no-decoration">
-                        <div class="content d-flex align-items-center">
-                            <div class="icon tip-icon rounded-circle">💡</div>
-                            <div>
-                                <h3 class="tips-text fw-bold">Dicas</h3>
-                                <p>Tudo que você precisa saber antes de contratar uma GP</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="card duvidas d-flex justify-content-center">
-                    <a href="/duvidas.php" class="no-decoration">
-                        <div class="content d-flex align-items-center">
-                            <div class="icon faq-icon rounded-circle">❓</div>
-                            <div>
-                                <h3 class="tips-text fw-bold">Dúvidas Frequentes</h3>
-                                <p>Respostas para suas principais perguntas</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+
     </div>
-</div>
 
     <div id="rodape"><?php include("../rodape-novo.php"); ?></div>
 </div><!-- WRAP -->
 
 <script type="text/javascript"> Cufon.now(); </script>
 <?php include("../php/google.php"); ?>
-<script type="text/javascript" src="https://vipluxuria.com/css-js/visualizador/perfil.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/css-js/jquery.fancybox.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
