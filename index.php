@@ -87,20 +87,91 @@ mysqli_free_result($resultado);
                             $linkPerfil = htmlspecialchars($linkPerfil);
                             $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
                         ?>
-                            <a href="<?= $linkPerfil ?>" class="text-decoration-none">
-                                <div class="acompanhante-card hover-lift fade-in">
-                                    <?php if ($flagVerificada == 'Sim'): ?>
-                                        <span class="badge-verificada">✓ Verificada</span>
-                                    <?php endif; ?>
-                                    <div class="card-img-wrapper">
-                                        <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
-                                            class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
-                                    </div>
-                                    <div class="card-info">
-                                        <p class="nome-acompanhante"><?= $nomeCompleto ?></p>
-                                    </div>
-                                </div>
-                            </a>
+                           <div class="acompanhante-card-wrapper">
+    <a href="<?= $linkPerfil ?>" class="text-decoration-none">
+        <div class="acompanhante-card hover-lift fade-in" 
+             data-id="<?= $idMulher ?>"
+             data-nome="<?= $nomeCompleto ?>"
+             data-cache="<?= htmlspecialchars($row['cache'] ?? 'Consulte') ?>"
+             data-local="<?= htmlspecialchars($row['locais'] ?? '') ?>"
+             data-cidade="<?= htmlspecialchars($row['cidades'] ?? 'Porto Alegre') ?>"
+             data-whats="<?= htmlspecialchars($row['flagWhats'] ?? 'N') ?>"
+             data-telefone="<?= htmlspecialchars(($row['ddd'] ?? '') . ' ' . ($row['telefone'] ?? '')) ?>">
+            
+            <?php if ($flagVerificada == 'Sim'): ?>
+                <span class="badge-verificada">✓ Verificada</span>
+            <?php endif; ?>
+            
+            <div class="card-img-wrapper">
+                <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
+                     class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
+                
+                <!-- Preview ao Hover -->
+                <div class="card-preview">
+                    <div class="preview-gallery">
+                        <?php 
+                        // Buscar até 3 imagens adicionais para o preview
+                        $previewImages = [];
+                        for($i = 1; $i <= 3; $i++) {
+                            if (!empty($row["imagemCentral{$i}"])) {
+                                $previewImages[] = "https://www.vipluxuria.com/sistema/content/" . $row["imagemCentral{$i}"];
+                            }
+                        }
+                        ?>
+                        
+                        <div class="preview-slides">
+                            <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>" 
+                                 class="preview-img active" alt="Foto 1">
+                            <?php foreach($previewImages as $index => $img): ?>
+                                <img src="<?= htmlspecialchars($img) ?>" 
+                                     class="preview-img" alt="Foto <?= $index + 2 ?>">
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <?php if(count($previewImages) > 0): ?>
+                            <button class="preview-nav preview-prev" onclick="changePreview(event, -1)">‹</button>
+                            <button class="preview-nav preview-next" onclick="changePreview(event, 1)">›</button>
+                            
+                            <div class="preview-dots">
+                                <span class="dot active" onclick="currentSlide(event, 1)"></span>
+                                <?php foreach($previewImages as $index => $img): ?>
+                                    <span class="dot" onclick="currentSlide(event, <?= $index + 2 ?>)"></span>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <div class="preview-info">
+                        <h4><?= $nomeCompleto ?></h4>
+                        <div class="preview-details">
+                            <p><i class="bi bi-geo-alt"></i> <?= htmlspecialchars($row['cidades'] ?? 'Porto Alegre') ?></p>
+                            <p><i class="bi bi-cash"></i> <?= htmlspecialchars($row['cache'] ?? 'Consulte') ?></p>
+                            <?php if($row['flagWhats'] == 'S'): ?>
+                                <p><i class="bi bi-whatsapp"></i> Disponível</p>
+                            <?php endif; ?>
+                            <?php if($row['flag24Horas'] == 'Sim'): ?>
+                                <p><i class="bi bi-clock"></i> 24 Horas</p>
+                            <?php endif; ?>
+                        </div>
+                        
+                        <div class="preview-actions">
+                            <button class="btn-preview-whats" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://wa.me/55<?= preg_replace('/\D/', '', $row['ddd'] . $row['telefone']) ?>', '_blank')">
+                                <i class="bi bi-whatsapp"></i> WhatsApp
+                            </button>
+                            <span class="btn-preview-perfil">
+                                <i class="bi bi-eye"></i> Ver Perfil
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-info">
+                <p class="nome-acompanhante"><?= $nomeCompleto ?></p>
+            </div>
+        </div>
+    </a>
+</div>
 
                             <?php if (++$contadorCarrossel == 18) { ?>
                                 <!-- Espaço para banner/carrossel futuro -->
@@ -313,6 +384,69 @@ mysqli_free_result($resultado);
             mysqli_close($conexao); ?>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-</body>
+<script>
+// Sistema de navegação do preview
+function changePreview(event, direction) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const gallery = event.target.closest('.preview-gallery');
+    const slides = gallery.querySelectorAll('.preview-img');
+    const dots = gallery.querySelectorAll('.dot');
+    
+    let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    
+    slides[currentIndex].classList.remove('active');
+    dots[currentIndex].classList.remove('active');
+    
+    currentIndex = (currentIndex + direction + slides.length) % slides.length;
+    
+    slides[currentIndex].classList.add('active');
+    dots[currentIndex].classList.add('active');
+}
+
+function currentSlide(event, slideIndex) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const gallery = event.target.closest('.preview-gallery');
+    const slides = gallery.querySelectorAll('.preview-img');
+    const dots = gallery.querySelectorAll('.dot');
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[slideIndex - 1].classList.add('active');
+    dots[slideIndex - 1].classList.add('active');
+}
+
+// Auto-play das imagens no hover
+document.querySelectorAll('.acompanhante-card').forEach(card => {
+    let interval;
+    
+    card.addEventListener('mouseenter', function() {
+        const gallery = this.querySelector('.preview-gallery');
+        if (gallery && gallery.querySelectorAll('.preview-img').length > 1) {
+            interval = setInterval(() => {
+                const nextBtn = gallery.querySelector('.preview-next');
+                if (nextBtn) {
+                    const event = { target: nextBtn, preventDefault: () => {}, stopPropagation: () => {} };
+                    changePreview(event, 1);
+                }
+            }, 2000);
+        }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        clearInterval(interval);
+    });
+});
+// No final do index.php, verifique se este código está executando:
+    document.addEventListener('DOMContentLoaded', function() {
+    // Teste se o preview está funcionando
+    console.log('Preview cards:', document.querySelectorAll('.card-preview').length);
+});
+</script>
+        </body>
 
 </html>

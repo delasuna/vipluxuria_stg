@@ -478,7 +478,131 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
             <div class="gallery-counter" id="imageCounter"></div>
         </div>
     </div>
+<div class="container mt-4 mb-5">
+    <!-- Header do Perfil -->
+    <div class="perfil-header-section">
+        <h1 class="perfil-nome text-center">
+            <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>
+            <?php if (!empty($p_flagVerificada) && $p_flagVerificada === 'Sim'): ?>
+                <span class="badge-verificada-inline">✓ Verificada</span>
+            <?php endif; ?>
+        </h1>
+        
+        <?php if (!empty($p_flagWhats) && $p_flagWhats === 'S'): ?>
+            <div class="text-center mb-4">
+                <a class="btn btn-wpp-perfil d-inline-flex align-items-center"
+                   href="https://api.whatsapp.com/send?phone=<?php echo '55' . preg_replace('/\D+/', '', $p_ddd . $p_telefone); ?>&text=<?php echo urlencode('Tudo bem? Te vi no site Vip Luxuria. Gostaria de saber mais sobre o seu atendimento!'); ?>" 
+                   target="_blank">
+                    <i class="bi bi-whatsapp me-2"></i>
+                    WhatsApp: (<?php echo htmlspecialchars($p_ddd, ENT_QUOTES, 'UTF-8'); ?>) <?php echo htmlspecialchars($p_telefone, ENT_QUOTES, 'UTF-8'); ?>
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
 
+    <!-- Layout Principal -->
+    <div class="perfil-main-layout">
+        <!-- Galeria Principal -->
+        <div class="perfil-gallery-section">
+            <?php if (!empty($fotosProfissionais)): ?>
+                <h2 class="gallery-title">Fotos Profissionais</h2>
+                <div class="gallery-grid-main">
+                    <?php foreach ($fotosProfissionais as $index => $foto): ?>
+                        <div class="gallery-item" onclick='openGallery(<?= json_encode($fotosProfissionais) ?>, <?= $index ?>)'>
+                            <img src="<?= htmlspecialchars($foto) ?>" alt="Foto <?= $index + 1 ?>" loading="lazy">
+                            <?php if($index === 0): ?>
+                                <span class="photo-badge">Foto Principal</span>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($fotosCaseiras)): ?>
+                <h2 class="gallery-title mt-4">Fotos Caseiras</h2>
+                <div class="gallery-grid-secondary">
+                    <?php foreach ($fotosCaseiras as $index => $foto): ?>
+                        <div class="gallery-item" onclick='openGallery(<?= json_encode($fotosCaseiras) ?>, <?= $index ?>)'>
+                            <img src="<?= htmlspecialchars($foto) ?>" alt="Foto caseira <?= $index + 1 ?>" loading="lazy">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <!-- Informações -->
+        <div class="perfil-info-section">
+            <!-- Sobre -->
+            <?php if (!empty($p_mensagem1)): ?>
+                <div class="info-card">
+                    <h3>Sobre Mim</h3>
+                    <p><?= nl2br(htmlspecialchars($p_mensagem1)) ?></p>
+                </div>
+            <?php endif; ?>
+
+            <!-- Características -->
+            <div class="info-card">
+                <h3>Características</h3>
+                <div class="characteristics-grid">
+                    <?php if(isset($p_idade)): ?><div class="char-item"><span>Idade:</span> <strong><?= htmlspecialchars($p_idade) ?> anos</strong></div><?php endif; ?>
+                    <?php if(isset($p_altura)): ?><div class="char-item"><span>Altura:</span> <strong><?= htmlspecialchars($p_altura) ?>m</strong></div><?php endif; ?>
+                    <?php if(isset($p_peso)): ?><div class="char-item"><span>Peso:</span> <strong><?= htmlspecialchars($p_peso) ?>kg</strong></div><?php endif; ?>
+                    <?php if(isset($p_olhos)): ?><div class="char-item"><span>Olhos:</span> <strong><?= htmlspecialchars($p_olhos) ?></strong></div><?php endif; ?>
+                    <?php if(isset($p_cabelos)): ?><div class="char-item"><span>Cabelos:</span> <strong><?= htmlspecialchars($p_cabelos) ?></strong></div><?php endif; ?>
+                    <?php if(isset($p_busto)): ?><div class="char-item"><span>Busto:</span> <strong><?= htmlspecialchars($p_busto) ?> cm</strong></div><?php endif; ?>
+                </div>
+            </div>
+
+            <!-- Atendimento -->
+            <div class="info-card">
+                <h3>Informações de Atendimento</h3>
+                <div class="service-info">
+                    <div class="service-item"><i class="bi bi-cash"></i> <span>Cachê:</span> <strong><?= htmlspecialchars($p_cache ?? '') ?></strong></div>
+                    <div class="service-item"><i class="bi bi-geo-alt"></i> <span>Locais:</span> <strong><?= htmlspecialchars($p_locais ?? '') ?></strong></div>
+                    <div class="service-item"><i class="bi bi-map"></i> <span>Cidades:</span> <strong><?= htmlspecialchars($p_cidades ?? '') ?></strong></div>
+                    <div class="service-item"><i class="bi bi-clock"></i> <span>Horário:</span> <strong><?= htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '') ?></strong></div>
+                </div>
+            </div>
+
+            <!-- Serviços -->
+            <div class="info-card">
+                <h3>O que Faço</h3>
+                <?php if (!empty($facaSim)): ?>
+                    <div class="services-section">
+                        <h4 class="service-label yes">✓ Sim</h4>
+                        <div class="service-tags">
+                            <?php foreach (array_keys($facaSim) as $nome): ?>
+                                <span class="tag tag-yes"><?= htmlspecialchars($nome) ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($facaTalvez)): ?>
+                    <div class="services-section">
+                        <h4 class="service-label maybe">~ Talvez</h4>
+                        <div class="service-tags">
+                            <?php foreach (array_keys($facaTalvez) as $nome): ?>
+                                <span class="tag tag-maybe"><?= htmlspecialchars($nome) ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($facaNao)): ?>
+                    <div class="services-section">
+                        <h4 class="service-label no">✗ Não</h4>
+                        <div class="service-tags">
+                            <?php foreach (array_keys($facaNao) as $nome): ?>
+                                <span class="tag tag-no"><?= htmlspecialchars($nome) ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="container mt-4 mb-5">
         <!-- Nome e WhatsApp Centralizados -->
         <div class="text-center mb-4">
