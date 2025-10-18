@@ -19,7 +19,7 @@
                 <span class="badge-hot">HOT</span>
             </a>
 
-            <!-- Filtros de características -->
+            <!-- Filtros de características - COM BORDA ESPECIAL -->
             <a href="javascript:carregaAnunciantes('Loiras')" class="filter-btn">
                 <i class="bi bi-star-fill"></i>
                 <span>Loiras</span>
