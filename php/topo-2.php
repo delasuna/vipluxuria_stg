@@ -31,6 +31,9 @@
       <a href="/acompanhantes-porto-alegre/">
         <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip Luxúria" class="logo-principal">
       </a>
+       <!-- Selo de confiança ao lado do logo -->
+      <img src="/imagens/estrutura/lettering-2021-selo.png" alt="O mais confiável catálogo de acompanhantes" class="selo-confianca">
+    
     </div>
     
     <!-- Banner/Slider Integrado (menor) -->
