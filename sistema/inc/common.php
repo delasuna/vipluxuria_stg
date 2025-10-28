@@ -237,7 +237,7 @@ class Form {
 	}
 
 	function addFieldColspan2($label = "", $field) {
-		$colunaWidth2 = $this->dataWidth1 + $this->labelWidth2 + $this->dataWidth2;
+		$colunaWidth2 = floatval($this->dataWidth1) + floatval($this->labelWidth2) + floatval($this->dataWidth2);
 		$this->blockFields .= "<tr>";
 		$this->blockFields .= "<td width='" . $this->labelWidth1 . "' class='LabelTD' nowrap><font class='LabelFONT'>" . $label . "</font></td>";
 		$this->blockFields .= "<td width='" . $this->dataWidth1 . "' class='DataTD' colspan=3 ><font class='DataFONT'>" . $field . "</font></td>";

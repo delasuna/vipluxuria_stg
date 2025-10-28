@@ -1,4 +1,4 @@
-<? require_once("verifica.php"); ?>
+<?php require_once("verifica.php"); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 
@@ -85,7 +85,7 @@
 			    <div id="coluna-esquerda-full">
             		<p> 
 
-						<?
+						<?php
 						/* 	Modelo de página que apresenta um formulário para inclusão/alteração de registros */
 						
 						include("../inc/common.php");
@@ -250,7 +250,33 @@
 							</table>
 						</div>
 						
-						<?
+						<?php
+							$vars = [
+							"idTransex", "nome", "sobrenome", "dote", "imagem1", "imagem2", "imagem3", "imagem4", "imagem5",
+							"imagem6", "imagem7", "imagem8", "imagemCentral1", "imagemCentral2", "imagemCentral3",
+							"imagemCentral4", "imagemCentral5", "imagemCentral6", "imagemCentral7", "imagemCentral8",
+							"imagemCapa", "imagemExtra1", "imagemExtra2", "imagemExtra3", "imagemExtra4", "imagemExtra5",
+							"imagemExtra6", "video", "idOperadora", "flagWhats", "ddd", "telefone", "idOperadora2",
+							"flagWhats2", "ddd2", "telefone2", "email", "site", "twitter", "outros", "nomeUrl",
+							"flagAtivo", "idade", "altura", "peso", "olhos", "cabelos", "busto", "quadril",
+							"cintura", "pes", "manequim", "flagTipo", "flagPreferencial", "flagTemVideo",
+							"flagMostraRosto", "aceitoCartao", "atendoHoteis", "atendoMoteis", "atendoDominicio",
+							"atendoLocalProprio", "flagAgenciada", "flagCarrossel",
+							'flagBeijoBoca', 'flagOral', 'flagAnal', 'flagDominacao', 'flagInversao',
+							'flagAtendoEles', 'flagAtendoElas', 'flagAtendoCasais', 'flagAcessorios',
+							'flagEventos', 'flagViagens', 'flagTenhoAmigas', 'flagAtende24Horas',
+							'flagSexoVirtual', 'mensagem1', 'horario', 'cache', 'locais', 'cidades',
+							'flagMostraConteudoExtra', 'altImagemNome', 'altImagem1', 'altImagem2',
+							'altImagem3', 'altImagem4', 'altImagem5', 'altImagem6', 'altImagem7', 'altImagem8',
+							'altImagemExtra1', 'altImagemExtra2', 'altImagemExtra3', 'altImagemExtra4',
+							'altImagemExtra5', 'altImagemExtra6'
+						];
+
+						foreach ($vars as $v) {
+							if (!isset($$v)) {
+								$$v = null;
+							}
+						}
 						echo "<br>";
 						
 						/* 	Formulário */
@@ -344,6 +370,7 @@
 						
 						$form->addBreak2("Imagens / Vídeo");
 						
+						$imagemComNome = $imagemComNome ?? null;
 						
 						if ($imagemComNome != NULL) {
 							$form->addFieldColspan2("Imagem com Nome: ", "<input type='file' name='imagemComNome' size='25' ><BR>$imagemComNome<BR><img src='$imagemComNome' width='130' height='100' border='1'>");
@@ -511,7 +538,7 @@
 						
 						</body>
 						</html>
-						<?
+						<?php
 						/* 	encerra a conexão com o banco de dados */
 						$conn->close();
 						?>

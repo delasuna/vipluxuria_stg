@@ -1,9 +1,9 @@
-<? require_once("verifica.php"); ?>
-<?
-/*  Transação para exclusão de um ou mais registros */
+<?php require_once("verifica.php"); ?>
+<?php
+/*  Transaï¿½ï¿½o para exclusï¿½o de um ou mais registros */
 include("../inc/common.php");
 
-/*  conexão com o banco de dados */
+/*  conexï¿½o com o banco de dados */
 $conn = new db();
 $conn->open();
 
@@ -13,15 +13,16 @@ if (is_array($lista_exclusao)) {
  $lista_exclusao = implode(",",$lista_exclusao);
 }
 
-if (strlen($lista_exclusao)==0) { // se não existe registros selecionados
+if (strlen($lista_exclusao)==0) { // se nï¿½o existe registros selecionados
 	alert("Nenhum registro selecionado!");
-} else { // se existe registro selecionado configure a expressão SQL abaixo conforme sua necessidade
+} else { // se existe registro selecionado configure a expressï¿½o SQL abaixo conforme sua necessidade
 	$sql = "DELETE FROM mulher WHERE idMulher IN (" . $lista_exclusao . ")";
 	$conn->execute($sql);
 	
-	redirect2(getSession("redirectAnunciante"));
+	// redirect2(getSession("redirectAnunciante"));
+	echo "<script>location.href='/sistema/content/mulher_lista.php?clear=1';</script>";
 }
 
-/*  fecha a conexão com o banco de dados */
+/*  fecha a conexï¿½o com o banco de dados */
 $conn->close();
 ?>
