@@ -5,7 +5,6 @@ function anti_injection2($valor)
   return htmlspecialchars(trim($valor), ENT_QUOTES, 'UTF-8');
 }
 
-// Função auxiliar para gerar cidades
 function geraOpcoesCidades($conexao)
 {
   $sql = "SELECT idCidade, cidade FROM cidade ORDER BY ordem;";
@@ -71,69 +70,44 @@ function geraOpcoesCidades($conexao)
 
 <!-- Formulário oculto -->
 <form name="form_mulheres" action="/conteudo/mulheres.php" method="post" id="formMulheres">
-  <input type="hidden" name="flagTipo" value='<?= anti_injection2($_REQUEST["flagTipo"]) ?>'>
-  <input type="hidden" name="flagTemVideo" value='<?= anti_injection2($_REQUEST["flagTemVideo"]) ?>'>
-  <input type="hidden" name="flagComLocal" value='<?= anti_injection2($_REQUEST["flagComLocal"]) ?>'>
-  <input type="hidden" name="flagAtende24Horas" value='<?= anti_injection2($_REQUEST["flagAtende24Horas"]) ?>'>
-  <input type="hidden" name="idCidade" value='<?= anti_injection2($_REQUEST["idCidade"]) ?>'>
+  <input type="hidden" name="flagTipo" value='<?= anti_injection2($_REQUEST["flagTipo"] ?? '') ?>'>
+  <input type="hidden" name="flagTemVideo" value='<?= anti_injection2($_REQUEST["flagTemVideo"] ?? '') ?>'>
+  <input type="hidden" name="flagComLocal" value='<?= anti_injection2($_REQUEST["flagComLocal"] ?? '') ?>'>
+  <input type="hidden" name="flagAtende24Horas" value='<?= anti_injection2($_REQUEST["flagAtende24Horas"] ?? '') ?>'>
+  <input type="hidden" name="idCidade" value='<?= anti_injection2($_REQUEST["idCidade"] ?? '') ?>'>
   <input type="hidden" name="bannerLateralCompleto">
-  <input type="hidden" name="flagSexoVirtual" value='<?= anti_injection2($_REQUEST["flagSexoVirtual"]) ?>'>
+  <input type="hidden" name="flagSexoVirtual" value='<?= anti_injection2($_REQUEST["flagSexoVirtual"] ?? '') ?>'>
 </form>
 
-<!-- Header Superior Fino -->
+<!-- Header Superior Fino - SEM BADGES (movidos para baixo) -->
 <div class="top-header-fino">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid px-0">
 
-        <!-- Logo ou Ícone Home -->
-        <a class="navbar-brand d-lg-none" href="/" title="Início">
+        <!-- Logo/Ícone Home -->
+        <a class="navbar-brand" href="/" title="Início">
           <i class="bi bi-house-door-fill"></i>
         </a>
 
-        <!-- Botão Hamburguer -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuFino"
-          aria-controls="menuFino" aria-expanded="false" aria-label="Alternar navegação">
-          <span class="">MENU</span>
-        </button>
+        <!-- Botão Anuncie (sempre visível) -->
+        <div class="header-anuncie">
+          <a href="/como-anunciar/" class="btn-anuncie-badge">
+            <span>ANUNCIE AQUI</span>
+          </a>
+        </div>
 
-        <!-- Itens do Menu -->
-        <div class="collapse navbar-collapse" id="menuFino">
-          <div class="navbar-nav me-auto menu-institucional">
-            <a class="text-light nav-link bi bi-house-fill" href="/" title="Início"><i class="bi bi-house-door-fill d-none"></i></a>
+        <!-- Menu institucional (apenas desktop) -->
+        <button class="navbar-toggler d-none" type="button"></button>
+        <div class="collapse navbar-collapse d-none d-lg-block" id="menuFino">
+          <div class="navbar-nav menu-institucional">
             <a class="text-light nav-link" href="/vip-luxuria.php">Sobre</a>
             <a class="text-light nav-link" href="/vip-blog">Blog</a>
             <a class="text-light nav-link" href="/duvidas.php">Dúvidas</a>
             <a class="text-light nav-link" href="/dicas.php">Dicas</a>
-          </div>
-
-          <div>
-            <!-- Botão Anuncie Aqui -->
-            <a href="/como-anunciar/" class="btn-anuncie-badge me-3 no-decoration text-white">
-              <span>ANUNCIE AQUI</span>
-            </a>
-          </div>
-
-          <!-- WhatsApp -->
-          <div class="whatsapp-header text-white">
-            <a href="https://api.whatsapp.com/send/?phone=51981440470&text&type=phone_number&app_absent=0" target="_blank" class="no-decoration text-white">
-              <i class="bi bi-whatsapp"></i> (51) 98144-0470
-            </a>
           </div>
         </div>
       </div>
     </nav>
   </div>
 </div>
-
-<!-- JS para submenus multi-nível -->
-<script>
-  document.querySelectorAll('.dropdown-submenu .dropdown-toggle').forEach(function(element) {
-    element.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      let submenu = this.nextElementSibling;
-      if (submenu) submenu.classList.toggle('show');
-    });
-  });
-</script>

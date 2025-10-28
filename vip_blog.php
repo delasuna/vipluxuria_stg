@@ -40,23 +40,20 @@ $totalPages = ceil($totalRegistros / $limite);
     <div id="wrap">
         <div>
             <?php include("php/menu-2.php"); ?>
-            <div id="topo"><?php include("php/topo-2.php"); ?></div>
         </div>
-        <?php include("php/slider.php"); ?>
-        <?php include 'filters.php' ?>
 
-        <div class="bg-dark text-light py-4">
+        <div class="blog-page-premium">
             <div class="container">
 
-                <!-- Título -->
-                <div class="text-center mb-5">
-                    <h1 class="display-6 fw-bold">Blog Vip Luxúria</h1>
+                <!-- Header do Blog -->
+                <div class="blog-header-premium">
+                    <h1 class="blog-title-main">Blog <span class="text-rosa">Vip Luxúria</span></h1>
+                    <p class="blog-subtitle">Dicas, novidades e conteúdo exclusivo</p>
                 </div>
 
-                <!-- Posts do Blog -->
-                <div class="row g-4">
+                <!-- Grid de Posts -->
+                <div class="blog-grid-premium">
                     <?php
-                    // Buscar posts do blog
                     $sql = "SELECT * FROM blog ORDER BY idBlog DESC LIMIT $inicio, $limite";
                     $resultado = mysqli_query($conexao, $sql);
                     if (!$resultado) {
@@ -72,52 +69,86 @@ $totalPages = ceil($totalRegistros / $limite);
                             $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y'];
                             $linkPost = "/vip-blog-post/" . $idBlog . "/" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $assunto));
                     ?>
-                            <div class="col-md-4">
-                                <a href="<?= htmlspecialchars($linkPost) ?>" class="text-decoration-none">
-                                    <div class="card bg-secondary text-light h-100">
-                                        <img src="<?= "/sistema/content/" . htmlspecialchars($imagem2) ?>" class="card-img-top" alt="<?= htmlspecialchars($assunto) ?>">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><?= htmlspecialchars($assunto) ?></h5>
-                                        </div>
+                        <a href="<?= htmlspecialchars($linkPost) ?>" class="blog-card-link">
+                            <article class="blog-card-premium">
+                                <div class="blog-card-image">
+                                    <img src="<?= "/sistema/content/" . htmlspecialchars($imagem2) ?>" 
+                                         alt="<?= htmlspecialchars($assunto) ?>"
+                                         loading="lazy">
+                                    <div class="blog-card-overlay">
+                                        <span class="read-more">Ler Mais</span>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                                <div class="blog-card-content">
+                                    <h2 class="blog-card-title"><?= htmlspecialchars($assunto) ?></h2>
+                                </div>
+                            </article>
+                        </a>
                     <?php
                         }
                     } else {
-                        echo '<div class="col-12"><p class="text-center">Nenhum post encontrado.</p></div>';
+                        echo '<div class="no-posts-message">
+                                <i class="bi bi-newspaper"></i>
+                                <p>Nenhum post encontrado no momento.</p>
+                              </div>';
                     }
                     ?>
                 </div>
 
-                <!-- Paginação -->
+                <!-- Paginação Estilizada -->
                 <?php if ($totalPages > 1): ?>
-                    <nav aria-label="Navegação de página" class="mt-5">
-                        <ul class="pagination justify-content-center">
+                    <nav class="blog-pagination">
+                        <ul class="pagination-list">
                             <?php if ($pg > 1): ?>
-                                <li class="page-item">
-                                    <a class="page-link" href="/vip-blog/<?= ($pg - 1) ?>">Anterior</a>
+                                <li class="pagination-item">
+                                    <a class="pagination-link pagination-prev" href="/vip-blog/<?= ($pg - 1) ?>">
+                                        <i class="bi bi-chevron-left"></i> Anterior
+                                    </a>
                                 </li>
                             <?php endif; ?>
 
-                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                <li class="page-item <?= ($i == $pg) ? 'active' : '' ?>">
-                                    <a class="page-link" href="/vip-blog/<?= $i ?>"><?= $i ?></a>
+                            <?php 
+                            $startPage = max(1, $pg - 2);
+                            $endPage = min($totalPages, $pg + 2);
+                            
+                            for ($i = $startPage; $i <= $endPage; $i++): 
+                            ?>
+                                <li class="pagination-item">
+                                    <a class="pagination-link <?= ($i == $pg) ? 'active' : '' ?>" 
+                                       href="/vip-blog/<?= $i ?>"><?= $i ?></a>
                                 </li>
                             <?php endfor; ?>
 
                             <?php if ($pg < $totalPages): ?>
-                                <li class="page-item">
-                                    <a class="page-link" href="/vip-blog/<?= ($pg + 1) ?>">Próximo</a>
+                                <li class="pagination-item">
+                                    <a class="pagination-link pagination-next" href="/vip-blog/<?= ($pg + 1) ?>">
+                                        Próximo <i class="bi bi-chevron-right"></i>
+                                    </a>
                                 </li>
                             <?php endif; ?>
                         </ul>
                     </nav>
                 <?php endif; ?>
 
-                <?php include("banner_informativo.php") ?>
-                <?php include("banner_informativo2.php") ?>
-                <?php include("banner_informativo3.php") ?>
+                <!-- Newsletter Section Refinada -->
+                <div class="newsletter-section-blog">
+                    <div class="newsletter-content-blog">
+                        <h3><i class="bi bi-envelope-heart"></i> Newsletter VIP</h3>
+                        <p>Receba novidades e conteúdo exclusivo</p>
+                        <form class="newsletter-form-blog" action="/newsletter" method="post">
+                            <input type="email" 
+                                   name="email" 
+                                   placeholder="Digite seu e-mail" 
+                                   required 
+                                   class="newsletter-input">
+                            <button type="submit" class="newsletter-button">
+                                <i class="bi bi-send"></i>
+                            </button>
+                        </form>
+                        <p class="newsletter-promise">Prometemos não enviar spam</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -127,5 +158,4 @@ $totalPages = ceil($totalRegistros / $limite);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <?php include("php/google.php"); ?>
 </body>
-
 </html>
