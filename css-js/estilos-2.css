@@ -3308,7 +3308,6 @@ input:focus, select:focus, textarea:focus {
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 20px;
-    position: sticky;
     top: 20px;
 }
 
@@ -7930,7 +7929,6 @@ input:focus, select:focus, textarea:focus {
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 20px;
-    position: sticky;
     top: 20px;
 }
 

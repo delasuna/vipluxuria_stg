@@ -55,7 +55,7 @@ mysqli_free_result($resultado);
 
         <!-- Filtros logo após as badges -->
         <?php include 'filters.php' ?>
-
+        <?php include 'php/slider-2.php' ?>
         <div class="main-content">
             <div class="container">
 

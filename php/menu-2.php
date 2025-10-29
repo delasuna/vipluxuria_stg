@@ -90,13 +90,6 @@ function geraOpcoesCidades($conexao)
           <i class="bi bi-house-door-fill"></i>
         </a>
 
-        <!-- Botão Anuncie (sempre visível) -->
-        <div class="header-anuncie">
-          <a href="/como-anunciar/" class="btn-anuncie-badge">
-            <span>ANUNCIE AQUI</span>
-          </a>
-        </div>
-
         <!-- Menu institucional (apenas desktop) -->
         <button class="navbar-toggler d-none" type="button"></button>
         <div class="collapse navbar-collapse d-none d-lg-block" id="menuFino">
@@ -106,6 +99,13 @@ function geraOpcoesCidades($conexao)
             <a class="text-light nav-link" href="/duvidas.php">Dúvidas</a>
             <a class="text-light nav-link" href="/dicas.php">Dicas</a>
           </div>
+        </div>
+
+        <!-- Botão Anuncie (sempre visível) -->
+        <div class="header-anuncie">
+          <a href="/como-anunciar/" class="btn-anuncie-badge">
+            <span>ANUNCIE AQUI</span>
+          </a>
         </div>
       </div>
     </nav>

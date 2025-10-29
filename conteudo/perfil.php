@@ -465,7 +465,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 <div id="wrap">
     <div>
 		<?php include("../php/menu-2.php"); ?>
-		<div id="topo"><?php include("../php/topo-2.php"); ?></div>
+		
 	</div>
 
     <!-- Modal da Galeria -->
@@ -501,7 +501,6 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
     <!-- Galeria de Fotos Profissionais Centralizada -->
     <?php if (!empty($fotosProfissionais)): ?>
         <div class="mb-5">
-            <h2 class="section-title-perfil text-center">Fotos Profissionais</h2>
             <div class="photos-grid mx-auto" style="max-width: 1100px;">
                 <?php foreach ($fotosProfissionais as $index => $foto): ?>
                     <div class="photo-item" onclick='openGallery(<?= json_encode($fotosProfissionais) ?>, <?= $index ?>)'>
@@ -584,7 +583,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 <div class="mb-4">
                     <h2 class="section-title-perfil">Sobre Mim</h2>
                     <p style="color: rgba(255,255,255,0.85); line-height: 1.7;">
-                        <?= nl2br(htmlspecialchars($p_mensagem1)) ?>
+                        <?php echo $p_mensagem1 ?>
                     </p>
                 </div>
             <?php endif; ?>
@@ -752,7 +751,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                     <div class="mb-4">
                         <h2 class="section-title-perfil">Sobre Mim</h2>
                         <p style="color: rgba(255,255,255,0.85); line-height: 1.7;">
-                            <?= nl2br(htmlspecialchars($p_mensagem1)) ?>
+                            <?php echo $p_mensagem1 ?>
                         </p>
                     </div>
                 <?php endif; ?>
