@@ -20,7 +20,6 @@
                 <div class="ratio" style="--bs-aspect-ratio: 25%;">
                   <img src="<?= "/sistema/content/" . htmlspecialchars($imagem) ?>" 
                        class="w-100 h-100" 
-                       style="object-fit: contain;" 
                        alt="<?= htmlspecialchars($descricao) ?>">
                 </div>
               </a>

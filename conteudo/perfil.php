@@ -467,7 +467,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 		<?php include("../php/menu-2.php"); ?>
 		
 	</div>
-
+<div class="degrade">
     <!-- Modal da Galeria -->
     <div id="galleryModal" class="gallery-modal" onclick="if(event.target === this) closeGallery()">
         <span class="gallery-close" onclick="closeGallery()">&times;</span>
@@ -478,7 +478,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
             <div class="gallery-counter" id="imageCounter"></div>
         </div>
     </div>
-<div class="container mt-4 mb-5">
+<div class="container pt-4 pb-5">
     <!-- Nome e WhatsApp Centralizados -->
     <div class="text-center mb-5">
         <h1 class="perfil-nome">
@@ -559,20 +559,6 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 </div>
             <?php endif; ?>
 
-            <!-- Fotos Caseiras -->
-            <?php if (!empty($fotosCaseiras)): ?>
-                <div class="mb-4">
-                    <h2 class="section-title-perfil">Fotos Caseiras</h2>
-                    <div class="photos-grid">
-                        <?php foreach ($fotosCaseiras as $index => $foto): ?>
-                            <div class="photo-item" onclick='openGallery(<?= json_encode($fotosCaseiras) ?>, <?= $index ?>)'>
-                                <img src="<?= htmlspecialchars($foto) ?>" alt="Foto caseira <?= $index + 1 ?>" loading="lazy">
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
         </div>
 
         <!-- COLUNA DIREITA -->
@@ -593,8 +579,8 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 <h2 class="section-title-perfil">O que Faço</h2>
                 
                 <?php if (!empty($facaSim)): ?>
-                    <h4 style="color: #4CAF50; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✓ Sim</h4>
-                    <div class="tags-faco">
+                    <h4 style="color: #50ff2c; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✓ Sim</h4>
+                    <div class="tags-faco-sim">
                         <?php foreach (array_keys($facaSim) as $nome): ?>
                             <span class="badge bg-success"><?= htmlspecialchars($nome) ?></span>
                         <?php endforeach; ?>
@@ -602,23 +588,37 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 <?php endif; ?>
 
                 <?php if (!empty($facaTalvez)): ?>
-                    <h4 style="color: #FFA500; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">~ Talvez</h4>
-                    <div class="tags-faco">
+                    <h4 style="color: #ffc107; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">~ Talvez</h4>
+                    <div class="tags-faco-talvez">
                         <?php foreach (array_keys($facaTalvez) as $nome): ?>
-                            <span class="badge bg-warning text-dark"><?= htmlspecialchars($nome) ?></span>
+                            <span class="badge bg-warning"><?= htmlspecialchars($nome) ?></span>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if (!empty($facaNao)): ?>
-                    <h4 style="color: #FF6B6B; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✗ Não</h4>
-                    <div class="tags-faco">
+                    <h4 style="color: #ff3a65; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✗ Não</h4>
+                    <div class="tags-faco-nao">
                         <?php foreach (array_keys($facaNao) as $nome): ?>
                             <span class="badge bg-danger"><?= htmlspecialchars($nome) ?></span>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
             </div>
+
+            <!-- Fotos Caseiras -->
+            <?php if (!empty($fotosCaseiras)): ?>
+                <div class="mb-4">
+                    <h2 class="section-title-perfil">Fotos Caseiras</h2>
+                    <div class="photos-grid">
+                        <?php foreach ($fotosCaseiras as $index => $foto): ?>
+                            <div class="photo-item" onclick='openGallery(<?= json_encode($fotosCaseiras) ?>, <?= $index ?>)'>
+                                <img src="<?= htmlspecialchars($foto) ?>" alt="Foto caseira <?= $index + 1 ?>" loading="lazy">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
 
         </div>
 
@@ -637,10 +637,10 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 </div>
             </a>
         </div>
-        <div class="card duvidas d-flex justify-content-center">
+        <div class="card dicas d-flex justify-content-center">
             <a href="/duvidas.php" class="no-decoration">
                 <div class="content d-flex align-items-center">
-                    <div class="icon faq-icon rounded-circle">❓</div>
+                    <div class="icon tip-icon rounded-circle">❓</div>
                     <div>
                         <h3 class="tips-text fw-bold">Dúvidas Frequentes</h3>
                         <p>Respostas para suas principais perguntas</p>
@@ -651,175 +651,9 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
     </div>
 
 </div>
-    <div class="container mt-4 mb-5">
-        <!-- Nome e WhatsApp Centralizados -->
-        <div class="text-center mb-4">
-            <h1 class="perfil-nome">
-                <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>
-            </h1>
-
-            <?php if (!empty($p_flagWhats) && $p_flagWhats === 'S'): ?>
-                <a class="btn btn-wpp-perfil d-inline-flex align-items-center mt-3"
-                   href="https://api.whatsapp.com/send?phone=<?php echo '55' . preg_replace('/\D+/', '', $p_ddd . $p_telefone); ?>&text=<?php echo urlencode('Tudo bem? Te vi no site Vip Luxuria. Gostaria de saber mais sobre o seu atendimento!'); ?>" 
-                   target="_blank">
-                    <i class="bi bi-whatsapp me-2"></i>
-                    WhatsApp: (<?php echo htmlspecialchars($p_ddd, ENT_QUOTES, 'UTF-8'); ?>) <?php echo htmlspecialchars($p_telefone, ENT_QUOTES, 'UTF-8'); ?>
-                </a>
-            <?php endif; ?>
-        </div>
-
-        <!-- Layout 2 Colunas -->
-        <div class="perfil-container-2col">
-            
-            <!-- COLUNA ESQUERDA -->
-            <div class="perfil-col-left">
-                
-                <!-- Aparência -->
-                <div class="mb-4">
-                    <h2 class="section-title-perfil">Como Sou</h2>
-                    <div class="perfil-dados">
-                        <?php if(isset($p_idade)): ?><div><span>Idade:</span> <strong><?= htmlspecialchars($p_idade) ?> anos</strong></div><?php endif; ?>
-                        <?php if(isset($p_altura)): ?><div><span>Altura:</span> <strong><?= htmlspecialchars($p_altura) ?>m</strong></div><?php endif; ?>
-                        <?php if(isset($p_peso)): ?><div><span>Peso:</span> <strong><?= htmlspecialchars($p_peso) ?>kg</strong></div><?php endif; ?>
-                        <?php if(isset($p_olhos)): ?><div><span>Olhos:</span> <strong><?= htmlspecialchars($p_olhos) ?></strong></div><?php endif; ?>
-                        <?php if(isset($p_cabelos)): ?><div><span>Cabelos:</span> <strong><?= htmlspecialchars($p_cabelos) ?></strong></div><?php endif; ?>
-                        <?php if(isset($p_busto)): ?><div><span>Busto:</span> <strong><?= htmlspecialchars($p_busto) ?> cm</strong></div><?php endif; ?>
-                        <?php if(isset($p_quadril)): ?><div><span>Quadril:</span> <strong><?= htmlspecialchars($p_quadril) ?> cm</strong></div><?php endif; ?>
-                        <?php if(isset($p_cintura)): ?><div><span>Cintura:</span> <strong><?= htmlspecialchars($p_cintura) ?> cm</strong></div><?php endif; ?>
-                        <?php if(isset($p_pes)): ?><div><span>Pés:</span> <strong><?= htmlspecialchars($p_pes) ?></strong></div><?php endif; ?>
-                        <?php if(isset($p_manequim)): ?><div><span>Manequim:</span> <strong><?= htmlspecialchars($p_manequim) ?></strong></div><?php endif; ?>
-                    </div>
-                </div>
-
-                <!-- Informações de Atendimento -->
-                <div class="mb-4">
-                    <h2 class="section-title-perfil">Atendimento</h2>
-                    <div class="perfil-dados">
-                        <div><span>Cachê:</span> <strong><?= htmlspecialchars($p_cache ?? '') ?></strong></div>
-                        <div><span>Locais:</span> <strong><?= htmlspecialchars($p_locais ?? '') ?></strong></div>
-                        <div><span>Cidades:</span> <strong><?= htmlspecialchars($p_cidades ?? '') ?></strong></div>
-                        <div><span>Horário:</span> <strong><?= htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '') ?></strong></div>
-                    </div>
-                </div>
-
-                <!-- Vídeo -->
-                <?php if (!empty($p_video) && (!isset($p_flagTemVideo) || $p_flagTemVideo !== 'Nao')): ?>
-                    <div class="mb-4">
-                        <h2 class="section-title-perfil">Vídeo</h2>
-                        <video class="w-100 rounded shadow-sm" controls>
-                            <source src="https://vipluxuria.com/sistema/content/<?= htmlspecialchars($p_video) ?>" type="video/mp4">
-                            Seu navegador não suporta a reprodução de vídeo.
-                        </video>
-                    </div>
-                <?php endif; ?>
-
-                <!-- Fotos Caseiras -->
-                <?php if (!empty($fotosCaseiras)): ?>
-                    <div class="mb-4">
-                        <h2 class="section-title-perfil">Fotos Caseiras</h2>
-                        <div class="photos-grid">
-                            <?php foreach ($fotosCaseiras as $index => $foto): ?>
-                                <div class="photo-item" onclick='openGallery(<?= json_encode($fotosCaseiras) ?>, <?= $index ?>)'>
-                                    <img src="<?= htmlspecialchars($foto) ?>" alt="Foto caseira <?= $index + 1 ?>" loading="lazy">
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
-            </div>
-
-            <!-- COLUNA DIREITA -->
-            <div class="perfil-col-right">
-                
-                <!-- Fotos Profissionais em DESTAQUE -->
-                <?php if (!empty($fotosProfissionais)): ?>
-                    <div class="mb-4">
-                        <h2 class="section-title-perfil">Fotos Profissionais</h2>
-                        <div class="photos-grid">
-                            <?php foreach ($fotosProfissionais as $index => $foto): ?>
-                                <div class="photo-item" onclick='openGallery(<?= json_encode($fotosProfissionais) ?>, <?= $index ?>)'>
-                                    <img src="<?= htmlspecialchars($foto) ?>" alt="Foto <?= $index + 1 ?>" loading="lazy">
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
-                <!-- Bio/Sobre Mim -->
-                <?php if (!empty($p_mensagem1)): ?>
-                    <div class="mb-4">
-                        <h2 class="section-title-perfil">Sobre Mim</h2>
-                        <p style="color: rgba(255,255,255,0.85); line-height: 1.7;">
-                            <?php echo $p_mensagem1 ?>
-                        </p>
-                    </div>
-                <?php endif; ?>
-
-                <!-- O que Faço - SIM/NÃO/TALVEZ -->
-                <div class="mb-4">
-                    <h2 class="section-title-perfil">O que Faço</h2>
-                    
-                    <?php if (!empty($facaSim)): ?>
-                        <h4 style="color: #4CAF50; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✓ Sim</h4>
-                        <div class="tags-faco">
-                            <?php foreach (array_keys($facaSim) as $nome): ?>
-                                <span class="badge bg-success"><?= htmlspecialchars($nome) ?></span>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (!empty($facaTalvez)): ?>
-                        <h4 style="color: #FFA500; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">~ Talvez</h4>
-                        <div class="tags-faco">
-                            <?php foreach (array_keys($facaTalvez) as $nome): ?>
-                                <span class="badge bg-warning text-dark"><?= htmlspecialchars($nome) ?></span>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (!empty($facaNao)): ?>
-                        <h4 style="color: #FF6B6B; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✗ Não</h4>
-                        <div class="tags-faco">
-                            <?php foreach (array_keys($facaNao) as $nome): ?>
-                                <span class="badge bg-danger"><?= htmlspecialchars($nome) ?></span>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Cards Dicas e Dúvidas -->
-        <div class="cards-container bloco mt-5 mx-auto" style="max-width: 800px;">
-            <div class="card dicas d-flex justify-content-center">
-                <a href="/dicas.php" class="no-decoration">
-                    <div class="content d-flex align-items-center">
-                        <div class="icon tip-icon rounded-circle">💡</div>
-                        <div>
-                            <h3 class="tips-text fw-bold">Dicas</h3>
-                            <p>Tudo que você precisa saber antes de contratar uma GP</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card duvidas d-flex justify-content-center">
-                <a href="/duvidas.php" class="no-decoration">
-                    <div class="content d-flex align-items-center">
-                        <div class="icon faq-icon rounded-circle">❓</div>
-                        <div>
-                            <h3 class="tips-text fw-bold">Dúvidas Frequentes</h3>
-                            <p>Respostas para suas principais perguntas</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-
+    
+        
     </div>
-
     <div id="rodape"><?php include("../rodape-novo.php"); ?></div>
 </div><!-- WRAP -->
 

@@ -26,7 +26,7 @@ mysqli_free_result($resultado);
         <div>
             <?php include("php/menu-2.php"); ?>
         </div>
-        
+        <div class="degrade">
         <div class="duvidas-page-premium">
             <div class="container">
                 
@@ -172,6 +172,7 @@ mysqli_free_result($resultado);
 
             </div>
         </div>
+    </div>
 
         <?php include("rodape-novo.php"); ?>
     </div>

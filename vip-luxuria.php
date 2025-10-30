@@ -31,6 +31,7 @@ mysqli_free_result($resultado);
             <?php include("php/menu-2.php"); ?>
             
         </div>
+        <div class="degrade">
 
         <?php include("site-badges.php"); ?>
 
@@ -46,7 +47,7 @@ mysqli_free_result($resultado);
                     
                    <div class="about-stats-row">
     <div class="stat-box-vip">
-        <div class="stat-value">Desde 2008</div>
+        <div class="stat-value">Desde 2007</div>
         <div class="stat-label">No Mercado</div>
     </div>
     <div class="stat-box-vip">
@@ -135,18 +136,19 @@ mysqli_free_result($resultado);
                             </div>
 
                             <div class="nav-category">
-                                <h5><i class="bi bi-gender-male"></i> Homens</h5>
+                                <h5><i class="bi bi-gender-trans"></i> Transex</h5>
+                                <div class="nav-links">
+                                    <a href="/conteudo/transex.php">• Ver Todas</a>
+                                </div>
+                            </div>
+
+                            <div class="nav-category">
+                                <h5><i class="bi bi-gender-male"></i> Casais e Homens</h5>
                                 <div class="nav-links">
                                     <a href="/conteudo/casais-e-homens.php">• Ver Todos</a>
                                 </div>
                             </div>
 
-                            <div class="nav-category">
-                                <h5><i class="bi bi-gender-trans"></i> Trans</h5>
-                                <div class="nav-links">
-                                    <a href="/conteudo/transex.php">• Ver Todas</a>
-                                </div>
-                            </div>
                         </div>
 
                         <!-- Card de Regiões -->
@@ -200,7 +202,7 @@ mysqli_free_result($resultado);
             
             </div>
         </div>
-
+        </div>
         <?php include("rodape-novo.php"); ?>
     </div>
 

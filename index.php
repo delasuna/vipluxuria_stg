@@ -33,6 +33,7 @@ mysqli_free_result($resultado);
             <div id="topo"><?php include("php/topo-2.php"); ?></div>
         </div>
 
+        <div class="degrade">
         <!-- NOVO: Badges de Categoria APÓS o banner -->
         <div class="category-badges-section">
             <div class="container">
@@ -149,7 +150,7 @@ mysqli_free_result($resultado);
                             <?php if($row['flagWhats'] == 'S'): ?>
                                 <p><i class="bi bi-whatsapp"></i> Disponível</p>
                             <?php endif; ?>
-                            <?php if($row['flag24Horas'] == 'Sim'): ?>
+                            <?php if($row['flagAtende24Horas'] == 'Sim'): ?>
                                 <p><i class="bi bi-clock"></i> 24 Horas</p>
                             <?php endif; ?>
                         </div>
@@ -373,7 +374,9 @@ mysqli_free_result($resultado);
     </div>
 </section>
                 </section>
+                </div>
             </div>
+        </div>
 
             <?php include("rodape-novo.php"); ?>
 
@@ -447,6 +450,7 @@ document.querySelectorAll('.acompanhante-card').forEach(card => {
     console.log('Preview cards:', document.querySelectorAll('.card-preview').length);
 });
 </script>
+    </div>
         </body>
 
 </html>

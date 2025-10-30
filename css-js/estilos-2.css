@@ -30,7 +30,7 @@
     box-sizing: border-box; 
 }
 
-body {
+/* body {
     background-color: #0a0a0a !important;
     background-image: url('/imagens/estrutura/fundo-couro-preto.jpg');
     background-attachment: fixed;
@@ -41,10 +41,10 @@ body {
     color: #FFF;
     line-height: 1.6;
     position: relative;
-}
+} */
 
 /* Overlay de gradiente sobre textura - ROSA PARA PRETO */
-body::before {
+/* body::before {
     content: '';
     position: fixed;
     top: 0;
@@ -66,6 +66,20 @@ body::before {
     pointer-events: none;
     z-index: -1;
     opacity: 0.92;
+} */
+
+.degrade {
+    background:
+        linear-gradient(180deg,
+            #000 0%,
+            #D15295 50%,
+            #000 100%
+        );
+    background-attachment: scroll; 
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    position: relative;
 }
 
 a {
@@ -121,14 +135,6 @@ a:hover {
     mix-blend-mode: overlay;
 }
 
-.topo-banner-integrado .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 15px;
-    position: relative;
-    z-index: 2;
-}
-
 .logo-section {
     text-align: center;
     margin-bottom: 20px;
@@ -142,20 +148,6 @@ a:hover {
 
 .logo-principal:hover {
     transform: scale(1.05);
-}
-
-.banner-integrado {
-    max-height: 250px;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.banner-integrado .slider,
-.banner-integrado .carousel,
-.banner-integrado img {
-    max-height: 250px !important;
-    object-fit: cover;
 }
 
 /* Removido degradê inferior brusco - transição suave */
@@ -177,7 +169,6 @@ a:hover {
     background: transparent !important;
     backdrop-filter: none;
     padding: 20px 0;
-    border-bottom: 2px solid rgba(233, 30, 99, 0.3);
     position: relative;
     z-index: 100;
 }
@@ -346,7 +337,6 @@ a:hover {
     background: transparent !important;
     backdrop-filter: none;
     padding: 25px 0;
-    border-bottom: 1px solid rgba(233, 30, 99, 0.1);
     margin-bottom: 30px;
 }
 
@@ -1085,7 +1075,6 @@ a:hover {
 }
 
 .bloco {
-    background: #1c1c1c;
     border-radius: 12px;
 }
 
@@ -1156,15 +1145,48 @@ a:hover {
     margin-bottom: 15px;
 }
 
-.tags-faco .badge,
+/* .tags-faco .badge,
 .tags-faco span {
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 600;
     background: #2a2a2a;
-    color: #ff4081;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+} */
+
+.tags-faco-sim .badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #50ff2c;
+    border: 1px solid #50ff2c;
+    background-color: rgba(76, 175, 80, 0.4) !important;
 }
+
+.tags-faco-talvez .badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffc107;
+    border: 1px solid #ffc107;
+    background-color: rgba(255, 193, 7, 0.3) !important;
+}
+
+
+.tags-faco-nao .badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ff3a65;
+    border: 1px solid #ff3a65;
+    background-color: rgba(209, 82, 149, 0.3) !important;
+}
+
 
 .o-que-faco {
     padding: 1.5rem;
@@ -1190,8 +1212,8 @@ a:hover {
 }
 
 .cards-container .card.dicas {
-    border-color: #FF6B6B;
-    background-color: #6a1b4d;
+    border-color: rgba(209, 82, 149, 0.3);
+    background-color: rgba(209, 82, 149, 0.3);
 }
 
 .cards-container .card.duvidas {
@@ -1235,7 +1257,7 @@ a:hover {
 }
 
 .cards-container h3 {
-    color: var(--rosa-primary);
+    color: #ff3a65;
     margin-bottom: 5px;
     font-size: 1.2rem;
 }
@@ -1601,11 +1623,27 @@ a:hover {
 /* ============================================
    RODAPÉ PREMIUM
    ============================================ */
-.rodape-premium {
-    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
-    border-top: 1px solid rgba(233, 30, 99, 0.2);
+   .rodape-premium {
+    background-color: #000;
     padding: 60px 0 30px;
-    margin-top: 80px;
+    margin-top: 0;
+    position: relative;
+}
+
+/* Overlay sutil */
+.rodape-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.rodape-premium .container {
+    position: relative;
+    z-index: 1;
 }
 
 .rodape-titulo {
@@ -1639,52 +1677,38 @@ a:hover {
     margin-bottom: 12px;
 }
 
-.rodape-lista button,
 .rodape-lista a {
     color: #999;
     text-decoration: none;
     font-size: 14px;
     transition: all 0.3s ease;
     position: relative;
-    background-color: inherit;
 }
 
-.rodape-lista button:hover,
 .rodape-lista a:hover {
     color: #E91E63;
     padding-left: 5px;
 }
 
+/* Redes Sociais */
 .rodape-contato {
     color: #999;
     font-size: 14px;
 }
 
-.whatsapp-rodape {
-    color: #4CAF50;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.whatsapp-rodape i {
-    font-size: 18px;
-    margin-right: 5px;
-}
-
 .horario-rodape {
     color: #666;
     font-size: 13px;
-    margin-bottom: 20px;
 }
 
 .redes-sociais {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
 
 .redes-sociais a {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     background: rgba(233, 30, 99, 0.1);
     border: 1px solid rgba(233, 30, 99, 0.2);
     border-radius: 50%;
@@ -1699,8 +1723,10 @@ a:hover {
     background: #E91E63;
     color: white;
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
 }
 
+/* Newsletter */
 .newsletter-texto {
     color: #999;
     font-size: 13px;
@@ -1746,6 +1772,7 @@ a:hover {
     background: linear-gradient(90deg, #AD1457, #E91E63);
 }
 
+/* Seção de Parceiros com Logos */
 .parceiros-section {
     padding: 40px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -1766,8 +1793,89 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
     flex-wrap: wrap;
+}
+
+.parceiro-logo {
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+}
+
+.parceiro-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.parceiro-logo img {
+    max-height: 50px;
+    max-width: 150px;
+    width: auto;
+    height: auto;
+}
+
+/* Divisor */
+.rodape-divisor {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 30px 0;
+}
+
+/* Copyright */
+.rodape-copyright {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+}
+
+.rodape-copyright p {
+    margin: 5px 0;
+}
+
+.aviso-legal {
+    color: #555;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .parceiros-logos {
+        gap: 20px;
+    }
+    
+    .parceiro-logo img {
+        max-height: 40px;
+        max-width: 120px;
+    }
+    
+    .redes-sociais {
+        justify-content: center;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 575px) {
+    .rodape-premium {
+        padding: 40px 0 20px;
+    }
+    
+    .parceiros-section {
+        padding: 30px 0;
+    }
+}
+
+.whatsapp-rodape {
+    color: #4CAF50;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.whatsapp-rodape i {
+    font-size: 18px;
+    margin-right: 5px;
 }
 
 .parceiro-texto {
@@ -1786,26 +1894,10 @@ a:hover {
     transform: scale(1.05);
 }
 
-.rodape-divisor {
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin: 30px 0;
-}
-
 .rodape-copyright {
     text-align: center;
     color: #666;
     font-size: 13px;
-}
-
-.rodape-copyright p {
-    margin: 5px 0;
-}
-
-.aviso-legal {
-    color: #555;
-    font-size: 12px;
-    margin-top: 10px;
 }
 
 /* RODAPÉ ORIGINAL */
@@ -2859,7 +2951,6 @@ input:focus, select:focus, textarea:focus {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     padding: 20px;
-    margin: 20px 0;
 }
 
 .btn-agendar {
@@ -3593,7 +3684,6 @@ input:focus, select:focus, textarea:focus {
 .blog-page-premium,
 .dicas-page-premium,
 .duvidas-page-premium {
-    background: var(--bg-black);
     padding: 60px 0;
     min-height: 100vh;
 }
@@ -4606,23 +4696,6 @@ img[loading="lazy"] {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Allerta&family=Sriracha&family=Roboto:wght@300&display=swap');
 
 /* ============================================
-   VARIÁVEIS GLOBAIS
-   ============================================ */
-:root {
-    --rosa-primary: #E91E63;
-    --rosa-dark: #AD1457;
-    --rosa-light: #F8BBD0;
-    --bg-black: #0a0a0a;
-    --bg-dark-rosa: #0a0a0a; /* Preto ao invés de rosa escuro */
-    --card-gray: #2c2c2c;
-    --card-hover: #3a3a3a;
-    --text-light: #cccccc;
-    --success-green: #4CAF50;
-    --gold: #FFD700;
-    --gold-premium: #FFA500;
-}
-
-/* ============================================
    RESET E BASE
    ============================================ */
 * { 
@@ -4630,44 +4703,6 @@ img[loading="lazy"] {
     padding: 0; 
     border: 0; 
     box-sizing: border-box; 
-}
-
-body {
-    background-color: #0a0a0a !important;
-    background-image: url('/imagens/estrutura/fundo-couro-preto.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    font-family: 'Inter', Verdana, Geneva, sans-serif;
-    font-size: 14px;
-    color: #FFF;
-    line-height: 1.6;
-    position: relative;
-}
-
-/* Overlay de gradiente sobre textura - ROSA PARA PRETO */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, 
-        #E91E63 0%,
-        #d11758 12%,
-        #b9154d 24%,
-        #a11342 36%,
-        #891137 48%,
-        #710f2c 60%,
-        #590d21 72%,
-        #410b16 84%,
-        #29090b 92%,
-        #0a0a0a 100%
-    );
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.92;
 }
 
 a {
@@ -4724,9 +4759,7 @@ a:hover {
 }
 
 .topo-banner-integrado .container {
-    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 15px;
     position: relative;
     z-index: 2;
 }
@@ -4747,17 +4780,9 @@ a:hover {
 }
 
 .banner-integrado {
-    max-height: 250px;
     overflow: hidden;
-    border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.banner-integrado .slider,
-.banner-integrado .carousel,
-.banner-integrado img {
-    max-height: 250px !important;
-    object-fit: cover;
+    border-radius: 15px;
 }
 
 /* Removido degradê inferior brusco - transição suave */
@@ -4775,14 +4800,6 @@ a:hover {
 /* ============================================
    BADGES DE CATEGORIA - TRANSPARENTE PARA MOSTRAR DEGRADÊ
    ============================================ */
-.category-badges-section {
-    background: transparent !important;
-    backdrop-filter: none;
-    padding: 20px 0;
-    border-bottom: 2px solid rgba(233, 30, 99, 0.3);
-    position: relative;
-    z-index: 100;
-}
 
 .category-badges-container {
     display: flex;
@@ -4944,13 +4961,6 @@ a:hover {
 /* ============================================
    SEÇÃO DE FILTROS - SEM FUNDO ESCURO
    ============================================ */
-.filters-section {
-    background: transparent !important;
-    backdrop-filter: none;
-    padding: 25px 0;
-    border-bottom: 1px solid rgba(233, 30, 99, 0.1);
-    margin-bottom: 30px;
-}
 
 .filters-row-top,
 .filters-row-bottom {
@@ -5686,11 +5696,6 @@ a:hover {
     flex: 1;
 }
 
-.bloco {
-    background: #1c1c1c;
-    border-radius: 12px;
-}
-
 .bloco h2 {
     font-size: 1.3rem;
     font-weight: bold;
@@ -5758,16 +5763,6 @@ a:hover {
     margin-bottom: 15px;
 }
 
-.tags-faco .badge,
-.tags-faco span {
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    background: #2a2a2a;
-    color: #ff4081;
-}
-
 .o-que-faco {
     padding: 1.5rem;
 }
@@ -5789,11 +5784,6 @@ a:hover {
     min-width: 280px;
     max-width: 400px;
     transition: all 0.3s ease;
-}
-
-.cards-container .card.dicas {
-    border-color: #FF6B6B;
-    background-color: #6a1b4d;
 }
 
 .cards-container .card.duvidas {
@@ -5822,10 +5812,6 @@ a:hover {
     background: linear-gradient(135deg, #FF6B6B, #C44569);
 }
 
-.faq-icon {
-    background: linear-gradient(135deg, #4E65FF, #667EEA);
-}
-
 .no-decoration {
     text-decoration: none;
     color: inherit;
@@ -5834,12 +5820,6 @@ a:hover {
 .cards-container .content {
     display: flex;
     align-items: center;
-}
-
-.cards-container h3 {
-    color: var(--rosa-primary);
-    margin-bottom: 5px;
-    font-size: 1.2rem;
 }
 
 .cards-container p {
@@ -6217,260 +6197,6 @@ select.form-control option {
 .trust-section-leaders + #rodape,
 .trust-section-leaders + .rodape-premium {
     margin-top: 0 !important;
-}
-
-/* ============================================
-   RODAPÉ PREMIUM
-   ============================================ */
-.rodape-premium {
-    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
-    border-top: 1px solid rgba(233, 30, 99, 0.2);
-    padding: 60px 0 30px;
-    margin-top: 80px;
-}
-
-.rodape-titulo {
-    color: #E91E63;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.rodape-titulo::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background: linear-gradient(90deg, #E91E63, transparent);
-}
-
-.rodape-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.rodape-lista li {
-    margin-bottom: 12px;
-}
-
-.rodape-lista button,
-.rodape-lista a {
-    color: #999;
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    position: relative;
-    background-color: inherit;
-}
-
-.rodape-lista button:hover,
-.rodape-lista a:hover {
-    color: #E91E63;
-    padding-left: 5px;
-}
-
-.rodape-contato {
-    color: #999;
-    font-size: 14px;
-}
-
-.whatsapp-rodape {
-    color: #4CAF50;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.whatsapp-rodape i {
-    font-size: 18px;
-    margin-right: 5px;
-}
-
-.horario-rodape {
-    color: #666;
-    font-size: 13px;
-    margin-bottom: 20px;
-}
-
-.redes-sociais {
-    display: flex;
-    gap: 10px;
-}
-
-.redes-sociais a {
-    width: 36px;
-    height: 36px;
-    background: rgba(233, 30, 99, 0.1);
-    border: 1px solid rgba(233, 30, 99, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #E91E63;
-    transition: all 0.3s ease;
-}
-
-.redes-sociais a:hover {
-    background: #E91E63;
-    color: white;
-    transform: translateY(-3px);
-}
-
-.newsletter-texto {
-    color: #999;
-    font-size: 13px;
-    margin-bottom: 15px;
-}
-
-.newsletter-form-rodape {
-    display: flex;
-    max-width: 100%;
-    position: relative;
-}
-
-.newsletter-form-rodape input {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(233, 30, 99, 0.2);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 25px;
-    font-size: 14px;
-}
-
-.newsletter-form-rodape input::placeholder {
-    color: #666;
-}
-
-.newsletter-form-rodape button {
-    position: absolute;
-    right: 3px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(90deg, #E91E63, #AD1457);
-    border: none;
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.newsletter-form-rodape button:hover {
-    background: linear-gradient(90deg, #AD1457, #E91E63);
-}
-
-.parceiros-section {
-    padding: 40px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.parceiros-titulo {
-    color: #666;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.parceiros-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.parceiro-texto {
-    color: #666;
-    text-decoration: none;
-    font-size: 13px;
-    transition: all 0.3s ease;
-    padding: 8px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-}
-
-.parceiro-texto:hover {
-    color: #E91E63;
-    border-color: rgba(233, 30, 99, 0.3);
-    transform: scale(1.05);
-}
-
-.rodape-divisor {
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin: 30px 0;
-}
-
-.rodape-copyright {
-    text-align: center;
-    color: #666;
-    font-size: 13px;
-}
-
-.rodape-copyright p {
-    margin: 5px 0;
-}
-
-.aviso-legal {
-    color: #555;
-    font-size: 12px;
-    margin-top: 10px;
-}
-
-/* RODAPÉ ORIGINAL */
-#rodape {
-    background: linear-gradient(180deg, #452234, var(--rosa-dark));
-    min-height: 279px;
-    margin-top: 0;
-}
-
-#rodape-content {
-    width: 1000px;
-    margin: 0 auto;
-    padding: 10px 0 30px;
-    font-family: Verdana, Geneva, sans-serif;
-    color: #FFF;
-    font-size: 14px;
-}
-
-#rodape-content h3 {
-    font-size: 18px;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    margin-bottom: 20px;
-}
-
-#menu-rodape {
-    border-bottom: 1px dashed #4C4C4C;
-    min-height: 47px;
-}
-
-#menu-rodape-content {
-    width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 15px;
-}
-
-#menu-rodape-content ul li {
-    color: #CFCFCF;
-    display: inline;
-    list-style-type: none;
-    margin: 0 5px;
-    font-size: 22px;
-    letter-spacing: 1px;
 }
 
 /* ============================================
@@ -7473,16 +7199,6 @@ input:focus, select:focus, textarea:focus {
     margin-top: 20px;
 }
 
-/* CARD AGENDAMENTO */
-.card-agendamento {
-    background-color: #ffc107;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    padding: 20px;
-    margin: 20px 0;
-}
-
 .btn-agendar {
     display: inline-block;
     background-color: #28a745;
@@ -8211,13 +7927,6 @@ input:focus, select:focus, textarea:focus {
 /* ============================================
    BLOG PREMIUM REDESIGN
    ============================================ */
-.blog-page-premium,
-.dicas-page-premium,
-.duvidas-page-premium {
-    background: var(--bg-black);
-    padding: 60px 0;
-    min-height: 100vh;
-}
 
 .blog-header-premium {
     text-align: center;
@@ -9915,4 +9624,8 @@ img[loading="lazy"] {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
     }
+}
+
+.custom-card {
+    border-radius: 12px;
 }

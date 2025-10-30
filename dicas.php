@@ -26,7 +26,7 @@ mysqli_free_result($resultado);
         <div>
             <?php include("php/menu-2.php"); ?>
         </div>
-        
+        <div class="degrade">
         <div class="dicas-page-premium">
             <div class="container">
                 
@@ -125,15 +125,6 @@ mysqli_free_result($resultado);
                     <div class="dica-card">
                         <div class="dica-number">09</div>
                         <div class="dica-content">
-                            <h3>Peça indicações</h3>
-                            <p>Entre em contato conosco para indicações das modelos com melhor 
-                            reputação. Confira também o VipLuxuriaGold.com.</p>
-                        </div>
-                    </div>
-
-                    <div class="dica-card">
-                        <div class="dica-number">10</div>
-                        <div class="dica-content">
                             <h3>Evite pechinchar</h3>
                             <p>Não peça desconto. Pesquise bem entre as opções disponíveis e 
                             escolha o serviço que cabe no seu orçamento.</p>
@@ -141,7 +132,7 @@ mysqli_free_result($resultado);
                     </div>
 
                     <div class="dica-card">
-                        <div class="dica-number">11</div>
+                        <div class="dica-number">10</div>
                         <div class="dica-content">
                             <h3>Trate como qualquer serviço</h3>
                             <p>A prestação de serviços de acompanhantes é semelhante a outras. 
@@ -165,6 +156,7 @@ mysqli_free_result($resultado);
                 </div>
 
             </div>
+        </div>
         </div>
 
         <?php include("rodape-novo.php"); ?>
