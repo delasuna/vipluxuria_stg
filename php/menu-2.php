@@ -93,6 +93,12 @@ function geraOpcoesCidades($conexao)
         <!-- Menu institucional (apenas desktop) -->
         <button class="navbar-toggler d-none" type="button"></button>
         <div class="collapse navbar-collapse d-none d-lg-block" id="menuFino">
+          <!-- Botão Anuncie (sempre visível) -->
+          <div class="header-anuncie">
+            <a href="/como-anunciar/" class="btn-anuncie-badge">
+              <span>ANUNCIE AQUI</span>
+            </a>
+          </div>
           <div class="navbar-nav menu-institucional">
             <a class="text-light nav-link" href="/vip-luxuria.php">Sobre</a>
             <a class="text-light nav-link" href="/vip-blog">Blog</a>
@@ -101,12 +107,12 @@ function geraOpcoesCidades($conexao)
           </div>
         </div>
 
-        <!-- Botão Anuncie (sempre visível) -->
-        <div class="header-anuncie">
+        <div class="header-anuncie d-block d-lg-none">
           <a href="/como-anunciar/" class="btn-anuncie-badge">
             <span>ANUNCIE AQUI</span>
           </a>
         </div>
+
       </div>
     </nav>
   </div>
