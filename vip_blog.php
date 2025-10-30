@@ -42,6 +42,8 @@ $totalPages = ceil($totalRegistros / $limite);
             <?php include("php/menu-2.php"); ?>
         </div>
 
+        <div class="degrade">
+
         <div class="blog-page-premium">
             <div class="container">
 
@@ -150,6 +152,8 @@ $totalPages = ceil($totalRegistros / $limite);
                 </div>
 
             </div>
+        </div>
+
         </div>
 
         <?php include("rodape-novo.php"); ?>
