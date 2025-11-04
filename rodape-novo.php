@@ -70,9 +70,6 @@
         <div class="parceiros-section">
             <h6 class="parceiros-titulo">Nossos Parceiros</h6>
             <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 py-2 logos-parceiros">
-                <a href="http://www.vipluxuriagold.com" target="_blank">
-                    <img src="/imagens/logos/vip-luxuria-gold.png" title="Vip Luxúria Gold" alt="Vip Luxúria Gold">
-                </a>
 
                 <img src="/imagens/logos/felipe-picture.png" title="Felipe Picture" alt="Felipe Picture">
 
@@ -82,10 +79,6 @@
 
                 <a href="https://harem69.com.br/" target="_blank">
                     <img src="https://www.vipluxuria.com/imagens/parceiros/harem.png" title="Harem 69" alt="Harem 69">
-                </a>
-
-                <a href="https://www.guiaadulto.com/" target="_blank">
-                    <img src="https://www.vipluxuria.com/imagens/parceiros/guia-adulto.png" title="Fórum de Acompanhantes" alt="Fórum de Acompanhantes">
                 </a>
 
                 <a href="/angelo-personal.php/">
