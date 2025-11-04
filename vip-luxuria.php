@@ -47,7 +47,7 @@ mysqli_free_result($resultado);
                     
                    <div class="about-stats-row">
     <div class="stat-box-vip">
-        <div class="stat-value">Desde 2007</div>
+        <div class="stat-value">Desde 2008</div>
         <div class="stat-label">No Mercado</div>
     </div>
     <div class="stat-box-vip">
