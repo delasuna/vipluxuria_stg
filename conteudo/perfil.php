@@ -368,9 +368,24 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 /* Grid de Fotos */
 .photos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
     margin-top: 20px;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas no desktop */
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 991px) {
+    .photos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Celulares (até 768px) — 2 colunas */
+@media (max-width: 768px) {
+    .photos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .photo-item {
@@ -451,6 +466,44 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
         padding: 15px;
     }
 }
+
+/* ===========================
+   Grid de Fotos Caseiras
+=========================== */
+.photos-grid-caseiras {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr); /* 3 fotos por linha no desktop */
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+/* Tablets */
+@media (max-width: 991px) {
+    .photos-grid-caseiras {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celulares médios */
+@media (max-width: 768px) {
+    .photos-grid-caseiras {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+    .photos-grid-caseiras {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-item {
+        aspect-ratio: 1/1; /* opcional: quadrado no mobile */
+    }
+}
+
 </style>
 
 </head>
@@ -610,7 +663,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
             <?php if (!empty($fotosCaseiras)): ?>
                 <div class="mb-4">
                     <h2 class="section-title-perfil">Fotos Caseiras</h2>
-                    <div class="photos-grid">
+                    <div class="photos-grid-caseiras mx-auto">
                         <?php foreach ($fotosCaseiras as $index => $foto): ?>
                             <div class="photo-item" onclick='openGallery(<?= json_encode($fotosCaseiras) ?>, <?= $index ?>)'>
                                 <img src="<?= htmlspecialchars($foto) ?>" alt="Foto caseira <?= $index + 1 ?>" loading="lazy">
