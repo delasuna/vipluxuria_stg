@@ -7236,3 +7236,34 @@ select.form-control option {
         aspect-ratio: 1/1; /* opcional: quadrado no mobile */
     }
 }
+
+/* Responsividade aprimorada apenas abaixo de 992px */
+@media (max-width: 991px) {
+  .filters-section .filters-row-top,
+  .filters-section .filters-row-bottom {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px 12px;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .filters-section .filter-btn {
+    width: 100% !important;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .filters-section .filter-dropdown {
+    width: 100%;
+  }
+
+  .filters-section .dropdown-menu {
+    text-align: center;
+  }
+
+  .filters-row-bottom {
+    margin-top: 10px !important;
+  }
+}
