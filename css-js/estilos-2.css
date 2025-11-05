@@ -7444,4 +7444,24 @@ select.form-control option {
     gap: 15px;
     padding: 0 10px;
   }
+
+  .photos-grid-caseiras {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .photos-grid-caseiras .photo-item {
+    aspect-ratio: 1 / 1; /* deixa os blocos quadrados */
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .photos-grid-caseiras img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* corta proporcionalmente */
+    border-radius: 10px;
+    display: block;
+  }
 }
