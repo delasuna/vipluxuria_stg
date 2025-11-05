@@ -7387,3 +7387,61 @@ select.form-control option {
         margin: 0 auto;
     }
 }
+
+/* ======== RESPONSIVIDADE PERFIL (somente mobile) ======== */
+@media (max-width: 768px) {
+
+  /* As duas colunas viram uma única */
+  .perfil-container-2col {
+    grid-template-columns: 1fr;  /* empilha */
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  /* Reduz padding dos blocos */
+  .perfil-col-left,
+  .perfil-col-right {
+    padding: 20px;
+  }
+
+  /* Ajusta grid de fotos */
+  .photos-grid {
+    grid-template-columns: repeat(2, 1fr); /* duas por linha no mobile */
+    gap: 10px;
+  }
+
+  /* Evita transbordamento */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Corrige botões */
+  .btn-wpp-perfil {
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  /* Ajusta fontes e espaçamentos */
+  .section-title-perfil {
+    font-size: 1.3rem;
+  }
+
+  .perfil-nome {
+    font-size: 1.5rem;
+  }
+
+  /* Garante que vídeos e imagens não estourem */
+  video, img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Centraliza cards e evita margens fixas */
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+  }
+}

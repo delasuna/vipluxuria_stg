@@ -212,6 +212,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index,follow">
 <meta name="description" content="Vip Luxúria é um classificados de anúncio de Acompanhantes de Porto Alegre." />
 <meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante" />
@@ -411,7 +412,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                     <h4 style="color: #50ff2c; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✓ Sim</h4>
                     <div class="tags-faco-sim">
                         <?php foreach (array_keys($facaSim) as $nome): ?>
-                            <span class="badge bg-success"><?= htmlspecialchars($nome) ?></span>
+                            <span class="badge bg-success my-1"><?= htmlspecialchars($nome) ?></span>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
@@ -420,7 +421,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                     <h4 style="color: #ffc107; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">~ Talvez</h4>
                     <div class="tags-faco-talvez">
                         <?php foreach (array_keys($facaTalvez) as $nome): ?>
-                            <span class="badge bg-warning"><?= htmlspecialchars($nome) ?></span>
+                            <span class="badge bg-warning my-1"><?= htmlspecialchars($nome) ?></span>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
@@ -429,7 +430,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                     <h4 style="color: #ff3a65; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✗ Não</h4>
                     <div class="tags-faco-nao">
                         <?php foreach (array_keys($facaNao) as $nome): ?>
-                            <span class="badge bg-danger"><?= htmlspecialchars($nome) ?></span>
+                            <span class="badge bg-danger my-1"><?= htmlspecialchars($nome) ?></span>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
