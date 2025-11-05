@@ -158,25 +158,56 @@ a:hover {
 
 
 .logo-section {
-    text-align: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 20px;
+  overflow: visible !important;
+  position: relative;
 }
-
-
 
 .logo-principal {
-    max-height: 80px;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-    transition: transform 0.3s ease;
+  height: auto;
+  width: auto;
+  max-height: none; /* ❌ remove limite que encolhia no desktop */
+  max-width: 260px; /* ajuste fino: valor próximo ao que usava antes */
 }
-
-
 
 .logo-principal:hover {
     transform: scale(1.05);
 }
 
+.selo-confianca {
+  max-height: 140px; /* 🔹 aumenta tamanho geral do selo */
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+  transition: transform 0.3s ease;
+}
 
+.selo-confianca:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .logo-section {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .logo-principal {
+    max-width: 200px; /* reduz só no mobile */
+  }
+
+  .selo-confianca {
+    max-height: 100px; /* 🔹 deixa mais alto no mobile, ideal para selo vertical */
+  }
+}
 
 /* Removido degradê inferior brusco - transição suave */
 .fade-bottom,
