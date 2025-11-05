@@ -11,7 +11,8 @@
     --rosa-dark: #AD1457;
     --rosa-light: #F8BBD0;
     --bg-black: #0a0a0a;
-    --bg-dark-rosa: #0a0a0a; /* Preto ao invés de rosa escuro */
+    --bg-dark-rosa: #0a0a0a;
+    /* Preto ao invés de rosa escuro */
     --card-gray: #2c2c2c;
     --card-hover: #3a3a3a;
     --text-light: #cccccc;
@@ -25,11 +26,11 @@
 /* ============================================
    RESET E BASE
    ============================================ */
-* { 
-    margin: 0; 
-    padding: 0; 
-    border: 0; 
-    box-sizing: border-box; 
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
 }
 
 
@@ -81,9 +82,8 @@
         linear-gradient(180deg,
             #000 0%,
             #D15295 50%,
-            #000 100%
-        );
-    background-attachment: scroll; 
+            #000 100%);
+    background-attachment: scroll;
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
@@ -115,7 +115,8 @@ a:hover {
 /* ============================================
    ESTRUTURA PRINCIPAL
    ============================================ */
-#wrap, #wrap-2 {
+#wrap,
+#wrap-2 {
     height: 100%;
     width: 100%;
     position: relative;
@@ -146,33 +147,35 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        repeating-linear-gradient(45deg, 
-            transparent, 
-            transparent 10px, 
-            rgba(255,255,255,0.02) 10px, 
-            rgba(255,255,255,0.02) 20px);
+    background-image:
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.02) 10px,
+            rgba(255, 255, 255, 0.02) 20px);
     mix-blend-mode: overlay;
 }
 
 
 
 .logo-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-bottom: 20px;
-  overflow: visible !important;
-  position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 20px;
+    overflow: visible !important;
+    position: relative;
 }
 
 .logo-principal {
-  height: auto;
-  width: auto;
-  max-height: none; /* ❌ remove limite que encolhia no desktop */
-  max-width: 260px; /* ajuste fino: valor próximo ao que usava antes */
+    height: auto;
+    width: auto;
+    max-height: none;
+    /* ❌ remove limite que encolhia no desktop */
+    max-width: 260px;
+    /* ajuste fino: valor próximo ao que usava antes */
 }
 
 .logo-principal:hover {
@@ -180,33 +183,36 @@ a:hover {
 }
 
 .selo-confianca {
-  max-height: 140px; /* 🔹 aumenta tamanho geral do selo */
-  height: auto;
-  width: auto;
-  object-fit: contain;
-  display: inline-block;
-  vertical-align: middle;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
-  transition: transform 0.3s ease;
+    max-height: 140px;
+    /* 🔹 aumenta tamanho geral do selo */
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
 }
 
 .selo-confianca:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 @media (max-width: 767px) {
-  .logo-section {
-    flex-direction: column;
-    gap: 12px;
-  }
+    .logo-section {
+        flex-direction: column;
+        gap: 12px;
+    }
 
-  .logo-principal {
-    max-width: 200px; /* reduz só no mobile */
-  }
+    .logo-principal {
+        max-width: 200px;
+        /* reduz só no mobile */
+    }
 
-  .selo-confianca {
-    max-height: 100px; /* 🔹 deixa mais alto no mobile, ideal para selo vertical */
-  }
+    .selo-confianca {
+        max-height: 100px;
+        /* 🔹 deixa mais alto no mobile, ideal para selo vertical */
+    }
 }
 
 /* Removido degradê inferior brusco - transição suave */
@@ -326,7 +332,7 @@ a:hover {
 
 .menu-institucional a,
 .menu-institucional .nav-link {
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
@@ -470,7 +476,7 @@ a:hover {
     background: rgba(44, 44, 44, 0.95);
     border: 2px solid rgba(233, 30, 99, 0.2);
     border-radius: 25px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 14px;
@@ -590,10 +596,16 @@ a:hover {
 
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
 
 
-    50% { transform: scale(1.1); }
+    50% {
+        transform: scale(1.1);
+    }
 
 
 }
@@ -1105,7 +1117,7 @@ a:hover {
     border-radius: 16px;
     position: relative;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -1162,10 +1174,16 @@ a:hover {
 
 .card-info {
     padding: 15px;
-    background: linear-gradient(180deg, var(--card-gray), rgba(44,44,44,0.8));
+    background: linear-gradient(180deg, var(--card-gray), rgba(44, 44, 44, 0.8));
 }
 
-
+@media (max-width: 1200px) {
+    .card-info {
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+    }
+}
 
 .card-info .nome-acompanhante {
     color: white;
@@ -1223,7 +1241,7 @@ a:hover {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
 }
@@ -1277,31 +1295,41 @@ a:hover {
 
 
 @media (min-width: 1400px) {
-    .grid-premium { grid-template-columns: repeat(6, 1fr); }
+    .grid-premium {
+        grid-template-columns: repeat(6, 1fr);
+    }
 
 
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {
-    .grid-premium { grid-template-columns: repeat(5, 1fr); }
+    .grid-premium {
+        grid-template-columns: repeat(5, 1fr);
+    }
 
 
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-    .grid-premium { grid-template-columns: repeat(4, 1fr); }
+    .grid-premium {
+        grid-template-columns: repeat(4, 1fr);
+    }
 
 
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .grid-premium { grid-template-columns: repeat(3, 1fr); }
+    .grid-premium {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
 
 }
 
 @media (max-width: 767px) {
-    .grid-premium { grid-template-columns: repeat(2, 1fr); }
+    .grid-premium {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
 
 }
@@ -1327,7 +1355,8 @@ a:hover {
 
 
 
-.perfil-nome, .nome-acompanhante {
+.perfil-nome,
+.nome-acompanhante {
     font-family: 'Sriracha', cursive;
     font-size: 38px;
     color: #FFF;
@@ -1442,7 +1471,7 @@ a:hover {
 
 
 .perfil-dados span {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
 }
 
@@ -1615,7 +1644,7 @@ a:hover {
 
 
 .cards-container p {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0;
     font-size: 0.9rem;
 }
@@ -1623,7 +1652,8 @@ a:hover {
 
 
 /* WHATSAPP */
-.btn-whatsapp, .btn-wpp-perfil {
+.btn-whatsapp,
+.btn-wpp-perfil {
     display: inline-block;
     margin: 1rem 0;
     padding: .8rem 1.2rem;
@@ -1638,7 +1668,8 @@ a:hover {
 
 
 
-.btn-whatsapp:hover, .btn-wpp-perfil:hover {
+.btn-whatsapp:hover,
+.btn-wpp-perfil:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
     color: #fff !important;
@@ -1801,7 +1832,7 @@ a:hover {
 
 
 .banner-nao-encontrou-suave span {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 18px;
     margin-bottom: 35px;
     max-width: 600px;
@@ -1935,7 +1966,7 @@ a:hover {
 
 /* Parágrafos de texto */
 .trust-section-leaders p {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 20px;
@@ -2034,15 +2065,15 @@ a:hover {
 
 
 .trust-card-description {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 15px;
     line-height: 1.5;
 }
 
 
 
-.trust-section-leaders + #rodape,
-.trust-section-leaders + .rodape-premium {
+.trust-section-leaders+#rodape,
+.trust-section-leaders+.rodape-premium {
     margin-top: 0 !important;
 }
 
@@ -2051,7 +2082,7 @@ a:hover {
 /* ============================================
    RODAPÉ PREMIUM
    ============================================ */
-   .rodape-premium {
+.rodape-premium {
     background-color: #000;
     padding: 60px 0 30px;
     margin-top: 0;
@@ -2335,14 +2366,14 @@ a:hover {
     }
 
 
-    
+
     .parceiro-logo img {
         max-height: 40px;
         max-width: 120px;
     }
 
 
-    
+
     .redes-sociais {
         justify-content: center;
         margin-top: 15px;
@@ -2357,7 +2388,7 @@ a:hover {
     }
 
 
-    
+
     .parceiros-section {
         padding: 30px 0;
     }
@@ -2509,7 +2540,9 @@ a:hover {
 
 
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
     border-color: var(--rosa-primary);
     box-shadow: 0 0 20px rgba(233, 30, 99, 0.2);
@@ -2637,7 +2670,7 @@ input:focus, select:focus, textarea:focus {
 
 .virtual-notice-simple span {
     font-size: 16px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 
@@ -2653,8 +2686,8 @@ input:focus, select:focus, textarea:focus {
 .about-header-vip {
     text-align: center;
     padding: 60px 0;
-    background: linear-gradient(180deg, rgba(233,30,99,0.03) 0%, transparent 100%);
-    border-bottom: 1px solid rgba(233,30,99,0.1);
+    background: linear-gradient(180deg, rgba(233, 30, 99, 0.03) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(233, 30, 99, 0.1);
     margin-bottom: 50px;
 }
 
@@ -2682,7 +2715,7 @@ input:focus, select:focus, textarea:focus {
 
 .about-subtitle {
     font-size: 1.25rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 40px;
     font-weight: 300;
 }
@@ -2693,14 +2726,14 @@ input:focus, select:focus, textarea:focus {
    ANIMAÇÕES
    ============================================ */
 @keyframes fadeInUp {
-    from { 
-        opacity: 0; 
+    from {
+        opacity: 0;
         transform: translateY(20px);
     }
 
 
-    to { 
-        opacity: 1; 
+    to {
+        opacity: 1;
         transform: translateY(0);
     }
 
@@ -2744,7 +2777,8 @@ input:focus, select:focus, textarea:focus {
 /* ============================================
    UTILITÁRIOS
    ============================================ */
-.text-rosa, .text-pink {
+.text-rosa,
+.text-pink {
     color: var(--rosa-primary);
 }
 
@@ -2764,7 +2798,7 @@ input:focus, select:focus, textarea:focus {
 
 .hover-lift:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -2791,13 +2825,13 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .cta-benefits-horizontal {
         grid-template-columns: 1fr;
     }
 
 
-    
+
     .about-features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -2806,29 +2840,35 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 991px) {
+
     /* Ajustes gerais mobile */
-    #principal, #topo-content, #menu-content, 
-    #slider-content, #rodape-content, #principal-perfil,
-    #principal-content, #principal-content-full {
+    #principal,
+    #topo-content,
+    #menu-content,
+    #slider-content,
+    #rodape-content,
+    #principal-perfil,
+    #principal-content,
+    #principal-content-full {
         width: 100%;
         padding: 0 20px;
     }
 
 
-    
+
     #coluna-full {
         width: 100%;
         margin: 0;
     }
 
 
-    
+
     .perfil-wrapper {
         flex-direction: column;
     }
 
 
-    
+
     /* Header fino - badges centrais vão para baixo do menu */
     .header-badges-center {
         position: static;
@@ -2838,20 +2878,20 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .top-header-fino .navbar {
         flex-wrap: wrap;
     }
 
 
-    
+
     .header-anuncie {
         margin: 0;
         margin-left: auto;
     }
 
 
-    
+
     /* Menus institucionais no tablet ainda aparecem */
     .menu-institucional {
         display: flex;
@@ -2859,7 +2899,7 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .menu-institucional a,
     .menu-institucional .nav-link {
         font-size: 13px;
@@ -2867,21 +2907,21 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     /* Badges e filtros */
     .category-badges-container {
         gap: 12px;
     }
 
 
-    
+
     .badge-category-main {
         padding: 10px 18px;
         font-size: 14px;
     }
 
 
-    
+
     .filters-row-top,
     .filters-row-bottom {
         gap: 8px;
@@ -2889,14 +2929,14 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .filter-btn {
         padding: 9px 16px;
         font-size: 13px;
     }
 
 
-    
+
     /* Páginas especiais - GRID 4 COLUNAS NO TABLET */
     .trust-grid-leaders {
         grid-template-columns: repeat(4, 1fr);
@@ -2904,7 +2944,7 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .info-cards-container {
         flex-direction: column;
         max-width: 400px;
@@ -2912,13 +2952,13 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .info-card {
         width: 100%;
     }
 
 
-    
+
     .trust-bar {
         grid-template-columns: 1fr;
     }
@@ -2927,13 +2967,14 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 767px) {
+
     /* Header fino mobile - APENAS CASINHA E BOTÃO ANUNCIE */
     .top-header-fino {
         padding: 6px 0;
     }
 
 
-    
+
     /* Esconde badges centrais E menu institucional no mobile */
     .header-badges-center,
     .menu-institucional {
@@ -2941,13 +2982,13 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .top-header-fino .navbar-collapse {
         display: none !important;
     }
 
 
-    
+
     .top-header-fino .navbar {
         justify-content: space-between;
         padding: 0 15px;
@@ -2956,35 +2997,35 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .top-header-fino .navbar-brand {
         font-size: 20px;
         margin: 0;
     }
 
 
-    
+
     .btn-anuncie-badge {
         padding: 6px 14px;
         font-size: 12px;
     }
 
 
-    
+
     /* Botão hamburguer REMOVIDO */
     .navbar-toggler {
         display: none !important;
     }
 
 
-    
+
     /* Badges de categoria mobile - 3 COLUNAS LADO A LADO */
     .category-badges-section {
         padding: 15px 0;
     }
 
 
-    
+
     .category-badges-container {
         flex-direction: row;
         gap: 8px;
@@ -2993,7 +3034,7 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .badge-category-main {
         width: auto;
         flex: 1;
@@ -3006,102 +3047,104 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .badge-category-main i {
         font-size: 14px;
     }
 
 
-    
+
     .badge-category-main span {
         display: inline;
         font-size: 11px;
     }
 
 
-    
+
     /* Filtros mobile */
     .filters-section {
         padding: 15px 0;
     }
 
 
-    
+
     .filter-24h {
         min-width: 130px;
     }
 
 
-    
+
     .filter-24h-text .line1 {
         font-size: 13px;
     }
 
 
-    
+
     .filter-24h-text .line2 {
         font-size: 10px;
     }
 
 
-    
+
     /* Perfil e outros */
-    .perfil-nome, .nome-acompanhante {
+    .perfil-nome,
+    .nome-acompanhante {
         font-size: 2rem;
     }
 
 
-    
+
     .trust-title-leaders {
         font-size: 28px;
     }
 
 
-    
+
     .cta-card-premium-center {
         padding: 30px 20px;
     }
 
 
-    
+
     .trust-grid-leaders {
         grid-template-columns: 1fr;
     }
 
 
-    
-    #thumbs li, #thumbs-full li {
+
+    #thumbs li,
+    #thumbs-full li {
         width: calc(50% - 10px);
         margin: 5px;
     }
 
 
-    
+
     .cards-container {
         flex-direction: column;
     }
 
 
-    
+
     .cards-container .card {
         max-width: 100%;
     }
 
 
-    
+
     /* Páginas especiais */
     .page-header-elegant h1 {
         font-size: 32px;
     }
 
 
-    
+
     .subtitle-page {
         font-size: 16px;
     }
 
 
-    
+
     /* Seção 17 anos mobile */
     .trust-title-leaders,
     .trust-section-leaders h2 {
@@ -3110,19 +3153,19 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .trust-section-leaders h3 {
         font-size: 22px;
     }
 
 
-    
+
     .trust-section-leaders p {
         font-size: 15px;
     }
 
 
-    
+
     .trust-section-leaders select,
     .trust-section-leaders .form-select {
         font-size: 14px;
@@ -3132,7 +3175,7 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     /* Grid 17 anos - 2x2 NO MOBILE */
     .trust-grid-leaders {
         grid-template-columns: repeat(2, 1fr);
@@ -3141,13 +3184,13 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .trust-card-leader {
         padding: 25px 15px;
     }
 
 
-    
+
     .trust-icon-leader {
         width: 50px;
         height: 50px;
@@ -3156,57 +3199,57 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .trust-card-title {
         font-size: 16px;
         margin-bottom: 8px;
     }
 
 
-    
+
     .trust-card-description {
         font-size: 13px;
     }
 
 
-    
+
     .about-title-main {
         font-size: 2.5rem;
     }
 
 
-    
+
     .about-subtitle {
         font-size: 1rem;
     }
 
 
-    
+
     .about-stats-row {
         gap: 25px;
     }
 
 
-    
+
     .stat-value {
         font-size: 2rem;
     }
 
 
-    
+
     .about-content-card,
     .about-sidebar-card {
         padding: 25px 20px;
     }
 
 
-    
+
     .section-title-vip {
         font-size: 1.5rem;
     }
 
 
-    
+
     .dicas-title-main,
     .duvidas-title-main {
         font-size: 1.6rem;
@@ -3215,48 +3258,48 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .blog-grid-premium {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
     }
 
 
-    
+
     .dicas-grid-premium {
         grid-template-columns: 1fr;
         gap: 15px;
     }
 
 
-    
+
     .dica-card {
         padding: 20px;
         gap: 15px;
     }
 
 
-    
+
     .faq-question {
         padding: 20px;
         gap: 15px;
     }
 
 
-    
+
     .faq-text {
         font-size: 1rem;
     }
 
 
-    
+
     .hero-title-simple {
         font-size: 1.6rem;
         padding: 0 20px;
     }
 
 
-    
+
     .post-article-content {
         padding: 30px 20px;
     }
@@ -3271,103 +3314,103 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .filter-btn span {
         font-size: 11px;
     }
 
 
-    
+
     .btn-anuncie-badge {
         padding: 5px 12px;
         font-size: 11px;
     }
 
 
-    
+
     /* Páginas especiais mobile extra small */
     .about-title-main {
         font-size: 1.75rem;
     }
 
 
-    
+
     .about-stats-row {
         flex-direction: column;
         gap: 15px;
     }
 
 
-    
+
     .timeline-item {
         padding-left: 0;
     }
 
 
-    
+
     .timeline-item::before {
         display: none;
     }
 
 
-    
+
     .hero-title-simple {
         font-size: 1.4rem;
     }
 
 
-    
+
     .post-article-content {
         padding: 25px 15px;
         border-radius: 15px;
     }
 
 
-    
+
     .paragraph-styled {
         font-size: 1rem;
     }
 
 
-    
+
     .heading-styled {
         font-size: 1.5rem;
     }
 
 
-    
+
     .section-header h3 {
         font-size: 2rem;
     }
 
 
-    
+
     .blog-grid-premium {
         grid-template-columns: 1fr;
     }
 
 
-    
+
     .blog-card-image {
         height: 180px;
     }
 
 
-    
+
     .pagination-list {
         flex-wrap: wrap;
         gap: 5px;
     }
 
 
-    
+
     .pagination-link {
         padding: 8px 15px;
         font-size: 0.9rem;
     }
 
 
-    
+
     .dicas-intro-card,
     .dicas-cta-section,
     .duvidas-cta-section,
@@ -3376,13 +3419,13 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .dicas-cta-buttons {
         flex-direction: column;
     }
 
 
-    
+
     .btn-dicas-premium,
     .btn-dicas-secondary {
         width: 100%;
@@ -3390,20 +3433,20 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .region-pills {
         gap: 8px;
     }
 
 
-    
+
     .region-pill {
         padding: 6px 12px;
         font-size: 0.85rem;
     }
 
 
-    
+
     /* Seção 17 anos - mobile extra pequeno */
     .trust-title-leaders,
     .trust-section-leaders h2 {
@@ -3412,13 +3455,13 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .trust-section-leaders {
         padding: 50px 15px;
     }
 
 
-    
+
     .trust-section-leaders select,
     .trust-section-leaders .form-select {
         font-size: 13px;
@@ -3426,19 +3469,19 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .trust-grid-leaders {
         gap: 10px;
     }
 
 
-    
+
     .trust-card-leader {
         padding: 20px 12px;
     }
 
 
-    
+
     .trust-icon-leader {
         width: 45px;
         height: 45px;
@@ -3446,13 +3489,13 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .trust-card-title {
         font-size: 15px;
     }
 
 
-    
+
     .trust-card-description {
         font-size: 12px;
     }
@@ -3466,32 +3509,32 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .stat-box-vip {
         padding: 0 10px;
     }
 
 
-    
+
     .stat-value {
         font-size: 1.8rem;
     }
 
 
-    
+
     .stat-label {
         font-size: 0.75rem;
     }
 
 
-    
+
     .related-posts-grid,
     .blog-grid-premium {
         grid-template-columns: 1fr;
     }
 
 
-    
+
     /* Badges ainda mais compactos */
     .badge-category-main {
         padding: 8px 6px;
@@ -3500,13 +3543,13 @@ input:focus, select:focus, textarea:focus {
     }
 
 
-    
+
     .badge-category-main i {
         font-size: 12px;
     }
 
 
-    
+
     .badge-category-main span {
         font-size: 10px;
     }
@@ -3533,7 +3576,7 @@ input:focus, select:focus, textarea:focus {
 
 .banner-vantagens:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -3636,20 +3679,20 @@ input:focus, select:focus, textarea:focus {
 
 
 
-.badge-online { 
-    background: linear-gradient(135deg, #4caf50, #45a049); 
+.badge-online {
+    background: linear-gradient(135deg, #4caf50, #45a049);
 }
 
 
 
-.badge-verificada { 
-    background: linear-gradient(135deg, #2196f3, #1976d2); 
+.badge-verificada {
+    background: linear-gradient(135deg, #2196f3, #1976d2);
 }
 
 
 
-.badge-local { 
-    background: linear-gradient(135deg, #ff9800, #f57c00); 
+.badge-local {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
 }
 
 
@@ -3789,7 +3832,7 @@ input:focus, select:focus, textarea:focus {
     background-color: #ffc107;
     border: none;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 20px;
 }
 
@@ -3857,7 +3900,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .banner-anunciante-vip p {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 18px;
     margin-bottom: 30px;
 }
@@ -4016,7 +4059,7 @@ input:focus, select:focus, textarea:focus {
 
 /* NOTA */
 #nota {
-    background-color: rgba(0,0,0,0.50);
+    background-color: rgba(0, 0, 0, 0.50);
     padding: 20px;
     margin: 0 0 20px 0;
 }
@@ -4087,7 +4130,7 @@ input:focus, select:focus, textarea:focus {
     font-size: 48px;
     font-weight: 900;
     margin-bottom: 20px;
-    text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -4109,7 +4152,7 @@ input:focus, select:focus, textarea:focus {
 
 .hero-description {
     font-size: 20px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 30px;
 }
 
@@ -4125,7 +4168,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .badge-hero {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     padding: 10px 20px;
     border-radius: 25px;
@@ -4167,7 +4210,7 @@ input:focus, select:focus, textarea:focus {
 
 .stat-label {
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
@@ -4177,7 +4220,7 @@ input:focus, select:focus, textarea:focus {
 .about-content-card {
     background: rgba(44, 44, 44, 0.4);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(233,30,99,0.1);
+    border: 1px solid rgba(233, 30, 99, 0.1);
     border-radius: 20px;
     padding: 40px;
     margin-bottom: 30px;
@@ -4191,7 +4234,7 @@ input:focus, select:focus, textarea:focus {
     color: #fff;
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 2px solid rgba(233,30,99,0.2);
+    border-bottom: 2px solid rgba(233, 30, 99, 0.2);
 }
 
 
@@ -4208,14 +4251,14 @@ input:focus, select:focus, textarea:focus {
 .about-lead {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
     margin-bottom: 30px;
 }
 
 
 
 .about-highlight-box {
-    background: linear-gradient(135deg, rgba(233,30,99,0.08) 0%, rgba(173,20,87,0.05) 100%);
+    background: linear-gradient(135deg, rgba(233, 30, 99, 0.08) 0%, rgba(173, 20, 87, 0.05) 100%);
     border-left: 3px solid var(--rosa-primary);
     padding: 20px 25px;
     margin: 30px 0;
@@ -4244,7 +4287,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .about-highlight-box p {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
     margin: 0;
 }
@@ -4305,7 +4348,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .timeline-content p {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -4313,8 +4356,8 @@ input:focus, select:focus, textarea:focus {
 
 
 .about-example-card {
-    background: rgba(255,215,0,0.05);
-    border: 1px solid rgba(255,215,0,0.2);
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
     border-radius: 15px;
     padding: 25px;
     margin-top: 35px;
@@ -4335,7 +4378,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .about-example-card p {
-    color: rgba(255,255,255,0.75);
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1.7;
     margin: 0;
 }
@@ -4345,7 +4388,7 @@ input:focus, select:focus, textarea:focus {
 .about-sidebar-card {
     background: rgba(44, 44, 44, 0.4);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(233,30,99,0.1);
+    border: 1px solid rgba(233, 30, 99, 0.1);
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 20px;
@@ -4359,7 +4402,7 @@ input:focus, select:focus, textarea:focus {
     color: #fff;
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 2px solid rgba(233,30,99,0.2);
+    border-bottom: 2px solid rgba(233, 30, 99, 0.2);
 }
 
 
@@ -4398,7 +4441,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .nav-links a {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
     font-size: 0.95rem;
     transition: all 0.3s ease;
@@ -4417,7 +4460,7 @@ input:focus, select:focus, textarea:focus {
 .about-regions-card {
     background: rgba(44, 44, 44, 0.4);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(233,30,99,0.1);
+    border: 1px solid rgba(233, 30, 99, 0.1);
     border-radius: 20px;
     padding: 25px;
 }
@@ -4441,9 +4484,9 @@ input:focus, select:focus, textarea:focus {
 
 
 .region-pill {
-    background: rgba(233,30,99,0.1);
-    border: 1px solid rgba(233,30,99,0.2);
-    color: rgba(255,255,255,0.8);
+    background: rgba(233, 30, 99, 0.1);
+    border: 1px solid rgba(233, 30, 99, 0.2);
+    color: rgba(255, 255, 255, 0.8);
     padding: 8px 16px;
     border-radius: 20px;
     text-decoration: none;
@@ -4473,7 +4516,7 @@ input:focus, select:focus, textarea:focus {
 
 .feature-card-vip {
     background: rgba(44, 44, 44, 0.3);
-    border: 1px solid rgba(233,30,99,0.1);
+    border: 1px solid rgba(233, 30, 99, 0.1);
     border-radius: 15px;
     padding: 30px 20px;
     text-align: center;
@@ -4483,9 +4526,9 @@ input:focus, select:focus, textarea:focus {
 
 
 .feature-card-vip:hover {
-    background: rgba(233,30,99,0.05);
+    background: rgba(233, 30, 99, 0.05);
     transform: translateY(-5px);
-    border-color: rgba(233,30,99,0.3);
+    border-color: rgba(233, 30, 99, 0.3);
 }
 
 
@@ -4509,7 +4552,7 @@ input:focus, select:focus, textarea:focus {
 
 .feature-card-vip p {
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     margin: 0;
 }
 
@@ -4545,7 +4588,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .legal-notice-vip p {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
     margin: 0;
 }
@@ -4570,14 +4613,14 @@ input:focus, select:focus, textarea:focus {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-family: 'Sriracha', cursive;
-    text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 
 
 .subtitle-page {
     font-size: 18px;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0;
 }
 
@@ -4655,7 +4698,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .info-card .card-content p {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
     margin: 0;
 }
@@ -4693,7 +4736,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .trust-bar .trust-item span {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
     line-height: 1.4;
 }
@@ -4739,7 +4782,7 @@ input:focus, select:focus, textarea:focus {
 
 .blog-subtitle {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 
@@ -4808,7 +4851,7 @@ input:focus, select:focus, textarea:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
     display: flex;
@@ -4854,7 +4897,7 @@ input:focus, select:focus, textarea:focus {
 .no-posts-message {
     text-align: center;
     padding: 80px 20px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 
@@ -4946,7 +4989,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .newsletter-content-blog p {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 5px;
 }
 
@@ -4954,7 +4997,7 @@ input:focus, select:focus, textarea:focus {
 
 .newsletter-promise {
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     font-style: italic;
 }
 
@@ -4983,7 +5026,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .newsletter-input::placeholder {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 
@@ -5060,7 +5103,7 @@ input:focus, select:focus, textarea:focus {
 
 .dicas-subtitle {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 
@@ -5086,7 +5129,7 @@ input:focus, select:focus, textarea:focus {
 
 .dicas-intro-card p {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     margin: 0;
 }
 
@@ -5146,7 +5189,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .dica-content p {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
     margin: 0;
 }
@@ -5179,7 +5222,7 @@ input:focus, select:focus, textarea:focus {
 
 .dicas-cta-section p {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 30px;
 }
 
@@ -5272,7 +5315,7 @@ input:focus, select:focus, textarea:focus {
 
 .duvidas-subtitle {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 
@@ -5362,7 +5405,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .faq-answer {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     border-top: 1px solid rgba(233, 30, 99, 0.1);
 }
 
@@ -5370,7 +5413,7 @@ input:focus, select:focus, textarea:focus {
 
 .faq-answer-content {
     padding: 25px 30px;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
 }
 
@@ -5411,7 +5454,7 @@ input:focus, select:focus, textarea:focus {
 
 .duvidas-cta-section p {
     font-size: 1.1rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 30px;
 }
 
@@ -5480,7 +5523,7 @@ input:focus, select:focus, textarea:focus {
     z-index: 1000;
     width: 100%;
     height: 4px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 
@@ -5506,7 +5549,7 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid rgba(233, 30, 99, 0.05);
     border-radius: 20px;
     padding: 50px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
 }
 
@@ -5526,7 +5569,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .post-body-formatted {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 
@@ -5566,7 +5609,7 @@ input:focus, select:focus, textarea:focus {
 .subheading-styled {
     font-size: 1.4rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.95);
+    color: rgba(255, 255, 255, 0.95);
     margin: 35px 0 20px;
 }
 
@@ -5590,7 +5633,7 @@ input:focus, select:focus, textarea:focus {
 .post-video-section {
     margin: 40px -50px;
     padding: 40px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 
@@ -5653,7 +5696,7 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid rgba(233, 30, 99, 0.2);
     padding: 8px 20px;
     border-radius: 25px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-size: 14px;
     transition: all 0.3s ease;
@@ -5689,7 +5732,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .cta-content p {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 25px;
 }
 
@@ -5742,7 +5785,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .section-header p {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 1.1rem;
 }
 
@@ -5805,7 +5848,7 @@ input:focus, select:focus, textarea:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -5883,7 +5926,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .error-content p {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 1.1rem;
     margin-bottom: 40px;
 }
@@ -6008,11 +6051,11 @@ img[loading="lazy"] {
 /* ============================================
    RESET E BASE
    ============================================ */
-* { 
-    margin: 0; 
-    padding: 0; 
-    border: 0; 
-    box-sizing: border-box; 
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
 }
 
 
@@ -6027,7 +6070,7 @@ img[loading="lazy"] {
 
 .banner-integrado {
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
 }
 
@@ -6212,7 +6255,7 @@ select.form-control option {
 
 
 .seo-text-content p {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.7;
     margin-bottom: 20px;
 }
@@ -6374,7 +6417,7 @@ select.form-control option {
 
 
 .char-item span {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
 }
 
@@ -6426,13 +6469,19 @@ select.form-control option {
 
 
 
-.service-label.yes { color: #4CAF50; }
+.service-label.yes {
+    color: #4CAF50;
+}
 
 
-.service-label.maybe { color: #FFA500; }
+.service-label.maybe {
+    color: #FFA500;
+}
 
 
-.service-label.no { color: #FF6B6B; }
+.service-label.no {
+    color: #FF6B6B;
+}
 
 
 
@@ -6481,6 +6530,7 @@ select.form-control option {
    MOBILE FIXES - RODAPÉ E QUADRADOS
    ============================================ */
 @media (max-width: 767px) {
+
     /* Layout Perfil Mobile */
     .perfil-main-layout {
         grid-template-columns: 1fr;
@@ -6488,21 +6538,21 @@ select.form-control option {
     }
 
 
-    
+
     .gallery-grid-main {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 
 
-    
+
     .gallery-grid-secondary {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
     }
 
 
-    
+
     .characteristics-grid {
         grid-template-columns: 1fr;
     }
@@ -6516,7 +6566,7 @@ select.form-control option {
     }
 
 
-    
+
     .rodape-premium .col-lg-3:nth-child(1),
     .rodape-premium .col-lg-3:nth-child(2) {
         flex: 0 0 50%;
@@ -6524,7 +6574,7 @@ select.form-control option {
     }
 
 
-    
+
     .rodape-premium .col-lg-3:nth-child(3),
     .rodape-premium .col-lg-3:nth-child(4) {
         flex: 0 0 100%;
@@ -6533,21 +6583,21 @@ select.form-control option {
     }
 
 
-    
+
     /* Centralizar títulos */
     .rodape-premium .rodape-titulo {
         text-align: center;
     }
 
 
-    
+
     .rodape-premium .rodape-titulo::after {
         left: 50%;
         transform: translateX(-50%);
     }
 
 
-    
+
     /* Newsletter mais compacto */
     .newsletter-texto {
         padding: 0 20px;
@@ -6556,14 +6606,14 @@ select.form-control option {
     }
 
 
-    
+
     .newsletter-form-rodape {
         max-width: 280px;
         margin: 0 auto;
     }
 
 
-    
+
     /* Redes sociais centralizadas */
     .redes-sociais {
         justify-content: center;
@@ -6578,7 +6628,7 @@ select.form-control option {
     }
 
 
-    
+
     .trust-card-leader {
         padding: 30px 20px;
         display: flex;
@@ -6588,26 +6638,26 @@ select.form-control option {
     }
 
 
-    
+
     .trust-icon-leader {
         flex-shrink: 0;
     }
 
 
-    
+
     .trust-card-content {
         flex: 1;
     }
 
 
-    
+
     .trust-card-title {
         font-size: 18px;
         margin-bottom: 8px;
     }
 
 
-    
+
     .trust-card-description {
         font-size: 14px;
         line-height: 1.4;
@@ -6622,7 +6672,7 @@ select.form-control option {
     }
 
 
-    
+
     .seo-text-content {
         padding: 25px 20px;
     }
@@ -6637,13 +6687,14 @@ select.form-control option {
     }
 
 
-    
+
     .trust-grid-leaders {
         grid-template-columns: repeat(2, 1fr);
     }
 
 
 }
+
 /* ============================================
    CARD PREVIEW SYSTEM
    ============================================ */
@@ -6668,7 +6719,7 @@ select.form-control option {
     width: 400px;
     background: var(--card-gray);
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
     border: 2px solid var(--rosa-primary);
     z-index: 1000;
     opacity: 0;
@@ -6727,7 +6778,7 @@ select.form-control option {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     padding: 15px 10px;
@@ -6773,7 +6824,7 @@ select.form-control option {
 .dot {
     width: 10px;
     height: 10px;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -6792,7 +6843,7 @@ select.form-control option {
 /* Info do Preview */
 .preview-info {
     padding: 20px;
-    background: linear-gradient(180deg, var(--card-gray), rgba(44,44,44,0.9));
+    background: linear-gradient(180deg, var(--card-gray), rgba(44, 44, 44, 0.9));
 }
 
 
@@ -6813,7 +6864,7 @@ select.form-control option {
 
 
 .preview-details p {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
     margin: 8px 0;
     display: flex;
@@ -6910,42 +6961,44 @@ select.form-control option {
 
 /* Desktop - Posicionamento inteligente */
 @media (min-width: 992px) {
+
     /* Cards na primeira coluna - preview à direita */
-    .grid-premium > *:nth-child(6n+1) .card-preview,
-    .grid-premium > *:nth-child(6n+2) .card-preview,
-    .grid-premium > *:nth-child(6n+3) .card-preview {
+    .grid-premium>*:nth-child(6n+1) .card-preview,
+    .grid-premium>*:nth-child(6n+2) .card-preview,
+    .grid-premium>*:nth-child(6n+3) .card-preview {
         left: 100%;
         transform: translate(10px, -50%) scale(0);
     }
 
 
-    
-    .grid-premium > *:nth-child(6n+1):hover .card-preview,
-    .grid-premium > *:nth-child(6n+2):hover .card-preview,
-    .grid-premium > *:nth-child(6n+3):hover .card-preview {
+
+    .grid-premium>*:nth-child(6n+1):hover .card-preview,
+    .grid-premium>*:nth-child(6n+2):hover .card-preview,
+    .grid-premium>*:nth-child(6n+3):hover .card-preview {
         transform: translate(10px, -50%) scale(1);
     }
 
 
-    
+
     /* Cards na última coluna - preview à esquerda */
-    .grid-premium > *:nth-child(6n+4) .card-preview,
-    .grid-premium > *:nth-child(6n+5) .card-preview,
-    .grid-premium > *:nth-child(6n) .card-preview {
+    .grid-premium>*:nth-child(6n+4) .card-preview,
+    .grid-premium>*:nth-child(6n+5) .card-preview,
+    .grid-premium>*:nth-child(6n) .card-preview {
         left: 0;
         transform: translate(calc(-100% - 10px), -50%) scale(0);
     }
 
 
-    
-    .grid-premium > *:nth-child(6n+4):hover .card-preview,
-    .grid-premium > *:nth-child(6n+5):hover .card-preview,
-    .grid-premium > *:nth-child(6n):hover .card-preview {
+
+    .grid-premium>*:nth-child(6n+4):hover .card-preview,
+    .grid-premium>*:nth-child(6n+5):hover .card-preview,
+    .grid-premium>*:nth-child(6n):hover .card-preview {
         transform: translate(calc(-100% - 10px), -50%) scale(1);
     }
 
 
 }
+
 /* Adicione no estilos-2.css */
 .card-preview {
     z-index: 9999 !important;
@@ -6966,12 +7019,14 @@ select.form-control option {
 
 
 .card-preview {
-    position: fixed !important; /* Muda para fixed */
+    position: fixed !important;
+    /* Muda para fixed */
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) scale(0);
     width: 400px;
-    max-width: 90vw; /* Responsivo */
+    max-width: 90vw;
+    /* Responsivo */
     z-index: 9999;
 }
 
@@ -7056,7 +7111,7 @@ select.form-control option {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.95);
+    background-color: rgba(0, 0, 0, 0.95);
     justify-content: center;
     align-items: center;
 }
@@ -7098,7 +7153,7 @@ select.form-control option {
     font-weight: bold;
     cursor: pointer;
     padding: 20px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     user-select: none;
     transition: all 0.3s ease;
@@ -7124,7 +7179,7 @@ select.form-control option {
     transform: translateX(-50%);
     color: white;
     font-size: 18px;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
     padding: 10px 20px;
     border-radius: 20px;
 }
@@ -7134,11 +7189,13 @@ select.form-control option {
     display: grid;
     gap: 10px;
     margin-top: 20px;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas no desktop */
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 colunas no desktop */
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
 }
+
 @media (max-width: 991px) {
     .photos-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -7238,7 +7295,8 @@ select.form-control option {
     display: grid;
     gap: 10px;
     margin-top: 20px;
-    grid-template-columns: repeat(3, 1fr); /* 3 fotos por linha no desktop */
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 fotos por linha no desktop */
     max-width: 900px;
     margin-inline: auto;
 }
@@ -7264,70 +7322,73 @@ select.form-control option {
     }
 
     .photo-item {
-        aspect-ratio: 1/1; /* opcional: quadrado no mobile */
+        aspect-ratio: 1/1;
+        /* opcional: quadrado no mobile */
     }
 }
 
 /* Responsividade aprimorada apenas abaixo de 992px */
 @media (max-width: 991px) {
-  .filters-section .filters-row-top,
-  .filters-section .filters-row-bottom {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 10px 12px;
-    justify-content: center;
-    max-width: 600px;
-    margin: 0 auto;
-  }
 
-  .filters-section .filter-btn {
-    width: 100% !important;
-    justify-content: center;
-    text-align: center;
-  }
+    .filters-section .filters-row-top,
+    .filters-section .filters-row-bottom {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px 12px;
+        justify-content: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
-  .filters-section .filter-dropdown {
-    width: 100%;
-  }
+    .filters-section .filter-btn {
+        width: 100% !important;
+        justify-content: center;
+        text-align: center;
+    }
 
-  .filters-section .dropdown-menu {
-    text-align: center;
-  }
+    .filters-section .filter-dropdown {
+        width: 100%;
+    }
 
-  .filters-row-bottom {
-    margin-top: 10px !important;
-  }
+    .filters-section .dropdown-menu {
+        text-align: center;
+    }
+
+    .filters-row-bottom {
+        margin-top: 10px !important;
+    }
 }
 
 /* --- bxSlider Responsivo --- */
 #slider-content-2 {
-  overflow: hidden;
-  max-width: 100%;
-  margin: 0 auto;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .bxslider-2 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .bxslider-2 .slide {
-  text-align: center;
+    text-align: center;
 }
 
 .bxslider-2 img.banner-bx {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  display: block;
-  object-fit: cover;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    object-fit: cover;
 }
 
 /* Mobile: garante carrossel e evita overflow */
 @media (max-width: 767px) {
-  .bxslider-2 img.banner-bx {
-    width: 100%;
-    max-width: 90vw; /* 90% da tela */
-    margin: 0 auto;
-  }
+    .bxslider-2 img.banner-bx {
+        width: 100%;
+        max-width: 90vw;
+        /* 90% da tela */
+        margin: 0 auto;
+    }
 }
