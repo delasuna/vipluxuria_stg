@@ -7298,3 +7298,36 @@ select.form-control option {
     margin-top: 10px !important;
   }
 }
+
+/* --- bxSlider Responsivo --- */
+#slider-content-2 {
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.bxslider-2 {
+  margin: 0;
+  padding: 0;
+}
+
+.bxslider-2 .slide {
+  text-align: center;
+}
+
+.bxslider-2 img.banner-bx {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Mobile: garante carrossel e evita overflow */
+@media (max-width: 767px) {
+  .bxslider-2 img.banner-bx {
+    width: 100%;
+    max-width: 90vw; /* 90% da tela */
+    margin: 0 auto;
+  }
+}
