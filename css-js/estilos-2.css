@@ -1812,7 +1812,7 @@ a:hover {
     background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
     border: 1px solid rgba(233, 30, 99, 0.2);
     padding: 60px 40px;
-    margin: 80px auto;
+    margin: 0px auto;
     max-width: 1200px;
     border-radius: 30px;
     position: relative;

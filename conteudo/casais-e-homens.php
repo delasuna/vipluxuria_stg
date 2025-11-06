@@ -48,123 +48,122 @@ if (!empty($_REQUEST["idCidade"])) {
     <div id="wrap">
         <div>
             <?php include("../php/menu-2.php"); ?>
-            <div id="topo"><?php include("../php/topo-2.php"); ?></div>
         </div>
+        <div class="degrade">
+            <div class="main-content">
+                <div class="container">
 
-        <div class="main-content">
-            <div class="container">
-                
-                <!-- Título da Página -->
-                <div class="page-header-elegant">
-                    <h1>Casais e Homens <?= htmlspecialchars($cidade) ?></h1>
-                    <p class="subtitle-page">Profissionais masculinos e casais para suas fantasias</p>
-                </div>
+                    <!-- Título da Página -->
+                    <div class="page-header-elegant">
+                        <h1>Casais e Homens <?= htmlspecialchars($cidade) ?></h1>
+                        <p class="subtitle-page">Profissionais masculinos e casais para suas fantasias</p>
 
-                <!-- Filtros -->
-                <?php include '../filters.php' ?>
+                        <?php include("../conteudo/trust-bar.php"); ?>
 
-                <?php include("../conteudo/trust-bar.php"); ?>
+                        <!-- Grid de Acompanhantes -->
+                        <section class="acompanhantes-section">
+                            <div class="grid-premium">
+                                <?php
+                                // Montar WHERE
+                                $where = " WHERE flagAtivo = 'Sim' ";
+                                if (!empty($_REQUEST["nome"])) {
+                                    $nome = mysqli_real_escape_string($conexao, $_REQUEST["nome"]);
+                                    $where .= " AND nome LIKE '%$nome%'";
+                                }
 
-                <!-- Grid de Acompanhantes -->
-                <section class="acompanhantes-section">
-                    <div class="grid-premium">
-                        <?php
-                        // Montar WHERE
-                        $where = " WHERE flagAtivo = 'Sim' ";
-                        if (!empty($_REQUEST["nome"])) {
-                            $nome = mysqli_real_escape_string($conexao, $_REQUEST["nome"]);
-                            $where .= " AND nome LIKE '%$nome%'";
-                        }
-
-                        // Query conforme cidade
-                        if (!empty($_REQUEST["idCidade"])) {
-                            $idCidade = (int) $_REQUEST["idCidade"];
-                            $sql = "SELECT homem.* FROM homem
+                                // Query conforme cidade
+                                if (!empty($_REQUEST["idCidade"])) {
+                                    $idCidade = (int) $_REQUEST["idCidade"];
+                                    $sql = "SELECT homem.* FROM homem
                                     JOIN homemCidade ON (homem.idHomem = homemCidade.idHomem AND homemCidade.idCidade = $idCidade)
                                     $where
                                     ORDER BY RAND()";
-                        } else {
-                            $sql = "SELECT * FROM homem
+                                } else {
+                                    $sql = "SELECT * FROM homem
                                     $where
                                     ORDER BY RAND()";
-                        }
+                                }
 
-                        $resultado = mysqli_query($conexao, $sql);
-                        if (!$resultado) {
-                            die("Impossível visualizar os anunciantes: " . mysqli_error($conexao));
-                        }
+                                $resultado = mysqli_query($conexao, $sql);
+                                if (!$resultado) {
+                                    die("Impossível visualizar os anunciantes: " . mysqli_error($conexao));
+                                }
 
-                        $contadorCarrossel = 0;
-                        $comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'O', 'Ù', 'Ü', 'Ú'];
-                        $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
+                                $contadorCarrossel = 0;
+                                $comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'O', 'Ù', 'Ü', 'Ú'];
+                                $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
 
-                        while ($row = mysqli_fetch_assoc($resultado)) {
-                            $idHomem = $row['idHomem'];
-                            $nome = $row['nome'];
-                            $sobrenome = $row['sobrenome'];
-                            $imagemComNome = $row['imagemComNome'];
-                            $flagVerificada = $row['flagVerificada'] ?? 'Não';
+                                while ($row = mysqli_fetch_assoc($resultado)) {
+                                    $idHomem = $row['idHomem'];
+                                    $nome = $row['nome'];
+                                    $sobrenome = $row['sobrenome'];
+                                    $imagemComNome = $row['imagemComNome'];
+                                    $flagVerificada = $row['flagVerificada'] ?? 'Não';
 
-                            $linkPerfil = "/perfil-homens/" . $idHomem . "/" . str_replace($comAcentos, $semAcentos, $nome);
-                            if (!empty($sobrenome)) {
-                                $linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
-                            }
-                            $linkPerfil = htmlspecialchars($linkPerfil);
-                            $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
-                        ?>
-                            <a href="<?= $linkPerfil ?>" class="text-decoration-none">
-                                <div class="acompanhante-card hover-lift">
-                                    <?php if ($flagVerificada == 'Sim'): ?>
-                                        <span class="badge-verificada">✔ Verificada</span>
-                                    <?php endif; ?>
-                                    <div class="card-img-wrapper">
-                                        <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemComNome) ?>"
-                                            class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
-                                    </div>
-                                    <div class="card-info">
-                                        <p class="nome-acompanhante"><?= $nomeCompleto ?></p>
-                                    </div>
-                                </div>
-                            </a>
+                                    $linkPerfil = "/perfil-homens/" . $idHomem . "/" . str_replace($comAcentos, $semAcentos, $nome);
+                                    if (!empty($sobrenome)) {
+                                        $linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
+                                    }
+                                    $linkPerfil = htmlspecialchars($linkPerfil);
+                                    $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
+                                ?>
+                                    <a href="<?= $linkPerfil ?>" class="text-decoration-none">
+                                        <div class="acompanhante-card hover-lift">
+                                            <?php if ($flagVerificada == 'Sim'): ?>
+                                                <span class="badge-verificada">✔ Verificada</span>
+                                            <?php endif; ?>
+                                            <div class="card-img-wrapper">
+                                                <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemComNome) ?>"
+                                                    class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
+                                            </div>
+                                            <div class="card-info">
+                                                <p class="nome-acompanhante"><?= $nomeCompleto ?></p>
+                                            </div>
+                                        </div>
+                                    </a>
 
-                            <?php 
-                            // Banner de destaque após 18 cards
-                            if (++$contadorCarrossel == 18) { ?>
-                                <div class="carousel-container">
-                                    <?php include("../php/carousel.php"); ?>
-                                </div>
-                                <?php $contadorCarrossel = 0; // Reset contador ?>
-                            <?php } ?>
-                        <?php } ?>
+                                    <?php
+                                    // Banner de destaque após 18 cards
+                                    if (++$contadorCarrossel == 18) { ?>
+                                        <div class="carousel-container">
+                                            <?php include("../php/carousel.php"); ?>
+                                        </div>
+                                        <?php $contadorCarrossel = 0; // Reset contador 
+                                        ?>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
+                        </section>
+
                     </div>
-                </section>
+                </div>
 
-               
-        <!-- Cards de Dicas e Dúvidas -->
-        <div class="info-cards-container">
-            <a href="/conteudo/dicas-contratar-acompanhante.php" class="info-card card-dicas">
-                <div class="icon-wrapper">
-                    <i class="bi bi-lightbulb-fill"></i>
+                <!-- Cards de Dicas e Dúvidas -->
+                <div class="info-cards-container">
+                    <a href="/conteudo/dicas-contratar-acompanhante.php" class="info-card card-dicas">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Dicas Importantes</h3>
+                            <p>O que saber antes de contratar</p>
+                        </div>
+                    </a>
+
+                    <a href="/conteudo/duvidas-frequentes.php" class="info-card card-duvidas">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-question-circle-fill"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Dúvidas Frequentes</h3>
+                            <p>Respostas para suas perguntas</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="card-content">
-                    <h3>Dicas Importantes</h3>
-                    <p>O que saber antes de contratar</p>
-                </div>
-            </a>
-            
-            <a href="/conteudo/duvidas-frequentes.php" class="info-card card-duvidas">
-                <div class="icon-wrapper">
-                    <i class="bi bi-question-circle-fill"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Dúvidas Frequentes</h3>
-                    <p>Respostas para suas perguntas</p>
-                </div>
-            </a>
-        </div>
- <!-- Banner Não Encontrou  -->
+                <!-- Banner Não Encontrou  -->
                 <?php include("../nao-encontrou.php"); ?>
-     
+            </div>
+        </div>
         <?php include("../rodape-novo.php"); ?>
 
         <script type="text/javascript">

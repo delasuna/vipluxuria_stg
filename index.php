@@ -38,15 +38,15 @@ mysqli_free_result($resultado);
             <div class="category-badges-section">
                 <div class="container">
                     <div class="category-badges-container">
-                        <a href="javascript:carregaAnunciantes('Mulheres')" class="badge-category-main">
+                        <a href="/mulheres-acompanhantes-porto-alegre-poa/" class="badge-category-main">
                             <i class="bi bi-gender-female"></i>
                             <span>Mulheres</span>
                         </a>
-                        <a href="javascript:carregaAnunciantes('Transex')" class="badge-category-main">
+                        <a href="/transex-porto-alegre-poa/" class="badge-category-main">
                             <i class="bi bi-gender-trans"></i>
                             <span>Transex</span>
                         </a>
-                        <a href="javascript:carregaAnunciantes('Casais')" class="badge-category-main">
+                        <a href="/casais-e-homens-porto-alegre-poa/" class="badge-category-main">
                             <i class="bi bi-people-fill"></i>
                             <span>Casais</span>
                         </a>

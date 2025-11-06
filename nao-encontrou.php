@@ -1,4 +1,4 @@
-<div class="banner-nao-encontrou-suave">
+<div class="banner-nao-encontrou-suave text-center">
     <div class="nao-encontrou-content">
         <div class="icon-search-suave">
             <i class="bi bi-search-heart"></i>
