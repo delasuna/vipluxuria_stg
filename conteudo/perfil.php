@@ -177,12 +177,19 @@ for ($i=1; $i<=8; $i++) {
 // Constrói array de FOTOS CASEIRAS (imagemExtra 1-6)
 $fotosCaseiras = [];
 if (!empty($p_flagMostraConteudoExtra) && $p_flagMostraConteudoExtra === 'S') {
-    for ($i=1; $i<=6; $i++) {
-        $key = "imagemExtra{$i}";
-        if (!empty($perfil[$key])) {
+    for ($i = 1; $i <= 6; $i++) {
+    $key = "imagemExtra{$i}";
+
+    // Verifica se o campo existe e não está vazio
+    if (!empty($perfil[$key])) {
+        $extensao = strtolower(pathinfo($perfil[$key], PATHINFO_EXTENSION));
+
+        // Só adiciona se a extensão for de imagem
+        if (in_array($extensao, ['jpg', 'jpeg', 'png', 'gif', 'webp'])) {
             $fotosCaseiras[] = 'https://vipluxuria.com/sistema/content/' . $perfil[$key];
         }
     }
+}
 }
 
 $itensFaco = [
