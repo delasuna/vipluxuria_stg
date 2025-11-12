@@ -10,7 +10,7 @@
     </div>
     <div class="trust-item">
         <i class="bi bi-geo-alt-fill"></i>
-        <span><strong>Cobertura Regional</strong> Atendemos toda região metropolitana com mais de 500 anunciantes ativas</span>
+        <span><strong>Cobertura Regional</strong> Atendemos toda região metropolitana</span>
     </div>
     <div class="trust-item">
         <i class="bi bi-award-fill"></i>

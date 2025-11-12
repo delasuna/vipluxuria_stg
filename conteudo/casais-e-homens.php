@@ -138,30 +138,8 @@ if (!empty($_REQUEST["idCidade"])) {
                     </div>
                 </div>
 
-                <!-- Cards de Dicas e Dúvidas -->
-                <div class="info-cards-container">
-                    <a href="/conteudo/dicas-contratar-acompanhante.php" class="info-card card-dicas">
-                        <div class="icon-wrapper">
-                            <i class="bi bi-lightbulb-fill"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Dicas Importantes</h3>
-                            <p>O que saber antes de contratar</p>
-                        </div>
-                    </a>
-
-                    <a href="/conteudo/duvidas-frequentes.php" class="info-card card-duvidas">
-                        <div class="icon-wrapper">
-                            <i class="bi bi-question-circle-fill"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Dúvidas Frequentes</h3>
-                            <p>Respostas para suas perguntas</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Banner Não Encontrou  -->
-                <?php include("../nao-encontrou.php"); ?>
+                <?php include 'dicas-e-duvidas.php' ?>
+                
             </div>
         </div>
         <?php include("../rodape-novo.php"); ?>

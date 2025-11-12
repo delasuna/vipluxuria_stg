@@ -78,19 +78,20 @@
  */
 
 .degrade {
-    background:
-        linear-gradient(180deg,
-            #000 0%,
-            #D15295 50%,
-            #000 100%);
+    background: linear-gradient(
+        180deg,
+        #000 0%,
+        #D15295 20%,
+        #e86aa9 50%,
+        #D15295 80%,
+        #000 100%
+    );
     background-attachment: scroll;
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
     position: relative;
 }
-
-
 
 a {
     color: #FFF;
@@ -5139,6 +5140,12 @@ textarea:focus {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 25px;
     margin-bottom: 50px;
+}
+
+@media (max-width: 767px) {
+    .dicas-grid-premium {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
 }
 
 
