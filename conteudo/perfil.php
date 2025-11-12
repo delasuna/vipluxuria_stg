@@ -411,6 +411,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 </div>
             <?php endif; ?>
 
+            <?php if(!empty($facaSim) && !empty($facaTalvez) && !empty($facaNao)): ?>
             <!-- O que Faço -->
             <div class="mb-4">
                 <h2 class="section-title-perfil">O que Faço</h2>
@@ -442,6 +443,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                     </div>
                 <?php endif; ?>
             </div>
+            <?php endif; ?>
 
             <!-- Fotos Caseiras -->
             <?php if (!empty($fotosCaseiras)): ?>
