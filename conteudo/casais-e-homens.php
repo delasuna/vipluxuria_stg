@@ -58,6 +58,8 @@ if (!empty($_REQUEST["idCidade"])) {
                         <h1>Casais e Homens <?= htmlspecialchars($cidade) ?></h1>
                         <p class="subtitle-page">Profissionais masculinos e casais para suas fantasias</p>
 
+                        <?php include '../search-bar.php' ?>
+
                         <?php include("../conteudo/trust-bar.php"); ?>
 
                         <!-- Grid de Acompanhantes -->

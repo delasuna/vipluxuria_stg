@@ -74,7 +74,7 @@ if (!empty($_REQUEST["idCidade"])) {
                         <p class="subtitle-page">Escolha entre profissionais verificadas e confiáveis</p>
                     </div>
 
-
+                    <?php include '../search-bar.php' ?>
 
                     <!-- Filtros -->
                     <?php include '../filters.php' ?>
