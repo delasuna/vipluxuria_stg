@@ -151,7 +151,7 @@ $keywords = $seo['keywords'] ?? '';
 <div class="container py-5">
   <div class="text-center bg-dark text-white custom-card p-4">
     <h2 class="fw-bold mb-3">Pronta para aumentar seus ganhos?</h2>
-    <a href="https://wa.me/5591981440470" target="_blank" class="btn btn-success btn-lg mb-4">
+    <a href="https://wa.me/5551981440470" target="_blank" class="btn btn-success btn-lg mb-4">
       💬 Agendar Visita ao Escritório
     </a>
   </div>
