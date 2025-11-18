@@ -90,8 +90,8 @@ if (!empty($_REQUEST["idCidade"])) {
                     <?php endif; ?>
 
                     <!-- Grid de Acompanhantes -->
-                    <section class="acompanhantes-section container py-4">
-                        <div class="row justify-content-center g-4">
+                    <section class="acompanhantes-section">
+                        <div class="grid-premium">
                             <?php
                             // Montar WHERE (mantém como está)
                             $where = " WHERE flagAtivo = 'Sim' ";
@@ -129,13 +129,13 @@ if (!empty($_REQUEST["idCidade"])) {
                             if (!empty($_REQUEST["idCidade"])) {
                                 $idCidade = (int) $_REQUEST["idCidade"];
                                 $sql = "SELECT mulher.* FROM mulher
-                    JOIN mulherCidade ON (mulher.idMulher = mulherCidade.idMulher AND mulherCidade.idCidade = $idCidade)
-                    $where
-                    ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
+                                JOIN mulherCidade ON (mulher.idMulher = mulherCidade.idMulher AND mulherCidade.idCidade = $idCidade)
+                                $where
+                                ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
                             } else {
                                 $sql = "SELECT * FROM mulher
-                    $where
-                    ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
+                                $where
+                                ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
                             }
 
                             $resultado = mysqli_query($conexao, $sql);
@@ -161,36 +161,101 @@ if (!empty($_REQUEST["idCidade"])) {
                                 $linkPerfil = htmlspecialchars($linkPerfil);
                                 $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
                             ?>
-                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto d-flex justify-content-center">
-                                    <a href="<?= $linkPerfil ?>" class="text-decoration-none w-100" style="max-width: 200px;">
-                                        <div class="acompanhante-card hover-lift h-100">
+                                <div class="acompanhante-card-wrapper">
+                                    <a href="<?= $linkPerfil ?>" class="text-decoration-none">
+                                        <div class="acompanhante-card hover-lift fade-in"
+                                            data-id="<?= $idMulher ?>"
+                                            data-nome="<?= $nomeCompleto ?>"
+                                            data-cache="<?= htmlspecialchars($row['cache'] ?? 'Consulte') ?>"
+                                            data-local="<?= htmlspecialchars($row['locais'] ?? '') ?>"
+                                            data-cidade="<?= htmlspecialchars($row['cidades'] ?? 'Porto Alegre') ?>"
+                                            data-whats="<?= htmlspecialchars($row['flagWhats'] ?? 'N') ?>"
+                                            data-telefone="<?= htmlspecialchars(($row['ddd'] ?? '') . ' ' . ($row['telefone'] ?? '')) ?>">
+
                                             <?php if ($flagVerificada == 'Sim'): ?>
-                                                <span class="badge-verificada">✔ Verificada</span>
+                                                <span class="badge-verificada">✓ Verificada</span>
                                             <?php endif; ?>
+
                                             <div class="card-img-wrapper">
                                                 <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
-                                                    class="card-img img-fluid" alt="<?= $nomeCompleto ?>" loading="lazy">
+                                                    class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
+
+                                                <!-- Preview ao Hover -->
+                                                <div class="card-preview">
+                                                    <div class="preview-gallery">
+                                                        <?php
+                                                        // Buscar até 3 imagens adicionais para o preview
+                                                        $previewImages = [];
+                                                        for ($i = 1; $i <= 3; $i++) {
+                                                            if (!empty($row["imagemCentral{$i}"])) {
+                                                                $previewImages[] = "https://www.vipluxuria.com/sistema/content/" . $row["imagemCentral{$i}"];
+                                                            }
+                                                        }
+                                                        ?>
+
+                                                        <div class="preview-slides">
+                                                            <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
+                                                                class="preview-img active" alt="Foto 1">
+                                                            <?php foreach ($previewImages as $index => $img): ?>
+                                                                <img src="<?= htmlspecialchars($img) ?>"
+                                                                    class="preview-img" alt="Foto <?= $index + 2 ?>">
+                                                            <?php endforeach; ?>
+                                                        </div>
+
+                                                        <?php if (count($previewImages) > 0): ?>
+                                                            <button class="preview-nav preview-prev" onclick="changePreview(event, -1)">‹</button>
+                                                            <button class="preview-nav preview-next" onclick="changePreview(event, 1)">›</button>
+
+                                                            <div class="preview-dots">
+                                                                <span class="dot active" onclick="currentSlide(event, 1)"></span>
+                                                                <?php foreach ($previewImages as $index => $img): ?>
+                                                                    <span class="dot" onclick="currentSlide(event, <?= $index + 2 ?>)"></span>
+                                                                <?php endforeach; ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+
+                                                    <div class="preview-info">
+                                                        <h4><?= $nomeCompleto ?></h4>
+                                                        <div class="preview-details">
+                                                            <p><i class="bi bi-geo-alt"></i> <?= htmlspecialchars($row['cidades'] ?? 'Porto Alegre') ?></p>
+                                                            <p><i class="bi bi-cash"></i> <?= htmlspecialchars($row['cache'] ?? 'Consulte') ?></p>
+                                                            <?php if ($row['flagWhats'] == 'S'): ?>
+                                                                <p><i class="bi bi-whatsapp"></i> Disponível</p>
+                                                            <?php endif; ?>
+                                                            <?php if ($row['flagAtende24Horas'] == 'Sim'): ?>
+                                                                <p><i class="bi bi-clock"></i> 24 Horas</p>
+                                                            <?php endif; ?>
+                                                        </div>
+
+                                                        <div class="preview-actions">
+                                                            <button class="btn-preview-whats"
+                                                                onclick="event.preventDefault(); event.stopPropagation(); window.open('https://wa.me/55<?= preg_replace('/\D/', '', $row['ddd'] . $row['telefone']) ?>', '_blank')">
+                                                                <i class="bi bi-whatsapp"></i> WhatsApp
+                                                            </button>
+                                                            <span class="btn-preview-perfil">
+                                                                <i class="bi bi-eye"></i> Ver Perfil
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="card-info text-center mt-2">
-                                                <p class="nome-acompanhante mb-0"><?= $nomeCompleto ?></p>
+
+                                            <div class="card-info">
+                                                <p class="nome-acompanhante mx-auto"><?= $nomeCompleto ?></p>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
 
-                                <?php
-                                // Banner de destaque após 18 cards
-                                if (++$contadorCarrossel == 18) { ?>
-                                    <div class="col-12 my-4">
-                                        <div class="carousel-container">
-                                            <?php include("../php/carousel.php"); ?>
-                                        </div>
-                                    </div>
-                                    <?php $contadorCarrossel = 0; ?>
-                                <?php } ?>
-                            <?php } ?>
+                            <?php
+                                if (++$contadorCarrossel == 18) {
+                                    // espaço para banner se quiser depois
+                                }
+                            } ?>
                         </div>
                     </section>
+
 
 
                 </div>

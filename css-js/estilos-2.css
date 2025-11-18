@@ -1337,6 +1337,7 @@ a:hover {
 /* Opcional: uniformiza os cards */
 .acompanhante-card {
     width: 200px;
+    max-width: 100%;
     margin: 0 auto; /* centraliza individualmente, caso sobre espaço */
 }
 

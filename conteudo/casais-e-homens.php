@@ -63,8 +63,8 @@ if (!empty($_REQUEST["idCidade"])) {
                         <?php include("../conteudo/trust-bar.php"); ?>
 
                         <!-- Grid de Acompanhantes -->
-                        <section class="acompanhantes-section container py-4">
-                            <div class="row justify-content-center g-4">
+                        <section class="acompanhantes-section">
+                            <div class="grid-premium">
                                 <?php
                                 // Montar WHERE
                                 $where = " WHERE flagAtivo = 'Sim' ";
@@ -77,7 +77,8 @@ if (!empty($_REQUEST["idCidade"])) {
                                 if (!empty($_REQUEST["idCidade"])) {
                                     $idCidade = (int) $_REQUEST["idCidade"];
                                     $sql = "SELECT homem.* FROM homem
-                    JOIN homemCidade ON (homem.idHomem = homemCidade.idHomem AND homemCidade.idCidade = $idCidade)
+                    JOIN homemCidade ON (homem.idHomem = homemCidade.idHomem 
+                    AND homemCidade.idCidade = $idCidade)
                     $where
                     ORDER BY RAND()";
                                 } else {
@@ -92,10 +93,12 @@ if (!empty($_REQUEST["idCidade"])) {
                                 }
 
                                 $contadorCarrossel = 0;
+
                                 $comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'O', 'Ù', 'Ü', 'Ú'];
                                 $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
 
                                 while ($row = mysqli_fetch_assoc($resultado)) {
+
                                     $idHomem = $row['idHomem'];
                                     $nome = $row['nome'];
                                     $sobrenome = $row['sobrenome'];
@@ -106,39 +109,42 @@ if (!empty($_REQUEST["idCidade"])) {
                                     if (!empty($sobrenome)) {
                                         $linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
                                     }
+
                                     $linkPerfil = htmlspecialchars($linkPerfil);
                                     $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
                                 ?>
-                                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto d-flex justify-content-center">
-                                        <a href="<?= $linkPerfil ?>" class="text-decoration-none w-100" style="max-width: 200px;">
-                                            <div class="acompanhante-card hover-lift h-100">
-                                                <?php if ($flagVerificada == 'Sim'): ?>
-                                                    <span class="badge-verificada">✔ Verificada</span>
-                                                <?php endif; ?>
-                                                <div class="card-img-wrapper">
-                                                    <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemComNome) ?>"
-                                                        class="card-img img-fluid" alt="<?= $nomeCompleto ?>" loading="lazy">
-                                                </div>
-                                                <div class="card-info text-center mt-2">
-                                                    <p class="nome-acompanhante mb-0"><?= $nomeCompleto ?></p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+
+                                    <a href="<?= $linkPerfil ?>" class="acompanhante-card hover-lift">
+                                        <?php if ($flagVerificada == 'Sim'): ?>
+                                            <span class="badge-verificada">✔ Verificada</span>
+                                        <?php endif; ?>
+
+                                        <div class="card-img-wrapper">
+                                            <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemComNome) ?>"
+                                                class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
+                                        </div>
+
+                                        <div class="card-info">
+                                            <p class="nome-acompanhante"><?= $nomeCompleto ?></p>
+                                        </div>
+                                    </a>
 
                                     <?php
-                                    // Banner de destaque após 18 cards
-                                    if (++$contadorCarrossel == 18) { ?>
-                                        <div class="col-12 my-4">
-                                            <div class="carousel-container">
-                                                <?php include("../php/carousel.php"); ?>
-                                            </div>
+                                    // Banner de destaque a cada 18 cards
+                                    if (++$contadorCarrossel == 18) {
+                                    ?>
+                                        <div class="carousel-container-full">
+                                            <?php include("../php/carousel.php"); ?>
                                         </div>
-                                        <?php $contadorCarrossel = 0; ?>
-                                    <?php } ?>
-                                <?php } ?>
+                                <?php
+                                        $contadorCarrossel = 0;
+                                    }
+                                }
+                                ?>
                             </div>
                         </section>
+
+
 
                     </div>
                 </div>
