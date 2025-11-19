@@ -342,9 +342,6 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 <?php foreach ($fotosProfissionais as $index => $foto): ?>
                     <div class="photo-item" onclick='openGallery(<?= json_encode($fotosProfissionais) ?>, <?= $index ?>)'>
                         <img src="<?= htmlspecialchars($foto) ?>" alt="Foto <?= $index + 1 ?>" loading="lazy">
-                        <?php if($index === 0): ?>
-                            <span class="photo-badge">Principal</span>
-                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
