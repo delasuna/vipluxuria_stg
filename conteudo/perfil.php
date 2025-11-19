@@ -460,6 +460,9 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 
     </div>
 
+    <div class="mt-5"></div>
+    <?php include '../profile-badges.php' ?>
+
     <?php include 'dicas-e-duvidas.php' ?>
 
 </div>
