@@ -309,7 +309,9 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
     <div id="galleryModal" class="gallery-modal" onclick="if(event.target === this) closeGallery()">
         <span class="gallery-close" onclick="closeGallery()">&times;</span>
         <div class="gallery-modal-content">
-            <img id="modalImage" src="" alt="Foto">
+            <div class="gallery-modal-image">
+                <img id="modalImage" src="" alt="Foto">
+            </div>
             <span class="gallery-prev" onclick="changeImage(-1)">&#10094;</span>
             <span class="gallery-next" onclick="changeImage(1)">&#10095;</span>
             <div class="gallery-counter" id="imageCounter"></div>

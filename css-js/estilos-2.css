@@ -7135,7 +7135,6 @@ select.form-control option {
 }
 
 .gallery-modal-content {
-    position: relative;
     max-width: 90%;
     max-height: 90%;
 }
@@ -7487,4 +7486,47 @@ select.form-control option {
     border-radius: 10px;
     display: block;
   }
+}
+
+#galleryModal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+}
+
+#modalImage {
+    max-width: 95vw;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+@media (min-width: 1200px) {
+    #modalImage {
+        max-width: 80vw;
+        max-height: 90vh;
+    }
+}
+
+@media (max-width: 600px) {
+    #modalImage {
+        max-width: 100%;
+        max-height: 85vh;
+    }
+}
+
+.gallery-modal-image {
+    height: 800px;
+    max-height: 100%;
+    display: flex;
+    width: auto;
 }
