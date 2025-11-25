@@ -822,15 +822,6 @@ a:hover {
     padding: 20px 0 5px;
 }
 
-
-
-#slider-content-2 {
-    width: 766px;
-    margin: 0 auto;
-}
-
-
-
 /* ============================================
    CONTEÚDO PRINCIPAL
    ============================================ */
@@ -7379,6 +7370,7 @@ select.form-control option {
 /* --- bxSlider Responsivo --- */
 #slider-content-2 {
     overflow: hidden;
+    width: 766px;
     max-width: 100%;
     margin: 0 auto;
 }
