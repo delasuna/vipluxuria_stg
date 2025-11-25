@@ -31,10 +31,7 @@
                 <h5 class="rodape-titulo">Redes Sociais</h5>
                 <div class="rodape-contato">
                     <div class="redes-sociais">
-                        <a href="https://www.facebook.com/vipluxuria" target="_blank" title="Facebook">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="https://www.instagram.com/vipluxuria" target="_blank" title="Instagram">
+                        <a href="https://www.instagram.com/amigas_do_vip" target="_blank" title="Instagram">
                             <i class="bi bi-instagram"></i>
                         </a>
                         <a href="https://twitter.com/vipluxuria" target="_blank" title="Twitter">
