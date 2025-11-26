@@ -209,10 +209,12 @@ $itensFaco = [
     'Tenho amigas' => $p_flagTenhoAmigas ?? '',
 ];
 
+print_r($itensFaco); echo '<br>';
+
 // Separa em Sim/Não/Talvez
-$facaSim = array_filter($itensFaco, fn($v) => $v === 'Sim');
-$facaNao = array_filter($itensFaco, fn($v) => $v === 'Não');
-$facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
+$facaSim = array_filter($itensFaco, fn($v) => $v === 'Sim'); print_r($facaSim); echo '<br>';
+$facaNao = array_filter($itensFaco, fn($v) => $v === 'Não'); print_r($facaNao); echo '<br>';
+$facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez'); print_r($facaTalvez); echo '<br>';
 
 ?>
 <!DOCTYPE html>
@@ -410,7 +412,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 </div>
             <?php endif; ?>
 
-            <?php if(!empty($facaSim) && !empty($facaTalvez) && !empty($facaNao)): ?>
+            <?php if(!empty($facaSim) || !empty($facaTalvez) || !empty($facaNao)): ?>
             <!-- O que Faço -->
             <div class="mb-4">
                 <h2 class="section-title-perfil">O que Faço</h2>
