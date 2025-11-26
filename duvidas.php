@@ -160,16 +160,6 @@ mysqli_free_result($resultado);
                     </div>
 
                 </div>
-
-                <!-- Call to Action -->
-                <div class="duvidas-cta-section">
-                    <h3>Ainda tem dúvidas?</h3>
-                    <p>Nossa equipe está pronta para ajudar</p>
-                    <a href="/contato.php" class="btn-contact-premium">
-                        <i class="bi bi-whatsapp"></i> Entre em Contato
-                    </a>
-                </div>
-
             </div>
         </div>
     </div>
