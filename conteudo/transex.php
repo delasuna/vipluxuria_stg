@@ -58,6 +58,8 @@ if (!empty($_REQUEST["idCidade"])) {
                         <h1>Transex <?= htmlspecialchars($cidade) ?></h1>
                         <p class="subtitle-page">As mais belas T-gatas para momentos inesquecíveis</p>
 
+                        <?php include '../profile-badges.php' ?>
+
                         <?php include '../search-bar.php' ?>
 
                         <!-- Grid de Acompanhantes -->
@@ -152,6 +154,8 @@ if (!empty($_REQUEST["idCidade"])) {
 
                     </div>
                 </div>
+
+                <?php include '../profile-badges.php' ?>
                 
                 <?php include 'dicas-e-duvidas.php' ?>
                 

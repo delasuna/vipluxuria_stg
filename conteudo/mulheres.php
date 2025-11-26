@@ -73,6 +73,8 @@ if (!empty($_REQUEST["idCidade"])) {
                         <p class="subtitle-page">Escolha entre profissionais verificadas e confiáveis</p>
                     </div>
 
+                    <?php include '../profile-badges.php' ?>
+
                     <?php include '../search-bar.php' ?>
 
                     <!-- Filtros -->
@@ -257,6 +259,8 @@ if (!empty($_REQUEST["idCidade"])) {
 
                 </div>
             </div>
+
+            <?php include '../profile-badges.php' ?>
 
             <?php include 'dicas-e-duvidas.php' ?>
 
