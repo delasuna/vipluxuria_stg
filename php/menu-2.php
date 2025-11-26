@@ -29,41 +29,41 @@ function geraOpcoesCidades($conexao)
     document.form_mulheres.flagAtende24Horas.value = '';
     document.form_mulheres.idCidade.value = '';
     document.form_mulheres.bannerLateralCompleto.value = '';
-    document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-" + flagTipo;
+    document.form_mulheres.action = "/Acompanhantes-" + flagTipo;
     document.form_mulheres.submit();
   }
 
   function carregaAnuncianteVideo(flagTemVideo) {
     document.form_mulheres.flagTemVideo.value = flagTemVideo;
     document.form_mulheres.flagTipo.value = 'ComVideo';
-    document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-ComVideo";
+    document.form_mulheres.action = "/Acompanhantes-ComVideo";
     document.form_mulheres.submit();
   }
 
   function carregaAnuncianteComLocal(flagComLocal) {
     document.form_mulheres.flagComLocal.value = flagComLocal;
     document.form_mulheres.flagTipo.value = 'ComLocal';
-    document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-ComLocal";
+    document.form_mulheres.action = "/Acompanhantes-ComLocal";
     document.form_mulheres.submit();
   }
 
   function carregaAnunciante24Horas(flagAtende24Horas) {
     document.form_mulheres.flagAtende24Horas.value = flagAtende24Horas;
     document.form_mulheres.flagTipo.value = 'Atende24Horas';
-    document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-Atende24Horas";
+    document.form_mulheres.action = "/Acompanhantes-Atende24Horas";
     document.form_mulheres.submit();
   }
 
   function carregaCidade(idCidade, nomeCidade) {
     document.form_mulheres.idCidade.value = idCidade;
-    document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes/" + idCidade + "/" + nomeCidade;
+    document.form_mulheres.action = "/Acompanhantes/" + idCidade + "/" + nomeCidade;
     document.form_mulheres.submit();
   }
 
   function carregaSexoVirtual(flagSexoVirtual) {
     document.form_mulheres.flagSexoVirtual.value = flagSexoVirtual;
     document.form_mulheres.flagTipo.value = 'SexoVirtual';
-    document.form_mulheres.action = "https://vipluxuria.com/Acompanhantes-SexoVirtual";
+    document.form_mulheres.action = "/Acompanhantes-SexoVirtual";
     document.form_mulheres.submit();
   }
 </script>
