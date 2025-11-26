@@ -26,12 +26,9 @@ mysqli_free_result($resultado_seo);
     <div id="wrap">
         <div>
             <?php include("php/menu-2.php"); ?>
-            <div id="topo"><?php include("php/topo-2.php"); ?></div>
         </div>
-        <?php include("php/slider.php"); ?>
-        <?php include 'filters.php' ?>
         
-        <div class="bg-dark text-light py-4">
+        <div class="degrade text-light py-4">
             <div class="container">
                 
                 <!-- Título -->
@@ -53,10 +50,14 @@ mysqli_free_result($resultado_seo);
                                 </a>
                             </div>
                             
-                            <pre class="bg-dark p-3 rounded"><code>&lt;a href="https://www.vipluxuria.com" target="_blank"&gt;
-&lt;img src="https://vipluxuria.com/imagens/parceiros/vip-luxuria.gif" 
-alt="Vip Luxúria - O guia erótico mais completo do Brasil" border="0"&gt;
-&lt;/a&gt;</code></pre>
+                            <pre class="bg-dark p-3 rounded">
+                                <code>
+                                    &lt;a href="https://www.vipluxuria.com" target="_blank"&gt;
+                                    &lt;img src="https://vipluxuria.com/imagens/parceiros/vip-luxuria.gif" 
+                                    alt="Vip Luxúria - O guia erótico mais completo do Brasil" border="0"&gt;
+                                    &lt;/a&gt;
+                                </code>
+                            </pre>
                             
                             <p class="alert alert-info mt-3">
                                 <em>Obs.: Somente aceitamos Parceiros fora da região de Porto Alegre e Grande Porto Alegre. Agradecemos a compreensão.</em>

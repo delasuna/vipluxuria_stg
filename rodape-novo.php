@@ -12,6 +12,7 @@
                     <li><a href="/duvidas.php">Dúvidas</a></li>
                     <li><a href="/dicas.php">Dicas</a></li>
                     <li><a href="/como-anunciar/">Anuncie</a></li>
+                    <li><a href="/parceiros.php">Parceiros</a></li>
                 </ul>
             </div>
 
