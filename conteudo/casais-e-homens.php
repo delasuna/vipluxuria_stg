@@ -60,8 +60,6 @@ if (!empty($_REQUEST["idCidade"])) {
 
                         <?php include '../search-bar.php' ?>
 
-                        <?php include("../conteudo/trust-bar.php"); ?>
-
                         <!-- Grid de Acompanhantes -->
                         <section class="acompanhantes-section">
                             <div class="grid-premium">
@@ -144,7 +142,7 @@ if (!empty($_REQUEST["idCidade"])) {
                             </div>
                         </section>
 
-
+                        <?php include("../conteudo/trust-bar.php"); ?>
 
                     </div>
                 </div>

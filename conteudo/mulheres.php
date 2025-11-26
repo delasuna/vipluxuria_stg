@@ -62,7 +62,6 @@ if (!empty($_REQUEST["idCidade"])) {
     <div id="wrap">
         <div>
             <?php include("../php/menu-2.php"); ?>
-            <div id="topo"><?php include("../php/topo-2.php"); ?></div>
         </div>
         <div class="degrade">
             <div class="main-content">
@@ -78,8 +77,6 @@ if (!empty($_REQUEST["idCidade"])) {
 
                     <!-- Filtros -->
                     <?php include '../filters.php' ?>
-
-                    <?php include("../conteudo/trust-bar.php"); ?>
 
                     <!-- Aviso para Sexo Virtual se aplicável -->
                     <?php if (!empty($_REQUEST["flagTipo"]) && anti_injection($_REQUEST["flagTipo"]) == "SexoVirtual"): ?>
@@ -256,7 +253,7 @@ if (!empty($_REQUEST["idCidade"])) {
                         </div>
                     </section>
 
-
+                    <?php include("../conteudo/trust-bar.php"); ?>
 
                 </div>
             </div>
