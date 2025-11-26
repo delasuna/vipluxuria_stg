@@ -17,6 +17,9 @@ function geraOpcoesCidades($conexao)
     echo "<li><a class='dropdown-item' href=\"javascript:carregaCidade('$idCidade','" . tirarAcentos(str_replace(' ', '-', $cidade)) . "')\">$cidade</a></li>";
   }
 }
+
+$isIndex = basename($_SERVER['PHP_SELF']) === 'index.php';
+
 ?>
 
 <!-- JS de filtragem -->
@@ -99,12 +102,25 @@ function geraOpcoesCidades($conexao)
               <span>ANUNCIE AQUI</span>
             </a>
           </div>
+
+          <?php if (!$isIndex): ?>
+            <a href="/acompanhantes-porto-alegre/" class="d-flex justify-content-center">
+              <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip Luxúria" class="logo-principal w-75">
+            </a>
+          <?php endif; ?>
+
           <div class="navbar-nav menu-institucional">
             <a class="text-light nav-link" href="/mulheres-acompanhantes-porto-alegre-poa/">Mulheres</a>
             <a class="text-light nav-link" href="/transex-porto-alegre-poa/">Transex</a>
             <a class="text-light nav-link" href="/casais-e-homens-porto-alegre-poa/">Casais</a>
           </div>
         </div>
+
+        <?php if (!$isIndex): ?>
+          <a href="/acompanhantes-porto-alegre/" class="d-lg-none d-flex justify-content-center">
+            <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip Luxúria" class="logo-principal w-75">
+          </a>
+        <?php endif; ?>
 
         <div class="header-anuncie d-block d-lg-none">
           <a href="/como-anunciar/" class="btn-anuncie-badge">

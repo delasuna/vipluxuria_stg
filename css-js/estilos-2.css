@@ -2886,15 +2886,6 @@ textarea:focus {
         flex-wrap: wrap;
     }
 
-
-
-    .header-anuncie {
-        margin: 0;
-        margin-left: auto;
-    }
-
-
-
     /* Menus institucionais no tablet ainda aparecem */
     .menu-institucional {
         display: flex;
