@@ -65,7 +65,7 @@
 
         <!-- Seção de Parceiros com Logos -->
         <div class="parceiros-section">
-            <h6 class="parceiros-titulo">Nossos Parceiros</h6>
+            <h6 class="parceiros-titulo">Recomendamos</h6>
             <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 py-2 logos-parceiros">
 
                 <img src="/imagens/logos/felipe-picture.png" title="Felipe Picture" alt="Felipe Picture">
