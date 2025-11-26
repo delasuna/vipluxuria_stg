@@ -48,6 +48,7 @@ if (!empty($_REQUEST["idCidade"])) {
     <div id="wrap">
         <div>
             <?php include("../php/menu-2.php"); ?>
+            <?php include("../php/topo-2-sem-banner.php") ?>
         </div>
         <div class="degrade">
             <div class="main-content">

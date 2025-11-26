@@ -92,7 +92,7 @@ function geraOpcoesCidades($conexao)
 
         <!-- Menu institucional (apenas desktop) -->
         <button class="navbar-toggler d-none" type="button"></button>
-        <div class="collapse navbar-collapse d-none d-lg-block" id="menuFino">
+        <div class="collapse navbar-collapse d-none d-lg-block d-flex justify-content-between" id="menuFino">
           <!-- Botão Anuncie (sempre visível) -->
           <div class="header-anuncie">
             <a href="/como-anunciar/" class="btn-anuncie-badge">
@@ -100,10 +100,9 @@ function geraOpcoesCidades($conexao)
             </a>
           </div>
           <div class="navbar-nav menu-institucional">
-            <a class="text-light nav-link" href="/vip-luxuria.php">Sobre</a>
-            <a class="text-light nav-link" href="/vip-blog">Blog</a>
-            <a class="text-light nav-link" href="/duvidas.php">Dúvidas</a>
-            <a class="text-light nav-link" href="/dicas.php">Dicas</a>
+            <a class="text-light nav-link" href="/mulheres-acompanhantes-porto-alegre-poa/">Mulheres</a>
+            <a class="text-light nav-link" href="/transex-porto-alegre-poa/">Transex</a>
+            <a class="text-light nav-link" href="/casais-e-homens-porto-alegre-poa/">Casais</a>
           </div>
         </div>
 
