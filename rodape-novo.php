@@ -76,7 +76,7 @@
                 </a>
 
                 <a href="https://harem69.com.br/" target="_blank">
-                    <img src="https://www.vipluxuria.com/imagens/parceiros/harem.png" title="Harem 69" alt="Harem 69">
+                    <img src="/imagens/parceiros/harem.png" title="Harem 69" alt="Harem 69">
                 </a>
 
                 <a href="/angelo-personal.php/">
@@ -88,15 +88,15 @@
                 </a>
 
                 <a href="http://www.moteisvisavis.com.br/porto-alegre/" target="_blank">
-                    <img src="https://www.vipluxuria.com/imagens/parceiros/vis-a-vis.png" alt="Motel Vis-a-Vis">
+                    <img src="/imagens/parceiros/vis-a-vis.png" alt="Motel Vis-a-Vis">
                 </a>
 
                 <a href="https://www.motelmedieval.com.br/site/" target="_blank">
-                    <img src="https://www.vipluxuria.com/imagens/parceiros/medieval.png" alt="Medieval Motel Spa">
+                    <img src="/imagens/parceiros/medieval.png" alt="Medieval Motel Spa">
                 </a>
 
                 <a href="https://www.motelsherwood.com.br/site/" target="_blank">
-                    <img src="https://www.vipluxuria.com/imagens/parceiros/sherwood.png" alt="Sherwood Motel">
+                    <img src="/imagens/parceiros/sherwood.png" alt="Sherwood Motel">
                 </a>
             </div>
 
