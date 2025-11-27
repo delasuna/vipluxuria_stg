@@ -253,6 +253,15 @@ if (!empty($_REQUEST["idCidade"])) {
                                 }
                             } ?>
                         </div>
+                        <?php 
+                            if (mysqli_num_rows($resultado) == 0) {
+                                echo '<div class="sem-resultados text-center pb-5">
+                                        <i class="bi bi-search mb-3" style="font-size:48px;color:#999;"></i>
+                                        <h3 class="fw-bold">Nenhuma acompanhante encontrada</h3>
+                                        <p>Tente ajustar os filtros ou buscar por outra cidade.</p>
+                                    </div>';
+                            }
+                        ?>
                     </section>
 
                     <?php include("../conteudo/trust-bar.php"); ?>
