@@ -384,6 +384,19 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                 </div>
             </div>
 
+                        <?php if(!empty($p_email) || !empty($p_site) || !empty($p_outros) || !empty($p_twitter)) : ?>
+            <!-- Informações de links externos -->
+            <div class="mb-4">
+                <h2 class="section-title-perfil">Outros links</h2>
+                <div class="perfil-dados">
+                    <?php if(!empty($p_email)) : ?><div><span><strong><?= htmlspecialchars($p_email ?? '') ?></strong></span></div><?php endif; ?>
+                    <?php if(!empty($p_site)) : ?><div><span><strong><?= htmlspecialchars($p_site ?? '') ?></strong></span></div><?php endif; ?>
+                    <?php if(!empty($p_outros)) : ?><div><span><strong><?= htmlspecialchars($p_outros ?? '') ?></strong></span></div><?php endif; ?>
+                    <?php if(!empty($p_twitter)) : ?><div><span><strong><?= htmlspecialchars($p_twitter ?? '') ?></strong></span></div><?php endif; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <!-- Vídeo -->
             <?php if (!empty($p_video) && (!isset($p_flagTemVideo) || $p_flagTemVideo !== 'Nao')): ?>
                 <div class="mb-4">
