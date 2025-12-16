@@ -2684,6 +2684,16 @@ textarea:focus {
     margin: 40px 0;
 }
 
+@media (max-width: 768px) {
+    .carousel-inner {
+        height: 175px !important;
+    }
+
+    .carousel-img {
+        height: 175px !important;
+    }
+}
+
 
 
 /* PÁGINA SOBRE */
@@ -7283,8 +7293,8 @@ select.form-control option {
     .gallery-prev,
     .gallery-next {
         font-size: 30px;
-        padding: 15px;
-        margin-top: 95%;
+        padding: 25px;
+        margin-top: 85%;
     }
 }
 

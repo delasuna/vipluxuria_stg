@@ -19,7 +19,7 @@
               <a href="<?= htmlspecialchars($site) ?>" target="_blank">
                 <div class="ratio" style="--bs-aspect-ratio: 25%;">
                   <img src="<?= "/sistema/content/" . htmlspecialchars($imagem) ?>" 
-                       class="w-100 h-100" 
+                       class="w-100 h-100 carousel-img" 
                        alt="<?= htmlspecialchars($descricao) ?>">
                 </div>
               </a>
