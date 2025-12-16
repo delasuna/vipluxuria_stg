@@ -7284,6 +7284,7 @@ select.form-control option {
     .gallery-next {
         font-size: 30px;
         padding: 15px;
+        margin-top: 95%;
     }
 }
 
