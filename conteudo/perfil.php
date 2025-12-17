@@ -252,42 +252,6 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
         document.form3.amigoIndicado.value = 'S';
         document.form3.submit();
     }
-
-    // Galeria Modal
-    let currentImageIndex = 0;
-    let currentGallery = [];
-
-    function openGallery(images, startIndex) {
-        currentGallery = images;
-        currentImageIndex = startIndex;
-        showImage();
-        document.getElementById('galleryModal').style.display = 'flex';
-    }
-
-    function closeGallery() {
-        document.getElementById('galleryModal').style.display = 'none';
-    }
-
-    function changeImage(direction) {
-        currentImageIndex += direction;
-        if (currentImageIndex < 0) currentImageIndex = currentGallery.length - 1;
-        if (currentImageIndex >= currentGallery.length) currentImageIndex = 0;
-        showImage();
-    }
-
-    function showImage() {
-        document.getElementById('modalImage').src = currentGallery[currentImageIndex];
-        document.getElementById('imageCounter').textContent = (currentImageIndex + 1) + ' / ' + currentGallery.length;
-    }
-
-    // Navegação por teclado
-    document.addEventListener('keydown', function(e) {
-        if (document.getElementById('galleryModal').style.display === 'flex') {
-            if (e.key === 'ArrowLeft') changeImage(-1);
-            if (e.key === 'ArrowRight') changeImage(1);
-            if (e.key === 'Escape') closeGallery();
-        }
-    });
 </script>
 
 </head>
@@ -306,17 +270,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 	</div>
 <div class="degrade">
     <!-- Modal da Galeria -->
-    <div id="galleryModal" class="gallery-modal" onclick="if(event.target === this) closeGallery()">
-        <span class="gallery-close" onclick="closeGallery()">&times;</span>
-        <div class="gallery-modal-content">
-            <div class="gallery-modal-image">
-                <img id="modalImage" src="" alt="Foto">
-            </div>
-            <span class="gallery-prev" onclick="changeImage(-1)">&#10094;</span>
-            <span class="gallery-next" onclick="changeImage(1)">&#10095;</span>
-            <div class="gallery-counter" id="imageCounter"></div>
-        </div>
-    </div>
+
 <div class="container pt-4 pb-5">
     <!-- Nome e WhatsApp Centralizados -->
     <div class="text-center mb-5">
@@ -482,7 +436,41 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 
 </div>
     
-        
+            <div class="modal fade" id="galleryModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+        <div class="modal-content bg-dark border-0">
+            <button type="button"
+        class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+        data-bs-dismiss="modal"
+        aria-label="Fechar"></button>
+
+
+            <div class="modal-body d-flex align-items-center justify-content-center p-0">
+                <div id="galleryCarousel"
+                     class="carousel slide w-100"
+                     data-bs-touch="true"
+                     data-bs-interval="false">
+
+                    <div class="carousel-inner carousel-inner-profile" id="carouselImages"></div>
+
+                    <button class="carousel-control-prev"
+                            type="button"
+                            data-bs-target="#galleryCarousel"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+
+                    <button class="carousel-control-next"
+                            type="button"
+                            data-bs-target="#galleryCarousel"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     </div>
     <div id="rodape"><?php include("../rodape-novo.php"); ?></div>
 </div><!-- WRAP -->
@@ -490,5 +478,36 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 <script type="text/javascript"> Cufon.now(); </script>
 <?php include("../php/google.php"); ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+let galleryModal;
+
+document.addEventListener('DOMContentLoaded', () => {
+    galleryModal = new bootstrap.Modal(
+        document.getElementById('galleryModal')
+    );
+});
+
+function openGallery(images, startIndex) {
+    const carouselInner = document.getElementById('carouselImages');
+    carouselInner.innerHTML = '';
+
+    images.forEach((src, index) => {
+        carouselInner.innerHTML += `
+            <div class="carousel-item ${index === startIndex ? 'active' : ''}">
+                <img src="${src}"
+                     class="d-block mx-auto"
+     style="
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+     ">
+            </div>
+        `;
+    });
+
+    galleryModal.show();
+}
+
+</script>
 </body>
 </html>
