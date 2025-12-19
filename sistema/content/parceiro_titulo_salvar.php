@@ -1,44 +1,38 @@
-<?
+<?php
 /*
-	Transação de inclusão/alteração de registros
+    TransaÃ§Ã£o de inclusÃ£o/alteraÃ§Ã£o de registros
 */
 include("../inc/common.php");
 
 /*
-	conexão com o banco de dados
+    conexÃ£o com o banco de dados
 */
 $conn = new db();
 $conn->open();
 
-
-
-/* Atualização dos dados, configure abaixo conforme suas necessidades */
-// objeto para montagem de expressão sql
+/* AtualizaÃ§Ã£o dos dados */
 $sql = new UpdateSQL();
 
 $sql->setTable("parceirotitulo");
 $sql->setKey("idParceiroTitulo", anti_injection(getParam("id")), "Number");
 
-$sql->addField("titulo", anti_injection(getParam("titulo")), "String");	
+$sql->addField("titulo", anti_injection(getParam("titulo")), "String");
 
-
-if (strlen(getParam("id"))>0) { // alteração, retirar strlen se vier de edicao_aux
-	$sql->setAction("UPDATE");
-	
-	$conn->execute($sql->getSQL());
-	$destino = "parceiro_titulo_lista.php?pagina=".getParam("pagina"); 
-} else { // inclusão
-
-	//Verifica se está incluindo novo registro a partir de outro já existente ´para adicionar as imagens
-	$sql->setAction("INSERT");
-
-	$last_id = $conn->execute($sql->getSQL());
-	$destino = "parceiro_titulo_lista.php";
+if (strlen(getParam("id")) > 0) {
+    // UPDATE
+    $sql->setAction("UPDATE");
+    $conn->execute($sql->getSQL());
+    $destino = "parceiro_titulo_lista.php?pagina=" . getParam("pagina");
+} else {
+    // INSERT
+    $sql->setAction("INSERT");
+    $conn->execute($sql->getSQL());
+    $destino = "parceiro_titulo_lista.php";
 }
-//echo $sql->getSQL();
-// volta para a lista ou reapresenta o formulário em modo de edição
+
+/* redirecionamento */
 echo "<script>location.href='$destino';</script>";
 
-/* 	Encerra a conexão com o banco de dados */
+/* encerra conexÃ£o */
 $conn->close();
 ?>

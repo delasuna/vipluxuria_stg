@@ -1,4 +1,4 @@
-<? require_once("verifica.php"); ?>
+<?php require_once("verifica.php"); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 
@@ -85,7 +85,7 @@
 			    <div id="coluna-esquerda-full">
             		<p> 
 
-						<?
+						<?php
 						/* 	Modelo de página que apresenta um formulário para inclusão/alteração de registros */
 						
 						include("../inc/common.php");
@@ -149,7 +149,7 @@
 						</script>
 						
 						
-						<?
+						<?php
 						echo "<br>";
 						
 						/* 	Formulário */
@@ -162,8 +162,6 @@
 						$form->addHidden("rodou","s"); // variável de controle
 						$form->addHidden("id",$idCidade); // chave primária
 						$form->addHidden("pagina",getParam("pagina")); // número da página que chamou
-						
-						$form->addHidden("imagem",$imagem); 
 						
 						$form->addBreak("Dados Gerais");
 						// definição da expressão SQL para a função listbox
@@ -191,7 +189,7 @@
 						
 						</body>
 						</html>
-						<?
+						<?php
 						/* 	encerra a conexão com o banco de dados */
 						$conn->close();
 						?>

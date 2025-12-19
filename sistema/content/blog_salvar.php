@@ -1,137 +1,122 @@
-<?
+<?php
 /*
-	TransaÁ„o de inclus„o/alteraÁ„o de registros
+    Transa√ß√£o de inclus√£o/altera√ß√£o de registros
 */
 include("../inc/common.php");
 
 /*
-	conex„o com o banco de dados
+    conex√£o com o banco de dados
 */
 $conn = new db();
 $conn->open();
 
-
-/* upload do video */
-//tentar· fazer o upload da imagem que est· no campo caminho_video  
+/* diret√≥rio de upload */
 $uploaddir = "upload_blog/";
 
+/* uploads */
+$caminho_imagem  = null;
+$caminho_imagem2 = null;
 
-if($_FILES['imagem']['tmp_name'] != "") { 
-	// Prepara a vari·vel do arquivo
-	$imagem = isset($_FILES["imagem"]) ? $_FILES["imagem"] : FALSE;
+/* ===== IMAGEM 1 ===== */
+if (isset($_FILES['imagem']) && !empty($_FILES['imagem']['tmp_name'])) {
 
-	if($imagem) { 
-		// Verifica se o mime-type do arquivo È de imagem
-		if(!eregi("^image\/(pjpeg|jpeg|png|gif|bmp)$", $imagem["type"])) {
-			echo "Imagem - Arquivo em formato inv·lido! Somente arquivos com extens„o .jpg, .jpeg,  .bmp, .gif ou .png s„o suportados";
-		}
-	}
-	$caminho_imagem = "";
-	if($_FILES['imagem']['size'] > "1000000") {
-		print("<SCRIPT> alert('Imagem - Seu arquivo n„o poder· ser maior que 1mb'); window.history.go(-1); </SCRIPT>\n");
-	} else {
-		if(move_uploaded_file($_FILES['imagem']['tmp_name'], $uploaddir . $_FILES['imagem']['name'])) {
-			$caminho_imagem = $uploaddir . $_FILES['imagem']['name']; //local da imagem a ser armazenado no banco de dados
-		} else {
-			print("Imagem - Houve um erro na transferencia do arquivo:\n Erro=" .$_FILES['imagem']['error']);
-			if($_FILES['imagem']['error'] == 1) {
-				print("Imagem - O arquivo no upload È maior do que o limite definido em upload_max_filesize no php.ini");
-			} elseif($_FILES['imagem']['error'] == 2) {
-				print("Imagem - O arquivo ultrapassa o limite de tamanho em MAX_FILE_SIZE que foi especificado no formul·rio html.");
-			} elseif($_FILES['imagem']['error'] == 3) {
-				print("Imagem - o upload do arquivo foi feito parcialmente.");
-			} elseif($_FILES['imagem']['error'] == 4) {
-				print("Imagem - N„o foi feito o upload do arquivo.");
-			}
-		}
-	}
+    $imagem = $_FILES['imagem'];
+
+    if (!is_dir($uploaddir)) {
+        mkdir($uploaddir, 0777, true);
+    }
+
+    if ($imagem['size'] > 1000000) {
+        echo "<script>alert('Imagem - Seu arquivo n√£o poder√° ser maior que 1MB'); window.history.go(-1);</script>";
+        exit;
+    }
+
+    $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+    $novoNome = uniqid('blog_', true) . '.' . $extensao;
+    $destinoArquivo = $uploaddir . $novoNome;
+
+    if (move_uploaded_file($imagem['tmp_name'], $destinoArquivo)) {
+        $caminho_imagem = $destinoArquivo;
+    } else {
+        echo "Imagem - Erro no upload. C√≥digo: " . $imagem['error'];
+        exit;
+    }
 }
 
+/* ===== IMAGEM 2 ===== */
+if (isset($_FILES['imagem2']) && !empty($_FILES['imagem2']['tmp_name'])) {
 
-if($_FILES['imagem2']['tmp_name'] != "") { 
-	// Prepara a vari·vel do arquivo
-	$imagem2 = isset($_FILES["imagem2"]) ? $_FILES["imagem2"] : FALSE;
+    $imagem2 = $_FILES['imagem2'];
 
-	if($imagem2) { 
-		// Verifica se o mime-type do arquivo È de imagem2
-		if(!eregi("^image\/(pjpeg|jpeg|png|gif|bmp)$", $imagem2["type"])) {
-			echo "Imagem - Arquivo em formato inv·lido! Somente arquivos com extens„o .jpg, .jpeg,  .bmp, .gif ou .png s„o suportados";
-		}
-	}
-	$caminho_imagem2 = "";
-	if($_FILES['imagem2']['size'] > "1000000") {
-		print("<SCRIPT> alert('Imagem - Seu arquivo n„o poder· ser maior que 1mb'); window.history.go(-1); </SCRIPT>\n");
-	} else {
-		if(move_uploaded_file($_FILES['imagem2']['tmp_name'], $uploaddir . $_FILES['imagem2']['name'])) {
-			$caminho_imagem2 = $uploaddir . $_FILES['imagem2']['name']; //local da imagem2 a ser armazenado no banco de dados
-		} else {
-			print("Imagem - Houve um erro na transferencia do arquivo:\n Erro=" .$_FILES['imagem2']['error']);
-			if($_FILES['imagem2']['error'] == 1) {
-				print("Imagem - O arquivo no upload È maior do que o limite definido em upload_max_filesize no php.ini");
-			} elseif($_FILES['imagem2']['error'] == 2) {
-				print("Imagem - O arquivo ultrapassa o limite de tamanho em MAX_FILE_SIZE que foi especificado no formul·rio html.");
-			} elseif($_FILES['imagem2']['error'] == 3) {
-				print("Imagem - o upload do arquivo foi feito parcialmente.");
-			} elseif($_FILES['imagem2']['error'] == 4) {
-				print("Imagem - N„o foi feito o upload do arquivo.");
-			}
-		}
-	}
+    if (!is_dir($uploaddir)) {
+        mkdir($uploaddir, 0777, true);
+    }
+
+    if ($imagem2['size'] > 1000000) {
+        echo "<script>alert('Imagem 2 - Seu arquivo n√£o poder√° ser maior que 1MB'); window.history.go(-1);</script>";
+        exit;
+    }
+
+    $extensao2 = pathinfo($imagem2['name'], PATHINFO_EXTENSION);
+    $novoNome2 = uniqid('blog2_', true) . '.' . $extensao2;
+    $destinoArquivo2 = $uploaddir . $novoNome2;
+
+    if (move_uploaded_file($imagem2['tmp_name'], $destinoArquivo2)) {
+        $caminho_imagem2 = $destinoArquivo2;
+    } else {
+        echo "Imagem 2 - Erro no upload. C√≥digo: " . $imagem2['error'];
+        exit;
+    }
 }
 
-
-/* AtualizaÁ„o dos dados, configure abaixo conforme suas necessidades */
-// objeto para montagem de express„o sql
+/* ===== SQL ===== */
 $sql = new UpdateSQL();
 
 $sql->setTable("blog");
 $sql->setKey("idBlog", anti_injection(getParam("id")), "Number");
 
-$sql->addField("assunto", anti_injection(getParam("assunto")), "String");	
+$sql->addField("assunto", anti_injection(getParam("assunto")), "String");
 $sql->addField("mensagem", anti_injection(getParam("mensagem")), "String");
 
-$sql->addField("nomeTag1", anti_injection(getParam("nomeTag1")), "String");	
-$sql->addField("paginaTag1", anti_injection(getParam("paginaTag1")), "String");	
-$sql->addField("nomeTag2", anti_injection(getParam("nomeTag2")), "String");	
+$sql->addField("nomeTag1", anti_injection(getParam("nomeTag1")), "String");
+$sql->addField("paginaTag1", anti_injection(getParam("paginaTag1")), "String");
+$sql->addField("nomeTag2", anti_injection(getParam("nomeTag2")), "String");
 $sql->addField("paginaTag2", anti_injection(getParam("paginaTag2")), "String");
 
-$sql->addField("dataPublicacao", anti_injection(getParam("dataPublicacao")), "String");		
+$sql->addField("dataPublicacao", anti_injection(getParam("dataPublicacao")), "String");
+$sql->addField("video", getParam("video"), "String");
 
-//$sql->addField("alturaVideo", getParam("alturaVideo"), "String");	
-//$sql->addField("larguraVideo", getParam("larguraVideo"), "String");	
-$sql->addField("video", getParam("video"), "String");	
-
-if ($caminho_imagem != NULL)
-	$sql->addField("imagem", $caminho_imagem, "String");
-
-if ($caminho_imagem2 != NULL)
-	$sql->addField("imagem2", $caminho_imagem2, "String");
-
-
-if (strlen(getParam("id"))>0) { // alteraÁ„o, retirar strlen se vier de edicao_aux
-	$sql->setAction("UPDATE");
-	
-	$conn->execute($sql->getSQL());
-	$destino = "blog_lista.php?pagina=".getParam("pagina"); 
-} else { // inclus„o
-
-	//Verifica se est· incluindo novo registro a partir de outro j· existente ¥para adicionar as imagens
-	
-	if (getParam("imagem") != NULL)
-		$sql->addField("imagem", anti_injection(getParam("imagem")), "String");
-
-	if (getParam("imagem2") != NULL)
-		$sql->addField("imagem2", anti_injection(getParam("imagem2")), "String");
-
-	$sql->setAction("INSERT");
-
-	$last_id = $conn->execute($sql->getSQL());
-	$destino = "blog_lista.php";
+if ($caminho_imagem !== null) {
+    $sql->addField("imagem", $caminho_imagem, "String");
 }
-//echo $sql->getSQL();
-// volta para a lista ou reapresenta o formul·rio em modo de ediÁ„o
+
+if ($caminho_imagem2 !== null) {
+    $sql->addField("imagem2", $caminho_imagem2, "String");
+}
+
+if (strlen(getParam("id")) > 0) {
+    // UPDATE
+    $sql->setAction("UPDATE");
+    $conn->execute($sql->getSQL());
+    $destino = "blog_lista.php?pagina=" . getParam("pagina");
+} else {
+    // INSERT
+    if (getParam("imagem") != null && $caminho_imagem === null) {
+        $sql->addField("imagem", anti_injection(getParam("imagem")), "String");
+    }
+
+    if (getParam("imagem2") != null && $caminho_imagem2 === null) {
+        $sql->addField("imagem2", anti_injection(getParam("imagem2")), "String");
+    }
+
+    $sql->setAction("INSERT");
+    $conn->execute($sql->getSQL());
+    $destino = "blog_lista.php";
+}
+
+/* redirecionamento */
 echo "<script>location.href='$destino';</script>";
 
-/* 	Encerra a conex„o com o banco de dados */
+/* encerra conex√£o */
 $conn->close();
 ?>

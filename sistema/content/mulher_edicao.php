@@ -104,7 +104,7 @@
 								$connTemp = new db();
 								$connTemp->open();
 								$sql = "SELECT idCidade FROM mulherCidade WHERE idMulher = " . ((getParam("id")) ? getParam("id") : 0) . " AND idCidade = " . $id;
-								// echo $sql; die();
+								
 								$rsTemp = new query($connTemp, $sql);
 								if ($rsTemp->getrow()) {
 									$result .= "<input type='checkbox' name='cidade[]' id='cidade' value='".  $id . "' checked='checked'>&nbsp;" . $val . "&nbsp;&nbsp;&nbsp;";

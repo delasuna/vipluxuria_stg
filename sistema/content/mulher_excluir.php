@@ -19,7 +19,6 @@ if (strlen($lista_exclusao)==0) { // se n�o existe registros selecionados
 	$sql = "DELETE FROM mulher WHERE idMulher IN (" . $lista_exclusao . ")";
 	$conn->execute($sql);
 	
-	// redirect2(getSession("redirectAnunciante"));
 	echo "<script>location.href='/sistema/content/mulher_lista.php?clear=1';</script>";
 }
 
