@@ -437,7 +437,7 @@
 						$lista_aceito_cartao = array("Sim,Sim","Nao,Nao");
 						$lista_flag = array("Sim,Sim","Não,Não","Talvez,Talvez");
 												
-						$lista_tipo = array("Lo,Loira","Mo,Morena","Mu,Mulata");	
+						$lista_tipo = array("Lo,Loira","Mo,Morena","Mu,Mulata","Ru,Ruiva");	
 						$form->add2Field("Tipo: ", radioField($lista_tipo, "flagTipo",$flagTipo), "Preferencial: ", radioField($lista_preferencial, "flagPreferencial",$flagPreferencial));
 						$form->add2Field("Tem Vídeo: ", radioField($lista_flag_video, "flagTemVideo",$flagTemVideo), "Nome do vídeo: ", textField("video",$video,33,33));
 						$form->add2Field("Mostra Rosto: ", radioField($lista_preferencial, "flagMostraRosto",$flagMostraRosto),"Aceito Cartão: ", radioField($lista_aceito_cartao, "aceitoCartao",$aceitoCartao));

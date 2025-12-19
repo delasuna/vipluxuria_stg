@@ -107,6 +107,9 @@ if (!empty($_REQUEST["idCidade"])) {
                                 case "Morenas":
                                     $where .= " AND flagTipo = 'Mo' ";
                                     break;
+                                case "Ruivas":
+                                    $where .= " AND flagTipo = 'Ru' ";
+                                    break;
                                 case "Mulatas":
                                     $where .= " AND flagTipo = 'Mu' ";
                                     break;
