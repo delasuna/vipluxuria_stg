@@ -14,10 +14,15 @@ define('SIS_URL', 'www.vipluxuria.com');
 //define("DB_HOST","177.55.98.44");
 //define("DB_USER", "viplux_luxuria");
 
-define("DB_DATABASE","vipluxuriagold");
+// // // // define("DB_DATABASE","vipluxuriagold");
+// // // // define("DB_HOST","mysql.vipluxuriagold.net");
+// // // // define("DB_USER", "vipluxuria_add1");
+// // // // define("DB_PASSWORD","BT2D82vWc5Fy");
+
+define("DB_DATABASE","vipluxuriagold01");
 define("DB_HOST","mysql.vipluxuriagold.net");
-define("DB_USER", "vipluxuria_add1");
-define("DB_PASSWORD","BT2D82vWc5Fy");
+define("DB_USER", "vipluxur01_add1");
+define("DB_PASSWORD","vipluxur01_add1");
 
 define("DB_PERSISTENT",false);
 
