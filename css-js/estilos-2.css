@@ -7535,3 +7535,15 @@ select.form-control option {
 .btn-close {
     z-index: 1056;
 }
+
+/* Força layout em coluna única */
+.vantagens-page-premium .dicas-grid-premium {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Opcional: melhora o alinhamento do conteúdo */
+.vantagens-page-premium .dica-card {
+    width: 100%;
+}
