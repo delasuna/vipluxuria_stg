@@ -1,9 +1,9 @@
 <?php
 // Configurações de conexão
 $host = "mysql.vipluxuriagold.net";
-$user = "vipluxuria_add1";
-$pass = "BT2D82vWc5Fy";
-$db   = "vipluxuriagold";
+$user = "vipluxur01_add1";
+$pass = "vipluxur01_add1";
+$db   = "vipluxuriagold01";
 
 // Conexão com MySQL (PHP 8 - mysqli)
 $conexao = mysqli_connect($host, $user, $pass, $db);
