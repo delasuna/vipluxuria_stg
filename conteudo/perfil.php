@@ -351,6 +351,9 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                                 <div><span>Locais:</span> <strong><?= htmlspecialchars($p_locais ?? '') ?></strong></div>
                                 <div><span>Cidades:</span> <strong><?= htmlspecialchars($p_cidades ?? '') ?></strong></div>
                                 <div><span>Horário:</span> <strong><?= htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '') ?></strong></div>
+                                <?php if ($p_aceitoCartao == "Sim"): ?>
+                                    <div id="cartoes"><img src="/imagens/estrutura/aceito-cartoes.png" alt="Aceito Cartões"></div>
+                                <?php endif; ?>
                             </div>
                         </div>
 

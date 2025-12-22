@@ -7,7 +7,7 @@
     <meta name="keywords" content="<?php echo htmlspecialchars($keywords); ?>">
     <meta name="google-translate-customization" content="47516143a922ad1d-908eb38b3da0e2e8-gfbda7755c951dd96-12">
     <meta http-equiv="Cache-Control" content="no-store">
-    <title><?php echo htmlspecialchars($title); ?></title>
+    <title><?php echo htmlspecialchars($title ?? 'Vip Luxúria - Acompanhantes Porto Alegre'); ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- CSS -->

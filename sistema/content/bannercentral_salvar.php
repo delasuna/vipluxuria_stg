@@ -1,87 +1,100 @@
-<?
+<?php
 /*
-	TransaÁ„o de inclus„o/alteraÁ„o de registros
+    Transa√ß√£o de inclus√£o/altera√ß√£o de registros
 */
 include("../inc/common.php");
 
 /*
-	conex„o com o banco de dados
+    conex√£o com o banco de dados
 */
 $conn = new db();
 $conn->open();
 
-
-/* upload do video */
-//tentar· fazer o upload da imagem que est· no campo caminho_video  
+/* diret√≥rio de upload */
 $uploaddir = "upload_bannercentral/";
 
-if($_FILES['imagem']['tmp_name'] != "") { 
-	// Prepara a vari·vel do arquivo
-	$imagem = isset($_FILES["imagem"]) ? $_FILES["imagem"] : FALSE;
+/* upload da imagem */
+$caminho_imagem = null;
 
-	if($imagem) { 
-		// Verifica se o mime-type do arquivo È de imagem
-		if(!eregi("^image\/(pjpeg|jpeg|png|gif|bmp)$", $imagem["type"])) {
-			echo "Imagem - Arquivo em formato inv·lido! Somente arquivos com extens„o .jpg, .jpeg,  .bmp, .gif ou .png s„o suportados";
-		}
-	}
-	$caminho_imagem = "";
-	if($_FILES['imagem']['size'] > "1000000") {
-		print("<SCRIPT> alert('Imagem - Seu arquivo n„o poder· ser maior que 1mb'); window.history.go(-1); </SCRIPT>\n");
-	} else {
-		if(move_uploaded_file($_FILES['imagem']['tmp_name'], $uploaddir . $_FILES['imagem']['name'])) {
-			$caminho_imagem = $uploaddir . $_FILES['imagem']['name']; //local da imagem a ser armazenado no banco de dados
-		} else {
-			print("Imagem - Houve um erro na transferencia do arquivo:\n Erro=" .$_FILES['imagem']['error']);
-			if($_FILES['imagem']['error'] == 1) {
-				print("Imagem - O arquivo no upload È maior do que o limite definido em upload_max_filesize no php.ini");
-			} elseif($_FILES['imagem']['error'] == 2) {
-				print("Imagem - O arquivo ultrapassa o limite de tamanho em MAX_FILE_SIZE que foi especificado no formul·rio html.");
-			} elseif($_FILES['imagem']['error'] == 3) {
-				print("Imagem - o upload do arquivo foi feito parcialmente.");
-			} elseif($_FILES['imagem']['error'] == 4) {
-				print("Imagem - N„o foi feito o upload do arquivo.");
-			}
-		}
-	}
+if (isset($_FILES['imagem']) && !empty($_FILES['imagem']['tmp_name'])) {
+
+    $imagem = $_FILES['imagem'];
+
+    // Cria o diret√≥rio caso n√£o exista
+    if (!is_dir($uploaddir)) {
+        mkdir($uploaddir, 0777, true);
+    }
+
+    // Verifica tamanho do arquivo (1MB)
+    if ($imagem['size'] > 1000000) {
+        echo "<script>alert('Imagem - Seu arquivo n√£o poder√° ser maior que 1MB'); window.history.go(-1);</script>";
+        exit;
+    }
+
+    // Gera nome √∫nico
+    $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
+    $novoNome = uniqid('bannercentral_', true) . '.' . $extensao;
+    $destinoArquivo = $uploaddir . $novoNome;
+
+    // Move o arquivo
+    if (move_uploaded_file($imagem['tmp_name'], $destinoArquivo)) {
+        $caminho_imagem = $destinoArquivo; // caminho salvo no banco
+    } else {
+        echo "Imagem - Houve um erro na transfer√™ncia do arquivo. Erro = " . $imagem['error'] . "<br>";
+
+        switch ($imagem['error']) {
+            case UPLOAD_ERR_INI_SIZE:
+                echo "O arquivo √© maior que o limite definido em upload_max_filesize no php.ini";
+                break;
+            case UPLOAD_ERR_FORM_SIZE:
+                echo "O arquivo ultrapassa o limite definido no formul√°rio HTML.";
+                break;
+            case UPLOAD_ERR_PARTIAL:
+                echo "O upload do arquivo foi feito parcialmente.";
+                break;
+            case UPLOAD_ERR_NO_FILE:
+                echo "Nenhum arquivo foi enviado.";
+                break;
+            default:
+                echo "Erro desconhecido no upload.";
+                break;
+        }
+        exit;
+    }
 }
 
-
-/* AtualizaÁ„o dos dados, configure abaixo conforme suas necessidades */
-// objeto para montagem de express„o sql
+/* Atualiza√ß√£o dos dados */
 $sql = new UpdateSQL();
 
 $sql->setTable("bannercentral2");
 $sql->setKey("idBannerCentral2", getParam("id"), "Number");
 
 $sql->addField("descricao", anti_injection(getParam("descricao")), "String");
-$sql->addField("site", anti_injection(getParam("site")), "String");		
+$sql->addField("site", anti_injection(getParam("site")), "String");
 
-if ($caminho_imagem != NULL)
-	$sql->addField("imagem", $caminho_imagem, "String");
-
-
-if (strlen(getParam("id"))>0) { // alteraÁ„o, retirar strlen se vier de edicao_aux
-	$sql->setAction("UPDATE");
-	
-	$conn->execute($sql->getSQL());
-	$destino = "bannercentral_lista.php?pagina=".getParam("pagina"); 
-} else { // inclus„o
-
-	//Verifica se est· incluindo novo registro a partir de outro j· existente ¥para adicionar as imagens
-	
-	if (getParam("imagem") != NULL)
-		$sql->addField("imagem", anti_injection(getParam("imagem")), "String");
-
-	$sql->setAction("INSERT");
-
-	$last_id = $conn->execute($sql->getSQL());
-	$destino = "bannercentral_lista.php";
+if ($caminho_imagem !== null) {
+    $sql->addField("imagem", $caminho_imagem, "String");
 }
-//echo $sql->getSQL();
-// volta para a lista ou reapresenta o formul·rio em modo de ediÁ„o
+
+if (strlen(getParam("id")) > 0) {
+    // UPDATE
+    $sql->setAction("UPDATE");
+    $conn->execute($sql->getSQL());
+    $destino = "bannercentral_lista.php?pagina=" . getParam("pagina");
+} else {
+    // INSERT
+    if (getParam("imagem") != null && $caminho_imagem === null) {
+        $sql->addField("imagem", anti_injection(getParam("imagem")), "String");
+    }
+
+    $sql->setAction("INSERT");
+    $conn->execute($sql->getSQL());
+    $destino = "bannercentral_lista.php";
+}
+
+/* redirecionamento */
 echo "<script>location.href='$destino';</script>";
 
-/* 	Encerra a conex„o com o banco de dados */
+/* encerra conex√£o */
 $conn->close();
 ?>

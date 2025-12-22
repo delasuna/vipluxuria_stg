@@ -7535,3 +7535,27 @@ select.form-control option {
 .btn-close {
     z-index: 1056;
 }
+
+.vantagens-page-premium .dicas-grid-premium {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.vantagens-page-premium .dica-card {
+    width: 100%;
+}
+
+.moteis-page-premium .dicas-grid-premium {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px;
+}
+
+.moteis-page-premium .dica-card {
+    width: 100%;
+}
+
+.moteis-page-premium .dica-content {
+    text-align: center;
+}
