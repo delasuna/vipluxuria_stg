@@ -35,7 +35,7 @@
                         <a href="https://www.instagram.com/amigas_do_vip" target="_blank" title="Instagram">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a href="https://twitter.com/vipluxuria" target="_blank" title="Twitter">
+                        <a href="https://x.com/vipluxuriacom" target="_blank" title="Twitter">
                             <i class="bi bi-twitter"></i>
                         </a>
                         <a href="https://bsky.app/profile/vipluxuria.bsky.social" target="_blank" title="Bluesky">
@@ -69,7 +69,9 @@
             <h6 class="parceiros-titulo">Recomendamos</h6>
             <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 py-2 logos-parceiros">
 
-                <img src="/imagens/logos/felipe-picture.png" title="Felipe Picture" alt="Felipe Picture">
+                <a href="https://www.felipepicture.com.br/" title="Felipe Picture" target="_blank">
+                    <img src="/imagens/logos/felipe-picture.png" title="Felipe Picture" alt="Felipe Picture">
+                </a>
 
                 <a href="https://www.acompanhantes61.com.br/" title="Acompanhantes Brasília" target="_blank">
                     <img src="/imagens/logos/a61.png" alt="Acompanhantes de Brasília">
