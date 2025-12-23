@@ -48,6 +48,25 @@ mysqli_free_result($resultado);
                     <section class="acompanhantes-section">
                         <div class="grid-premium">
                             <?php
+                            function gerarSlug($string) {
+                                // garante UTF-8
+                                $string = mb_convert_encoding($string, 'UTF-8', 'UTF-8');
+
+                                // remove acentos corretamente
+                                $string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
+
+                                // minúsculas
+                                $string = strtolower($string);
+
+                                // remove tudo que não for letra, número ou espaço
+                                $string = preg_replace('/[^a-z0-9\s-]/', '', $string);
+
+                                // troca espaços por hífen
+                                $string = preg_replace('/[\s-]+/', '-', $string);
+
+                                return trim($string, '-');
+                            }
+
                             $sql = "SELECT * FROM mulher WHERE flagAtivo = 'Sim' ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
                             $resultado = mysqli_query($conexao, $sql);
                             if (!$resultado) {
@@ -65,11 +84,16 @@ mysqli_free_result($resultado);
                                 $imagemCapa = $row['imagemCapa'];
                                 $flagVerificada = $row['flagVerificada'] ?? 'Não';
 
-                                $linkPerfil = "/perfil/" . $idMulher . "/" . str_replace($comAcentos, $semAcentos, $nome);
-                                if (!empty($sobrenome)) {
-                                    $linkPerfil .= "-" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $sobrenome));
+                                $slugNome = gerarSlug($nome);
+                                $slugSobrenome = gerarSlug($sobrenome);
+
+                                $linkPerfil = "/perfil/{$idMulher}/{$slugNome}";
+
+                                if (!empty($slugSobrenome)) {
+                                    $linkPerfil .= "-{$slugSobrenome}";
                                 }
-                                $linkPerfil = htmlspecialchars($linkPerfil);
+
+                                $linkPerfil = htmlspecialchars($linkPerfil, ENT_QUOTES, 'UTF-8');
                                 $nomeCompleto = htmlspecialchars($nome . ' ' . $sobrenome);
                             ?>
                                 <div class="acompanhante-card-wrapper">
