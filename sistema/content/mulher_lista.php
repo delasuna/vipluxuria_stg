@@ -18,7 +18,6 @@
     <link href="/sistema/content/css-js/estilos-sistema.css" rel="stylesheet" />
     <link href="/sistema/content/css-js/menu-sistema.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/config.css" />
-    <link rel="stylesheet" href="../css/text.css" />
     <link rel="stylesheet" href="../css/lightbox.css" />
     <link rel="stylesheet" href="../css/content_sis.css">
     <link rel="stylesheet" href="../css/header_sis.css">  
@@ -72,10 +71,65 @@
                         $conn = new db();
                         $conn->open();
 
+                        /* ===== ORDENAÇÃO (CORRIGIDA) ===== */
+
+                        $iSort   = (int) getParam("Sorting");
+                        $iSorted = (int) getParam("Sorted");
+
+                        /* padrão */
+                        $orderBy = "";
+
+                        /* se veio da URL, manda nela */
+                        if ($iSort > 0) {
+
+                            // define direção
+                            if ($iSort === $iSorted) {
+                                $direction = "DESC";
+                            } else {
+                                $direction = "ASC";
+                            }
+
+                            // mapeamento seguro
+                            switch ($iSort) {
+                                case 2:
+                                    $orderBy = " ORDER BY nomeUrl $direction";
+                                    break;
+                                case 3:
+                                    $orderBy = " ORDER BY email $direction";
+                                    break;
+                                case 4:
+                                    $orderBy = " ORDER BY telefone $direction";
+                                    break;
+                                case 5:
+                                    $orderBy = " ORDER BY flagAtivo $direction";
+                                    break;
+                            }
+
+                            // salva sessão apenas para paginação
+                            setSession("sOrder", $orderBy);
+
+                        } else {
+                            // fallback (primeiro carregamento)
+                            $orderBy = getSession("sOrder");
+                        }
+
                         $pg = getParam("pagina");
                         if ($pg == "") $pg = 1;
 
-                        $sql = "SELECT * FROM mulher WHERE flagAtivo = 'Sim' " . getSession("sOrder");
+                        $busca = trim(getParam("busca"));
+                        $whereBusca = "";
+
+                        if ($busca != "") {
+                            // proteção básica
+                            $buscaSql = anti_injection($busca);
+                            $whereBusca = " AND nomeUrl LIKE '%$buscaSql%'";
+                        }
+
+                        $sql = "SELECT * 
+                        FROM mulher 
+                        WHERE flagAtivo = 'Sim' 
+                        $whereBusca
+                        $orderBy";
 
                         if (getSession("numeroRegistros") == "Todos") {
                             $rs = new query($conn, $sql); 
@@ -115,6 +169,31 @@
                         </div>
                     </form>
 
+                    <form method="get" class="row g-2 mb-3">
+                        <div class="col-md-4">
+                            <input type="text"
+                                name="busca"
+                                class="form-control"
+                                placeholder="Buscar por nome..."
+                                value="<?php echo htmlspecialchars($busca); ?>">
+                        </div>
+
+                        <!-- mantém ordenação -->
+                        <input type="hidden" name="Sorting" value="<?php echo $iSort; ?>">
+                        <input type="hidden" name="Sorted" value="<?php echo $iSorted; ?>">
+
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary">
+                                Buscar
+                            </button>
+                            <?php if ($busca != "") { ?>
+                                <a href="mulher_lista.php" class="btn btn-secondary">
+                                    Limpar
+                                </a>
+                            <?php } ?>
+                        </div>
+                    </form>
+
                     <!-- Lista -->
                     <form name="frm" id="frm" method="post">
                         <div class="table-responsive">
@@ -122,10 +201,43 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th><input type="checkbox" onclick="CheckAll()"></th>
-                                        <th>Nome</th>
-                                        <th>E-mail</th>
-                                        <th>Telefone</th>
-                                        <th>Ativo</th>
+                                        <?php
+                                        $isDescNome = ($iSort === 2 && $iSorted === 2);
+                                        ?>
+
+                                        <th>
+                                            <a href="?Sorting=2<?php echo $isDescNome ? '' : '&Sorted=2'; ?>"
+                                            class="text-white text-decoration-none">
+                                                Nome
+                                            </a>
+                                        </th>
+
+
+                                        <?php $isDescEmail = ($iSort === 3 && $iSorted === 3); ?>
+                                        <th>
+                                            <a href="?Sorting=3<?php echo $isDescEmail ? '' : '&Sorted=3'; ?>"
+                                            class="text-white text-decoration-none">
+                                                E-mail
+                                            </a>
+                                        </th>
+
+
+                                        <?php $isDescTel = ($iSort === 4 && $iSorted === 4); ?>
+                                        <th>
+                                            <a href="?Sorting=4<?php echo $isDescTel ? '' : '&Sorted=4'; ?>"
+                                            class="text-white text-decoration-none">
+                                                Telefone
+                                            </a>
+                                        </th>
+
+
+                                        <?php $isDescAtivo = ($iSort === 5 && $iSorted === 5); ?>
+                                        <th>
+                                            <a href="?Sorting=5<?php echo $isDescAtivo ? '' : '&Sorted=5'; ?>"
+                                            class="text-white text-decoration-none">
+                                                Ativo
+                                            </a>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -135,7 +247,7 @@
                                             $id = $rs->field("idMulher");
                                             echo "<tr>";
                                             echo "<td><input type='checkbox' name='sel[]' value='$id'></td>";
-                                            echo "<td><a href='mulher_edicao.php?id=$id&pagina=$pg' class='fw-semibold text-decoration-none'>{$rs->field('nomeUrl')}</a></td>";
+                                            echo "<td><a href='mulher_edicao.php?id=$id&pagina=$pg' class='fw-semibold text-decoration-none'>" . htmlspecialchars($rs->field("nomeUrl")) . "</a></td>";
                                             echo "<td>{$rs->field('email')}</td>";
                                             echo "<td>{$rs->field('telefone')}</td>";
                                             echo "<td>{$rs->field('flagAtivo')}</td>";

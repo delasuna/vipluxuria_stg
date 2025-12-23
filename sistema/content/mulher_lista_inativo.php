@@ -20,7 +20,6 @@ include("../inc/common.php");
     <link href="/sistema/content/css-js/estilos-sistema.css" rel="stylesheet" />
     <link href="/sistema/content/css-js/menu-sistema.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/config.css" />
-    <link rel="stylesheet" href="../css/text.css" />
     <link rel="stylesheet" href="../css/lightbox.css" />
     <link rel="stylesheet" href="../css/content_sis.css">
     <link rel="stylesheet" href="../css/header_sis.css">
@@ -75,8 +74,60 @@ include("../inc/common.php");
                         <?php
                         $conn = new db();
                         $conn->open();
+                        $conn->execute("SET NAMES utf8mb4");
+
+                        /* ===== ORDENAÇÃO (CORRIGIDA) ===== */
+
+                        $iSort   = (int) getParam("Sorting");
+                        $iSorted = (int) getParam("Sorted");
+
+                        /* padrão */
+                        $orderBy = "";
+
+                        /* se veio da URL, manda nela */
+                        if ($iSort > 0) {
+
+                            // define direção
+                            if ($iSort === $iSorted) {
+                                $direction = "DESC";
+                            } else {
+                                $direction = "ASC";
+                            }
+
+                            // mapeamento seguro
+                            switch ($iSort) {
+                                case 2:
+                                    $orderBy = " ORDER BY nomeUrl $direction";
+                                    break;
+                                case 3:
+                                    $orderBy = " ORDER BY email $direction";
+                                    break;
+                                case 4:
+                                    $orderBy = " ORDER BY telefone $direction";
+                                    break;
+                                case 5:
+                                    $orderBy = " ORDER BY flagAtivo $direction";
+                                    break;
+                            }
+
+                            // salva sessão apenas para paginação
+                            setSession("sOrder", $orderBy);
+
+                        } else {
+                            // fallback (primeiro carregamento)
+                            $orderBy = getSession("sOrder");
+                        }
 
                         $pg = getParam("pagina") ?: 1;
+
+                        $busca = trim(getParam("busca"));
+                        $whereBusca = "";
+
+                        if ($busca != "") {
+                            // proteção básica
+                            $buscaSql = anti_injection($busca);
+                            $whereBusca = " AND nomeUrl LIKE '%$buscaSql%'";
+                        }
 
                         // Função para gerar paginação resumida
                         function pagination_resumida($pagina_atual, $total_paginas, $url)
@@ -131,18 +182,11 @@ include("../inc/common.php");
                         $mesma_pagina = ($_SERVER['PHP_SELF'] == getSession("pagina_atual"));
                         if (!$mesma_pagina) setSession("pagina_atual", $_SERVER['PHP_SELF']);
 
-                        $iSort = getParam("Sorting");
-                        $iSorted = getParam("Sorted");
-
-                        if ($iSort) {
-                            $sDirection = ($iSort == $iSorted) ? " DESC" : " ASC";
-                            if ($iSort == 2) setSession("sOrder", " order by nomeUrl" . $sDirection);
-                            if ($iSort == 3) setSession("sOrder", " order by email" . $sDirection);
-                            if ($iSort == 4) setSession("sOrder", " order by telefone" . $sDirection);
-                            if ($iSort == 5) setSession("sOrder", " order by flagAtivo" . $sDirection);
-                        }
-
-                        $sql = "SELECT * FROM mulher WHERE flagAtivo = 'Nao' " . getSession("sOrder");
+                        $sql = "SELECT * 
+                        FROM mulher 
+                        WHERE flagAtivo = 'Nao' 
+                        $whereBusca
+                        $orderBy";
 
                         if (getSession("numeroRegistros") == "Todos") {
                             $rs = new query($conn, $sql);
@@ -177,15 +221,72 @@ include("../inc/common.php");
                         </div>
 
                         <div class="table-responsive">
+                            <form method="get" class="row g-2 mb-3">
+                                <div class="col-md-4">
+                                    <input type="text"
+                                        name="busca"
+                                        class="form-control"
+                                        placeholder="Buscar por nome..."
+                                        value="<?php echo htmlspecialchars($busca); ?>">
+                                </div>
+
+                                <!-- mantém ordenação -->
+                                <input type="hidden" name="Sorting" value="<?php echo $iSort; ?>">
+                                <input type="hidden" name="Sorted" value="<?php echo $iSorted; ?>">
+
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary">
+                                        Buscar
+                                    </button>
+                                    <?php if ($busca != "") { ?>
+                                        <a href="mulher_lista.php" class="btn btn-secondary">
+                                            Limpar
+                                        </a>
+                                    <?php } ?>
+                                </div>
+                            </form>
                             <form name="frm" method="post">
                                 <table class="table table-striped table-hover align-middle">
                                     <thead class="table-dark">
                                         <tr>
                                             <th><input type="checkbox" onclick="CheckAll()"></th>
-                                            <th>Nome</th>
-                                            <th>E-mail</th>
-                                            <th>Telefone</th>
-                                            <th>Ativo</th>
+                                            <?php
+                                            $isDescNome = ($iSort === 2 && $iSorted === 2);
+                                            ?>
+
+                                            <th>
+                                                <a href="?Sorting=2<?php echo $isDescNome ? '' : '&Sorted=2'; ?>"
+                                                class="text-white text-decoration-none">
+                                                    Nome
+                                                </a>
+                                            </th>
+
+
+                                            <?php $isDescEmail = ($iSort === 3 && $iSorted === 3); ?>
+                                            <th>
+                                                <a href="?Sorting=3<?php echo $isDescEmail ? '' : '&Sorted=3'; ?>"
+                                                class="text-white text-decoration-none">
+                                                    E-mail
+                                                </a>
+                                            </th>
+
+
+                                            <?php $isDescTel = ($iSort === 4 && $iSorted === 4); ?>
+                                            <th>
+                                                <a href="?Sorting=4<?php echo $isDescTel ? '' : '&Sorted=4'; ?>"
+                                                class="text-white text-decoration-none">
+                                                    Telefone
+                                                </a>
+                                            </th>
+
+
+                                            <?php $isDescAtivo = ($iSort === 5 && $iSorted === 5); ?>
+                                            <th>
+                                                <a href="?Sorting=5<?php echo $isDescAtivo ? '' : '&Sorted=5'; ?>"
+                                                class="text-white text-decoration-none">
+                                                    Ativo
+                                                </a>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
