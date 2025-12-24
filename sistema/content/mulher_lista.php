@@ -131,6 +131,16 @@
                         $whereBusca
                         $orderBy";
 
+                        // TOTAL DE REGISTROS (sem paginação)
+                        $sqlTotal = "SELECT COUNT(*) AS total 
+                                    FROM mulher 
+                                    WHERE flagAtivo = 'Sim' $whereBusca";
+
+                        $rsTotal = new query($conn, $sqlTotal);
+                        $rsTotal->getrow();
+                        $totalRegistros = (int)$rsTotal->field("total");
+
+
                         if (getSession("numeroRegistros") == "Todos") {
                             $rs = new query($conn, $sql); 
                             $numeroRegistros = $rs->numrows();
@@ -169,30 +179,39 @@
                         </div>
                     </form>
 
-                    <form method="get" class="row g-2 mb-3">
-                        <div class="col-md-4">
-                            <input type="text"
-                                name="busca"
-                                class="form-control"
-                                placeholder="Buscar por nome..."
-                                value="<?php echo htmlspecialchars($busca); ?>">
-                        </div>
+                    <div class="d-flex justify-content-around">
+                        <form method="get" class="row g-2 mb-3 w-100">
+                            <div class="col-md-4">
+                                <input type="text"
+                                    name="busca"
+                                    class="form-control"
+                                    placeholder="Buscar por nome..."
+                                    value="<?php echo htmlspecialchars($busca); ?>">
+                            </div>
 
-                        <!-- mantém ordenação -->
-                        <input type="hidden" name="Sorting" value="<?php echo $iSort; ?>">
-                        <input type="hidden" name="Sorted" value="<?php echo $iSorted; ?>">
+                            <!-- mantém ordenação -->
+                            <input type="hidden" name="Sorting" value="<?php echo $iSort; ?>">
+                            <input type="hidden" name="Sorted" value="<?php echo $iSorted; ?>">
 
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary">
-                                Buscar
-                            </button>
-                            <?php if ($busca != "") { ?>
-                                <a href="mulher_lista.php" class="btn btn-secondary">
-                                    Limpar
-                                </a>
-                            <?php } ?>
-                        </div>
-                    </form>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">
+                                    Buscar
+                                </button>
+                                <?php if ($busca != "") { ?>
+                                    <a href="mulher_lista.php" class="btn btn-secondary">
+                                        Limpar
+                                    </a>
+                                <?php } ?>
+                            </div>
+                        </form>
+
+                        <p class="text-muted mb-2">
+                            Total encontrados:
+                            <strong><?php echo isset($totalRegistros) ? $totalRegistros : 0; ?></strong>
+                        </p>
+
+
+                    </div>
 
                     <!-- Lista -->
                     <form name="frm" id="frm" method="post">
