@@ -1,3 +1,4 @@
+<?php include_once '../age-gate.php'; ?>
 <?php
 // perfil.php - versão atualizada para mysqli e correções
 mb_internal_encoding('UTF-8');

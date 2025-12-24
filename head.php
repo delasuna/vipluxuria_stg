@@ -88,3 +88,5 @@
 	}
 	?>
 </head>
+
+<?php include_once 'age-gate.php'; ?>

@@ -1,3 +1,4 @@
+<?php include_once '../age-gate.php'; ?>
 <?php
 // Conexão
 $conexao = require_once '../php/conecta_mysql.php';
