@@ -108,7 +108,7 @@ mysqli_free_result($resultado);
                                             data-telefone="<?= htmlspecialchars(($row['ddd'] ?? '') . ' ' . ($row['telefone'] ?? '')) ?>">
 
                                             <?php if ($flagVerificada == 'Sim'): ?>
-                                                <span class="badge-verificada">✓ Verificada</span>
+                                                <span class="badge-verificada">&#10003; Verificada</span>
                                             <?php endif; ?>
 
                                             <div class="card-img-wrapper">
@@ -138,8 +138,8 @@ mysqli_free_result($resultado);
                                                         </div>
 
                                                         <?php if (count($previewImages) > 0): ?>
-                                                            <button class="preview-nav preview-prev" onclick="changePreview(event, -1)">‹</button>
-                                                            <button class="preview-nav preview-next" onclick="changePreview(event, 1)">›</button>
+                                                            <button class="preview-nav preview-prev" onclick="changePreview(event, -1)">&lt;</button>
+                                                            <button class="preview-nav preview-next" onclick="changePreview(event, 1)">&gt;</button>
 
                                                             <div class="preview-dots">
                                                                 <span class="dot active" onclick="currentSlide(event, 1)"></span>
@@ -156,7 +156,7 @@ mysqli_free_result($resultado);
                                                             <p><i class="bi bi-geo-alt"></i> <?= htmlspecialchars($row['cidades'] ?? 'Porto Alegre') ?></p>
                                                             <p><i class="bi bi-cash"></i> <?= htmlspecialchars($row['cache'] ?? 'Consulte') ?></p>
                                                             <?php if ($row['flagWhats'] == 'S'): ?>
-                                                                <p><i class="bi bi-whatsapp"></i> Disponível</p>
+                                                                <p><i class="bi bi-whatsapp"></i> Dispon&iacute;vel</p>
                                                             <?php endif; ?>
                                                             <?php if ($row['flagAtende24Horas'] == 'Sim'): ?>
                                                                 <p><i class="bi bi-clock"></i> 24 Horas</p>
@@ -193,141 +193,141 @@ mysqli_free_result($resultado);
                     <section class="trust-section-leaders">
                         <div class="container">
                             <!-- Título Principal -->
-                            <h2 class="trust-title-leaders">Há 17 anos trabalhando com as melhores acompanhantes.</h2>
+                            <h2 class="trust-title-leaders">H&aacute; 17 anos trabalhando com as melhores acompanhantes.</h2>
 
                             <!-- Texto SEO em Collapse -->
                             <div class="seo-content-wrapper">
                                 <button class="btn-expand-seo" type="button" data-bs-toggle="collapse" data-bs-target="#seoContent" aria-expanded="false" aria-controls="seoContent">
-                                    <span>Saiba mais sobre nossos serviços exclusivos</span>
+                                    <span>Saiba mais sobre nossos servi&ccedil;os exclusivos</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </button>
 
                                 <div class="collapse" id="seoContent">
                                     <div class="seo-text-content">
                                         <p class="lead-text">
-                                            Porto Alegre, uma cidade vibrante e cheia de opções culturais e sociais, é também um destino ideal para quem busca descrição e sofisticação na hora de contratar acompanhantes Porto Alegre-RS. Quando se trata de contratar acompanhantes de luxo, há uma série de benefícios que tornam essa escolha única e atraente.
+                                            Porto Alegre, uma cidade vibrante e cheia de op&ccedil;&otilde;es culturais e sociais, &eacute; tamb&eacute;m um destino ideal para quem busca descri&ccedil;&atilde;o e sofistica&ccedil;&atilde;o na hora de contratar acompanhantes Porto Alegre-RS. Quando se trata de contratar acompanhantes de luxo, h&aacute; uma s&eacute;rie de benef&iacute;cios que tornam essa escolha &uacute;nica e atraente.
                                         </p>
 
                                         <p>
-                                            Veja os benefícios e como a contratação de acompanhantes Porto Alegre-RS pela plataforma Vip Luxúria pode ser uma experiência gratificante, seja para momentos de lazer, jantares sociais ou outros eventos especiais.
+                                            Veja os benef&iacute;cios e como a contrata&ccedil;&atilde;o de acompanhantes Porto Alegre-RS pela plataforma Vip Lux&uacute;ria pode ser uma experi&ecirc;ncia gratificante, seja para momentos de lazer, jantares sociais ou outros eventos especiais.
                                         </p>
 
                                         <h3>Companheirismo Sofisticado e Exclusivo</h3>
                                         <p>
-                                            O companheirismo sofisticado e exclusivo oferecido por uma acompanhante Porto Alegre-RS é um serviço que vai muito além das expectativas convencionais. Combinando inteligência, sofisticação e um profundo entendimento sobre os desejos de seus acompanhantes, essas profissionais proporcionam experiências únicas e personalizadas para cada cliente.
+                                            O companheirismo sofisticado e exclusivo oferecido por uma acompanhante Porto Alegre-RS &eacute; um servi&ccedil;o que vai muito al&eacute;m das expectativas convencionais. Combinando intelig&ecirc;ncia, sofistica&ccedil;&atilde;o e um profundo entendimento sobre os desejos de seus acompanhantes, essas profissionais proporcionam experi&ecirc;ncias &uacute;nicas e personalizadas para cada cliente.
                                         </p>
 
                                         <p>
-                                            Muitas garotas de programa em Porto Alegre-RS investem em seu desenvolvimento pessoal e cultural, frequentando cursos, aprimorando idiomas e mantendo-se constantemente atualizadas sobre diversos temas. Isso permite que elas estejam confortáveis em qualquer cenário.
+                                            Muitas garotas de programa em Porto Alegre-RS investem em seu desenvolvimento pessoal e cultural, frequentando cursos, aprimorando idiomas e mantendo-se constantemente atualizadas sobre diversos temas. Isso permite que elas estejam confort&aacute;veis em qualquer cen&aacute;rio.
                                         </p>
 
                                         <p>
-                                            Seja em eventos sociais, jantares de negócios ou momentos privados, a capacidade de adaptação e o refinamento dessas acompanhantes transformam cada encontro em uma experiência marcante e inesquecível.
+                                            Seja em eventos sociais, jantares de neg&oacute;cios ou momentos privados, a capacidade de adapta&ccedil;&atilde;o e o refinamento dessas acompanhantes transformam cada encontro em uma experi&ecirc;ncia marcante e inesquec&iacute;vel.
                                         </p>
 
                                         <p>
-                                            A exclusividade dos serviços não está restrita apenas na garantia aos mínimos detalhes que garantem conforto e discrição. As acompanhantes entendem que cada cliente busca mais do que apenas companhia: procuram conexão genuína e momentos que sejam tanto agradáveis quanto memoráveis.
+                                            A exclusividade dos servi&ccedil;os n&atilde;o est&aacute; restrita apenas na garantia aos m&iacute;nimos detalhes que garantem conforto e discri&ccedil;&atilde;o. As acompanhantes entendem que cada cliente busca mais do que apenas companhia: procuram conex&atilde;o genu&iacute;na e momentos que sejam tanto agrad&aacute;veis quanto memor&aacute;veis.
                                         </p>
 
                                         <p>
-                                            Por isso, muitas garotas de programa em Porto Alegre-RS são conhecidas por seu estilo impecável, que alia moda, bom gosto e sofisticação. A habilidade de criar conversas estimulantes e engajantes faz com que os encontros transcorram com leveza e naturalidade, deixando o cliente à vontade e valorizado. Esse nível de atenção ao cliente é o que diferencia um serviço de qualidade de uma experiência única e de alta qualidade.
+                                            Por isso, muitas garotas de programa em Porto Alegre-RS s&atilde;o conhecidas por seu estilo impec&aacute;vel, que alia moda, bom gosto e sofistica&ccedil;&atilde;o. A habilidade de criar conversas estimulantes e engajantes faz com que os encontros transcorram com leveza e naturalidade, deixando o cliente &agrave; vontade e valorizado. Esse n&iacute;vel de aten&ccedil;&atilde;o ao cliente &eacute; o que diferencia um servi&ccedil;o de qualidade de uma experi&ecirc;ncia &uacute;nica e de alta qualidade.
                                         </p>
 
                                         <p>
-                                            Porto Alegre, uma cidade vibrante e cheia de charme, proporciona o cenário ideal para que esse companheirismo sofisticado floresça. Seja em restaurantes renomados, eventos culturais ou passeios pelos pontos turísticos, onde uma garota de programa de luxo Porto Alegre-RS saberá tornar cada momento ainda mais especial e prazeroso, cada momento com sua presença elegante. Elas sabem como equilibrar charme e discrição, garantindo que cada cliente se sinta especial e plenamente atendido.
+                                            Porto Alegre, uma cidade vibrante e cheia de charme, proporciona o cen&aacute;rio ideal para que esse companheirismo sofisticado flores&ccedil;a. Seja em restaurantes renomados, eventos culturais ou passeios pelos pontos tur&iacute;sticos, onde uma garota de programa de luxo Porto Alegre-RS saber&aacute; tornar cada momento ainda mais especial e prazeroso, cada momento com sua presen&ccedil;a elegante. Elas sabem como equilibrar charme e discri&ccedil;&atilde;o, garantindo que cada cliente se sinta especial e plenamente atendido.
                                         </p>
 
                                         <p>
-                                            A cidade oferece uma vasta gama de opções para experiências únicas, que, quando acompanhadas de uma profissional tão habilidosa, criam memórias que transcendem o ordinário. Essa combinação de exclusividade, sofisticação e conexão genuína faz do serviço de uma garota de programa em Porto Alegre-RS uma escolha perfeita para momentos especiais.
+                                            A cidade oferece uma vasta gama de op&ccedil;&otilde;es para experi&ecirc;ncias &uacute;nicas, que, quando acompanhadas de uma profissional t&atilde;o habilidosa, criam mem&oacute;rias que transcendem o ordin&aacute;rio. Essa combina&ccedil;&atilde;o de exclusividade, sofistica&ccedil;&atilde;o e conex&atilde;o genu&iacute;na faz do servi&ccedil;o de uma garota de programa em Porto Alegre-RS uma escolha perfeita para momentos especiais.
                                         </p>
 
                                         <h3>Atendimento Personalizado e Exclusivo</h3>
                                         <p>
-                                            As acompanhantes Porto Alegre-RS costumam oferecer um serviço altamente personalizado. Isso significa que, ao contratar um acompanhante, você pode escolher os detalhes específicos que deseja viver.
+                                            As acompanhantes Porto Alegre-RS costumam oferecer um servi&ccedil;o altamente personalizado. Isso significa que, ao contratar um acompanhante, voc&ecirc; pode escolher os detalhes espec&iacute;ficos que deseja viver.
                                         </p>
 
                                         <p>
-                                            Se está oferecendo um jantar formal, uma noite de lazer ou até mesmo uma viagem, as acompanhantes em Porto Alegre-RS são conhecedoras das nuances que tornam esses momentos inesquecíveis. O atendimento é sempre exclusivo e adaptado às suas preferências, garantindo que a experiência seja feita sob medida.
+                                            Se est&aacute; oferecendo um jantar formal, uma noite de lazer ou at&eacute; mesmo uma viagem, as acompanhantes em Porto Alegre-RS s&atilde;o conhecedoras das nuances que tornam esses momentos inesquec&iacute;veis. O atendimento &eacute; sempre exclusivo e adaptado &agrave;s suas prefer&ecirc;ncias, garantindo que a experi&ecirc;ncia seja feita sob medida.
                                         </p>
 
-                                        <h3>Discrição e Confidencialidade</h3>
+                                        <h3>Discri&ccedil;&atilde;o e Confidencialidade</h3>
                                         <p>
-                                            Outro benefício essencial ao contratar uma acompanhante Porto Alegre-RS é a discrição. Profissionais de alto nível sabem como garantir que seus clientes se sintam à vontade e seguros com a privacidade que merecem.
+                                            Outro benef&iacute;cio essencial ao contratar uma acompanhante Porto Alegre-RS &eacute; a discri&ccedil;&atilde;o. Profissionais de alto n&iacute;vel sabem como garantir que seus clientes se sintam &agrave; vontade e seguros com a privacidade que merecem.
                                         </p>
 
                                         <p>
-                                            Elas mantêm total confidencialidade sobre seus encontros, respeitando sua privacidade em todos os momentos. Se você procura um momento de intimidade e exclusividade sem preocupações com sua imagem pública, as acompanhantes Porto Alegre-RS são a escolha ideal.
+                                            Elas mant&ecirc;m total confidencialidade sobre seus encontros, respeitando sua privacidade em todos os momentos. Se voc&ecirc; procura um momento de intimidade e exclusividade sem preocupa&ccedil;&otilde;es com sua imagem p&uacute;blica, as acompanhantes Porto Alegre-RS s&atilde;o a escolha ideal.
                                         </p>
 
                                         <h3>Acompanhamento em Eventos e Jantares Sociais com suas acompanhantes Porto Alegre-RS</h3>
                                         <p>
-                                            A presença de uma acompanhante em eventos sociais importantes, como reuniões de negócios, galas, lançamentos e outros encontros de alto nível, pode ser uma excelente forma de impressionar seus colegas e fazer com que você se sinta ainda mais confiante e confortável em ambientes de alta exigência social.
+                                            A presen&ccedil;a de uma acompanhante em eventos sociais importantes, como reuni&otilde;es de neg&oacute;cios, galas, lan&ccedil;amentos e outros encontros de alto n&iacute;vel, pode ser uma excelente forma de impressionar seus colegas e fazer com que voc&ecirc; se sinta ainda mais confiante e confort&aacute;vel em ambientes de alta exig&ecirc;ncia social.
                                         </p>
 
                                         <p>
-                                            Ter acompanhantes em Porto Alegre-RS ao seu lado pode ser uma excelente forma de impressionar seus colegas e fazer com que você se sinta ainda mais confiante e confortável em ambientes de alta exigência social.
+                                            Ter acompanhantes em Porto Alegre-RS ao seu lado pode ser uma excelente forma de impressionar seus colegas e fazer com que voc&ecirc; se sinta ainda mais confiante e confort&aacute;vel em ambientes de alta exig&ecirc;ncia social.
                                         </p>
 
                                         <h3>Relaxamento e Escapismo</h3>
                                         <p>
-                                            O foco do companheirismo em Porto Alegre, as acompanhantes Porto Alegre-RS também podem proporcionar momentos de relaxamento e escapismo. Seja para um encontro mais íntimo e tranquilo, ou para simplesmente desfrutar de um tempo de qualidade fora das obrigações do dia a dia, esses profissionais são especialistas em criar um ambiente de descontração e prazer.
+                                            O foco do companheirismo em Porto Alegre, as acompanhantes Porto Alegre-RS tamb&eacute;m podem proporcionar momentos de relaxamento e escapismo. Seja para um encontro mais &iacute;ntimo e tranquilo, ou para simplesmente desfrutar de um tempo de qualidade fora das obriga&ccedil;&otilde;es do dia a dia, esses profissionais s&atilde;o especialistas em criar um ambiente de descontra&ccedil;&atilde;o e prazer.
                                         </p>
 
                                         <p>
-                                            O foco é proporcionar uma experiência agradável com nossas acompanhantes de luxo Porto Alegre-RS, onde o cliente possa relaxar, desfrutar de boa conversa e sentir-se bem consigo mesmo.
+                                            O foco &eacute; proporcionar uma experi&ecirc;ncia agrad&aacute;vel com nossas acompanhantes de luxo Porto Alegre-RS, onde o cliente possa relaxar, desfrutar de boa conversa e sentir-se bem consigo mesmo.
                                         </p>
 
                                         <h3>Qualidade e Profissionalismo</h3>
                                         <p>
-                                            A qualidade por contratar uma acompanhante em porto alegre-RS pela plataforma Vip Luxúria, pode ter certeza de que está lidando com uma habilidade profissional. A maioria das acompanhantes de luxo em Porto Alegre é altamente sólida em diversas áreas, como etiqueta social, comunicação e até mesmo idiomas.
+                                            A qualidade por contratar uma acompanhante em porto alegre-RS pela plataforma Vip Lux&uacute;ria, pode ter certeza de que est&aacute; lidando com uma habilidade profissional. A maioria das acompanhantes de luxo em Porto Alegre &eacute; altamente s&oacute;lida em diversas &aacute;reas, como etiqueta social, comunica&ccedil;&atilde;o e at&eacute; mesmo idiomas.
                                         </p>
 
                                         <p>
-                                            Isso significa que você terá uma companhia que não é apenas atraente fisicamente, mas também inteligente, articulada e capaz de participar de conversas interessantes e complexas, tornando o encontro ainda mais agradável com suas acompanhantes Porto Alegre-RS.
+                                            Isso significa que voc&ecirc; ter&aacute; uma companhia que n&atilde;o &eacute; apenas atraente fisicamente, mas tamb&eacute;m inteligente, articulada e capaz de participar de conversas interessantes e complexas, tornando o encontro ainda mais agrad&aacute;vel com suas acompanhantes Porto Alegre-RS.
                                         </p>
 
                                         <h3>Momentos de Alta Qualidade com nossas acompanhantes Porto Alegre-RS</h3>
                                         <p>
-                                            Ao contratar acompanhantes Porto Alegre-RS, você tem a garantia de que o tempo que passar com elas será de alta qualidade. Isso vai desde o cuidado com a aparência até a maneira como ela interage com você, garantindo que cada momento seja inesquecível.
+                                            Ao contratar acompanhantes Porto Alegre-RS, voc&ecirc; tem a garantia de que o tempo que passar com elas ser&aacute; de alta qualidade. Isso vai desde o cuidado com a apar&ecirc;ncia at&eacute; a maneira como ela interage com voc&ecirc;, garantindo que cada momento seja inesquec&iacute;vel.
                                         </p>
 
                                         <p>
-                                            Se você procura uma experiência de qualidade, seja para relaxar ou para se divertir, contratar uma acompanhante de luxo pode ser a melhor maneira de garantir uma experiência realmente especial.
+                                            Se voc&ecirc; procura uma experi&ecirc;ncia de qualidade, seja para relaxar ou para se divertir, contratar uma acompanhante de luxo pode ser a melhor maneira de garantir uma experi&ecirc;ncia realmente especial.
                                         </p>
 
-                                        <h3>Flexibilidade para Diversas Ocasiões</h3>
+                                        <h3>Flexibilidade para Diversas Ocasi&otilde;es</h3>
                                         <p>
-                                            As acompanhantes de porto alegre-RS oferecem flexibilidade para uma variedade de benefícios. Seja para um evento corporativo, uma noite de gala, uma comemoração especial ou até mesmo uma simples companhia durante uma viagem, esses profissionais estão disponíveis para diversas ocasiões.
-                                        </p>
-
-                                        <p>
-                                            Isso garante que você possa contar com uma companhia comprometida em qualquer situação, tornando sua experiência ainda mais segura.
-                                        </p>
-
-                                        <h3>Uma Experiência de Alto Nível com nossas acompanhantes de porto alegre-RS</h3>
-                                        <p>
-                                            Porto Alegre é uma cidade cheia de cultura, história e charme. Com muitas opções de restaurantes, bares, cafés, clubes e eventos, a cidade oferece um cenário perfeito para aproveitar momentos ao lado de nossas acompanhantes Porto Alegre-RS.
+                                            As acompanhantes de porto alegre-RS oferecem flexibilidade para uma variedade de benef&iacute;cios. Seja para um evento corporativo, uma noite de gala, uma comemora&ccedil;&atilde;o especial ou at&eacute; mesmo uma simples companhia durante uma viagem, esses profissionais est&atilde;o dispon&iacute;veis para diversas ocasi&otilde;es.
                                         </p>
 
                                         <p>
-                                            Seja para passeios turísticos, jantares sofisticados ou até mesmo para relaxar em uma experiência mais privada, a presença de um acompanhante de luxo pode tornar sua visita à cidade ainda mais externa.
+                                            Isso garante que voc&ecirc; possa contar com uma companhia comprometida em qualquer situa&ccedil;&atilde;o, tornando sua experi&ecirc;ncia ainda mais segura.
+                                        </p>
+
+                                        <h3>Uma Experi&ecirc;ncia de Alto N&iacute;vel com nossas acompanhantes de porto alegre-RS</h3>
+                                        <p>
+                                            Porto Alegre &eacute; uma cidade cheia de cultura, hist&oacute;ria e charme. Com muitas op&ccedil;&otilde;es de restaurantes, bares, caf&eacute;s, clubes e eventos, a cidade oferece um cen&aacute;rio perfeito para aproveitar momentos ao lado de nossas acompanhantes Porto Alegre-RS.
+                                        </p>
+
+                                        <p>
+                                            Seja para passeios tur&iacute;sticos, jantares sofisticados ou at&eacute; mesmo para relaxar em uma experi&ecirc;ncia mais privada, a presen&ccedil;a de um acompanhante de luxo pode tornar sua visita &agrave; cidade ainda mais externa.
                                         </p>
 
                                         <h3>Alta Disponibilidade e Facilidade de Acesso</h3>
                                         <p>
-                                            Outro benefício de contratar nossa acompanhante de porto alegre-RS é a facilidade de acesso ao serviço. Muitos profissionais oferecem canais diretos de contato, seja por meio de sites, aplicativos ou mesmo por telefone, tornando o processo de contratação rápido e seguro.
+                                            Outro benef&iacute;cio de contratar nossa acompanhante de porto alegre-RS &eacute; a facilidade de acesso ao servi&ccedil;o. Muitos profissionais oferecem canais diretos de contato, seja por meio de sites, aplicativos ou mesmo por telefone, tornando o processo de contrata&ccedil;&atilde;o r&aacute;pido e seguro.
                                         </p>
 
                                         <p>
-                                            A flexibilidade de horários e a disponibilidade dos acompanhantes garantem que você possa escolher o momento que melhor se adequa às suas necessidades.
+                                            A flexibilidade de hor&aacute;rios e a disponibilidade dos acompanhantes garantem que voc&ecirc; possa escolher o momento que melhor se adequa &agrave;s suas necessidades.
                                         </p>
 
                                         <p>
-                                            Contratar acompanhante de luxo porto alegre-RS oferece uma experiência única e sofisticada, ideal para quem busca momentos exclusivos e de alta qualidade. A cidade oferece um cenário perfeito para divulgar a companhia de profissionais curiosos e discretos, que sabem como transformar qualquer encontro em uma experiência específica.
+                                            Contratar acompanhante de luxo porto alegre-RS oferece uma experi&ecirc;ncia &uacute;nica e sofisticada, ideal para quem busca momentos exclusivos e de alta qualidade. A cidade oferece um cen&aacute;rio perfeito para divulgar a companhia de profissionais curiosos e discretos, que sabem como transformar qualquer encontro em uma experi&ecirc;ncia espec&iacute;fica.
                                         </p>
 
                                         <p>
-                                            Se você está procurando uma companhia de classe, que combine elegância, sofisticação e profissionalismo, Porto Alegre é o lugar ideal para encontrar o serviço que você procura.
+                                            Se voc&ecirc; est&aacute; procurando uma companhia de classe, que combine eleg&acirc;ncia, sofistica&ccedil;&atilde;o e profissionalismo, Porto Alegre &eacute; o lugar ideal para encontrar o servi&ccedil;o que voc&ecirc; procura.
                                         </p>
                                     </div>
                                 </div>
@@ -340,9 +340,9 @@ mysqli_free_result($resultado);
                                     <div class="trust-icon-leader">
                                         <i class="bi bi-shield-fill-check"></i>
                                     </div>
-                                    <h3 class="trust-card-title">Verificação Rigorosa</h3>
+                                    <h3 class="trust-card-title">Verifica&ccedil;&atilde;o Rigorosa</h3>
                                     <p class="trust-card-description">
-                                        <span class="trust-card-stat">100%</span> das acompanhantes passam por verificação presencial com documentação
+                                        <span class="trust-card-stat">100%</span> das acompanhantes passam por verifica&ccedil;&atilde;o presencial com documenta&ccedil;&atilde;o
                                     </p>
                                 </div>
 
@@ -353,7 +353,7 @@ mysqli_free_result($resultado);
                                     </div>
                                     <h3 class="trust-card-title">Cobertura Regional</h3>
                                     <p class="trust-card-description">
-                                        Porto Alegre e mais de <span class="trust-card-stat">14 cidades</span> da região metropolitana
+                                        Porto Alegre e mais de <span class="trust-card-stat">14 cidades</span> da regi&atilde;o metropolitana
                                     </p>
                                 </div>
 
@@ -364,7 +364,7 @@ mysqli_free_result($resultado);
                                     </div>
                                     <h3 class="trust-card-title">Atendimento 24h</h3>
                                     <p class="trust-card-description">
-                                        Acompanhantes disponíveis a qualquer hora do dia ou da noite
+                                        Acompanhantes dispon&iacute;veis a qualquer hora do dia ou da noite
                                     </p>
                                 </div>
 
@@ -373,9 +373,9 @@ mysqli_free_result($resultado);
                                     <div class="trust-icon-leader">
                                         <i class="bi bi-lock-fill"></i>
                                     </div>
-                                    <h3 class="trust-card-title">Total Discrição</h3>
+                                    <h3 class="trust-card-title">Total Discri&ccedil;&atilde;o</h3>
                                     <p class="trust-card-description">
-                                        O mais confiável catalogo de acompanhantes de Porto Alegre e região.
+                                        O mais confi&aacute;vel catalogo de acompanhantes de Porto Alegre e regi&atilde;o.
                                     </p>
                                 </div>
                             </div>

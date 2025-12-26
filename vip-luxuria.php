@@ -41,9 +41,9 @@ mysqli_free_result($resultado);
                 <!-- Header Elegante -->
                 <div class="about-header-vip">
                     <h1 class="about-title-main">
-                        Conheça o <span class="text-gold-gradient">VIP LUXÚRIA</span>
+                        Conhe&ccedil;a o <span class="text-gold-gradient">VIP LUX&Uacute;RIA</span>
                     </h1>
-                    <p class="about-subtitle">A referência em acompanhantes de luxo no Sul do Brasil</p>
+                    <p class="about-subtitle">A refer&ecirc;ncia em acompanhantes de luxo no Sul do Brasil</p>
                     
                    <div class="about-stats-row">
     <div class="stat-box-vip">
@@ -56,7 +56,7 @@ mysqli_free_result($resultado);
     </div>
     <div class="stat-box-vip">
         <div class="stat-value">24/7</div>
-        <div class="stat-label">Disponível</div>
+        <div class="stat-label">Dispon&iacute;vel</div>
     </div>
 </div>
                 </div>
@@ -69,16 +69,16 @@ mysqli_free_result($resultado);
                             <h2 class="section-title-vip">Nossa Plataforma</h2>
                             
                             <p class="about-lead">
-                                O <strong>VIP LUXÚRIA</strong> é a plataforma líder em anúncios de acompanhantes premium, 
-                                conectando profissionais de alto nível a clientes exigentes há mais de 15 anos.
+                                O <strong>VIP LUX&Uacute;RIA</strong> &eacute; a plataforma l&iacute;der em an&uacute;ncios de acompanhantes premium, 
+                                conectando profissionais de alto n&iacute;vel a clientes exigentes h&aacute; mais de 15 anos.
                             </p>
 
                             <div class="about-highlight-box">
                                 <i class="bi bi-shield-check"></i>
                                 <div>
-                                    <h4>Transparência Total</h4>
-                                    <p>Somos uma plataforma de divulgação. Não temos vínculo empregatício com as anunciantes - 
-                                    cada profissional é independente e responsável por seu próprio serviço.</p>
+                                    <h4>Transpar&ecirc;ncia Total</h4>
+                                    <p>Somos uma plataforma de divulga&ccedil;&atilde;o. N&atilde;o temos v&iacute;nculo empregat&iacute;cio com as anunciantes - 
+                                    cada profissional &eacute; independente e respons&aacute;vel por seu pr&oacute;prio servi&ccedil;o.</p>
                                 </div>
                             </div>
 
@@ -88,22 +88,22 @@ mysqli_free_result($resultado);
                                 <div class="timeline-item">
                                     <span class="timeline-number">01</span>
                                     <div class="timeline-content">
-                                        <h5>Verificação</h5>
-                                        <p>Anunciantes comparecem ao estúdio com documentos para autorização de imagem</p>
+                                        <h5>Verifica&ccedil;&atilde;o</h5>
+                                        <p>Anunciantes comparecem ao est&uacute;dio com documentos para autoriza&ccedil;&atilde;o de imagem</p>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
                                     <span class="timeline-number">02</span>
                                     <div class="timeline-content">
-                                        <h5>Publicação</h5>
-                                        <p>Perfil aprovado é publicado com fotos e informações fornecidas</p>
+                                        <h5>Publica&ccedil;&atilde;o</h5>
+                                        <p>Perfil aprovado &eacute; publicado com fotos e informa&ccedil;&otilde;es fornecidas</p>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
                                     <span class="timeline-number">03</span>
                                     <div class="timeline-content">
                                         <h5>Contato Direto</h5>
-                                        <p>Clientes contactam diretamente as profissionais sem intermediação</p>
+                                        <p>Clientes contactam diretamente as profissionais sem intermedia&ccedil;&atilde;o</p>
                                     </div>
                                 </div>
                             </div>
@@ -111,10 +111,10 @@ mysqli_free_result($resultado);
                             <div class="about-example-card">
                                 <div class="example-header">
                                     <i class="bi bi-lightbulb"></i>
-                                    <span>Exemplo Prático</span>
-                                </div>
-                                <p>Assim como um jornal vende espaços publicitários, o Vip Luxúria oferece uma vitrine digital. 
-                                Se um anúncio não corresponde à realidade, a responsabilidade é do anunciante, não da plataforma.</p>
+                                    <span>Exemplo Pr&aacute;tico</span>
+                                </div>  
+                                <p>Assim como um jornal vende espa&ccedil;os publicit&aacute;rios, o Vip Lux&uacute;ria oferece uma vitrine digital. 
+                                Se um an&uacute;ncio n&atilde;o corresponde &agrave; realidade, a responsabilidade &eacute; do anunciante, n&atilde;o da plataforma.</p>
                             </div>
                         </div>
                     </div>
@@ -122,30 +122,30 @@ mysqli_free_result($resultado);
                     <div class="col-lg-4">
                         <!-- Sidebar com Navegação -->
                         <div class="about-sidebar-card">
-                            <h3 class="sidebar-title">Navegação Rápida</h3>
+                            <h3 class="sidebar-title">Navega&ccedil;&atilde;o R&aacute;pida</h3>
                             
                             <div class="nav-category">
                                 <h5><i class="bi bi-gender-female"></i> Mulheres</h5>
                                 <div class="nav-links">
-                                    <a href="/Acompanhantes-Loiras">• Loiras</a>
-                                    <a href="/Acompanhantes-Morenas">• Morenas</a>
-                                    <a href="/Acompanhantes-Mulatas">• Mulatas</a>
-                                    <a href="/Acompanhantes-ComVideo">• Com Vídeo</a>
-                                    <a href="/Acompanhantes-Atende24Horas">• 24 Horas</a>
+                                    <a href="/Acompanhantes-Loiras">- Loiras</a>
+                                    <a href="/Acompanhantes-Morenas">- Morenas</a>
+                                    <a href="/Acompanhantes-Mulatas">- Mulatas</a>
+                                    <a href="/Acompanhantes-ComVideo">- Com V&iacute;deo</a>
+                                    <a href="/Acompanhantes-Atende24Horas">- 24 Horas</a>
                                 </div>
                             </div>
 
                             <div class="nav-category">
                                 <h5><i class="bi bi-gender-trans"></i> Transex</h5>
                                 <div class="nav-links">
-                                    <a href="/conteudo/transex.php">• Ver Todas</a>
+                                    <a href="/conteudo/transex.php">- Ver Todas</a>
                                 </div>
                             </div>
 
                             <div class="nav-category">
                                 <h5><i class="bi bi-gender-male"></i> Casais e Homens</h5>
                                 <div class="nav-links">
-                                    <a href="/conteudo/casais-e-homens.php">• Ver Todos</a>
+                                    <a href="/conteudo/casais-e-homens.php">- Ver Todos</a>
                                 </div>
                             </div>
 
@@ -153,7 +153,7 @@ mysqli_free_result($resultado);
 
                         <!-- Card de Regiões -->
                         <div class="about-regions-card">
-                            <h4 class="regions-title">Por Região</h4>
+                            <h4 class="regions-title">Por Regi&atilde;o</h4>
                             <div class="region-pills">
                                 <a href="/Acompanhantes/1/Porto-Alegre" class="region-pill">Porto Alegre</a>
                                 <a href="/Acompanhantes/2/Novo-Hamburgo" class="region-pill">Novo Hamburgo</a>
@@ -169,18 +169,18 @@ mysqli_free_result($resultado);
                 <div class="about-features-grid">
                     <div class="feature-card-vip">
                         <i class="bi bi-shield-lock-fill"></i>
-                        <h4>Segurança</h4>
-                        <p>SSL e proteção total de dados</p>
+                        <h4>Seguran&ccedil;a</h4>
+                        <p>SSL e prote&ccedil;&atilde;o total de dados</p>
                     </div>
                     <div class="feature-card-vip">
                         <i class="bi bi-patch-check-fill"></i>
-                        <h4>Verificação</h4>
+                        <h4>Verifica&ccedil;&atilde;o</h4>
                         <p>Todos os perfis autenticados</p>
                     </div>
                     <div class="feature-card-vip">
                         <i class="bi bi-incognito"></i>
-                        <h4>Discrição</h4>
-                        <p> O mais confiável catalogo de acompanhantes de Porto Alegre e região.</p>
+                        <h4>Discri&ccedil;&atilde;o</h4>
+                        <p> O mais confi&aacute;vel catalogo de acompanhantes de Porto Alegre e regi&atilde;o.</p>
                     </div>
                     <div class="feature-card-vip">
                         <i class="bi bi-star-fill"></i>
@@ -194,8 +194,8 @@ mysqli_free_result($resultado);
                     <i class="bi bi-info-circle-fill"></i>
                     <div>
                         <h5>Aviso Legal</h5>
-                        <p>O VIP LUXÚRIA não intermedia contatos. As informações dos anúncios são de responsabilidade 
-                        dos anunciantes. Somos exclusivamente uma plataforma de divulgação.</p>
+                        <p>O VIP LUX&Uacute;RIA n&atilde;o intermedia contatos. As informa&ccedil;&otilde;es dos an&uacute;ncios s&atilde;o de responsabilidade 
+                        dos anunciantes. Somos exclusivamente uma plataforma de divulga&ccedil;&atilde;o.</p>
                     </div>
                 </div>
 
