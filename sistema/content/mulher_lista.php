@@ -125,6 +125,43 @@
                             $whereBusca = " AND nomeUrl LIKE '%$buscaSql%'";
                         }
 
+                        // Função para gerar paginação resumida
+                        function pagination_resumida($pagina_atual, $total_paginas, $url)
+                        {
+                            $pagina_atual = max(1, min($pagina_atual, $total_paginas)); // segurança
+                            echo '<nav><ul class="pagination justify-content-center flex-wrap">';
+
+                            // Botão Anterior
+                            if ($pagina_atual > 1) {
+                                echo '<li class="page-item"><a class="page-link" href="' . $url . '?pagina=' . ($pagina_atual - 1) . '">Anterior</a></li>';
+                            }
+
+                            // Primeira página
+                            if ($pagina_atual > 3) {
+                                echo '<li class="page-item"><a class="page-link" href="' . $url . '?pagina=1">1</a></li>';
+                                if ($pagina_atual > 4) echo '<li class="page-item disabled"><span class="page-link">…</span></li>';
+                            }
+
+                            // Páginas próximas à atual
+                            for ($i = max(1, $pagina_atual - 2); $i <= min($total_paginas, $pagina_atual + 2); $i++) {
+                                $active = ($i == $pagina_atual) ? "active" : "";
+                                echo '<li class="page-item ' . $active . '"><a class="page-link" href="' . $url . '?pagina=' . $i . '">' . $i . '</a></li>';
+                            }
+
+                            // Última página
+                            if ($pagina_atual < $total_paginas - 2) {
+                                if ($pagina_atual < $total_paginas - 3) echo '<li class="page-item disabled"><span class="page-link">…</span></li>';
+                                echo '<li class="page-item"><a class="page-link" href="' . $url . '?pagina=' . $total_paginas . '">' . $total_paginas . '</a></li>';
+                            }
+
+                            // Botão Próximo
+                            if ($pagina_atual < $total_paginas) {
+                                echo '<li class="page-item"><a class="page-link" href="' . $url . '?pagina=' . ($pagina_atual + 1) . '">Próximo</a></li>';
+                            }
+
+                            echo '</ul></nav>';
+                        }
+
                         $sql = "SELECT * 
                         FROM mulher 
                         WHERE flagAtivo = 'Sim' 
@@ -281,31 +318,12 @@
                         </div>
                     </form>
 
-                    <!-- Paginação -->
-                    <?php if ($totalPaginas > 1) { ?>
-                        <nav>
-                            <ul class="pagination justify-content-center">
-                                <?php if ($pg > 1) { ?>
-                                    <li class="page-item">
-                                        <a class="page-link" href="<?php echo $_SERVER['PHP_SELF']."?pagina=$pg_ant"; ?>">Anterior</a>
-                                    </li>
-                                <?php } ?>
-
-                                <?php 
-                                for ($i = 1; $i <= $totalPaginas; $i++) {
-                                    $active = ($i == $pg) ? "active" : "";
-                                    echo "<li class='page-item $active'><a class='page-link' href='{$_SERVER['PHP_SELF']}?pagina=$i'>$i</a></li>";
-                                }
-                                ?>
-
-                                <?php if ($pg < $totalPaginas) { ?>
-                                    <li class="page-item">
-                                        <a class="page-link" href="<?php echo $_SERVER['PHP_SELF']."?pagina=$pg_prox"; ?>">Próximo</a>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                        </nav>
-                    <?php } ?>
+                    <?php
+                        $totalPaginas = $rs->totalpages();
+                        if ($totalPaginas > 1) {
+                            pagination_resumida($pg, $totalPaginas, $_SERVER['PHP_SELF']);
+                        }
+                    ?>
 
                 </div>
             </div>
