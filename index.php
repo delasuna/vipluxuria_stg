@@ -187,10 +187,7 @@ mysqli_free_result($resultado);
                                 <?php } ?>
                             <?php } ?>
                         </div>
-                    </section>
 
-                    <!-- Seção de Confiança com SEO -->
-                    <section class="trust-section-leaders">
                         <div class="container">
                             <!-- Título Principal -->
                             <h2 class="trust-title-leaders">H&aacute; 17 anos trabalhando com as melhores acompanhantes.</h2>
