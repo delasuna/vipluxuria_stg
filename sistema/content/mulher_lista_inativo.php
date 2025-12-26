@@ -199,7 +199,7 @@
                     </div>
 
                     <!-- Seleção de registros por página -->
-                    <form name="form2" id="form2" method="post" action="mulher_lista.php" class="row g-2 mb-3 justify-content-end">
+                    <form name="form2" id="form2" method="post" action="mulher_lista_inativo.php" class="row g-2 mb-3 justify-content-end">
                         <div class="col-auto">
                             <label class="form-label mb-0">Registros por página:</label>
                         </div>
@@ -235,7 +235,7 @@
                                     Buscar
                                 </button>
                                 <?php if ($busca != "") { ?>
-                                    <a href="mulher_lista.php" class="btn btn-secondary">
+                                    <a href="mulher_lista_inativo.php" class="btn btn-secondary">
                                         Limpar
                                     </a>
                                 <?php } ?>
