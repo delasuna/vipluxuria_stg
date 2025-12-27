@@ -69,7 +69,14 @@ $totalPages = ceil($totalRegistros / $limite);
 
                             $comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ'];
                             $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y'];
-                            $linkPost = "/vip-blog-post/" . $idBlog . "/" . str_replace(" ", "-", str_replace($comAcentos, $semAcentos, $assunto));
+                            $slug = strtolower(
+                                str_replace(" ", "-",
+                                    str_replace($comAcentos, $semAcentos, $assunto)
+                                )
+                            );
+
+                            $linkPost = "/vip-blog-post/$idBlog/$slug";
+
                     ?>
                         <a href="<?= htmlspecialchars($linkPost) ?>" class="blog-card-link">
                             <article class="blog-card-premium">

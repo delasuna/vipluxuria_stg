@@ -120,8 +120,8 @@ $post = mysqli_fetch_assoc($resultPost);
                                     
                                     <div class="post-cta-box">
                                         <div class="cta-content">
-                                            <h4>Gostou do conteúdo?</h4>
-                                            <p>Explore nossos perfis verificados e encontre a acompanhante ideal para você.</p>
+                                            <h4>Gostou do conte&uacute;do?</h4>
+                                            <p>Explore nossos perfis verificados e encontre a acompanhante ideal para voc&ecirc;.</p>
                                             <a href="/" class="btn-explore">
                                                 <i class="bi bi-search"></i> Explorar Perfis
                                             </a>
@@ -139,7 +139,7 @@ $post = mysqli_fetch_assoc($resultPost);
                 <div class="container">
                     <div class="section-header">
                         <h3>Continue Lendo</h3>
-                        <p>Artigos que você pode gostar</p>
+                        <p>Artigos que voc&ecirc; pode gostar</p>
                     </div>
                     
                     <div class="related-posts-grid">
@@ -189,8 +189,8 @@ $post = mysqli_fetch_assoc($resultPost);
                         <div class="error-icon">
                             <i class="bi bi-emoji-frown"></i>
                         </div>
-                        <h2>Oops! Conteúdo não encontrado</h2>
-                        <p>O artigo que você procura não está disponível ou foi removido.</p>
+                        <h2>Oops! Conte&uacute;do não encontrado</h2>
+                        <p>O artigo que voc&ecirc; procura não está disponível ou foi removido.</p>
                         <div class="error-actions">
                             <a href="/vip-blog" class="btn-primary-custom">
                                 <i class="bi bi-grid-3x3-gap"></i> Ver Todos os Posts
