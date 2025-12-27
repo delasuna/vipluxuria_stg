@@ -76,6 +76,13 @@ include("../inc/common.php");
                         $conn->open();
                         $conn->execute("SET NAMES utf8mb4");
 
+                        if (getParam("clear")==1) {
+                            setSession("sOrder","");
+                            setSession("where","");
+                            setSession("pagina_atual","");
+                            setSession("numeroRegistros",""); 
+                        }
+
                         /* ===== ORDENAÇÃO (CORRIGIDA) ===== */
 
                         $iSort   = (int) getParam("Sorting");

@@ -73,6 +73,13 @@ include("../inc/common.php");
                         $conn = new db();
                         $conn->open();
 
+                        if (getParam("clear")==1) {
+                            setSession("sOrder","");
+                            setSession("where","");
+                            setSession("pagina_atual","");
+                            setSession("numeroRegistros",""); 
+                        }
+
                         $pg = getParam("pagina");
                         if ($pg == "") $pg = 1;
 
