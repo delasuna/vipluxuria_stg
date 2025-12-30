@@ -97,3 +97,15 @@ ul#navmenu-h li:hover ul,ul#navmenu-h ul li:hover ul,ul#navmenu-h ul ul li:hover
 	display: block;
 	z-index: 2000;
 }
+
+ul#navmenu-h ul {
+    width: auto;
+    min-width: 250px;
+    white-space: nowrap;
+}
+
+ul#navmenu-h ul li a {
+    float: none;
+    display: block;
+    width: auto;
+}
