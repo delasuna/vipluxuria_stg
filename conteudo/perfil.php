@@ -471,7 +471,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                                 data-bs-touch="true"
                                 data-bs-interval="false">
 
-                                <div class="carousel-inner carousel-inner-profile" id="carouselImages"></div>
+                                <div class="carousel-inner carousel-inner-profile d-flex align-items-center" id="carouselImages"></div>
 
                                 <button class="carousel-control-prev"
                                     type="button"
