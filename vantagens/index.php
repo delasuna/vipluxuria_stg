@@ -41,10 +41,6 @@ $conexao = require_once '../php/conecta_mysql.php';
                         <div class="dica-number">01</div>
                         <div class="dica-content">
                             <img src="6.png" alt="Alta Visibilidade" class="img-fluid rounded">
-                            <h3>Alta Visibilidade</h3>
-                            <p>
-                                Destaque garantido em uma das maiores plataformas do Sul do Brasil.
-                            </p>
                         </div>
                     </div>
 
@@ -52,10 +48,6 @@ $conexao = require_once '../php/conecta_mysql.php';
                         <div class="dica-number">02</div>
                         <div class="dica-content">
                             <img src="medieval.png" alt="Credibilidade" class="img-fluid rounded">
-                            <h3>Credibilidade</h3>
-                            <p>
-                                Plataforma consolidada, com anos de confiança e reconhecimento.
-                            </p>
                         </div>
                     </div>
 
@@ -63,10 +55,6 @@ $conexao = require_once '../php/conecta_mysql.php';
                         <div class="dica-number">03</div>
                         <div class="dica-content">
                             <img src="sherwood.png" alt="Segurança" class="img-fluid rounded">
-                            <h3>Ambiente Seguro</h3>
-                            <p>
-                                Controle de anúncios e suporte ativo para manter a qualidade.
-                            </p>
                         </div>
                     </div>
 
@@ -74,10 +62,6 @@ $conexao = require_once '../php/conecta_mysql.php';
                         <div class="dica-number">04</div>
                         <div class="dica-content">
                             <img src="5.png" alt="Alcance" class="img-fluid rounded">
-                            <h3>Alcance Regional</h3>
-                            <p>
-                                Forte presença em Porto Alegre e Rio Grande do Sul.
-                            </p>
                         </div>
                     </div>
 
