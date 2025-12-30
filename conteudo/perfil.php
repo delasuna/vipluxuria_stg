@@ -140,8 +140,7 @@ if (!empty($_REQUEST['id']) && ($conexao instanceof mysqli)) {
 
 // Se não encontrou perfil, mostra 404 simples (você pode customizar)
 if (!$perfil) {
-    header("HTTP/1.1 404 Not Found");
-    echo "<!doctype html><html><head><meta charset='utf-8'><title>Perfil não encontrado</title></head><body><h1>Perfil não encontrado</h1><p>Verifique o parâmetro id.</p></body></html>";
+    header("Location: /pagina-nao-encontrada.php");
     exit;
 }
 
