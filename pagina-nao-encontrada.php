@@ -31,13 +31,13 @@ http_response_code(404);
 
                     <!-- Intro -->
                     <div class="dicas-intro-card text-center mb-0">
-                        <h2>Mas n&atilde;o se preocupe 😉</h2>
+                        <h2>Mas n&atilde;o se preocupe &#128521;</h2>
                         <p>
                             Voc&ecirc; pode voltar para a p&aacute;gina inicial ou explorar outras &aacute;reas do site.
                         </p>
 
-                        <a href="javascript:void(0)" class="btn btn-primary mt-2" onclick="history.back()">
-                            <i class="bi bi-house"></i> Voltar para a p&aacute;gina anterior
+                        <a href="/" class="btn btn-primary mt-2">
+                            <i class="bi bi-house"></i> Voltar para a p&aacute;gina principal
                         </a>
 
                     </div>
