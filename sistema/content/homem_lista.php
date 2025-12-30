@@ -71,6 +71,16 @@
                         $conn = new db();
                         $conn->open();
 
+                        // Trata mudança de registros por página
+                        $numeroReq = getParam("numeroRegistros");
+
+                        if ($numeroReq != "") {
+                            setSession("numeroRegistros", $numeroReq);
+
+                            // volta para a página 1 ao alterar o tamanho
+                            $pg = 1;
+                        }
+
                         if (getParam("clear")==1) {
                             setSession("sOrder","");
                             setSession("where","");

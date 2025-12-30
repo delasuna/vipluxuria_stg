@@ -71,6 +71,16 @@
                         $conn = new db();
                         $conn->open();
 
+                        // Trata mudança de registros por página
+                        $numeroReq = getParam("numeroRegistros");
+
+                        if ($numeroReq != "") {
+                            setSession("numeroRegistros", $numeroReq);
+
+                            // volta para a página 1 ao alterar o tamanho
+                            $pg = 1;
+                        }
+
                         if (getParam("clear")==1) {
                             setSession("sOrder","");
                             setSession("where","");
@@ -205,7 +215,7 @@
                     </div>
 
                     <!-- Seleção de registros por página -->
-                    <form name="form2" id="form2" method="post" action="homem_lista.php" class="row g-2 mb-3 justify-content-end">
+                    <form name="form2" id="form2" method="post" action="homem_lista_inativo.php" class="row g-2 mb-3 justify-content-end">
                         <div class="col-auto">
                             <label class="form-label mb-0">Registros por página:</label>
                         </div>
@@ -241,7 +251,7 @@
                                     Buscar
                                 </button>
                                 <?php if ($busca != "") { ?>
-                                    <a href="homem_lista.php" class="btn btn-secondary">
+                                    <a href="homem_lista_inativo.php" class="btn btn-secondary">
                                         Limpar
                                     </a>
                                 <?php } ?>
