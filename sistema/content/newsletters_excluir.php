@@ -1,26 +1,42 @@
-<?
-/*  Transação para exclusão de um ou mais registros */
+<?php
+/*  TransaÃ§Ã£o para exclusÃ£o de um ou mais registros */
 include("../inc/common.php");
 
-/*  conexão com o banco de dados */
+/* conexÃ£o com o banco de dados */
 $conn = new db();
 $conn->open();
 
-/*  captura e prepara a lista de registros */ 
+/* captura e prepara a lista de registros */
 $lista_exclusao = getParam("sel");
+
+/* se veio como array (checkbox mÃºltiplo) */
 if (is_array($lista_exclusao)) {
- $lista_exclusao = implode(",",$lista_exclusao);
+
+    // garante que somente nÃºmeros passem para o IN()
+    $lista_exclusao = array_filter(
+        $lista_exclusao,
+        fn($v) => ctype_digit((string)$v)
+    );
+
+    $lista_exclusao = implode(",", $lista_exclusao);
 }
 
-if (strlen($lista_exclusao)==0) { // se não existe registros selecionados
-	alert("Nenhum registro selecionado!");
-	redirect2("newsletters_lista.php");
-} else { // se existe registro selecionado configure a expressão SQL abaixo conforme sua necessidade
-	$sql = "DELETE FROM newsletter WHERE id IN (" . $lista_exclusao . ")";
-	$conn->execute($sql);
-	redirect2("newsletters_lista.php");
+/* valida a seleÃ§Ã£o */
+if (!strlen($lista_exclusao)) {
+
+    alert("Nenhum registro selecionado!");
+    redirect2("newsletters_lista.php");
+
+    $conn->close();
+    exit;
 }
 
-/*  fecha a conexão com o banco de dados */
+/* exclusÃ£o */
+$sql = "DELETE FROM newsletter WHERE id IN ($lista_exclusao)";
+$conn->execute($sql);
+
+redirect2("newsletters_lista.php");
+
+/* fecha conexÃ£o */
 $conn->close();
 ?>

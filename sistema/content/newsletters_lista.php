@@ -86,6 +86,65 @@ include("../inc/common.php");
                     $conn = new db();
                     $conn->open();
 
+                    // Trata mudança de registros por página
+                    $numeroReq = getParam("numeroRegistros");
+
+                    if ($numeroReq != "") {
+                        setSession("numeroRegistros", $numeroReq);
+
+                        // volta para a página 1 ao alterar o tamanho
+                        $pg = 1;
+                    }
+
+                    if (getParam("clear")==1) {
+                            setSession("sOrder","");
+                            setSession("where","");
+                            setSession("pagina_atual","");
+                            setSession("numeroRegistros",""); 
+                        }
+
+                    $busca = trim(getParam("busca"));
+                        $whereBusca = "";
+
+                        if ($busca != "") {
+                            // proteção básica
+                            $buscaSql = anti_injection($busca);
+                            $whereBusca = " WHERE email LIKE '%$buscaSql%'";
+                        }
+
+                    /* ===== ORDENAÇÃO (CORRIGIDA) ===== */
+
+                        $iSort   = (int) getParam("Sorting");
+                        $iSorted = (int) getParam("Sorted");
+
+                        /* padrão */
+                        $orderBy = "";
+
+                        /* se veio da URL, manda nela */
+                        if ($iSort > 0) {
+
+                            // define direção
+                            if ($iSort === $iSorted) {
+                                $direction = "DESC";
+                            } else {
+                                $direction = "ASC";
+                            }
+
+                            // mapeamento seguro
+                            switch ($iSort) {
+                                case 2:
+                                    $orderBy = " ORDER BY email $direction";
+                                    break;
+                            }
+
+                            // salva sessão apenas para paginação
+                            setSession("sOrder", $orderBy);
+
+                        } else {
+                            // fallback (primeiro carregamento)
+                            $orderBy = getSession("sOrder");
+                        }
+
                     $pg = getParam("pagina") ?: 1;
 
                     // Função para gerar paginação resumida
@@ -125,34 +184,26 @@ include("../inc/common.php");
                             echo '</ul></nav>';
                         }
 
-                    // Reset filtros
-                    if (getParam("clear") == 1) {
-                        setSession("sOrder", "");
-                        setSession("where", "");
-                        setSession("pagina_atual", "");
-                        setSession("numeroRegistros", ""); 
-                    }
-
                     if ($nr = getParam("numeroRegistros")) setSession("numeroRegistros", $nr);
 
                     $mesma_pagina = ($_SERVER['PHP_SELF'] == getSession("pagina_atual"));
                     if (!$mesma_pagina) setSession("pagina_atual", $_SERVER['PHP_SELF']);
 
-                    // Ordenação
-                    $iSort = getParam("Sorting");
-                    $iSorted = getParam("Sorted");
+                    // $sql = "SELECT * FROM newsletter " . getSession("sOrder");
 
-                    if (!$iSort && !$mesma_pagina && getSession("sOrder") == "") {
-                        $iSort = 2;
-                        $iSorted = "";
-                    }
+                    $sql = "SELECT * 
+                        FROM newsletter 
+                        $whereBusca
+                        $orderBy";
 
-                    if ($iSort) {
-                        $sDirection = ($iSort == $iSorted) ? " DESC" : " ASC";
-                        if ($iSort == 2) setSession("sOrder"," order by email " . $sDirection);
-                    }
+                    // TOTAL DE REGISTROS (sem paginação)
+                    $sqlTotal = "SELECT COUNT(*) AS total 
+                                FROM newsletter 
+                                $whereBusca";
 
-                    $sql = "SELECT * FROM newsletter " . getSession("sOrder");
+                    $rsTotal = new query($conn, $sqlTotal);
+                    $rsTotal->getrow();
+                    $totalRegistros = (int)$rsTotal->field("total");
 
                     if (getSession("numeroRegistros") == "Todos") {
                         $rs = new query($conn, $sql); 
@@ -185,6 +236,40 @@ include("../inc/common.php");
                         </form>
                     </div>
 
+                    <div class="d-flex justify-content-around">
+                        <form method="get" class="row g-2 mb-3 w-100">
+                            <div class="col-md-4">
+                                <input type="text"
+                                    name="busca"
+                                    class="form-control"
+                                    placeholder="Buscar por nome..."
+                                    value="<?php echo htmlspecialchars($busca); ?>">
+                            </div>
+
+                            <!-- mantém ordenação -->
+                            <input type="hidden" name="Sorting" value="<?php echo $iSort; ?>">
+                            <input type="hidden" name="Sorted" value="<?php echo $iSorted; ?>">
+
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">
+                                    Buscar
+                                </button>
+                                <?php if ($busca != "") { ?>
+                                    <a href="newsletters_lista.php" class="btn btn-secondary">
+                                        Limpar
+                                    </a>
+                                <?php } ?>
+                            </div>
+                        </form>
+
+                        <p class="text-muted mb-2">
+                            Total encontrados:
+                            <strong><?php echo isset($totalRegistros) ? $totalRegistros : 0; ?></strong>
+                        </p>
+
+
+                    </div>
+
                     <!-- Tabela -->
                     <form name="frm" method="post">
                         <div class="table-responsive">
@@ -192,7 +277,16 @@ include("../inc/common.php");
                                 <thead class="table-dark">
                                     <tr>
                                         <th><input type="checkbox" onclick="CheckAll()"></th>
-                                        <th>E-mail</th>
+                                        <?php
+                                            $isDescNome = ($iSort === 2 && $iSorted === 2);
+                                        ?>
+
+                                        <th>
+                                            <a href="?Sorting=2<?php echo $isDescNome ? '' : '&Sorted=2'; ?>"
+                                            class="text-white text-decoration-none">
+                                                E-mail
+                                            </a>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
