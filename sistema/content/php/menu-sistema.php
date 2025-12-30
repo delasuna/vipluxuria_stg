@@ -14,7 +14,6 @@
 	    <ul>
        	  <li><a href="/sistema/content/bannercentral_lista.php?clear=1">Banner Central</a></li>
 		  <li><a href="/sistema/content/bannercentral_lista_2.php?clear=1">Banner Central 2</a></li>
-    	  <li><a href="/sistema/content/bannerlateral_lista.php?clear=1">Banner Lateral</a></li>
 		</ul>
 	</li>        
     <li><a href="/sistema/content/cidade_lista.php?clear=1">Cidades</a></li>
