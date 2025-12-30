@@ -79,6 +79,94 @@ function formSubmit(event) {
 
 </script>
 
+<style>
+/* Centraliza o conteúdo do login */
+#principal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    width: 1024px;
+}
+
+/* Card do formulário */
+.login-card {
+    max-width: 420px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+    border: 1px solid #eee;
+    margin: 0 auto;
+}
+
+/* Título */
+#titulo-content h1 {
+    text-align: center;
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+/* Texto de instrução */
+.login-card p,
+.page-title {
+    text-align: center;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Labels */
+#frm td:first-child {
+    font-weight: 600;
+    color: #333;
+    padding-right: 10px;
+}
+
+/* Inputs */
+#frm input[type="text"],
+#frm input[type="password"] {
+    width: 100% !important;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: all .2s ease;
+    font-size: 15px;
+}
+
+#frm input[type="text"]:focus,
+#frm input[type="password"]:focus {
+    border-color: #b30059;
+    box-shadow: 0 0 0 2px rgba(179,0,89,.2);
+    outline: none;
+}
+
+/* Área de ações */
+.acoes {
+    text-align: center;
+    margin-top: 18px;
+}
+
+/* Botão */
+.acoes .botao {
+    display: inline-block;
+    background: linear-gradient(135deg,#ff2a7a,#b30059);
+    color: #fff !important;
+    padding: 10px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.acoes .botao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.35);
+}
+</style>
+
+
 </head>
 
 <body> 
@@ -145,9 +233,10 @@ function formSubmit(event) {
 );
 
 				
-				pageTitle("", "Informe nome de usuário e senha");
 				echo "<br><br><br><br>";
-				echo $form->writeHTML();
+				echo '<div class="login-card">';
+                echo $form->writeHTML();
+                echo '</div>';
 				?>
 				</p>
            	</div><!-- FIM COLUNA-ESQUERDA-FULL -->
