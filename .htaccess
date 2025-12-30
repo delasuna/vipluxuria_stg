@@ -2,6 +2,13 @@
 RewriteEngine On
 RewriteBase /
 
+# Se o arquivo ou diretório NÃO existe
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona para a home
+ErrorDocument 404 /pagina-nao-encontrada.php
+
 # === PERFIS ===
 RewriteRule ^perfil/([0-9]+)/([a-z0-9-]+)/?$ /conteudo/perfil.php?id=$1&nome=$2 [NC]
 RewriteRule ^perfil-homens/([0-9]+)/([a-z0-9-]+)/?$ conteudo/perfil-homens.php?id=$1&nome=$2 [NC,L]
