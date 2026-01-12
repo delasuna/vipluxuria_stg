@@ -224,9 +224,9 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow">
-    <meta name="description" content="Vip Luxúria é um classificados de anúncio de Acompanhantes de Porto Alegre." />
+    <meta name="description" content="Vip Lux&uacute;ria &eacute; um classificados de an&uacute;ncio de Acompanhantes de Porto Alegre." />
     <meta name="keywords" content="Acompanhantes Porto Alegre, Acompanhantes em Porto Alegre, Acompanhante" />
-    <title><?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome . ' - Vip Luxúria - Acompanhantes Porto Alegre', ENT_QUOTES, 'UTF-8'); ?></title>
+    <title><?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome . ' - Vip Luxuria - Acompanhantes Porto Alegre', ENT_QUOTES, 'UTF-8'); ?></title>
 
     <!-- CSS -->
     <link href="../../css-js/estilos-2.css" rel="stylesheet" type="text/css" />
@@ -272,7 +272,6 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 </head>
 
 <body>
-
     <form name="form2" method="post" action="perfil.php?id=<?php echo intval($_REQUEST['id']); ?>">
         <input type="hidden" name="votacao" id="votacao" value="N">
         <input type="hidden" name="voto" id="voto" value="N">
@@ -293,7 +292,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                     <h1 class="perfil-nome">
                         <?php echo htmlspecialchars($p_nome . ' ' . $p_sobrenome, ENT_QUOTES, 'UTF-8'); ?>
                         <?php if (!empty($p_flagVerificada) && $p_flagVerificada === 'Sim'): ?>
-                            <span class="badge-verificada-inline">✓ Verificada</span>
+                            <span class="badge-verificada-inline">&#10003; Verificada</span>
                         <?php endif; ?>
                     </h1>
 
@@ -338,7 +337,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                                 <?php if (isset($p_busto)): ?><div><span>Busto:</span> <strong><?= htmlspecialchars($p_busto) ?> cm</strong></div><?php endif; ?>
                                 <?php if (isset($p_quadril)): ?><div><span>Quadril:</span> <strong><?= htmlspecialchars($p_quadril) ?> cm</strong></div><?php endif; ?>
                                 <?php if (isset($p_cintura)): ?><div><span>Cintura:</span> <strong><?= htmlspecialchars($p_cintura) ?> cm</strong></div><?php endif; ?>
-                                <?php if (isset($p_pes)): ?><div><span>Pés:</span> <strong><?= htmlspecialchars($p_pes) ?></strong></div><?php endif; ?>
+                                <?php if (isset($p_pes)): ?><div><span>P&eacute;s:</span> <strong><?= htmlspecialchars($p_pes) ?></strong></div><?php endif; ?>
                                 <?php if (isset($p_manequim)): ?><div><span>Manequim:</span> <strong><?= htmlspecialchars($p_manequim) ?></strong></div><?php endif; ?>
                             </div>
                         </div>
@@ -347,10 +346,10 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                         <div class="mb-4">
                             <h2 class="section-title-perfil">Atendimento</h2>
                             <div class="perfil-dados">
-                                <div><span>Cachê:</span> <strong><?= htmlspecialchars($p_cache ?? '') ?></strong></div>
+                                <div><span>Cach&ecirc;:</span> <strong><?= htmlspecialchars($p_cache ?? '') ?></strong></div>
                                 <div><span>Locais:</span> <strong><?= htmlspecialchars($p_locais ?? '') ?></strong></div>
                                 <div><span>Cidades:</span> <strong><?= htmlspecialchars($p_cidades ?? '') ?></strong></div>
-                                <div><span>Horário:</span> <strong><?= htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '') ?></strong></div>
+                                <div><span>Hor&aacute;rio:</span> <strong><?= htmlspecialchars($p_horario ?? $p_horarioAtendimento ?? '') ?></strong></div>
                                 <?php if ($p_aceitoCartao == "Sim"): ?>
                                     <div id="cartoes"><img src="/imagens/estrutura/aceito-cartoes.png" alt="Aceito Cartões"></div>
                                 <?php endif; ?>
@@ -373,7 +372,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                         <!-- Vídeo -->
                         <?php if (!empty($p_video) && (!isset($p_flagTemVideo) || $p_flagTemVideo !== 'Nao')): ?>
                             <div class="mb-4">
-                                <h2 class="section-title-perfil">Vídeo</h2>
+                                <h2 class="section-title-perfil">V&iacute;deo</h2>
                                 <video class="w-100 rounded shadow-sm" controls>
                                     <source src="https://vipluxuria.com/sistema/content/<?= htmlspecialchars($p_video) ?>" type="video/mp4">
                                     Seu navegador não suporta a reprodução de vídeo.
@@ -399,10 +398,10 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                         <?php if (!empty($facaSim) || !empty($facaTalvez) || !empty($facaNao)): ?>
                             <!-- O que Faço -->
                             <div class="mb-4">
-                                <h2 class="section-title-perfil">O que Faço</h2>
+                                <h2 class="section-title-perfil">O que Fa&ccedil;o</h2>
 
                                 <?php if (!empty($facaSim)): ?>
-                                    <h4 style="color: #50ff2c; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✓ Sim</h4>
+                                    <h4 style="color: #50ff2c; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">&#10003; Sim</h4>
                                     <div class="tags-faco-sim">
                                         <?php foreach (array_keys($facaSim) as $nome): ?>
                                             <span class="badge bg-success my-1"><?= htmlspecialchars($nome) ?></span>
@@ -420,7 +419,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                                 <?php endif; ?>
 
                                 <?php if (!empty($facaNao)): ?>
-                                    <h4 style="color: #ff3a65; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">✗ Não</h4>
+                                    <h4 style="color: #ff3a65; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">&#10007; Não</h4>
                                     <div class="tags-faco-nao">
                                         <?php foreach (array_keys($facaNao) as $nome): ?>
                                             <span class="badge bg-danger my-1"><?= htmlspecialchars($nome) ?></span>
