@@ -896,9 +896,6 @@ if (isset($_FILES['imagemExtra6']) && !empty($_FILES['imagemExtra6']['tmp_name']
     }
 }
 
-echo "p�s imagens";
-
-
 /* Atualiza��o dos dados, configure abaixo conforme suas necessidades */
 // objeto para montagem de express�o sql
 $sql = new UpdateSQL();
