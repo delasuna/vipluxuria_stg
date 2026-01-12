@@ -89,7 +89,7 @@ $isIndex = basename($_SERVER['PHP_SELF']) === 'index.php';
       <div class="container-fluid px-0">
 
         <!-- Logo/Ícone Home -->
-        <a class="navbar-brand" href="/" title="Início">
+        <a class="navbar-brand" href="/acompanhantes-porto-alegre/" title="Início">
           <i class="bi bi-house-door-fill"></i>
         </a>
 
