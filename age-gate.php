@@ -5,7 +5,7 @@ $requestUri = $_SERVER['REQUEST_URI'] ?? '';
 <!-- MODAL +18 -->
 <div id="age-overlay">
     <div class="age-modal">
-        <h2>Conte&uacuteúdo Adulto</h2>
+        <h2>Conte&uacutedo Adulto</h2>
         <p>Este site contém conte&uacutedo destinado exclusivamente a maiores de 18 anos.</p>
 
         <div class="buttons">
