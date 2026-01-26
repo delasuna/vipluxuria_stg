@@ -7847,3 +7847,81 @@ select.form-control option {
         grid-template-columns: 1fr;
     }
 }
+
+.calc-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+.calc-result {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+}
+
+.calc-valor {
+    font-size: 32px;
+    font-weight: bold;
+    color: #e44c65;
+    margin: 15px 0;
+}
+
+@media (max-width: 768px) {
+    .calc-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+.calc-input-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.calc-input-number input {
+    width: 90px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.btn-calc {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #e44c65;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.btn-calc:hover {
+    background: #c63d54;
+}
+
+.calc-slider {
+    text-align: center;
+}
+
+.calc-slider-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.calc-slider input[type="range"] {
+    width: 100%;
+    accent-color: #e44c65;
+}
