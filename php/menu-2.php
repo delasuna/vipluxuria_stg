@@ -71,7 +71,7 @@ $isIndex = basename($_SERVER['PHP_SELF']) === 'index.php';
   }
 </script>
 
-<!-- Formulário oculto -->
+<!-- FormulÃ¡rio oculto -->
 <form name="form_mulheres" action="/conteudo/mulheres.php" method="post" id="formMulheres">
   <input type="hidden" name="flagTipo" value='<?= anti_injection2($_REQUEST["flagTipo"] ?? '') ?>'>
   <input type="hidden" name="flagTemVideo" value='<?= anti_injection2($_REQUEST["flagTemVideo"] ?? '') ?>'>
@@ -88,15 +88,15 @@ $isIndex = basename($_SERVER['PHP_SELF']) === 'index.php';
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid px-0">
 
-        <!-- Logo/Ícone Home -->
-        <a class="navbar-brand" href="/acompanhantes-porto-alegre/" title="Início">
+        <!-- Logo/Ãcone Home -->
+        <a class="navbar-brand" href="/" title="InÃ­cio">
           <i class="bi bi-house-door-fill"></i>
         </a>
 
         <!-- Menu institucional (apenas desktop) -->
         <button class="navbar-toggler d-none" type="button"></button>
         <div class="collapse navbar-collapse d-none d-lg-block d-flex justify-content-between" id="menuFino">
-          <!-- Botão Anuncie (sempre visível) -->
+          <!-- BotÃ£o Anuncie (sempre visÃ­vel) -->
           <div class="header-anuncie">
             <a href="/como-anunciar/" class="btn-anuncie-badge">
               <span>ANUNCIE AQUI</span>
@@ -104,8 +104,8 @@ $isIndex = basename($_SERVER['PHP_SELF']) === 'index.php';
           </div>
 
           <?php if (!$isIndex): ?>
-            <a href="/acompanhantes-porto-alegre/" class="d-flex justify-content-center">
-              <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip Luxúria" class="logo-principal w-75">
+            <a href="/mulheres-acompanhantes-porto-alegre-poa/" class="d-flex justify-content-center">
+              <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip LuxÃºria" class="logo-principal w-75">
             </a>
           <?php endif; ?>
 
@@ -117,8 +117,8 @@ $isIndex = basename($_SERVER['PHP_SELF']) === 'index.php';
         </div>
 
         <?php if (!$isIndex): ?>
-          <a href="/acompanhantes-porto-alegre/" class="d-lg-none d-flex justify-content-center">
-            <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip Luxúria" class="logo-principal w-75">
+          <a href="/mulheres-acompanhantes-porto-alegre-poa/" class="d-lg-none d-flex justify-content-center">
+            <img src="/imagens/estrutura/vip-luxuria-logo.png" alt="Vip LuxÃºria" class="logo-principal w-75">
           </a>
         <?php endif; ?>
 
