@@ -198,22 +198,28 @@ $itensFaco = [
     'Beijo na Boca' => $p_flagBeijoBoca ?? '',
     'Oral' => $p_flagOral ?? '',
     'Sexo Anal' => $p_flagAnal ?? '',
-    'Dominação' => $p_flagDominacao ?? '',
-    'Inversão' => $p_flagInversao ?? '',
-    'Massagem' => $p_flagMassagem ?? '',
-    'Fantasias' => $p_flagFantasias ?? '',
+    'Dominacao' => $p_flagDominacao ?? '',
+    'Inversao' => $p_flagInversao ?? '',
+    'Sexo Virtual' => $p_flagSexoVirtual ?? '',
+    '24 Horas' => $p_flagAtende24Horas ?? '',
     'Atendo eles' => $p_flagAtendoEles ?? '',
     'Atendo elas' => $p_flagAtendoElas ?? '',
     'Atendo casais' => $p_flagAtendoCasais ?? '',
-    'Acessórios' => $p_flagAcessorios ?? '',
+    'Acessorios' => $p_flagAcessorios ?? '',
     'Eventos' => $p_flagEventos ?? '',
     'Viagens' => $p_flagViagens ?? '',
     'Tenho amigas' => $p_flagTenhoAmigas ?? '',
 ];
 
 // Separa em Sim/Não/Talvez
-$facaSim = array_filter($itensFaco, fn($v) => $v === 'Sim');
-$facaNao = array_filter($itensFaco, fn($v) => $v === 'Não');
+$facaSim = array_filter(
+    $itensFaco,
+    fn($v) => $v === 'Sim' || $v === 'S'
+);
+$facaNao = array_filter(
+    $itensFaco,
+    fn($v) => $v === 'Não' || $v === 'N' || $v === 'NÃ£o'
+);
 $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 
 ?>
@@ -221,6 +227,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
 
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow">
@@ -419,7 +426,7 @@ $facaTalvez = array_filter($itensFaco, fn($v) => $v === 'Talvez');
                                 <?php endif; ?>
 
                                 <?php if (!empty($facaNao)): ?>
-                                    <h4 style="color: #ff3a65; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">&#10007; Não</h4>
+                                    <h4 style="color: #ff3a65; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px;">&#10007; N&atilde;o</h4>
                                     <div class="tags-faco-nao">
                                         <?php foreach (array_keys($facaNao) as $nome): ?>
                                             <span class="badge bg-danger my-1"><?= htmlspecialchars($nome) ?></span>
