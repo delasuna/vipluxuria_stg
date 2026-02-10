@@ -10,42 +10,36 @@
     <title><?php echo htmlspecialchars($title ?? 'Vip Luxúria - Acompanhantes Porto Alegre'); ?></title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="/css-js/estilos-2.css" rel="stylesheet" type="text/css">
 
-    <script src="/css-js/cufon-yui.js" type="text/javascript"></script>
-    <script src="/css-js/nome_400.font.js" type="text/javascript"></script>
-    <script src="/css-js/titulo_400.font.js" type="text/javascript"></script>
-    <!-- Cufon -->
-    <script type="text/javascript">
-        Cufon.replace('h1');
-        Cufon.replace('h1#titulo,#menu-rodape-content', { fontFamily: 'titulo' });
-        Cufon.replace('p.nome, .nome-destaque', { fontFamily: 'nome' });
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap" rel="stylesheet">
 
     <?php
-	function tirarAcentos($string)
-	{
-		return preg_replace(
-			array(
-				"/(á|à|ã|â|ä)/",
-				"/(Á|À|Ã|Â|Ä)/",
-				"/(é|è|ê|ë)/",
-				"/(É|È|Ê|Ë)/",
-				"/(í|ì|î|ï)/",
-				"/(Í|Ì|Î|Ï)/",
-				"/(ó|ò|õ|ô|ö)/",
-				"/(Ó|Ò|Õ|Ô|Ö)/",
-				"/(ú|ù|û|ü)/",
-				"/(Ú|Ù|Û|Ü)/",
-				"/(ñ)/",
-				"/(Ñ)/"
-			),
-			explode(" ", "a A e E i I o O u U n N"),
-			$string
-		);
-	}
-	?>
+    function tirarAcentos($string)
+    {
+        return preg_replace(
+            array(
+                "/(á|à|ã|â|ä)/",
+                "/(Á|À|Ã|Â|Ä)/",
+                "/(é|è|ê|ë)/",
+                "/(É|È|Ê|Ë)/",
+                "/(í|ì|î|ï)/",
+                "/(Í|Ì|Î|Ï)/",
+                "/(ó|ò|õ|ô|ö)/",
+                "/(Ó|Ò|Õ|Ô|Ö)/",
+                "/(ú|ù|û|ü)/",
+                "/(Ú|Ù|Û|Ü)/",
+                "/(ñ)/",
+                "/(Ñ)/"
+            ),
+            explode(" ", "a A e E i I o O u U n N"),
+            $string
+        );
+    }
+    ?>
 </head>
 
 <?php include_once 'age-gate.php'; ?>

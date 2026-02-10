@@ -7638,3 +7638,19 @@ select.form-control option {
     accent-color: #e44c65;
 }
 
+h1 {
+    font-family: 'Playwrite NZ Basic', sans-serif;
+    font-weight: 400;
+}
+
+h1#titulo,
+#menu-rodape-content {
+    font-family: 'Playwrite NZ Basic', sans-serif;
+    font-weight: 400;
+}
+
+p.nome,
+.nome-destaque {
+    font-family: 'Playwrite NZ Basic', sans-serif;
+    font-weight: 400;
+}
