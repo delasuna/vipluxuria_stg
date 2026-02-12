@@ -1,7 +1,7 @@
-<div id="bannerCarousel" class="carousel slide d-none d-sm-block" data-bs-ride="carousel">
+<div id="bannerCarouselMobile" class="carousel slide d-sm-none" data-bs-ride="carousel">
   <div class="carousel-inner">
     <?php
-    $sql = "SELECT * FROM bannercentral2 ORDER BY RAND()";
+    $sql = "SELECT * FROM bannercentralmobile ORDER BY RAND()";
     $resultado = mysqli_query($conexao, $sql);
 
     if(!$resultado){
@@ -17,7 +17,7 @@
             ?>
             <div class="carousel-item <?= $active ? 'active' : '' ?>">
               <a href="<?= htmlspecialchars($site) ?>" target="_blank">
-                <div class="ratio" style="--bs-aspect-ratio: 25%;">
+                <div class="ratio h-100" style="--bs-aspect-ratio: 25%;">
                   <img src="<?= "/sistema/content/" . htmlspecialchars($imagem) ?>" 
                        class="w-100 h-100 carousel-img" 
                        alt="<?= htmlspecialchars($descricao) ?>">
@@ -32,11 +32,11 @@
   </div>
 
   <!-- Controles -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarouselMobile" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Anterior</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#bannerCarouselMobile" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Próximo</span>
   </button>

@@ -1524,11 +1524,11 @@ textarea:focus {
 
 @media (max-width: 768px) {
     .carousel-inner {
-        height: 175px !important;
+        height: 300px !important;
     }
 
     .carousel-img {
-        height: 175px !important;
+        height: 300px !important;
     }
 }
 

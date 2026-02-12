@@ -14,6 +14,8 @@
 	    <ul>
        	  <li><a href="/sistema/content/bannercentral_lista.php?clear=1">Banner Central</a></li>
 		  <li><a href="/sistema/content/bannercentral_lista_2.php?clear=1">Banner Central 2</a></li>
+		  <li><a href="/sistema/content/bannercentralmobile_lista.php?clear=1">Banner Central Mobile</a></li>
+		  <li><a href="/sistema/content/bannercentralmobile_lista_2.php?clear=1">Banner Central Mobile 2</a></li>
 		</ul>
 	</li>        
     <li><a href="/sistema/content/cidade_lista.php?clear=1">Cidades</a></li>

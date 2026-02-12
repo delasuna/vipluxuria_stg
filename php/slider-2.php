@@ -5,7 +5,7 @@ Inclui: HTML, CSS e JavaScript puro (sem jQuery), autoplay, responsivo (2 banner
 Copie e cole onde quiser e ajuste as classes/ids se necessário.
 -->
 
-<div id="big-banner-slider" class="big-banner-slider">
+<div id="big-banner-slider" class="big-banner-slider d-none d-sm-block">
   <button class="bbs-btn bbs-prev" aria-label="Anterior">❮</button>
   <div class="bbs-viewport">
     <div class="bbs-track">
@@ -40,6 +40,34 @@ Copie e cole onde quiser e ajuste as classes/ids se necessário.
     <button class="bbs-playpause" aria-label="Pausar autoplay">Pause</button>
   </div> -->
 </div>
+
+<div id="big-banner-slider-mobile" class="big-banner-slider-mobile d-sm-none">
+  <button class="bbsm-btn bbsm-prev" aria-label="Anterior">❮</button>
+  <div class="bbsm-viewport">
+    <div class="bbsm-track">
+      <?php
+      $sqlMobile = "SELECT * FROM bannercentralmobile2 ORDER BY RAND()";
+      $resultadoMobile = mysqli_query($conexao, $sqlMobile);
+
+      if ($resultadoMobile) {
+        while ($row = mysqli_fetch_assoc($resultadoMobile)) {
+          $descricao = htmlspecialchars($row['descricao']);
+          $imagem = htmlspecialchars($row['imagem']);
+          $site = htmlspecialchars($row['site']);
+      ?>
+          <div class="bbsm-slide">
+            <a href="<?= $site ?>" target="_blank" rel="noopener noreferrer">
+              <img class="bbsm-img"
+                   src="/sistema/content/<?= $imagem ?>"
+                   alt="<?= $descricao ?>">
+            </a>
+          </div>
+      <?php } } ?>
+    </div>
+  </div>
+  <button class="bbsm-btn bbsm-next" aria-label="Próximo">❯</button>
+</div>
+
 
 <style>
   /* ---- Estilos Big Banner Slider ---- */
@@ -170,6 +198,55 @@ Copie e cole onde quiser e ajuste as classes/ids se necessário.
     height: auto;
     display: block;
   }
+
+  /* =========================
+SLIDER MOBILE (ISOLADO)
+========================= */
+
+.big-banner-slider-mobile {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px 4px;
+}
+
+.big-banner-slider-mobile .bbsm-viewport {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.big-banner-slider-mobile .bbsm-track {
+  display: flex;
+  transition: transform 400ms ease;
+}
+
+.big-banner-slider-mobile .bbsm-slide {
+  min-width: 100%;
+}
+
+.big-banner-slider-mobile .bbsm-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 400 / 250; /* você pode mudar depois */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.big-banner-slider-mobile .bbsm-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.big-banner-slider-mobile .bbsm-prev { left: 8px; }
+.big-banner-slider-mobile .bbsm-next { right: 8px; }
 </style>
 
 <script>
@@ -301,4 +378,47 @@ Copie e cole onde quiser e ajuste as classes/ids se necessário.
     });
 
   })();
+</script>
+
+<script>
+(function() {
+  const root = document.getElementById('big-banner-slider-mobile');
+  if (!root) return;
+
+  const track = root.querySelector('.bbsm-track');
+  const slides = root.querySelectorAll('.bbsm-slide');
+  const prevBtn = root.querySelector('.bbsm-prev');
+  const nextBtn = root.querySelector('.bbsm-next');
+
+  let index = 0;
+  const total = slides.length;
+  const autoplayInterval = 4500;
+  let autoplayTimer;
+
+  function goTo(i) {
+    if (i < 0) i = total - 1;
+    if (i >= total) i = 0;
+    index = i;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function next() { goTo(index + 1); }
+  function prev() { goTo(index - 1); }
+
+  function startAutoplay() {
+    autoplayTimer = setInterval(next, autoplayInterval);
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayTimer);
+  }
+
+  nextBtn.addEventListener('click', () => { next(); stopAutoplay(); startAutoplay(); });
+  prevBtn.addEventListener('click', () => { prev(); stopAutoplay(); startAutoplay(); });
+
+  root.addEventListener('mouseenter', stopAutoplay);
+  root.addEventListener('mouseleave', startAutoplay);
+
+  startAutoplay();
+})();
 </script>

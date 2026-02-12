@@ -39,6 +39,7 @@
     <!-- Banner/Slider Integrado (menor) -->
     <div class="banner-integrado">
       <?php include("slider.php"); ?>
+      <?php include("slider-mobile.php"); ?>
     </div>
   </div>
 </div>
