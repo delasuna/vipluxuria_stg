@@ -21,61 +21,12 @@
     --gold-premium: #FFA500;
 }
 
-
-
-/* ============================================
-   RESET E BASE
-   ============================================ */
 * {
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;
 }
-
-
-
-/* body {
-    background-color: #0a0a0a !important;
-    background-image: url('/imagens/estrutura/fundo-couro-preto.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    font-family: 'Inter', Verdana, Geneva, sans-serif;
-    font-size: 14px;
-    color: #FFF;
-    line-height: 1.6;
-    position: relative;
-}
-
- */
-
-/* Overlay de gradiente sobre textura - ROSA PARA PRETO */
-/* body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, 
-        #E91E63 0%,
-        #d11758 12%,
-        #b9154d 24%,
-        #a11342 36%,
-        #891137 48%,
-        #710f2c 60%,
-        #590d21 72%,
-        #410b16 84%,
-        #29090b 92%,
-        #0a0a0a 100%
-    );
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.92;
-}
-
- */
 
 .degrade {
     background: linear-gradient(
@@ -99,23 +50,14 @@ a {
     transition: color 0.3s ease;
 }
 
-
-
 a:hover {
     color: var(--rosa-primary);
 }
-
-
 
 .clear {
     clear: both;
 }
 
-
-
-/* ============================================
-   ESTRUTURA PRINCIPAL
-   ============================================ */
 #wrap,
 #wrap-2 {
     height: 100%;
@@ -123,11 +65,6 @@ a:hover {
     position: relative;
 }
 
-
-
-/* ============================================
-   TOPO INTEGRADO - BANNER + LOGO
-   ============================================ */
 .topo-banner-integrado {
     position: relative;
     background-color: #E91E63;
@@ -139,9 +76,6 @@ a:hover {
     overflow: hidden;
 }
 
-
-
-/* Textura sutil adicional */
 .textura-overlay {
     position: absolute;
     top: 0;
@@ -156,8 +90,6 @@ a:hover {
             rgba(255, 255, 255, 0.02) 20px);
     mix-blend-mode: overlay;
 }
-
-
 
 .logo-section {
     display: flex;
@@ -174,9 +106,7 @@ a:hover {
     height: auto;
     width: auto;
     max-height: none;
-    /* &#10060; remove limite que encolhia no desktop */
     max-width: 260px;
-    /* ajuste fino: valor próximo ao que usava antes */
 }
 
 .logo-principal:hover {
@@ -185,7 +115,6 @@ a:hover {
 
 .selo-confianca {
     max-height: 140px;
-    /* &#128313; aumenta tamanho geral do selo */
     height: auto;
     width: auto;
     object-fit: contain;
@@ -207,34 +136,17 @@ a:hover {
 
     .logo-principal {
         max-width: 200px;
-        /* reduz só no mobile */
     }
 
     .selo-confianca {
         max-height: 100px;
-        /* &#128313; deixa mais alto no mobile, ideal para selo vertical */
     }
 }
 
-/* Removido degradê inferior brusco - transição suave */
-.fade-bottom,
-.banner-integrado::after,
-.topo-banner-integrado::after {
-    display: none !important;
-}
-
-
-
-/* Transição suave para baixo do banner */
 .topo-banner-integrado {
     border-bottom: none;
 }
 
-
-
-/* ============================================
-   BADGES DE CATEGORIA - TRANSPARENTE PARA MOSTRAR DEGRADÊ
-   ============================================ */
 .category-badges-section {
     background: transparent !important;
     backdrop-filter: none;
@@ -243,8 +155,6 @@ a:hover {
     z-index: 100;
 }
 
-
-
 .category-badges-container {
     display: flex;
     justify-content: center;
@@ -252,8 +162,6 @@ a:hover {
     gap: 20px;
     flex-wrap: wrap;
 }
-
-
 
 .badge-category-main {
     display: inline-flex;
@@ -274,8 +182,6 @@ a:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-
-
 .badge-category-main:hover {
     background: var(--rosa-primary);
     color: white;
@@ -283,24 +189,15 @@ a:hover {
     box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
 }
 
-
-
 .badge-category-main i {
     font-size: 18px;
 }
 
-
-
-/* ============================================
-   HEADER FINO SUPERIOR - ALINHAMENTO CORRIGIDO
-   ============================================ */
 .top-header-fino {
     background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
     border-bottom: 2px solid var(--rosa-primary);
     padding: 10px 0;
 }
-
-
 
 .top-header-fino .navbar {
     display: flex;
@@ -312,15 +209,10 @@ a:hover {
     padding: 0 15px;
 }
 
-
-
-/* Home icon + Menu institucional À ESQUERDA */
 .top-header-fino .navbar-brand {
     margin-right: 20px;
     flex-shrink: 0;
 }
-
-
 
 .menu-institucional {
     display: flex;
@@ -328,8 +220,6 @@ a:hover {
     align-items: center;
     flex-shrink: 0;
 }
-
-
 
 .menu-institucional a,
 .menu-institucional .nav-link {
@@ -342,61 +232,15 @@ a:hover {
     border-radius: 5px;
 }
 
-
-
 .menu-institucional a:hover,
 .menu-institucional .nav-link:hover {
     color: white;
     background: rgba(233, 30, 99, 0.1);
 }
 
-
-
-/* Badges Centralizados - APENAS DESKTOP */
-.header-badges-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-
-
-/* Anuncie na DIREITA */
 .header-anuncie {
     flex-shrink: 0;
 }
-
-
-
-.badge-category-menu {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(233, 30, 99, 0.1);
-    border: 1px solid rgba(233, 30, 99, 0.3);
-    padding: 8px 16px;
-    border-radius: 25px;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-
-
-.badge-category-menu:hover {
-    background: var(--rosa-primary);
-    border-color: var(--rosa-primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
-}
-
-
 
 .top-header-fino .navbar-brand {
     color: white;
@@ -404,19 +248,13 @@ a:hover {
     transition: color 0.3s ease;
 }
 
-
-
 .top-header-fino .navbar-brand:hover {
     color: var(--rosa-primary);
 }
 
-
-
 .top-header-fino .navbar-brand i {
     font-size: 24px;
 }
-
-
 
 .btn-anuncie-badge {
     display: inline-flex;
@@ -430,26 +268,17 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-
-
 .btn-anuncie-badge:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
 }
 
-
-
-/* ============================================
-   SEÇÃO DE FILTROS - SEM FUNDO ESCURO
-   ============================================ */
 .filters-section {
     background: transparent !important;
     backdrop-filter: none;
     padding: 25px 0;
     margin-bottom: 30px;
 }
-
-
 
 .filters-row-top,
 .filters-row-bottom {
@@ -460,15 +289,10 @@ a:hover {
     flex-wrap: wrap;
 }
 
-
-
 .filters-row-top {
     margin-bottom: 15px;
 }
 
-
-
-/* Botão de Filtro Base - COM FUNDO MAIS OPACO PARA LEGIBILIDADE */
 .filter-btn {
     display: inline-flex;
     align-items: center;
@@ -486,8 +310,6 @@ a:hover {
     backdrop-filter: blur(10px);
 }
 
-
-
 .filter-btn:hover {
     background: rgba(233, 30, 99, 0.2);
     border-color: var(--rosa-primary);
@@ -495,9 +317,6 @@ a:hover {
     transform: translateY(-2px);
 }
 
-
-
-/* Filtro Principal - Todas COM BACKDROP */
 .filter-main {
     background: linear-gradient(135deg, rgba(233, 30, 99, 0.35), rgba(173, 20, 87, 0.35));
     border-color: var(--rosa-primary);
@@ -508,9 +327,6 @@ a:hover {
     box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
 }
 
-
-
-/* Filtros relacionados a MULHERES - Borda Rosa Diferenciada COM BACKDROP */
 .filter-btn[href*="Loiras"],
 .filter-btn[href*="Morenas"],
 .filter-btn[href*="Ruivas"],
@@ -520,8 +336,6 @@ a:hover {
     box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
     backdrop-filter: blur(12px);
 }
-
-
 
 .filter-btn[href*="Loiras"]:hover,
 .filter-btn[href*="Morenas"]:hover,
@@ -533,9 +347,6 @@ a:hover {
     backdrop-filter: blur(15px);
 }
 
-
-
-/* Filtro 24 Horas - Destaque Especial COM BACKDROP */
 .filter-24h {
     background: linear-gradient(135deg, rgba(76, 175, 80, 0.4), rgba(46, 125, 50, 0.4));
     border: 2px solid #4CAF50;
@@ -547,15 +358,11 @@ a:hover {
     backdrop-filter: blur(10px);
 }
 
-
-
 .filter-24h:hover {
     background: linear-gradient(135deg, #4CAF50, #2E7D32);
     box-shadow: 0 6px 25px rgba(76, 175, 80, 0.6);
     transform: translateY(-3px) scale(1.05);
 }
-
-
 
 .filter-24h-text {
     display: flex;
@@ -564,23 +371,16 @@ a:hover {
     line-height: 1.2;
 }
 
-
-
 .filter-24h-text .line1 {
     font-size: 14px;
     font-weight: 700;
 }
-
-
 
 .filter-24h-text .line2 {
     font-size: 11px;
     opacity: 0.95;
 }
 
-
-
-/* Badge HOT */
 .badge-hot {
     position: absolute;
     top: -10px;
@@ -594,24 +394,17 @@ a:hover {
     animation: pulse 1.5s infinite;
 }
 
-
-
 @keyframes pulse {
-
     0%,
     100% {
         transform: scale(1);
     }
 
-
     50% {
         transform: scale(1.1);
     }
-
-
 }
 
-/* Filtros Secundários COM BACKDROP */
 .filter-secondary {
     background: rgba(30, 30, 30, 0.8);
     border-color: rgba(233, 30, 99, 0.15);
@@ -619,102 +412,11 @@ a:hover {
     backdrop-filter: blur(8px);
 }
 
-
-
 .filter-secondary:hover {
     background: rgba(233, 30, 99, 0.2);
     backdrop-filter: blur(10px);
 }
 
-
-
-/* ============================================
-   ABERTURA (mantido do CSS original)
-   ============================================ */
-#abertura {
-    background: linear-gradient(135deg, #FF62B3, var(--rosa-primary));
-    background-image: url(/imagens/estrutura/bg-abertura.jpg);
-    background-repeat: no-repeat;
-    background-position: center top;
-}
-
-
-
-#abertura-content {
-    width: 1000px;
-    margin: 0 auto;
-    padding-top: 20px;
-    text-align: center;
-}
-
-
-
-#abertura-content h1 {
-    font-size: 12px;
-    margin: 20px 0 10px;
-    font-family: Verdana, Geneva, sans-serif;
-    color: #FFF;
-}
-
-
-
-#abertura-2 {
-    background: linear-gradient(180deg, #f65fae, var(--rosa-primary));
-}
-
-
-
-#abertura-content-2 {
-    width: 1000px;
-    margin: 20px auto 0;
-}
-
-
-
-#abertura-content-2 h1 {
-    font-size: 22px;
-    margin: 20px 0 10px;
-    font-family: Verdana, Geneva, sans-serif;
-    color: #FFF;
-    text-align: center;
-}
-
-
-
-#abertura-content-2 h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    font-family: Verdana, Geneva, sans-serif;
-    color: #FFF;
-    text-transform: uppercase;
-}
-
-
-
-#abertura-content-2 ul li {
-    list-style: none;
-    display: inline-block;
-    padding: 15px;
-    background: linear-gradient(135deg, rgba(223, 6, 120, 0.6), rgba(69, 34, 52, 0.6));
-    border: 2px solid rgba(233, 30, 99, 0.3);
-    border-radius: 20px;
-    margin: 5px;
-    transition: transform 0.3s ease;
-}
-
-
-
-#abertura-content-2 ul li:hover {
-    background: linear-gradient(135deg, #452234, rgba(233, 30, 99, 0.3));
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.2);
-}
-
-
-
-/* ============================================
-   HEADER E TOPO (mantido do CSS original)
-   ============================================ */
 #bg-rosa {
     background: linear-gradient(180deg, #FE7DA3, var(--rosa-primary));
     background-image: url(/imagens/estrutura/bg-rosa-topo.jpg);
@@ -724,15 +426,11 @@ a:hover {
     z-index: 5000;
 }
 
-
-
 #faixa {
     background: linear-gradient(90deg, var(--rosa-primary), var(--rosa-dark));
     width: 100%;
     height: 7px;
 }
-
-
 
 #topo-content {
     width: 1000px;
@@ -740,15 +438,11 @@ a:hover {
     height: 145px;
 }
 
-
-
 #logo {
     float: left;
     width: 230px;
     margin-top: 20px;
 }
-
-
 
 #lettering {
     float: left;
@@ -758,37 +452,20 @@ a:hover {
     font-family: 'Sriracha', cursive;
 }
 
-
-
 #lettering h1 {
     font-family: 'Allerta', sans-serif;
     font-size: 15px;
 }
-
-
 
 #anunciar-busca {
     float: left;
     width: 220px;
 }
 
-
-
-/* ============================================
-   MENU PRINCIPAL
-   ============================================ */
 #menu {
     background: linear-gradient(90deg, var(--rosa-dark), var(--rosa-primary));
     height: 44px;
 }
-
-
-
-.menu {
-    background: linear-gradient(90deg, var(--rosa-dark), var(--rosa-primary)) !important;
-}
-
-
 
 #menu-content {
     width: 1000px;
@@ -796,11 +473,6 @@ a:hover {
     letter-spacing: 0.2px;
 }
 
-
-
-/* ============================================
-   SLIDER
-   ============================================ */
 #slider {
     padding: 10px 0;
     background: linear-gradient(180deg, #FE7DA3, var(--rosa-primary));
@@ -809,28 +481,10 @@ a:hover {
     background-position: center top;
 }
 
-
-
-#slider-content {
-    width: 1000px;
-    margin: 0 auto;
-}
-
-
-
-#slider-2 {
-    padding: 20px 0 5px;
-}
-
-/* ============================================
-   CONTEÚDO PRINCIPAL
-   ============================================ */
 #principal {
     width: 1000px;
     margin: 0 auto;
 }
-
-
 
 #principal h1 {
     color: #F6B7D4;
@@ -842,8 +496,6 @@ a:hover {
     font-family: 'Sriracha', cursive;
 }
 
-
-
 #principal-content {
     background-image: url(/imagens/estrutura/bg-principal-2018.png);
     background-repeat: no-repeat;
@@ -852,8 +504,6 @@ a:hover {
     width: 1000px;
     margin: 0 auto;
 }
-
-
 
 #principal-content-full {
     background-image: url(/imagens/estrutura/bg-perfil.png);
@@ -864,8 +514,6 @@ a:hover {
     margin: 0 auto;
 }
 
-
-
 #bg-couro {
     background-image: url(/imagens/estrutura/fundo-couro-preto.jpg);
     background-repeat: no-repeat;
@@ -874,18 +522,11 @@ a:hover {
     margin-bottom: 220px;
 }
 
-
-
-/* ============================================
-   COLUNAS
-   ============================================ */
 #coluna-full {
     width: 946px;
     margin: 0 27px;
     float: left;
 }
-
-
 
 #coluna-full h3 {
     font-size: 18px;
@@ -895,21 +536,15 @@ a:hover {
     margin-bottom: 10px;
 }
 
-
-
 #coluna-full p {
     font-size: 16px;
     margin-bottom: 10px;
     padding: 0 20px;
 }
 
-
-
 #coluna-full p a {
     color: #FB79A0;
 }
-
-
 
 #coluna-1 {
     float: left;
@@ -917,18 +552,11 @@ a:hover {
     margin: 0 27px;
 }
 
-
-
 #coluna-2 {
     float: right;
     padding: 0 15px;
 }
 
-
-
-/* ============================================
-   THUMBS ESTILIZADOS
-   ============================================ */
 #thumbs li {
     background: var(--card-gray);
     background-repeat: no-repeat;
@@ -945,14 +573,10 @@ a:hover {
     overflow: hidden;
 }
 
-
-
 #thumbs li:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 40px rgba(233, 30, 99, 0.3);
 }
-
-
 
 #thumbs li img {
     margin: 5px;
@@ -961,13 +585,9 @@ a:hover {
     transition: transform 0.3s ease;
 }
 
-
-
 #thumbs li:hover img {
     transform: scale(1.05);
 }
-
-
 
 #thumbs .nome {
     margin: 3px;
@@ -978,61 +598,6 @@ a:hover {
     line-height: 18px;
 }
 
-
-
-/* THUMBS FULL */
-#thumbs-full li {
-    background: var(--card-gray);
-    background-repeat: no-repeat;
-    display: block;
-    float: left;
-    width: 176px;
-    height: 291px;
-    list-style-type: none;
-    margin-right: 14px;
-    margin-bottom: 11px;
-    border: 1px solid rgba(233, 30, 99, 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-}
-
-
-
-#thumbs-full li:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 60px rgba(233, 30, 99, 0.4);
-}
-
-
-
-#thumbs-full li img {
-    margin: 5px;
-    width: 164px;
-    height: 219px;
-    transition: transform 0.6s ease;
-}
-
-
-
-#thumbs-full li:hover img {
-    transform: scale(1.1);
-}
-
-
-
-#thumbs-full .nome {
-    margin: 3px;
-    color: #F6B7D4;
-    text-align: center;
-    font-size: 20px;
-    font-family: 'Sriracha', cursive;
-    line-height: 18px;
-}
-
-
-
-/* THUMBS HOMENS */
 #thumbs-homens li {
     background: var(--card-gray);
     background-repeat: no-repeat;
@@ -1046,14 +611,10 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-
-
 #thumbs-homens li:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(111, 188, 204, 0.3);
 }
-
-
 
 #thumbs-homens .nome {
     margin: 3px;
@@ -1064,46 +625,6 @@ a:hover {
     line-height: 18px;
 }
 
-
-
-/* THUMBS TRANSEX */
-#thumbs-transex li {
-    background: var(--card-gray);
-    background-repeat: no-repeat;
-    display: block;
-    float: left;
-    height: 239px;
-    width: 144px;
-    list-style-type: none;
-    margin-right: 6px !important;
-    margin-bottom: 11px;
-    border: 1px solid #BD8432;
-    transition: all 0.3s ease;
-}
-
-
-
-#thumbs-transex li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(189, 132, 50, 0.3);
-}
-
-
-
-#thumbs-transex .nome {
-    margin: 3px;
-    color: #BD8432;
-    text-align: center;
-    font-size: 18px;
-    font-family: 'Sriracha', cursive;
-    line-height: 18px;
-}
-
-
-
-/* ============================================
-   CARDS DE ACOMPANHANTES PREMIUM
-   ============================================ */
 .acompanhante-card {
     background: var(--card-gray);
     border-radius: 16px;
@@ -1111,8 +632,6 @@ a:hover {
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
-
-
 
 .acompanhante-card::before {
     content: '';
@@ -1126,28 +645,20 @@ a:hover {
     transition: opacity 0.3s;
 }
 
-
-
 .acompanhante-card:hover::before {
     opacity: 1;
 }
-
-
 
 .acompanhante-card:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 20px 60px rgba(233, 30, 99, 0.4);
 }
 
-
-
 .card-img-wrapper {
     position: relative;
     overflow: hidden;
     height: 250px;
 }
-
-
 
 .acompanhante-card .card-img {
     width: 100%;
@@ -1156,13 +667,9 @@ a:hover {
     transition: transform 0.6s ease;
 }
 
-
-
 .acompanhante-card:hover .card-img {
     transform: scale(1.1);
 }
-
-
 
 .card-info {
     padding: 15px;
@@ -1187,9 +694,6 @@ a:hover {
     margin: 0;
 }
 
-
-
-/* BADGE VERIFICADA */
 .badge-verificada {
     position: absolute;
     top: 10px;
@@ -1204,57 +708,6 @@ a:hover {
     z-index: 1;
 }
 
-
-
-/* ============================================
-   BOTÕES PREMIUM
-   ============================================ */
-.btn-premium {
-    background: linear-gradient(135deg, var(--rosa-primary), var(--rosa-dark));
-    color: white;
-    padding: 14px 35px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.3);
-}
-
-
-
-.btn-premium::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-
-
-.btn-premium:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-
-
-.btn-premium:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(233, 30, 99, 0.5);
-    color: white;
-}
-
-
-
 .btn-pink {
     background: linear-gradient(135deg, var(--rosa-primary), var(--rosa-dark));
     color: #fff;
@@ -1265,36 +718,27 @@ a:hover {
     font-weight: 500;
 }
 
-
-
 .btn-pink:hover {
     background: linear-gradient(135deg, var(--rosa-dark), var(--rosa-primary));
     color: #fff;
     transform: translateY(-2px);
 }
 
-
-
-/* ============================================
-   GRID PREMIUM RESPONSIVO
-   ============================================ */
 .grid-premium {
     display: grid;
     gap: 25px;
     padding: 40px 0;
-    justify-content: center; /* Centraliza o grid dentro da seção */
+    justify-content: center;
     grid-auto-rows: auto;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     max-width: 100%;
     box-sizing: border-box;
 }
 
-/* Garante que o container não force rolagem horizontal */
 .acompanhantes-section {
     overflow-x: hidden;
 }
 
-/* Responsividade progressiva */
 @media (min-width: 1400px) {
     .grid-premium {
         grid-template-columns: repeat(6, minmax(200px, 1fr));
@@ -1325,17 +769,12 @@ a:hover {
     }
 }
 
-/* Opcional: uniformiza os cards */
 .acompanhante-card {
     width: 200px;
     max-width: 100%;
-    margin: 0 auto; /* centraliza individualmente, caso sobre espaço */
+    margin: 0 auto; 
 }
 
-
-/* ============================================
-   PERFIL - AJUSTADO
-   ============================================ */
 #principal-perfil {
     background-image: url(/imagens/estrutura/bg-perfil.png);
     background-repeat: no-repeat;
@@ -1343,16 +782,6 @@ a:hover {
     margin: 0 auto;
     padding-bottom: 40px;
 }
-
-
-
-.perfil-wrapper {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-
 
 .perfil-nome,
 .nome-acompanhante {
@@ -1363,46 +792,9 @@ a:hover {
     margin-bottom: 10px;
 }
 
-
-
-.perfil-foto {
-    min-height: 545px;
-}
-
-
-
-.perfil-galeria {
-    margin-top: 1rem;
-    display: flex;
-    gap: .5rem;
-    flex-wrap: wrap;
-}
-
-
-
-.thumb-galeria {
-    width: 50px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
-    opacity: 0.8;
-    transition: 0.3s;
-}
-
-
-
-.perfil-info {
-    flex: 1;
-}
-
-
-
 .bloco {
     border-radius: 12px;
 }
-
-
 
 .bloco h2 {
     font-size: 1.3rem;
@@ -1411,45 +803,10 @@ a:hover {
     margin-bottom: .8rem;
 }
 
-
-
 .bloco p {
     line-height: 1.6;
     color: #ddd;
 }
-
-
-
-.perfil-dupla {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-}
-
-
-
-.como-sou ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-
-
-.como-sou li {
-    border-bottom: 1px solid #333;
-    padding: .5rem 0;
-    color: #ccc;
-}
-
-
-
-.como-sou span {
-    font-weight: bold;
-    color: #fff;
-}
-
-
 
 .perfil-dados {
     display: grid;
@@ -1458,8 +815,6 @@ a:hover {
     padding: 0;
 }
 
-
-
 .perfil-dados div {
     background: rgba(26, 26, 26, 0.5);
     padding: 12px 15px;
@@ -1467,44 +822,15 @@ a:hover {
     border-left: 3px solid var(--rosa-primary);
 }
 
-
-
 .perfil-dados span {
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
 }
 
-
-
 .perfil-dados strong {
     color: white;
     font-weight: 600;
 }
-
-
-
-/* Tags Faço/Não Faço */
-.tags-faco {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
-}
-
-
-
-/* .tags-faco .badge,
-.tags-faco span {
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    background: #2a2a2a;
-    color: #4CAF50;
-    border: 1px solid #4CAF50;
-}
-
- */
 
 .tags-faco-sim .badge {
     padding: 8px 16px;
@@ -1516,8 +842,6 @@ a:hover {
     background-color: rgba(76, 175, 80, 0.4) !important;
 }
 
-
-
 .tags-faco-talvez .badge {
     padding: 8px 16px;
     border-radius: 20px;
@@ -1527,9 +851,6 @@ a:hover {
     border: 1px solid #ffc107;
     background-color: rgba(255, 193, 7, 0.3) !important;
 }
-
-
-
 
 .tags-faco-nao .badge {
     padding: 8px 16px;
@@ -1541,24 +862,12 @@ a:hover {
     background-color: rgba(209, 82, 149, 0.3) !important;
 }
 
-
-
-
-.o-que-faco {
-    padding: 1.5rem;
-}
-
-
-
-/* Cards Dicas/Dúvidas no Perfil */
 .cards-container {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
 }
-
-
 
 .cards-container .card {
     background: var(--card-gray);
@@ -1571,28 +880,20 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-
-
 .cards-container .card.dicas {
     border-color: rgba(209, 82, 149, 0.3);
     background-color: rgba(209, 82, 149, 0.3);
 }
-
-
 
 .cards-container .card.duvidas {
     border-color: #4E65FF;
     background-color: #0d47a1;
 }
 
-
-
 .cards-container .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
 }
-
-
 
 .tip-icon,
 .faq-icon {
@@ -1606,33 +907,19 @@ a:hover {
     flex-shrink: 0;
 }
 
-
-
 .tip-icon {
     background: linear-gradient(135deg, #FF6B6B, #C44569);
 }
-
-
-
-.faq-icon {
-    background: linear-gradient(135deg, #4E65FF, #667EEA);
-}
-
-
 
 .no-decoration {
     text-decoration: none;
     color: inherit;
 }
 
-
-
 .cards-container .content {
     display: flex;
     align-items: center;
 }
-
-
 
 .cards-container h3 {
     color: #ff3a65;
@@ -1640,17 +927,12 @@ a:hover {
     font-size: 1.2rem;
 }
 
-
-
 .cards-container p {
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
     font-size: 0.9rem;
 }
 
-
-
-/* WHATSAPP */
 .btn-whatsapp,
 .btn-wpp-perfil {
     display: inline-block;
@@ -1665,8 +947,6 @@ a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-
 .btn-whatsapp:hover,
 .btn-wpp-perfil:hover {
     transform: translateY(-3px);
@@ -1674,139 +954,6 @@ a:hover {
     color: #fff !important;
 }
 
-
-
-/* ============================================
-   CTA ANUNCIANTES
-   ============================================ */
-.cta-anunciantes {
-    margin: 80px 0;
-    padding: 0 20px;
-}
-
-
-
-.cta-card-premium-center {
-    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-    border: 2px solid #FFD700;
-    border-radius: 30px;
-    padding: 50px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
-
-.cta-card-premium-center::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
-}
-
-
-
-.cta-stars {
-    font-size: 40px;
-    color: #FFD700;
-    margin-bottom: 20px;
-}
-
-
-
-.cta-card-premium-center h2 {
-    color: white;
-    font-size: 36px;
-    font-weight: 800;
-    margin-bottom: 10px;
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
-
-.cta-subtitle {
-    color: #cccccc;
-    font-size: 18px;
-    margin-bottom: 40px;
-}
-
-
-
-.cta-benefits-horizontal {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 100%;
-    margin: 0 auto 40px;
-}
-
-
-
-.benefit-item-horizontal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    background: rgba(255, 215, 0, 0.05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-
-
-.benefit-item-horizontal:hover {
-    background: rgba(255, 215, 0, 0.1);
-    transform: translateY(-5px);
-}
-
-
-
-.benefit-icon-horizontal {
-    font-size: 36px;
-    color: #4CAF50;
-    margin-bottom: 15px;
-}
-
-
-
-.btn-premium-gold-compact {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: #1a1a1a;
-    padding: 18px 50px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
-}
-
-
-
-.btn-premium-gold-compact:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
-    color: #1a1a1a;
-}
-
-
-
-/* ============================================
-   BANNER NÃO ENCONTROU SUAVE
-   ============================================ */
 .banner-nao-encontrou-suave {
     background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
     border: 1px solid rgba(233, 30, 99, 0.2);
@@ -1818,8 +965,6 @@ a:hover {
     overflow: hidden;
 }
 
-
-
 .banner-nao-encontrou-suave h2 {
     color: white;
     font-size: 32px;
@@ -1827,8 +972,6 @@ a:hover {
     margin-bottom: 15px;
     letter-spacing: 0.5px;
 }
-
-
 
 .banner-nao-encontrou-suave span {
     color: rgba(255, 255, 255, 0.7);
@@ -1839,8 +982,6 @@ a:hover {
     margin-right: auto;
     line-height: 1.6;
 }
-
-
 
 .btn-ver-todas-suave {
     background: transparent;
@@ -1857,8 +998,6 @@ a:hover {
     border: 2px solid var(--rosa-primary);
 }
 
-
-
 .btn-ver-todas-suave:hover {
     background: var(--rosa-primary);
     color: white;
@@ -1866,45 +1005,6 @@ a:hover {
     box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
 }
 
-
-
-/* ============================================
-   SEÇÃO DE CONFIANÇA/AUTORIDADE - 17 ANOS
-   ============================================ */
-.trust-section-leaders {
-    background: transparent;
-    padding: 80px 20px;
-    margin: 60px 0 0 0;
-    position: relative;
-}
-
-
-
-.trust-section-leaders .container {
-    position: relative;
-    z-index: 1;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-
-
-/* Título principal "Há 17 anos..." */
-.trust-section-leaders h2,
-.trust-title-leaders {
-    font-size: 42px;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 40px;
-    color: white;
-    position: relative;
-    line-height: 1.3;
-}
-
-
-
-/* Linha decorativa rosa embaixo do título */
 .trust-title-leaders::after {
     content: '';
     position: absolute;
@@ -1917,74 +1017,6 @@ a:hover {
     border-radius: 2px;
 }
 
-
-
-/* Dropdown/Select de serviços - ESTILIZADO */
-.trust-section-leaders select,
-.trust-section-leaders .form-select {
-    background: rgba(233, 30, 99, 0.15);
-    color: white;
-    border: 2px solid var(--rosa-primary);
-    padding: 15px 40px 15px 20px;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: 600;
-    margin: 30px auto;
-    max-width: 500px;
-    display: block;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 20px center;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.2);
-}
-
-
-
-.trust-section-leaders select:hover,
-.trust-section-leaders .form-select:hover {
-    background: rgba(233, 30, 99, 0.25);
-    border-color: var(--rosa-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
-}
-
-
-
-.trust-section-leaders select:focus,
-.trust-section-leaders .form-select:focus {
-    outline: none;
-    background: rgba(233, 30, 99, 0.3);
-    border-color: var(--rosa-light);
-}
-
-
-
-/* Parágrafos de texto */
-.trust-section-leaders p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-
-
-/* Subtítulos */
-.trust-section-leaders h3 {
-    color: white;
-    font-size: 28px;
-    font-weight: 700;
-    margin: 40px 0 20px;
-    text-align: left;
-}
-
-
-
 .trust-grid-leaders {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1994,8 +1026,6 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
-
 
 .trust-card-leader {
     background: rgba(44, 44, 44, 0.8);
@@ -2007,8 +1037,6 @@ a:hover {
     border: 1px solid rgba(233, 30, 99, 0.1);
     overflow: hidden;
 }
-
-
 
 .trust-card-leader::before {
     content: '';
@@ -2022,21 +1050,15 @@ a:hover {
     transition: transform 0.3s ease;
 }
 
-
-
 .trust-card-leader:hover::before {
     transform: scaleX(1);
 }
-
-
 
 .trust-card-leader:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
     border-color: var(--rosa-primary);
 }
-
-
 
 .trust-icon-leader {
     width: 60px;
@@ -2051,8 +1073,6 @@ a:hover {
     color: white;
 }
 
-
-
 .trust-card-title {
     color: white;
     font-size: 20px;
@@ -2061,26 +1081,12 @@ a:hover {
     line-height: 1.2;
 }
 
-
-
 .trust-card-description {
     color: rgba(255, 255, 255, 0.7);
     font-size: 15px;
     line-height: 1.5;
 }
 
-
-
-.trust-section-leaders+#rodape,
-.trust-section-leaders+.rodape-premium {
-    margin-top: 0 !important;
-}
-
-
-
-/* ============================================
-   RODAPÉ PREMIUM
-   ============================================ */
 .rodape-premium {
     background-color: #000;
     padding: 60px 0 30px;
@@ -2088,9 +1094,6 @@ a:hover {
     position: relative;
 }
 
-
-
-/* Overlay sutil */
 .rodape-premium::before {
     content: '';
     position: absolute;
@@ -2101,14 +1104,10 @@ a:hover {
     pointer-events: none;
 }
 
-
-
 .rodape-premium .container {
     position: relative;
     z-index: 1;
 }
-
-
 
 .rodape-titulo {
     color: #E91E63;
@@ -2121,8 +1120,6 @@ a:hover {
     padding-bottom: 10px;
 }
 
-
-
 .rodape-titulo::after {
     content: '';
     position: absolute;
@@ -2133,21 +1130,15 @@ a:hover {
     background: linear-gradient(90deg, #E91E63, transparent);
 }
 
-
-
 .rodape-lista {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-
-
 .rodape-lista li {
     margin-bottom: 12px;
 }
-
-
 
 .rodape-lista a {
     color: #999;
@@ -2157,36 +1148,20 @@ a:hover {
     position: relative;
 }
 
-
-
 .rodape-lista a:hover {
     color: #E91E63;
     padding-left: 5px;
 }
 
-
-
-/* Redes Sociais */
 .rodape-contato {
     color: #999;
     font-size: 14px;
 }
 
-
-
-.horario-rodape {
-    color: #666;
-    font-size: 13px;
-}
-
-
-
 .redes-sociais {
     display: flex;
     gap: 12px;
 }
-
-
 
 .redes-sociais a {
     width: 40px;
@@ -2201,8 +1176,6 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-
-
 .redes-sociais a:hover {
     background: #E91E63;
     color: white;
@@ -2210,24 +1183,17 @@ a:hover {
     box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
 }
 
-
-
-/* Newsletter */
 .newsletter-texto {
     color: #999;
     font-size: 13px;
     margin-bottom: 15px;
 }
 
-
-
 .newsletter-form-rodape {
     display: flex;
     max-width: 100%;
     position: relative;
 }
-
-
 
 .newsletter-form-rodape input {
     flex: 1;
@@ -2239,13 +1205,9 @@ a:hover {
     font-size: 14px;
 }
 
-
-
 .newsletter-form-rodape input::placeholder {
     color: #666;
 }
-
-
 
 .newsletter-form-rodape button {
     position: absolute;
@@ -2262,22 +1224,15 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-
-
 .newsletter-form-rodape button:hover {
     background: linear-gradient(90deg, #AD1457, #E91E63);
 }
 
-
-
-/* Seção de Parceiros com Logos */
 .parceiros-section {
     padding: 40px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-
-
 
 .parceiros-titulo {
     color: #666;
@@ -2289,33 +1244,17 @@ a:hover {
     margin-bottom: 25px;
 }
 
-
-
-.parceiros-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-
-
 .parceiro-logo {
     opacity: 0.6;
     transition: all 0.3s ease;
     filter: grayscale(100%);
 }
 
-
-
 .parceiro-logo:hover {
     opacity: 1;
     filter: grayscale(0%);
     transform: scale(1.1);
 }
-
-
 
 .parceiro-logo img {
     max-height: 50px;
@@ -2324,31 +1263,21 @@ a:hover {
     height: auto;
 }
 
-
-
-/* Divisor */
 .rodape-divisor {
     border: none;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     margin: 30px 0;
 }
 
-
-
-/* Copyright */
 .rodape-copyright {
     text-align: center;
     color: #666;
     font-size: 13px;
 }
 
-
-
 .rodape-copyright p {
     margin: 5px 0;
 }
-
-
 
 .aviso-legal {
     color: #555;
@@ -2356,16 +1285,7 @@ a:hover {
     margin-top: 10px;
 }
 
-
-
-/* Responsividade */
 @media (max-width: 768px) {
-    .parceiros-logos {
-        gap: 20px;
-    }
-
-
-
     .parceiro-logo img {
         max-height: 40px;
         max-width: 120px;
@@ -2394,41 +1314,6 @@ a:hover {
 
 
 }
-
-.whatsapp-rodape {
-    color: #4CAF50;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-
-
-.whatsapp-rodape i {
-    font-size: 18px;
-    margin-right: 5px;
-}
-
-
-
-.parceiro-texto {
-    color: #666;
-    text-decoration: none;
-    font-size: 13px;
-    transition: all 0.3s ease;
-    padding: 8px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-}
-
-
-
-.parceiro-texto:hover {
-    color: #E91E63;
-    border-color: rgba(233, 30, 99, 0.3);
-    transform: scale(1.05);
-}
-
-
 
 .rodape-copyright {
     text-align: center;
@@ -2525,20 +1410,6 @@ a:hover {
     box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
 }
 
-
-
-/* ============================================
-   FORMS E CAMPOS
-   ============================================ */
-.form-2018 {
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 5px;
-    border: 1px solid #636362;
-}
-
-
-
 input:focus,
 select:focus,
 textarea:focus {
@@ -2623,32 +1494,6 @@ textarea:focus {
     box-shadow: 0 10px 30px rgba(233, 30, 99, 0.2);
 }
 
-
-
-/* ============================================
-   PÁGINAS ESPECIAIS
-   ============================================ */
-
-/* PÁGINA DE LISTAGEM */
-.page-header-simple {
-    text-align: center;
-    padding: 40px 0 30px;
-}
-
-
-
-.page-header-simple h1 {
-    font-size: 36px;
-    font-weight: 700;
-    color: white;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'Sriracha', cursive;
-}
-
-
-
 .virtual-notice-simple {
     background: rgba(233, 30, 99, 0.1);
     border: 1px solid rgba(233, 30, 99, 0.3);
@@ -2675,13 +1520,6 @@ textarea:focus {
 .virtual-notice-simple span {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.9);
-}
-
-
-
-.carousel-container {
-    grid-column: 1 / -1;
-    margin: 40px 0;
 }
 
 @media (max-width: 768px) {
@@ -2799,14 +1637,6 @@ textarea:focus {
     color: var(--rosa-primary);
 }
 
-
-
-.text-white-50 {
-    color: var(--text-light) !important;
-}
-
-
-
 .hover-lift {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -2841,14 +1671,6 @@ textarea:focus {
         grid-template-columns: repeat(2, 1fr);
     }
 
-
-
-    .cta-benefits-horizontal {
-        grid-template-columns: 1fr;
-    }
-
-
-
     .about-features-grid {
         grid-template-columns: repeat(2, 1fr) !important;
     }
@@ -2870,30 +1692,10 @@ textarea:focus {
         padding: 0 20px;
     }
 
-
-
     #coluna-full {
         width: 100%;
         margin: 0;
     }
-
-
-
-    .perfil-wrapper {
-        flex-direction: column;
-    }
-
-
-
-    /* Header fino - badges centrais vão para baixo do menu */
-    .header-badges-center {
-        position: static;
-        transform: none;
-        margin: 15px auto;
-        justify-content: center;
-    }
-
-
 
     .top-header-fino .navbar {
         flex-wrap: wrap;
@@ -2950,22 +1752,6 @@ textarea:focus {
         gap: 15px;
     }
 
-
-
-    .info-cards-container {
-        flex-direction: column;
-        max-width: 400px;
-        margin: 30px auto;
-    }
-
-
-
-    .info-card {
-        width: 100%;
-    }
-
-
-
     .trust-bar {
         grid-template-columns: 1fr;
     }
@@ -2979,16 +1765,6 @@ textarea:focus {
     .top-header-fino {
         padding: 6px 0;
     }
-
-
-
-    /* Esconde badges centrais E menu institucional no mobile */
-    .header-badges-center,
-    .menu-institucional {
-        display: none !important;
-    }
-
-
 
     .top-header-fino .navbar-collapse {
         display: none !important;
@@ -3105,14 +1881,6 @@ textarea:focus {
         font-size: 28px;
     }
 
-
-
-    .cta-card-premium-center {
-        padding: 30px 20px;
-    }
-
-
-
     .trust-grid-leaders {
         grid-template-columns: 1fr;
     }
@@ -3149,39 +1917,6 @@ textarea:focus {
     .subtitle-page {
         font-size: 16px;
     }
-
-
-
-    /* Seção 17 anos mobile */
-    .trust-title-leaders,
-    .trust-section-leaders h2 {
-        font-size: 28px;
-        padding: 0 10px;
-    }
-
-
-
-    .trust-section-leaders h3 {
-        font-size: 22px;
-    }
-
-
-
-    .trust-section-leaders p {
-        font-size: 15px;
-    }
-
-
-
-    .trust-section-leaders select,
-    .trust-section-leaders .form-select {
-        font-size: 14px;
-        padding: 12px 35px 12px 15px;
-        max-width: 100%;
-        margin: 20px 10px;
-    }
-
-
 
     /* Grid 17 anos - 2x2 NO MOBILE */
     .trust-grid-leaders {
@@ -3420,7 +2155,6 @@ textarea:focus {
 
     .dicas-intro-card,
     .dicas-cta-section,
-    .duvidas-cta-section,
     .newsletter-section-blog {
         padding: 30px 20px;
     }
@@ -3433,8 +2167,7 @@ textarea:focus {
 
 
 
-    .btn-dicas-premium,
-    .btn-dicas-secondary {
+    .btn-dicas-premium {
         width: 100%;
         justify-content: center;
     }
@@ -3451,31 +2184,6 @@ textarea:focus {
         padding: 6px 12px;
         font-size: 0.85rem;
     }
-
-
-
-    /* Seção 17 anos - mobile extra pequeno */
-    .trust-title-leaders,
-    .trust-section-leaders h2 {
-        font-size: 24px;
-        line-height: 1.2;
-    }
-
-
-
-    .trust-section-leaders {
-        padding: 50px 15px;
-    }
-
-
-
-    .trust-section-leaders select,
-    .trust-section-leaders .form-select {
-        font-size: 13px;
-        padding: 10px 30px 10px 12px;
-    }
-
-
 
     .trust-grid-leaders {
         gap: 10px;
@@ -3665,17 +2373,6 @@ textarea:focus {
     font-weight: bold;
 }
 
-
-
-/* PERFIL BADGES */
-.perfil-badges {
-    display: flex;
-    gap: .5rem;
-    margin-bottom: 1rem;
-}
-
-
-
 .badge {
     padding: .4rem .8rem;
     border-radius: 20px;
@@ -3684,25 +2381,9 @@ textarea:focus {
     color: #fff;
 }
 
-
-
-.badge-online {
-    background: linear-gradient(135deg, #4caf50, #45a049);
-}
-
-
-
 .badge-verificada {
     background: linear-gradient(135deg, #2196f3, #1976d2);
 }
-
-
-
-.badge-local {
-    background: linear-gradient(135deg, #ff9800, #f57c00);
-}
-
-
 
 /* TELEFONE E CONTATOS */
 #telefone {
@@ -3864,137 +2545,6 @@ textarea:focus {
     color: #fff;
 }
 
-
-
-/* ============================================
-   BANNER ANUNCIANTE
-   ============================================ */
-.banner-anunciante-vip {
-    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-    border: 2px solid var(--gold);
-    border-radius: 30px;
-    padding: 60px 40px;
-    margin: 60px auto;
-    max-width: 1200px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-
-
-.banner-anunciante-vip::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
-}
-
-
-
-.banner-anunciante-vip h2 {
-    font-size: 42px;
-    font-weight: 800;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-premium));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
-
-.banner-anunciante-vip p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-
-
-.btn-quero-anunciar {
-    background: linear-gradient(135deg, var(--gold), var(--gold-premium));
-    color: var(--bg-black);
-    padding: 18px 50px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 20px;
-    display: inline-block;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
-}
-
-
-
-.btn-quero-anunciar:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
-    color: var(--bg-black);
-}
-
-
-
-/* MEDIA BANNER */
-.medias-banner {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 30px 0;
-    flex-wrap: wrap;
-}
-
-
-
-.media-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    font-size: 16px;
-}
-
-
-
-.media-item i {
-    font-size: 24px;
-    color: var(--success-green);
-}
-
-
-
-/* ============================================
-   SECURITY/TRUST
-   ============================================ */
-.security-item {
-    text-align: center;
-    padding: 30px;
-    background: var(--card-gray);
-    border-radius: 20px;
-    transition: all 0.3s;
-    border: 1px solid rgba(233, 30, 99, 0.1);
-}
-
-
-
-.security-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
-    border-color: var(--rosa-primary);
-}
-
-
-
-.security-item i {
-    font-size: 50px;
-    color: var(--rosa-primary);
-    margin-bottom: 20px;
-}
-
-
-
 /* ============================================
    MOTEL/MOTEIS
    ============================================ */
@@ -4040,18 +2590,6 @@ textarea:focus {
     border-radius: 30px;
     padding: 30px 30px 30px 50px;
 }
-
-
-
-#abertura-content-2 #termo-box {
-    background: linear-gradient(135deg, rgba(223, 6, 120, 0.6), rgba(69, 34, 52, 0.6));
-    font-size: 11px;
-    padding: 20px;
-    text-align: left;
-    border-radius: 10px;
-}
-
-
 
 #principal-content-full #box-texto {
     background: linear-gradient(135deg, rgba(223, 6, 120, 0.3), rgba(69, 34, 52, 0.3));
@@ -4106,64 +2644,6 @@ textarea:focus {
     width: 100%;
     margin: 20px 0 10px;
 }
-
-
-
-/* ============================================
-   HERO SECTION
-   ============================================ */
-.hero-premium {
-    position: relative;
-    background: linear-gradient(135deg, var(--rosa-dark), var(--rosa-primary));
-    padding: 100px 0 80px;
-    overflow: hidden;
-}
-
-
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('/imagens/pattern-luxury.png') repeat;
-    opacity: 0.1;
-}
-
-
-
-.hero-title {
-    font-size: 48px;
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-
-
-.gold-text {
-    background: linear-gradient(135deg, var(--gold), var(--gold-premium));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
-
-.subtitle-hero {
-    font-size: 36px;
-    color: white;
-}
-
-
-
-.hero-description {
-    font-size: 20px;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 30px;
-}
-
-
 
 .hero-badges {
     display: flex;
@@ -4630,87 +3110,6 @@ textarea:focus {
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
 }
-
-
-
-.info-cards-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin: 30px 0;
-}
-
-
-
-.info-card {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 20px 30px;
-    background: var(--card-gray);
-    border-radius: 15px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(233, 30, 99, 0.2);
-}
-
-
-
-.info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
-    border-color: var(--rosa-primary);
-}
-
-
-
-.info-card .icon-wrapper {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--rosa-primary), var(--rosa-dark));
-}
-
-
-
-.info-card .icon-wrapper i {
-    font-size: 24px;
-    color: white;
-}
-
-
-
-.card-dicas .icon-wrapper {
-    background: linear-gradient(135deg, #FF6B6B, #C44569);
-}
-
-
-
-.card-duvidas .icon-wrapper {
-    background: linear-gradient(135deg, #4E65FF, #667EEA);
-}
-
-
-
-.info-card .card-content h3 {
-    color: white;
-    font-size: 18px;
-    margin: 0 0 5px;
-    font-weight: 600;
-}
-
-
-
-.info-card .card-content p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-    margin: 0;
-}
-
-
 
 .trust-bar {
     background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(233, 30, 99, 0.02));
@@ -5271,32 +3670,6 @@ textarea:focus {
     color: white;
 }
 
-
-
-.btn-dicas-secondary {
-    background: transparent;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    border: 2px solid rgba(233, 30, 99, 0.3);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-}
-
-
-
-.btn-dicas-secondary:hover {
-    background: rgba(233, 30, 99, 0.1);
-    border-color: var(--rosa-primary);
-    color: white;
-}
-
-
-
 /* ============================================
    DÚVIDAS PREMIUM REDESIGN
    ============================================ */
@@ -5445,57 +3818,6 @@ textarea:focus {
     color: var(--rosa-light);
     text-decoration: underline;
 }
-
-
-
-.duvidas-cta-section {
-    background: linear-gradient(135deg, rgba(233, 30, 99, 0.05), transparent);
-    border-radius: 20px;
-    padding: 50px;
-    text-align: center;
-}
-
-
-
-.duvidas-cta-section h3 {
-    font-size: 2rem;
-    color: white;
-    margin-bottom: 10px;
-}
-
-
-
-.duvidas-cta-section p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 30px;
-}
-
-
-
-.btn-contact-premium {
-    background: linear-gradient(135deg, #4CAF50, #2E7D32);
-    color: white;
-    padding: 15px 35px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-}
-
-
-
-.btn-contact-premium:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
-    color: white;
-}
-
-
 
 /* ============================================
    BLOG POST PAGE
@@ -6036,17 +4358,6 @@ textarea:focus {
     margin: 10px 0;
 }
 
-
-
-.linha-horizontal2 {
-    height: 2px;
-    width: 100%;
-    margin: 10px 0;
-    background-color: #7B2752;
-}
-
-
-
 /* ============================================
    LAZY LOADING
    ============================================ */
@@ -6115,73 +4426,6 @@ img[loading="lazy"] {
     gap: 12px;
     flex-wrap: wrap;
 }
-
-
-
-/* Dropdown/Select de serviços - ESTILIZADO */
-.trust-section-leaders select,
-.trust-section-leaders .form-select,
-select[name="servicos"],
-select.form-control,
-.trust-section-leaders .form-control,
-.container select {
-    background: rgba(233, 30, 99, 0.15) !important;
-    color: white !important;
-    border: 2px solid var(--rosa-primary) !important;
-    padding: 15px 40px 15px 20px !important;
-    border-radius: 30px !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    margin: 30px auto !important;
-    max-width: 500px !important;
-    display: block !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right 20px center !important;
-    backdrop-filter: blur(10px) !important;
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.2) !important;
-}
-
-
-
-.trust-section-leaders select:hover,
-.trust-section-leaders .form-select:hover,
-select[name="servicos"]:hover,
-select.form-control:hover {
-    background: rgba(233, 30, 99, 0.25) !important;
-    border-color: var(--rosa-primary) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3) !important;
-}
-
-
-
-.trust-section-leaders select:focus,
-.trust-section-leaders .form-select:focus,
-select[name="servicos"]:focus,
-select.form-control:focus {
-    outline: none !important;
-    background: rgba(233, 30, 99, 0.3) !important;
-    border-color: var(--rosa-light) !important;
-}
-
-
-
-/* Options do select */
-.trust-section-leaders select option,
-select[name="servicos"] option,
-select.form-control option {
-    background: #1a1a1a !important;
-    color: white !important;
-    padding: 10px !important;
-}
-
-
 
 /* ============================================
    BLOG PREMIUM REDESIGN
@@ -6284,16 +4528,6 @@ select.form-control option {
     border-bottom: 2px solid rgba(233, 30, 99, 0.2);
 }
 
-
-/* ============================================
-   PERFIL REDESIGN
-   ============================================ */
-.perfil-header-section {
-    margin-bottom: 40px;
-}
-
-
-
 .perfil-nome {
     font-family: 'Sriracha', cursive;
     font-size: 42px;
@@ -6315,43 +4549,6 @@ select.form-control option {
     font-size: 16px;
     font-weight: 700;
 }
-
-
-
-.perfil-main-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-}
-
-
-
-.gallery-title {
-    color: var(--rosa-primary);
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid rgba(233, 30, 99, 0.2);
-}
-
-
-
-.gallery-grid-main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-
-
-.gallery-grid-secondary {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-
 
 .gallery-item {
     position: relative;
@@ -6376,201 +4573,10 @@ select.form-control option {
     object-fit: cover;
 }
 
-
-
-.photo-badge {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: var(--rosa-primary);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-
-
-.info-card {
-    background: rgba(44, 44, 44, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(233, 30, 99, 0.1);
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 20px;
-}
-
-
-
-.info-card h3 {
-    color: var(--rosa-primary);
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-
-
-.characteristics-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-
-
-.char-item {
-    padding: 10px;
-    background: rgba(26, 26, 26, 0.5);
-    border-radius: 8px;
-    border-left: 3px solid var(--rosa-primary);
-}
-
-
-
-.char-item span {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.9rem;
-}
-
-
-
-.char-item strong {
-    color: white;
-}
-
-
-
-.service-info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-
-
-.service-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px;
-    background: rgba(26, 26, 26, 0.5);
-    border-radius: 8px;
-}
-
-
-
-.service-item i {
-    color: var(--rosa-primary);
-    font-size: 18px;
-}
-
-
-
-.services-section {
-    margin-bottom: 20px;
-}
-
-
-
-.service-label {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-
-
-.service-label.yes {
-    color: #4CAF50;
-}
-
-
-.service-label.maybe {
-    color: #FFA500;
-}
-
-
-.service-label.no {
-    color: #FF6B6B;
-}
-
-
-
-.service-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-
-
-.tag {
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-
-
-.tag-yes {
-    background: rgba(76, 175, 80, 0.2);
-    color: #4CAF50;
-    border: 1px solid #4CAF50;
-}
-
-
-
-.tag-maybe {
-    background: rgba(255, 165, 0, 0.2);
-    color: #FFA500;
-    border: 1px solid #FFA500;
-}
-
-
-
-.tag-no {
-    background: rgba(255, 107, 107, 0.2);
-    color: #FF6B6B;
-    border: 1px solid #FF6B6B;
-}
-
-
-
 /* ============================================
    MOBILE FIXES - RODAPÉ E QUADRADOS
    ============================================ */
 @media (max-width: 767px) {
-
-    /* Layout Perfil Mobile */
-    .perfil-main-layout {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-
-
-    .gallery-grid-main {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-
-
-    .gallery-grid-secondary {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-    }
-
-
-
-    .characteristics-grid {
-        grid-template-columns: 1fr;
-    }
-
-
 
     /* Rodapé - 2 colunas para institucional e categorias */
     .rodape-premium .row {
@@ -6652,14 +4658,6 @@ select.form-control option {
         flex-shrink: 0;
     }
 
-
-
-    .trust-card-content {
-        flex: 1;
-    }
-
-
-
     .trust-card-title {
         font-size: 18px;
         margin-bottom: 8px;
@@ -6691,17 +4689,9 @@ select.form-control option {
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 991px) {
-    .perfil-main-layout {
-        grid-template-columns: 1fr;
-    }
-
-
-
     .trust-grid-leaders {
         grid-template-columns: repeat(2, 1fr);
     }
-
-
 }
 
 /* ============================================
@@ -7115,87 +5105,6 @@ select.form-control option {
     border-radius: 12px;
 }
 
-/* Modal da Galeria */
-.gallery-modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    justify-content: center;
-    align-items: center;
-}
-
-.gallery-modal-content {
-    max-width: 90%;
-    max-height: 90%;
-}
-
-.gallery-modal-content img {
-    max-width: 100%;
-    max-height: 85vh;
-    object-fit: contain;
-}
-
-.gallery-close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10000;
-}
-
-.gallery-close:hover {
-    color: var(--rosa-primary);
-}
-
-.gallery-prev,
-.gallery-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    user-select: none;
-    transition: all 0.3s ease;
-}
-
-.gallery-prev:hover,
-.gallery-next:hover {
-    background: var(--rosa-primary);
-}
-
-.gallery-prev {
-    left: 20px;
-}
-
-.gallery-next {
-    right: 20px;
-}
-
-.gallery-counter {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 18px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    border-radius: 20px;
-}
-
 /* Grid de Fotos */
 .photos-grid {
     display: grid;
@@ -7285,19 +5194,6 @@ select.form-control option {
     .photos-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 8px;
-    }
-}
-
-@media (max-width: 768px) {
-    .photos-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .gallery-prev,
-    .gallery-next {
-        font-size: 30px;
-        padding: 25px;
-        margin-top: 85%;
     }
 }
 
@@ -7496,36 +5392,6 @@ select.form-control option {
     height: 100%;
     background: rgba(0,0,0,0.85);
     z-index: 9999;
-}
-
-#modalImage {
-    max-width: 95vw;
-    max-height: 95vh;
-    width: auto;
-    height: auto;
-    border-radius: 8px;
-    object-fit: contain;
-}
-
-@media (min-width: 1200px) {
-    #modalImage {
-        max-width: 80vw;
-        max-height: 90vh;
-    }
-}
-
-@media (max-width: 600px) {
-    #modalImage {
-        max-width: 100%;
-        max-height: 85vh;
-    }
-}
-
-.gallery-modal-image {
-    height: 800px;
-    max-height: 100%;
-    display: flex;
-    width: auto;
 }
 
 .modal {
