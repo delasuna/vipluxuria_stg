@@ -78,3 +78,6 @@ RewriteRule ^transex-porto-alegre-poa/?$ conteudo/transex.php [NC,L]
 
 RewriteRule ^Acompanhantes-([a-z0-9-]+)/?$ conteudo/mulheres.php?flagTipo=$1 [NC,L]
 RewriteRule ^Acompanhantes/([0-9]+)/([a-z0-9-]+)/?$ conteudo/mulheres.php?idCidade=$1&nomeCidade=$2 [NC,L]
+
+# === MOBILE ANTIGO ===
+RewriteRule ^m/conteudo/casais-e-homens.php/?$ /casais-e-homens-porto-alegre-poa/ [NC,L]
