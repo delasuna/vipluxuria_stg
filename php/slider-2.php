@@ -35,10 +35,10 @@ Copie e cole onde quiser e ajuste as classes/ids se necessário.
   </div>
   <button class="bbs-btn bbs-next" aria-label="Próximo">❯</button>
 
-  <!-- <div class="bbs-controls d-none">
+  <div class="bbs-controls d-none">
     <div class="bbs-counter" aria-live="polite">0 / 0</div>
     <button class="bbs-playpause" aria-label="Pausar autoplay">Pause</button>
-  </div> -->
+  </div>
 </div>
 
 <div id="big-banner-slider-mobile" class="big-banner-slider-mobile d-sm-none">
