@@ -308,7 +308,7 @@ mysqli_free_result($resultado);
                                 </div>
                             </div>
 
-                            <!-- Grid de Cards de Confian�a -->
+                            <!-- Grid de Cards de Confiança -->
                             <div class="trust-grid-leaders">
                                 <!-- Card 1: Verifica��o Rigorosa -->
                                 <div class="trust-card-leader">
