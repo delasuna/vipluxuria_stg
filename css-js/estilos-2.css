@@ -5520,3 +5520,55 @@ p.nome,
     font-family: 'Playwrite NZ Basic', sans-serif;
     font-weight: 400;
 }
+
+.card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-img.active {
+    display: block;
+}
+
+.card-carousel-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.card-carousel-prev {
+    left: 8px;
+}
+
+.card-carousel-next {
+    right: 8px;
+}
+
+.card-carousel-nav i {
+    font-size: 18px;
+    line-height: 1;
+}

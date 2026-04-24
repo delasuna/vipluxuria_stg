@@ -1,8 +1,8 @@
 <?php
-// Conexão
+// Conexï¿½o
 $conexao = require_once 'php/conecta_mysql.php';
 
-// SEO - MANTER COMO ESTÁ
+// SEO - MANTER COMO ESTï¿½
 $sql = "SELECT * 
         FROM seo 
         INNER JOIN tipoSeo ON seo.idTipoSeo = tipoSeo.idTipoSeo 
@@ -10,7 +10,7 @@ $sql = "SELECT *
 
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
-    die("Impossível visualizar SEO: " . mysqli_error($conexao));
+    die("Impossï¿½vel visualizar SEO: " . mysqli_error($conexao));
 }
 
 $seo = mysqli_fetch_assoc($resultado);
@@ -38,35 +38,36 @@ mysqli_free_result($resultado);
 
             <?php include 'search-bar.php' ?>
 
-            <!-- Filtros logo após as badges -->
+            <!-- Filtros logo apï¿½s as badges -->
             <?php include 'filters.php' ?>
             <?php include 'php/slider-2.php' ?>
             <div class="main-content">
                 <div class="container">
-                   <div class="duvidas-header-premium mt-5 mb-0">
-                       <h1 class="duvidas-title-main">
-                           Acompanhantes Porto Alegre e regi&atilde;o
-                       </h1>
-                       <p class="duvidas-subtitle">H&aacute; 17 anos trabalhando com as melhores acompanhantes</p>
-                   </div>
+                    <div class="duvidas-header-premium mt-5 mb-0">
+                        <h1 class="duvidas-title-main">
+                            Acompanhantes Porto Alegre e regi&atilde;o
+                        </h1>
+                        <p class="duvidas-subtitle">H&aacute; 17 anos trabalhando com as melhores acompanhantes</p>
+                    </div>
                     <!-- Grid de Acompanhantes -->
                     <section class="acompanhantes-section">
                         <div class="grid-premium">
                             <?php
-                            function gerarSlug($string) {
+                            function gerarSlug($string)
+                            {
                                 // garante UTF-8
                                 $string = mb_convert_encoding($string, 'UTF-8', 'UTF-8');
 
                                 // remove acentos corretamente
                                 $string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
 
-                                // minúsculas
+                                // minï¿½sculas
                                 $string = strtolower($string);
 
-                                // remove tudo que não for letra, número ou espaço
+                                // remove tudo que nï¿½o for letra, nï¿½mero ou espaï¿½o
                                 $string = preg_replace('/[^a-z0-9\s-]/', '', $string);
 
-                                // troca espaços por hífen
+                                // troca espaï¿½os por hï¿½fen
                                 $string = preg_replace('/[\s-]+/', '-', $string);
 
                                 return trim($string, '-');
@@ -75,11 +76,11 @@ mysqli_free_result($resultado);
                             $sql = "SELECT * FROM mulher WHERE flagAtivo = 'Sim' ORDER BY flagPreferencial DESC, flagAgenciada ASC, RAND()";
                             $resultado = mysqli_query($conexao, $sql);
                             if (!$resultado) {
-                                die("Impossível visualizar as anunciantes: " . mysqli_error($conexao));
+                                die("Impossï¿½vel visualizar as anunciantes: " . mysqli_error($conexao));
                             }
 
                             $contadorCarrossel = 0;
-                            $comAcentos = ['à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ù', 'ü', 'ú', 'ÿ', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'O', 'Ù', 'Ü', 'Ú'];
+                            $comAcentos = ['ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'ï¿½', 'O', 'ï¿½', 'ï¿½', 'ï¿½'];
                             $semAcentos = ['a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'y', 'A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U'];
 
                             while ($row = mysqli_fetch_assoc($resultado)) {
@@ -87,7 +88,7 @@ mysqli_free_result($resultado);
                                 $nome = $row['nome'];
                                 $sobrenome = $row['sobrenome'];
                                 $imagemCapa = $row['imagemCapa'];
-                                $flagVerificada = $row['flagVerificada'] ?? 'Não';
+                                $flagVerificada = $row['flagVerificada'] ?? 'Nï¿½o';
 
                                 $slugNome = gerarSlug($nome);
                                 $slugSobrenome = gerarSlug($sobrenome);
@@ -117,66 +118,38 @@ mysqli_free_result($resultado);
                                             <?php endif; ?>
 
                                             <div class="card-img-wrapper">
-                                                <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
-                                                    class="card-img" alt="<?= $nomeCompleto ?>" loading="lazy">
+                                                <?php
+                                                $cardImages = [];
 
-                                                <!-- Preview ao Hover -->
-                                                <div class="card-preview">
-                                                    <div class="preview-gallery">
-                                                        <?php
-                                                        // Buscar até 3 imagens adicionais para o preview
-                                                        $previewImages = [];
-                                                        for ($i = 1; $i <= 3; $i++) {
-                                                            if (!empty($row["imagemCentral{$i}"])) {
-                                                                $previewImages[] = "https://www.vipluxuria.com/sistema/content/" . $row["imagemCentral{$i}"];
-                                                            }
-                                                        }
-                                                        ?>
+                                                if (!empty($imagemCapa)) {
+                                                    $cardImages[] = "https://www.vipluxuria.com/sistema/content/" . $imagemCapa;
+                                                }
 
-                                                        <div class="preview-slides">
-                                                            <img src="<?= "https://www.vipluxuria.com/sistema/content/" . htmlspecialchars($imagemCapa) ?>"
-                                                                class="preview-img active" alt="Foto 1">
-                                                            <?php foreach ($previewImages as $index => $img): ?>
-                                                                <img src="<?= htmlspecialchars($img) ?>"
-                                                                    class="preview-img" alt="Foto <?= $index + 2 ?>">
-                                                            <?php endforeach; ?>
-                                                        </div>
+                                                for ($i = 1; $i <= 3; $i++) {
+                                                    if (!empty($row["imagemCentral{$i}"])) {
+                                                        $cardImages[] = "https://www.vipluxuria.com/sistema/content/" . $row["imagemCentral{$i}"];
+                                                    }
+                                                }
+                                                ?>
 
-                                                        <?php if (count($previewImages) > 0): ?>
-                                                            <button class="preview-nav preview-prev" onclick="changePreview(event, -1)">&lt;</button>
-                                                            <button class="preview-nav preview-next" onclick="changePreview(event, 1)">&gt;</button>
+                                                <div class="card-carousel">
+                                                    <?php foreach ($cardImages as $index => $img): ?>
+                                                        <img
+                                                            src="<?= htmlspecialchars($img) ?>"
+                                                            class="card-img carousel-img <?= $index === 0 ? 'active' : '' ?>"
+                                                            alt="<?= $nomeCompleto ?>"
+                                                            loading="lazy">
+                                                    <?php endforeach; ?>
 
-                                                            <div class="preview-dots">
-                                                                <span class="dot active" onclick="currentSlide(event, 1)"></span>
-                                                                <?php foreach ($previewImages as $index => $img): ?>
-                                                                    <span class="dot" onclick="currentSlide(event, <?= $index + 2 ?>)"></span>
-                                                                <?php endforeach; ?>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    </div>
+                                                    <?php if (count($cardImages) > 1): ?>
+                                                        <button class="card-carousel-nav card-carousel-prev" onclick="changeCardImage(event, -1)">
+                                                            <i class="bi bi-chevron-left"></i>
+                                                        </button>
 
-                                                    <div class="preview-info">
-                                                        <h4><?= $nomeCompleto ?></h4>
-                                                        <div class="preview-details">
-                                                            <p><i class="bi bi-geo-alt"></i> <?= htmlspecialchars($row['cidades'] ?? 'Porto Alegre') ?></p>
-                                                            <p><i class="bi bi-cash"></i> <?= htmlspecialchars($row['cache'] ?? 'Consulte') ?></p>
-                                                            <?php if ($row['flagWhats'] == 'S'): ?>
-                                                                <p><i class="bi bi-whatsapp"></i> Dispon&iacute;vel</p>
-                                                            <?php endif; ?>
-                                                            <?php if ($row['flagAtende24Horas'] == 'Sim'): ?>
-                                                                <p><i class="bi bi-clock"></i> 24 Horas</p>
-                                                            <?php endif; ?>
-                                                        </div>
-
-                                                        <div class="preview-actions">
-                                                            <button class="btn-preview-whats" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://wa.me/55<?= preg_replace('/\D/', '', $row['ddd'] . $row['telefone']) ?>', '_blank')">
-                                                                <i class="bi bi-whatsapp"></i> WhatsApp
-                                                            </button>
-                                                            <span class="btn-preview-perfil">
-                                                                <i class="bi bi-eye"></i> Ver Perfil
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                        <button class="card-carousel-nav card-carousel-next" onclick="changeCardImage(event, 1)">
+                                                            <i class="bi bi-chevron-right"></i>
+                                                        </button>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
 
@@ -188,13 +161,13 @@ mysqli_free_result($resultado);
                                 </div>
 
                                 <?php if (++$contadorCarrossel == 18) { ?>
-                                    <!-- Espaço para banner/carrossel futuro -->
+                                    <!-- Espaï¿½o para banner/carrossel futuro -->
                                 <?php } ?>
                             <?php } ?>
                         </div>
 
                         <div class="container">
-                            <!-- Título Principal -->
+                            <!-- Tï¿½tulo Principal -->
                             <h2 class="trust-title-leaders text-center text-white">H&aacute; 17 anos trabalhando com as melhores acompanhantes.</h2>
 
                             <!-- Texto SEO em Collapse -->
@@ -335,9 +308,9 @@ mysqli_free_result($resultado);
                                 </div>
                             </div>
 
-                            <!-- Grid de Cards de Confiança -->
+                            <!-- Grid de Cards de Confianï¿½a -->
                             <div class="trust-grid-leaders">
-                                <!-- Card 1: Verificação Rigorosa -->
+                                <!-- Card 1: Verificaï¿½ï¿½o Rigorosa -->
                                 <div class="trust-card-leader">
                                     <div class="trust-icon-leader">
                                         <i class="bi bi-shield-fill-check"></i>
@@ -370,7 +343,7 @@ mysqli_free_result($resultado);
                                     </p>
                                 </div>
 
-                                <!-- Card 4: Total Discrição -->
+                                <!-- Card 4: Total Discriï¿½ï¿½o -->
                                 <div class="trust-card-leader">
                                     <div class="trust-icon-leader">
                                         <i class="bi bi-lock-fill"></i>
@@ -383,88 +356,39 @@ mysqli_free_result($resultado);
                             </div>
                         </div>
                     </section>
-                    
+
                 </div>
             </div>
         </div>
 
         <?php include("rodape-novo.php"); ?>
 
-        <script type="text/javascript">
-            Cufon.now();
-        </script>
         <?php include("php/google.php");
         mysqli_close($conexao); ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
         <script>
-            // Sistema de navegação do preview
-            function changePreview(event, direction) {
+            function changeCardImage(event, direction) {
                 event.preventDefault();
                 event.stopPropagation();
 
-                const gallery = event.target.closest('.preview-gallery');
-                const slides = gallery.querySelectorAll('.preview-img');
-                const dots = gallery.querySelectorAll('.dot');
+                const carousel = event.currentTarget.closest('.card-carousel');
+                const images = carousel.querySelectorAll('.carousel-img');
 
-                let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+                if (!images.length) {
+                    return;
+                }
 
-                slides[currentIndex].classList.remove('active');
-                dots[currentIndex].classList.remove('active');
+                let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
 
-                currentIndex = (currentIndex + direction + slides.length) % slides.length;
+                images[currentIndex].classList.remove('active');
 
-                slides[currentIndex].classList.add('active');
-                dots[currentIndex].classList.add('active');
+                currentIndex = (currentIndex + direction + images.length) % images.length;
+
+                images[currentIndex].classList.add('active');
             }
-
-            function currentSlide(event, slideIndex) {
-                event.preventDefault();
-                event.stopPropagation();
-
-                const gallery = event.target.closest('.preview-gallery');
-                const slides = gallery.querySelectorAll('.preview-img');
-                const dots = gallery.querySelectorAll('.dot');
-
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-
-                slides[slideIndex - 1].classList.add('active');
-                dots[slideIndex - 1].classList.add('active');
-            }
-
-            // Auto-play das imagens no hover
-            document.querySelectorAll('.acompanhante-card').forEach(card => {
-                let interval;
-
-                card.addEventListener('mouseenter', function() {
-                    const gallery = this.querySelector('.preview-gallery');
-                    if (gallery && gallery.querySelectorAll('.preview-img').length > 1) {
-                        interval = setInterval(() => {
-                            const nextBtn = gallery.querySelector('.preview-next');
-                            if (nextBtn) {
-                                const event = {
-                                    target: nextBtn,
-                                    preventDefault: () => {},
-                                    stopPropagation: () => {}
-                                };
-                                changePreview(event, 1);
-                            }
-                        }, 2000);
-                    }
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    clearInterval(interval);
-                });
-            });
-            // No final do index.php, verifique se este código está executando:
-            document.addEventListener('DOMContentLoaded', function() {
-                // Teste se o preview está funcionando
-                console.log('Preview cards:', document.querySelectorAll('.card-preview').length);
-            });
         </script>
     </div>
 </body>
 
-</html>		
+</html>
