@@ -741,7 +741,7 @@ a:hover {
 
 @media (min-width: 1400px) {
     .grid-premium {
-        grid-template-columns: repeat(6, minmax(200px, 1fr));
+        grid-template-columns: repeat(6, minmax(185px, 1fr));
     }
 }
 
@@ -5521,9 +5521,13 @@ p.nome,
     font-weight: 400;
 }
 
-.card-img-wrapper {
+.card-img-wrapper-profile {
     position: relative;
     overflow: hidden;
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    background: #111;
 }
 
 .card-carousel {
@@ -5532,14 +5536,16 @@ p.nome,
     height: 100%;
 }
 
-.carousel-img {
+.carousel-img-profile {
     display: none;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
+    vertical-align: middle;
 }
 
-.carousel-img.active {
+.carousel-img-profile.active {
     display: block;
 }
 

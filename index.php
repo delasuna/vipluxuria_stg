@@ -117,7 +117,7 @@ mysqli_free_result($resultado);
                                                 <span class="badge-verificada">&#10003; Verificada</span>
                                             <?php endif; ?>
 
-                                            <div class="card-img-wrapper">
+                                            <div class="card-img-wrapper-profile">
                                                 <?php
                                                 $cardImages = [];
 
@@ -136,7 +136,7 @@ mysqli_free_result($resultado);
                                                     <?php foreach ($cardImages as $index => $img): ?>
                                                         <img
                                                             src="<?= htmlspecialchars($img) ?>"
-                                                            class="card-img carousel-img <?= $index === 0 ? 'active' : '' ?>"
+                                                            class="card-img carousel-img-profile <?= $index === 0 ? 'active' : '' ?>"
                                                             alt="<?= $nomeCompleto ?>"
                                                             loading="lazy">
                                                     <?php endforeach; ?>
@@ -373,7 +373,7 @@ mysqli_free_result($resultado);
                 event.stopPropagation();
 
                 const carousel = event.currentTarget.closest('.card-carousel');
-                const images = carousel.querySelectorAll('.carousel-img');
+                const images = carousel.querySelectorAll('.carousel-img-profile');
 
                 if (!images.length) {
                     return;
