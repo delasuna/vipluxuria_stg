@@ -25,6 +25,7 @@ include("../inc/common.php");
     <link rel="stylesheet" href="../css/lightbox.css" />
     <link rel="stylesheet" href="../css/content_sis.css">
     <link rel="stylesheet" href="../css/header_sis.css">
+    <script src="../js/checkall.js"></script>
 </head>
 
 <body>
@@ -147,7 +148,7 @@ include("../inc/common.php");
                             <table class="table table-striped table-hover align-middle">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th><input type="checkbox" onclick="CheckAll()"></th>
+                                        <th><input type="checkbox" name="checkall" onclick="CheckAll()"></th>
                                         <th>Autor</th>
                                         <th>E-mail</th>
                                         <th>Ativo</th>

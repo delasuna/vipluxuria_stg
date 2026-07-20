@@ -276,7 +276,7 @@ include("../inc/common.php");
                             <table class="table table-striped table-hover align-middle">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th><input type="checkbox" onclick="CheckAll()"></th>
+                                        <th><input type="checkbox" name="checkall" onclick="CheckAll()"></th>
                                         <?php
                                             $isDescNome = ($iSort === 2 && $iSorted === 2);
                                         ?>
