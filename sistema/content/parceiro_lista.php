@@ -310,7 +310,7 @@
 <script>
 function excluir() {
     if (confirm('Excluir registros selecionados?')) {
-        document.frm.action = "bannercentral_excluir.php";
+        document.frm.action = "parceiro_excluir.php";
         document.frm.submit();
     }
 }
