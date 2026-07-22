@@ -27,6 +27,7 @@
             font-size: 0.95rem;
         }
     </style>
+    <script src="../js/checkall.js"></script>
 </head>
 
 <body> 
@@ -229,7 +230,7 @@
                             <table class="table table-striped table-hover align-middle">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th><input type="checkbox" onclick="CheckAll()"></th>
+                                        <th><input type="checkbox" name="checkall" onclick="CheckAll()"></th>
                                         <?php
                                         $isDescNome = ($iSort === 2 && $iSorted === 2);
                                         ?>
@@ -310,7 +311,7 @@
 <script>
 function excluir() {
     if (confirm('Excluir registros selecionados?')) {
-        document.frm.action = "bannercentral_excluir.php";
+        document.frm.action = "parceiro_excluir.php";
         document.frm.submit();
     }
 }

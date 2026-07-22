@@ -44,6 +44,7 @@ class db {
 		$flags = DB_PERSISTENT ? MYSQLI_CLIENT_FOUND_ROWS : 0;
 		$this->connect_id = @mysqli_connect($host, $user, $password, $database);
 		if (!$this->connect_id) return false;
+		mysqli_set_charset($this->connect_id, 'utf8mb4');
 		return $this->connect_id;
 	}
 

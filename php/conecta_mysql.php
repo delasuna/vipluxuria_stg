@@ -13,6 +13,9 @@ if (!$conexao) {
     die("Conexão com o banco falhou: " . mysqli_connect_error());
 }
 
+// Alinha a codificação da conexão com o UTF-8 das páginas (corrige acentos/cedilhas)
+mysqli_set_charset($conexao, 'utf8mb4');
+
 // Retorna a conexão para quem incluir este arquivo
 return $conexao;
 ?>
